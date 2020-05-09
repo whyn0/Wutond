@@ -5,7 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.games;
 
-import proj.map.progettomap1920.GameDescription;
+import proj.map.progettoMap1920.adventure.main.GameDescription;
 
 /**
  *
