@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettomap1920;
+package proj.map.progettomap1920.adventure.main;
 
 /**
  *
