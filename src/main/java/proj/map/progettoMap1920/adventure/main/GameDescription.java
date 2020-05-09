@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettomap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.main;
 
 /**
  *
  * @author whyno
  */
-public class Inventory {
+public abstract class GameDescription {
     
 }
