@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.parser;
 
 /**
  *
  * @author whyno
  */
-public enum CommandType {
-        PLAY,END,NORTH,SUD,WEST,EST,OPEN,CLOSE,PUSH,TALK_TO,PICK_UP,USE,GIVE,LOOK_AT,KILL,SAVE,LOAD,HELP,CURSE,THROW,DIAGNOSE,HEAL,
+public enum NTerminal {
+    NAME_O,
+    O_LIST,
+    NAME_P,
 }

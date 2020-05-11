@@ -9,6 +9,11 @@ package proj.map.progettoMap1920.adventure.type;
  *
  * @author whyno
  */
-public enum CommandType {
-        PLAY,END,NORTH,SUD,WEST,EST,OPEN,CLOSE,PUSH,TALK_TO,PICK_UP,USE,GIVE,LOOK_AT,KILL,SAVE,LOAD,HELP,CURSE,THROW,DIAGNOSE,HEAL,
+public enum PrepositionType {
+    WITH,
+    THROUGH,
+    TOWARDS,
+    TO,
+    ON,
+    IN,
 }

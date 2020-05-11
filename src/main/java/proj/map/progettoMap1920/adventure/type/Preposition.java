@@ -5,8 +5,6 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,22 +12,19 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Command {
-     private final CommandType type;
-
-    private final String name;
-
+public class Preposition {
+    private PrepositionType type;
+    private String name;
     private Set<String> alias;
 
-    public Command(CommandType type, String name) {
-        this.type = type;
-        this.name = name;
-    }
-
-    public Command(CommandType type, String name, Set<String> alias) {
+    public Preposition(PrepositionType type, String name, Set<String> alias) {
         this.type = type;
         this.name = name;
         this.alias = alias;
+    }
+
+    public PrepositionType getType() {
+        return type;
     }
 
     public String getName() {
@@ -40,21 +35,21 @@ public class Command {
         return alias;
     }
 
+    public void setType(PrepositionType type) {
+        this.type = type;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setAlias(Set<String> alias) {
         this.alias = alias;
     }
 
-    public void setAlias(String[] alias) {
-        this.alias = new HashSet<>(Arrays.asList(alias));
-    }
-
-    public CommandType getType() {
-        return type;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.type);
         return hash;
     }
@@ -70,11 +65,20 @@ public class Command {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Command other = (Command) obj;
+        final Preposition other = (Preposition) obj;
         if (this.type != other.type) {
             return false;
         }
         return true;
     }
 
+    public Preposition(PrepositionType type) {
+        this.type = type;
+    }
+
+    public Preposition(PrepositionType type, String name) {
+        this.type = type;
+        this.name = name;
+    }
+    
 }

@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -38,7 +39,7 @@ public class AdvObject {
     private boolean can_dmg= false;
     
     private boolean can_kill= false;
-
+    
     /*
      * 
      * COSTRUTTORI
@@ -68,6 +69,11 @@ public class AdvObject {
 		super();
 		this.id = id;
 	}
+
+    public AdvObject(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
 
 	/*

@@ -7,11 +7,14 @@ package proj.map.progettoMap1920.adventure.type;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Set;
+
 /**
  *
  * @author whyno
  */
 public class Npc {
+
 
 	
 
@@ -161,6 +164,7 @@ public class Npc {
 
 
 	
+
 
 
 

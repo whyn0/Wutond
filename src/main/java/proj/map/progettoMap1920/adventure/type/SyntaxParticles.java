@@ -14,22 +14,36 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Command {
-     private final CommandType type;
-
+public class SyntaxParticles {
+    private final SyntaxParticlesType particle;
     private final String name;
-
     private Set<String> alias;
-
-    public Command(CommandType type, String name) {
-        this.type = type;
-        this.name = name;
-    }
-
-    public Command(CommandType type, String name, Set<String> alias) {
-        this.type = type;
+    /*
+    
+    
+    COSTRUTTORI
+    
+    
+    */
+    public SyntaxParticles(SyntaxParticlesType particle, String name, Set<String> alias) {
+        this.particle = particle;
         this.name = name;
         this.alias = alias;
+    }
+
+    public SyntaxParticles(SyntaxParticlesType particle, String name) {
+        this.particle = particle;
+        this.name = name;
+    }
+    /*
+    
+    
+    GETTERS
+    
+    
+    */
+    public SyntaxParticlesType getParticle() {
+        return particle;
     }
 
     public String getName() {
@@ -39,23 +53,32 @@ public class Command {
     public Set<String> getAlias() {
         return alias;
     }
+    /*
+    
+    
+    SETTERS
+    
+    
+    */
 
     public void setAlias(Set<String> alias) {
         this.alias = alias;
     }
-
-    public void setAlias(String[] alias) {
+    public void setAlias(String[] alias){
         this.alias = new HashSet<>(Arrays.asList(alias));
     }
-
-    public CommandType getType() {
-        return type;
-    }
+    /*
+    
+    
+    EQUALS AND HASH
+    
+    
+    */
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.type);
+        hash = 71 * hash + Objects.hashCode(this.particle);
         return hash;
     }
 
@@ -70,11 +93,11 @@ public class Command {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Command other = (Command) obj;
-        if (this.type != other.type) {
+        final SyntaxParticles other = (SyntaxParticles) obj;
+        if (!Objects.equals(this.particle, other.particle)) {
             return false;
         }
         return true;
     }
-
+    
 }
