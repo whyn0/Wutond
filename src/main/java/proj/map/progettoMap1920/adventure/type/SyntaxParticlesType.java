@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+
 /**
  *
  * @author whyno
@@ -16,4 +17,27 @@ public class SyntaxParticlesType {
     public enum Particles{
         WITH,THROUGH,TOWARDS,TO,ON,IN
     }
+
 }
+/*
+public enum Types{
+    VERB,
+    ARTICLE,
+    NAME,
+    PREPOSITION,
+    CONJUNCTION,
+    ALL,
+    EXCEPT
+}
+prendi tutto 
+prendi tutto eccetto la birra,
+prendi il coltello e ucciditi
+parla a mario 
+parla con mario
+s -> verbo particella nome
+usa la bottiglia con la 
+verbo particella direzione
+
+VERB ARTICOLO OBJECT CONGIUNZIONE VERBO
+S -> [VERBO][A_OBJECT][CONJUNCTION][S]
+*/

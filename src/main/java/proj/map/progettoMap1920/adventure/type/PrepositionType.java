@@ -5,15 +5,15 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
-import java.util.Set;
-
 /**
  *
  * @author whyno
  */
-public class Npc {
-    private int id;
-    private String name;
-    private Set<String> alias;
-    
+public enum PrepositionType {
+    WITH,
+    THROUGH,
+    TOWARDS,
+    TO,
+    ON,
+    IN,
 }

@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.type;
-
-import java.util.Set;
+package proj.map.progettoMap1920.adventure.parser;
 
 /**
  *
  * @author whyno
  */
-public class Npc {
-    private int id;
-    private String name;
-    private Set<String> alias;
-    
+public enum Terminal {
+    START,
+    VERB,
+    ARTICLE,
+    OBJECT,
+    NPC,
+    PREPOSITION,
+    CONJUNCTION,
+    DIRECTION,
+    ALL,
+    EXCEPT,
+    NULL,
 }
