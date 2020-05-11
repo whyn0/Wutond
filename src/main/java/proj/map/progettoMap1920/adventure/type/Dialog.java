@@ -5,11 +5,13 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
+
 /**
  *
  * @author whyno
  */
-public class Dialog {
+public class Dialog implements Serializable {
 
 
 
