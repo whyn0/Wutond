@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author whyno
  */
-public class Room {
+public class Room implements Serializable {
     private final int id;
     
     private String name;

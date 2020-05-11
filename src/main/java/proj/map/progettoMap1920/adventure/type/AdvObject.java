@@ -7,12 +7,12 @@ package proj.map.progettoMap1920.adventure.type;
 
 import java.util.Scanner;
 import java.util.Set;
-
+import java.io.*;
 /**
  *
  * @author whyno
  */
-public class AdvObject {
+public class AdvObject implements Serializable{
 	
 	private final int id;
 	

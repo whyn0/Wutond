@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package proj.map.progettoMap1920.adventure.type;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Npc {
+public class Npc implements Serializable{
 
 
 
