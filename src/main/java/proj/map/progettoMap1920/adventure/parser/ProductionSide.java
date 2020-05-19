@@ -14,12 +14,12 @@ import java.util.List;
  * @author whyno
  */
 public class ProductionSide {
-    private final List<Terminal> list = new ArrayList<>();
+    private final List<Alphabet> list = new ArrayList<>();
   
-    protected ProductionSide(Terminal... symbol){
+    public ProductionSide(Alphabet... symbol){
         this.list.addAll(Arrays.asList(symbol));
     }
-    public List<Terminal> get(){
+    public List<Alphabet> get(){
         return new ArrayList<>(this.list);
     }
 }

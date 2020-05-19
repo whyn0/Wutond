@@ -9,16 +9,14 @@ package proj.map.progettoMap1920.adventure.parser;
  *
  * @author whyno
  */
-public enum Terminal {
-    START,
-    VERB,
-    ARTICLE,
-    OBJECT,
-    NPC,
-    PREPOSITION,
-    CONJUNCTION,
-    DIRECTION,
-    ALL,
-    EXCEPT,
-    NULL,
+public class NTSymbol extends Symbol{
+    public NTSymbol(String name) {
+		super(name);
+	}
+
+	@Override
+	public String toString() {
+		return "{" + this.symbol + "}";
+	}
+
 }
