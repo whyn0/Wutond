@@ -9,6 +9,11 @@ package proj.map.progettoMap1920.adventure.parser;
  *
  * @author whyno
  */
-public enum NTerminal {
-    START,A,B,C,D,E,F,G,H,I,L,M,N,O,P,
+public abstract class Symbol {
+    protected final String symbol;
+    protected Symbol(String name){
+        this.symbol = name;
+    }
+    @Override
+    public abstract String toString();
 }

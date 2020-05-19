@@ -9,6 +9,17 @@ package proj.map.progettoMap1920.adventure.parser;
  *
  * @author whyno
  */
-public enum NTerminal {
-    START,A,B,C,D,E,F,G,H,I,L,M,N,O,P,
+public enum Alphabet {
+    START,
+    VERB,
+    ARTICLE,
+    OBJECT,
+    NPC,
+    PREPOSITION,
+    CONJUNCTION,
+    DIRECTION,
+    ALL,
+    EXCEPT,
+    NULL,
+    A,B,C,D,E,F,G,H,I,L,M,N,O,P,Q
 }

@@ -13,16 +13,33 @@ import java.util.List;
  * @author whyno
  */
 public class CFGrammar {
-    private final Terminal start;
+    private final Alphabet start;
     private final List<Production> productions;
-    private final List<Terminal> nonTerminals;
-    private final List<String> terminals;
+    private final List<Alphabet> nonTerminals;
+    private final List<Alphabet> terminals;
     
-    protected CFGrammar(Terminal start,List<Production> productions){
+    public CFGrammar(Alphabet start,List<Production> productions,List<Alphabet> nonTerminals,List<Alphabet> terminals){
         this.start = start;
         this.productions = productions;
+        this.nonTerminals = nonTerminals;
+        this.terminals = terminals;
         
-        this.nonTerminals = new ArrayList<>();
-        this.terminals = new ArrayList<>();
     }
+
+    public Alphabet getStart() {
+        return start;
+    }
+
+    public List<Production> getProductions() {
+        return productions;
+    }
+
+    public List<Alphabet> getNonTerminals() {
+        return nonTerminals;
+    }
+
+    public List<Alphabet> getTerminals() {
+        return terminals;
+    }
+    
 }

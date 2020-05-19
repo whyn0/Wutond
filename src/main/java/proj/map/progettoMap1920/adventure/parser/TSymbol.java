@@ -9,6 +9,14 @@ package proj.map.progettoMap1920.adventure.parser;
  *
  * @author whyno
  */
-public enum NTerminal {
-    START,A,B,C,D,E,F,G,H,I,L,M,N,O,P,
+public class TSymbol extends Symbol{
+
+    public TSymbol(char symbol) {
+		super(String.valueOf(symbol));
+	}
+
+	@Override
+	public String toString() {
+		return this.symbol;
+	}
 }
