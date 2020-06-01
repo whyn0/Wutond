@@ -21,12 +21,14 @@ public class Npc implements Serializable{
 
 	private int id;
 	private String name;
+  private String description;
 	private String look;
 	private boolean understandable;
 	private boolean spoken;
 	private boolean killable;
-	private List<Dialog> dialogs_list= new ArrayList<Dialog>();
-	private List<AdvObject> npc_inventory_list= new ArrayList<AdvObject>();
+
+	private Dialog dialog;
+  private List<AdvObject> npc_inventory;
 
 
 

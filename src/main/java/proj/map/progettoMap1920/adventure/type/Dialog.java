@@ -11,6 +11,7 @@ import java.io.Serializable;
  *
  * @author whyno
  */
+
 public class Dialog implements Serializable {
 
 
@@ -31,6 +32,7 @@ public class Dialog implements Serializable {
 	 *   
 	 */
 	public Dialog(int id, String text) {
+
 		super();
 		this.id = id;
 		this.text = text;
