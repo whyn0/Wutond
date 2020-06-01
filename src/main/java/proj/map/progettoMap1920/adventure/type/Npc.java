@@ -20,12 +20,13 @@ public class Npc {
 
 	private String id;
 	private String name;
+        private String description;
 	private String look;
 	private boolean understandable;
 	private boolean spoken;
 	private boolean killable;
-	private List<Dialog> dialogs_list= new ArrayList<Dialog>();
-
+	private Dialog dialog;
+        private List<AdvObject> npc_inventory;
 
 
 

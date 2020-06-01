@@ -13,7 +13,7 @@ public class Dialog {
     
 	
 	
-	private final String id;
+    private final String id;
     private String text;
     private String opt_1;
     private String opt_2;
