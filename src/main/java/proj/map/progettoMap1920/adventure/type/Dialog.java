@@ -5,49 +5,53 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
+
 /**
  *
  * @author whyno
  */
-public class Dialog {
-    
-	
-	
-    private final String id;
-    private String text;
-    private String opt_1;
-    private String opt_2;
-    private String opt_3;
-    private final String end=">";
-    private Dialog next_1;
-    private Dialog next_2;
-    private Dialog next_3;
-    
-  /*
-   * 
-   *   COSTRUTTORI
-   *   
-   */
-    public Dialog(String id, String text) {
+
+public class Dialog implements Serializable {
+
+
+
+	private final int id;
+	private String text;
+	private String opt_1;
+	private String opt_2;
+	private String opt_3;
+	private final String end=">";
+	private Dialog next_1;
+	private Dialog next_2;
+	private Dialog next_3;
+
+	/*
+	 * 
+	 *   COSTRUTTORI
+	 *   
+	 */
+	public Dialog(int id, String text) {
+
 		super();
 		this.id = id;
 		this.text = text;
-    }
+	}
 
 
-	public Dialog(String id) {
+	public Dialog(int id) {
 		super();
 		this.id = id;
 	}
 
 
-	
+
 	/*
 	 * 
 	 * GETTERS
 	 * 
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -86,11 +90,11 @@ public class Dialog {
 		return next_3;
 	}
 
-/*
- * 
- * SETTERS
- * 
- */
+	/*
+	 * 
+	 * SETTERS
+	 * 
+	 */
 	public void setText(String text) {
 		this.text = text;
 	}
@@ -124,6 +128,6 @@ public class Dialog {
 	public void setNext_3(Dialog next_3) {
 		this.next_3 = next_3;
 	}
-    
-	
+
+
 }

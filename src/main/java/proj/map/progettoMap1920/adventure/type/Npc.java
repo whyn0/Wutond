@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package proj.map.progettoMap1920.adventure.type;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,37 +14,53 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Npc {
+public class Npc implements Serializable{
 
 
-	
 
-	private String id;
+
+	private int id;
 	private String name;
-        private String description;
+  private String description;
 	private String look;
 	private boolean understandable;
 	private boolean spoken;
 	private boolean killable;
+
 	private Dialog dialog;
-        private List<AdvObject> npc_inventory;
+  private List<AdvObject> npc_inventory;
 
 
 
-/*
- * 
- * COSTRUTTORI
- * 
- */
-	public Npc(String id) {
+	/*
+	 * 
+	 * COSTRUTTORI
+	 * 
+	 */
+	public Npc(int id) {
 		super();
 		this.id = id;
 	}
 
 
 
-	public Npc(String id, String name, String look, boolean understandable, boolean spoken, boolean killable,
-			ArrayList<Dialog> dialogs_list) {
+	public Npc(int id, String name, String look, boolean understandable, boolean spoken, boolean killable,
+			ArrayList<Dialog> dialogs_list, ArrayList<AdvObject> npc_inventory_list) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.look = look;
+		this.understandable = understandable;
+		this.spoken = spoken;
+		this.killable = killable;
+		this.dialogs_list = dialogs_list;
+		this.npc_inventory_list = npc_inventory_list;
+	}
+
+
+
+	public Npc(int id, String name, String look, boolean understandable, boolean spoken, boolean killable,
+			List<Dialog> dialogs_list) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -55,12 +72,13 @@ public class Npc {
 	}
 
 
-/*
- * 
- * GETTERS
- * 
- */
-	public String getId() {
+
+	/*
+	 * 
+	 * GETTERS
+	 * 
+	 */
+	public int getId() {
 		return id;
 	}
 
@@ -101,12 +119,19 @@ public class Npc {
 	}
 
 
-/*
- * 
- * SETTERS
- * 
- */
-	public void setId(String id) {
+
+	public List<AdvObject> getNpc_inventory_list() {
+		return npc_inventory_list;
+	}
+
+
+
+	/*
+	 * 
+	 * SETTERS
+	 * 
+	 */
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -147,11 +172,19 @@ public class Npc {
 	}
 
 
-/*
- * 
- * METHODS
- * 
- */
+
+
+	public void setNpc_inventory_list(List<AdvObject> npc_inventory_list) {
+		this.npc_inventory_list = npc_inventory_list;
+	}
+
+
+
+	/*
+	 * 
+	 * METHODS
+	 * 
+	 */
 	public boolean add(Dialog d) {
 		return dialogs_list.add(d);
 	}
@@ -164,7 +197,25 @@ public class Npc {
 
 
 
-	
+	public boolean add(AdvObject e) {
+		return npc_inventory_list.add(e);
+	}
+
+
+
+	public boolean remove(AdvObject e) {
+		return npc_inventory_list.remove(e);
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 
