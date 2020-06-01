@@ -53,8 +53,7 @@ public class Npc implements Serializable{
 		this.understandable = understandable;
 		this.spoken = spoken;
 		this.killable = killable;
-		this.dialogs_list = dialogs_list;
-		this.npc_inventory_list = npc_inventory_list;
+
 	}
 
 
@@ -68,7 +67,7 @@ public class Npc implements Serializable{
 		this.understandable = understandable;
 		this.spoken = spoken;
 		this.killable = killable;
-		this.dialogs_list = dialogs_list;
+
 	}
 
 
@@ -114,17 +113,6 @@ public class Npc implements Serializable{
 
 
 
-	public List<Dialog> getDialogs_list() {
-		return dialogs_list;
-	}
-
-
-
-	public List<AdvObject> getNpc_inventory_list() {
-		return npc_inventory_list;
-	}
-
-
 
 	/*
 	 * 
@@ -167,17 +155,6 @@ public class Npc implements Serializable{
 
 
 
-	public void setDialogs_list(List<Dialog> dialogs_list) {
-		this.dialogs_list = dialogs_list;
-	}
-
-
-
-
-	public void setNpc_inventory_list(List<AdvObject> npc_inventory_list) {
-		this.npc_inventory_list = npc_inventory_list;
-	}
-
 
 
 	/*
@@ -185,30 +162,6 @@ public class Npc implements Serializable{
 	 * METHODS
 	 * 
 	 */
-	public boolean add(Dialog d) {
-		return dialogs_list.add(d);
-	}
-
-
-
-	public boolean remove(Dialog d) {
-		return dialogs_list.remove(d);
-	}
-
-
-
-	public boolean add(AdvObject e) {
-		return npc_inventory_list.add(e);
-	}
-
-
-
-	public boolean remove(AdvObject e) {
-		return npc_inventory_list.remove(e);
-	}
-
-
-
 
 
 
