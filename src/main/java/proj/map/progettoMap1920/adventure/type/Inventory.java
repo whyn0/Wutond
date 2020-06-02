@@ -5,10 +5,25 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.util.List;
+
 /**
  *
  * @author whyno
  */
 public class Inventory {
+    private List<AdvObject> inventory;
+
+    public Inventory(List<AdvObject> inventory) {
+        this.inventory = inventory;
+    }
+
+    public List<AdvObject> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<AdvObject> inventory) {
+        this.inventory = inventory;
+    }
     
 }
