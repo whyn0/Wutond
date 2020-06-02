@@ -14,58 +14,66 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class AdvObjectContainer extends AdvObject implements Serializable{
-	
-  private List<AdvObject> list = new ArrayList<>();
-  
-/*
+public class AdvObjectContainer extends AdvObject implements Serializable {
+
+    final private boolean openable = true;
+    private List<AdvObject> list;
+    private Lock lock;
+
+    /*
  * 
  * COSTRUTTORI
  * 
- */
-  
-	public AdvObjectContainer(int id, String name, String description, Set<String> alias, boolean openable,
-			boolean pickupable, boolean pushable, boolean throwable, boolean open, boolean push, boolean can_heal,
-			boolean can_dmg, boolean can_kill) {
-		super(id, name, description, alias, openable, pickupable, pushable, throwable, open, push, can_heal, can_dmg, can_kill);
-		// TODO Auto-generated constructor stub
-	}
+     */
 
-	public AdvObjectContainer(int id) {
-		super(id);
-		// TODO Auto-generated constructor stub
-	}
-	
-/*
+    public AdvObjectContainer(List<AdvObject> list, Lock lock, int id, String name, String description, Set<String> alias, boolean pickable) {
+        super(id, name, description, alias, pickable);
+        this.list = list;
+        this.lock = lock;
+    }
+
+    /*
  * 
  * GETTERS
  * 
- */
-	
-	public List<AdvObject> getList() {
-		return list;
-	}
-	
-/*
- * 
- * SETTERS
- * 
- */
-	
-	public void setList(List<AdvObject> list) {
-		this.list = list;
-	}
-/*
- * 
- * METHOD
- * 
- */
-	public void add(AdvObject o) {
+     */
+
+    public boolean isOpenable() {
+        return openable;
+    }
+
+    public List<AdvObject> getList() {
+        return list;
+    }
+
+    public Lock getLock() {
+        return lock;
+    }
+
+    
+
+    /*
+     *
+     * SETTERS
+     *
+     */
+    public void setLock(Lock lock) {
+        this.lock = lock;
+    }
+    public void setList(List<AdvObject> list) {
+        this.list = list;
+    }
+    /*
+     *
+     * METHOD
+     *
+     */
+    public void add(AdvObject o) {
         list.add(o);
     }
 
     public void remove(AdvObject o) {
         list.remove(o);
     }
-	 
+
 }

@@ -37,6 +37,8 @@ public class FileInit {
         boolean pickable = false;
         boolean openable = false;
         boolean open = false;
+        int lock = 0; // se lock != 0 && isContainer = false istanziare una porta
+        int locked_room = 0;
       //  List<AdvObject> containedItems = null;
         FileReader file;
         BufferedReader buffer;
@@ -86,6 +88,16 @@ public class FileInit {
                             isContainer = true;
                         }
                         
+                    }
+                    if(tokenized[0].equals("LOCK")){
+                        if(!tokenized[1].equals("null")){
+                           lock = Integer.parseInt(tokenized[1]);
+                        }
+                    }
+                    if(tokenized[0].equals("LOCKED_ROOM")){
+                        if(!tokenized[1].equals("null")){
+                            locked_room = Integer.parseInt(tokenized[1]);
+                        }
                     }
                     //da testare
                     str = buffer.readLine();
