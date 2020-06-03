@@ -1,0 +1,277 @@
+{
+ID: 1
+NOME: "Questura"
+DESCRIZIONE: "Sei Alfoso Paccagnello, un detective padovano. Sei stato inviato nell'apparententemente tranquilla cittadina di B-tond per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: il bar castello.Ti trovi in questura in compagnia del commissario Beretta. Sembra che ti debba informare sul caso prima di farti iniziare le indagini."
+LOOK: "Ti trovi in questura"
+NORD: null
+SUD: null
+EST: null
+OVEST: 2
+OBJ_ID: 45 48
+NPC_ID: null
+}
+{
+ID: 2
+NOME: "Crocevia"
+DESCRIZIONE: "Ti trovi ad un crocevia."
+LOOK: "Vedi solo un cartello. Ti posizioni frontalmente al cartello e leggi le seguenti indicazioni: Questura-est, Villa-nord, Orologio-sud. Noti però anche una strada non segnalata."
+NORD: 3
+SUD: 5
+EST: 1
+OVEST: 4
+OBJ_ID: null
+NPC_ID: null
+}
+{
+ID: 3 
+NOME: "Villa"
+DESCRIZIONE: "Ti trovi nella villa comunale. Sei circondato da alberi e aiuole ricolme di fiori." 
+LOOK: "Ti trovi in villa"  
+NORD: null
+SUD: 2
+EST: null
+OVEST: null
+OBJ_ID: 50
+NPC_ID: 65
+}
+{
+ID: 4
+NOME: "Spaccio"
+DESCRIZIONE: "Ti avventuri nella strada buia. L'unico luogo illuminato da una luce intermittente è un piccolo porticato in fondo alla strada."
+LOOK: "Non riesci a vedere quasi nulla."
+NORD: null
+SUD: null
+EST: 2
+OVEST: null 
+OBJ_ID: null
+NPC_ID: 66
+}
+{
+ID: 5
+NOME: "Orologio"
+DESCRIZIONE: "Ti trovi nella piazza centrale della città. Dinnanzi a te si erge un'imponente torre con un orologio sulla sommità. Sembra che un tempo ci fosse un portone sotto la torre e che fosse l'unico accesso per il centro storico."
+LOOK: "Sei nella piazza principale della città."
+NORD: 2
+SUD: 12
+EST: 7
+OVEST: 6
+OBJ_ID: 56
+NPC_ID: 68, 69
+}
+{
+ID: 6
+NOME: "Bar Castello"
+DESCRIZIONE: "Ti trovi nel bar il cui proprietario è stato assassinato."
+LOOK: "Il bar è ancora luogo di indagine: ci sono transenne e nastri a bloccare il passaggio ad ogni persona non autorizzata."
+NORD: null
+SUD: null
+EST: 5
+OVEST: null
+OBJ_ID: 59
+NPC_ID: 70
+}
+{
+ID: 7 
+NOME: "Ponte"
+DESCRIZIONE: "Sei sul robusto ponte che collega la piazza dell'orologio al torrione."
+LOOK: "Ti trovi sul ponte."
+NORD: null
+SUD: null
+EST: 8
+OVEST: 5
+OBJ_ID: 62 63
+NPC_ID: null
+}
+{
+ID: 8 
+NOME: "Torrione1"
+DESCRIZIONE: "ti trovi nel torrione agionino, ricordi che mentre eri sul ponte hai notato un uomo scappare in modo sospetto all'interno."
+LOOK: "Noti molti quadri antichi accatastati e impolverati."
+NORD: 9
+SUD: null
+EST: null
+OVEST: 7
+OBJ_ID: 76
+NPC_ID: null
+}
+{
+ID: 9 
+NOME: "Torrione2"
+DESCRIZIONE: "Sei nel secondo piano del torrione."
+LOOK: "Rimani qualche secondo ad osservare con cautela i dintorni."
+NORD: 10
+SUD: 8
+EST: null
+OVEST: null
+OBJ_ID: 77
+NPC_ID: 68
+}
+{
+ID: 10 
+NOME: "Torrione3"
+DESCRIZIONE: "Sei nel terzo piano del torrione."
+LOOK: "Sei in una stanza circolare. Da una feritoria riesci a guardare giù sulla piazza; una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto. Il tuo uomo potrebbe essere lì"
+NORD: 11
+SUD: 9
+EST: null
+OVEST: null
+OBJ_ID: 78
+NPC_ID: null
+}
+{
+ID: 11 
+NOME: "Torrione4"
+DESCRIZIONE: "Sei sul tetto del torrione. Appena varcata la soglia una forte folata di vento ti fa barcollare leggermente."
+LOOK: "Riesci a vedere le stelle da quassù, ma non è ciò per cui sei venuto."
+NORD: null
+SUD: 10
+EST: null
+OVEST: null
+OBJ_ID: null
+NPC_ID: 64
+}
+{
+ID: 42 
+NOME: "Piazza"
+DESCRIZIONE: "Ti trovi in piazza cattedrale. L'imponente struttura in stile romanico pugliese fu edificata tra l'XI e il XII secolo."
+LOOK: "Sei al centro di piazza cattedrale. Ad Ovest vedi un internet point, ad Est la biblioteca cittadina."
+NORD: 20
+SUD: null
+EST: 44
+OVEST: 43
+OBJ_ID: null
+NPC_ID: null
+}
+{
+ID: 43
+NOME: "Biblioteca"
+DESCRIZIONE: "Ti trovi nella biblioteca comunale. Una distesa di libri riempie gli scaffali delle librerie intorno a te. Tutto tace."
+LOOK: "Ti trovi all'interno della biblioteca cittadina."
+NORD: null
+SUD: null
+EST: 42
+OVEST: null
+OBJ_ID: null
+NPC_ID: 67
+}
+{
+ID: 44 
+NOME: "Internet Point"
+DESCRIZIONE: "Ti trovi in un internet point. Qui puoi usufruire di un computer collegato ad internet."
+LOOK: "Sei nell'internet point."
+NORD: null
+SUD: null
+EST: null
+OVEST: 42
+OBJ_ID: 55
+NPC_ID: null
+}
+{
+ID: 12 
+NOME: "Labirinto 1"
+DESCRIZIONE: "Sei all'entrata del centro storico, vedi vie e viuzze che si propagano in tutte le direzioni. Sembra quasi un labirinto."
+LOOK: "L'unica strada percorribile è a sud"
+NORD: 5
+SUD: 15
+EST: null
+OVEST: null 
+OBJ_ID: null
+NPC_ID: null
+}
+{
+ID: 13
+NOME: "Labirinto 2"
+DESCRIZIONE: "Sei arrivato ad un vicolo cieco!"
+LOOK: "E' un vicolo cieco, devi tornare indietro."
+NORD: null
+SUD: 16
+EST: null
+OVEST: null 
+OBJ_ID: null 
+NPC_ID: null
+}
+{
+ID: 14  
+NOME: "Labirinto 3"
+DESCRIZIONE: "Una strada come tante altre."
+LOOK: "Una strada come tante altre."
+NORD: null 
+SUD: 18 
+EST: 15 
+OVEST: null 
+OBJ_ID: null  
+NPC_ID: null 
+}
+{
+ID: 15  
+NOME: "Labirinto 4"
+DESCRIZIONE: "Inizi a perdere l'orientamento, sembra tutto uguale!"
+LOOK: "Vedi diverse strade."
+NORD: 12 
+SUD: null 
+EST: 16 
+OVEST: 14 
+OBJ_ID: null 
+NPC_ID: null 
+}
+{
+ID: 16 
+NOME: "Labirinto 5"
+DESCRIZIONE: "Una strada come tante altre."
+LOOK: "Una strada come tante altre."
+NORD: 13 
+SUD: null 
+EST: null 
+OVEST: 15 
+OBJ_ID: null 
+NPC_ID: null 
+}
+{
+ID: 17 
+NOME: "Labirinto 6"
+DESCRIZIONE: "Sei finito in una delle famose corti bitontine. Purtroppo per te è l'ennesimo vicolo cieco."
+LOOK: "Sei in un vicolo cieco! Puoi solo tornare indietro."
+NORD: null 
+SUD: null 
+EST: 18 
+OVEST: null 
+OBJ_ID: null 
+NPC_ID: null 
+}
+{
+ID: 18 
+NOME: "Labirinto 7"
+DESCRIZIONE: "Una strada come tante altre."
+LOOK: "Una strada come tante altre."
+NORD: 14 
+SUD: null 
+EST: 19 
+OVEST: 17 
+OBJ_ID: null 
+NPC_ID: null 
+}
+{
+ID: 19 
+NOME: "Labirinto 8"
+DESCRIZIONE: "Una strada come tante altre."
+LOOK: "Una strada come tante altre."
+NORD: null 
+SUD: 20 
+EST: null 
+OVEST: 18 
+OBJ_ID: null 
+NPC_ID: null 
+}
+{
+ID: 20 
+NOME: "Labirinto 9"
+DESCRIZIONE: "Noti una piazza a sud."
+LOOK: "A sud hai la piazza, a nord hai il centro storico."
+NORD: 19 
+SUD: 42
+EST: null 
+OVEST: null 
+OBJ_ID: null 
+NPC_ID: null 
+}
+
