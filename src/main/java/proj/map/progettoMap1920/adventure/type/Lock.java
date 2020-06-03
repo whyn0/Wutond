@@ -12,12 +12,11 @@ package proj.map.progettoMap1920.adventure.type;
 public class Lock {
     private int id;
     private AdvObject key;
-    private boolean locked;
+    private boolean locked = true;
     //Costruttore
-    public Lock(int id, AdvObject key, boolean locked) {
+    public Lock(int id, AdvObject key) {
         this.id = id;
         this.key = key;
-        this.locked = locked;
     }
     //getters
 
