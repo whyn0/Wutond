@@ -1,0 +1,35 @@
+{
+ID: 81
+ADV_OBJ: 49
+LOCKED: t
+}
+{
+ID: 82
+ADV_OBJ: 45
+LOCKED: t
+}
+{
+ID: 83
+ADV_OBJ: 80
+LOCKED: t
+}
+{
+ID: 84
+ADV_OBJ: 79
+LOCKED: t
+}
+{
+ID: 85
+ADV_OBJ: 
+LOCKED: t
+}
+{
+ID: 86
+ADV_OBJ: 
+LOCKED: t
+}
+{
+ID: 87
+ADV_OBJ: 58
+LOCKED: t
+}
