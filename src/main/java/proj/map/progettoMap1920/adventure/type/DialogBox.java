@@ -56,22 +56,27 @@ public class DialogBox extends javax.swing.JFrame {
 		JScrollPane scrollPaneOpt3 = new JScrollPane();
 
 		JScrollPane scrollPaneOpt4 = new JScrollPane();
-
-		ImageIcon image = new ImageIcon(getClass().getResource("/progettoMap1920/res/img/download.jpg"));
+		
+		JLabel lblNewLabel = new JLabel(new ImageIcon(DialogBox.class.getResource("/img/download.jpg")));
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(
 			layout.createParallelGroup(Alignment.TRAILING)
-				.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
-				.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
-				.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
-				.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
-				.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+				.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+				.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+				.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+				.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
 		);
 		layout.setVerticalGroup(
 			layout.createParallelGroup(Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup()
-					.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
