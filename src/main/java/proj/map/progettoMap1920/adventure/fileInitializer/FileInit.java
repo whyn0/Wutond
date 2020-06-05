@@ -16,15 +16,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
+import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.type.Dialog;
+import proj.map.progettoMap1920.adventure.type.Npc;
+import proj.map.progettoMap1920.adventure.type.Room;
 
 /**
  *
  * @author whyno
  */
-public class FileInit {
+
+public class FileInit { // probabile singleton
+    private List<AdvObject> objectList = new ArrayList<>();
+    private List<AdvObjectContainer> containerList = new ArrayList<>();
+    private List<Lock> lockList = new ArrayList<>();
+    private List<Room> roomList = new ArrayList<>();
+    private List<Dialog> dialogList = new ArrayList<>();
+    private List<Npc> npcList = new ArrayList<>();
+    
 	public void objReader(String filename) throws FileNotFoundException, IOException{
 		int id = 0;
 		String objName;
@@ -75,6 +88,7 @@ public class FileInit {
 					str = buffer.readLine();
 				}
 				/*
+
                 costruire l'oggetto in questione
 				 */
 
@@ -256,6 +270,7 @@ public class FileInit {
 					str = buffer.readLine();
 				}
 				/*
+
                  costruire l'oggetto in questione
 				 */
 			}
@@ -381,7 +396,9 @@ public class FileInit {
 					}
 					if(tokenized[0].equals("LIST_ID")) {
 						String[] idTokens = tokenized[1].split("\\s");
-						itemRefContainers.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)));
+						itemRefContainers.put(id, (List<Integer>) Arrays.asList(idTokens)
+                                  .stream()
+                                  .map(s -> Integer.parseInt(s)));
 					}
 					if(tokenized[0].equals("LOCK")) {
 						if(!tokenized[1].equals("null")) {
@@ -523,6 +540,7 @@ public class FileInit {
 		}
 		file.close();
 	}
+
 
 }
 
