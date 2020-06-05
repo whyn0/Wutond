@@ -65,11 +65,11 @@ public class FileInit { // probabile singleton
 					if(tokenized[0].equals("ID")){
 						id = Integer.parseInt(tokenized[1]);
 					}
-					if(tokenized[0].equals("NOME")){
+					if(tokenized[0].equals("NAME")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						objName = tokenized[1];
 					}
-					if(tokenized[0].equals("DESCRIZIONE")){
+					if(tokenized[0].equals("DESCRIPTION")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						description = tokenized[1];
 					}
@@ -133,11 +133,11 @@ public class FileInit { // probabile singleton
 					if(tokenized[0].equals("ID")){
 						id = Integer.parseInt(tokenized[1]);
 					}
-					if(tokenized[0].equals("NOME")){
+					if(tokenized[0].equals("NAME")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						name = tokenized[1];
 					}
-					if(tokenized[0].equals("DESCRIZIONE")){
+					if(tokenized[0].equals("DESCRIPTION")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						description = tokenized[1];
 					}
@@ -145,7 +145,7 @@ public class FileInit { // probabile singleton
 						tokenized[1] = tokenized[1].replace("\"", "");
 						look = tokenized[1];
 					}
-					if(tokenized[0].equals("NORD")){
+					if(tokenized[0].equals("NORTH")){
 						if(!tokenized[1].equals("null")){
 							adjacentRooms.add(Integer.parseInt(tokenized[1]));
 						}
@@ -153,7 +153,7 @@ public class FileInit { // probabile singleton
 							adjacentRooms.add(null);
 						}
 					}
-					if(tokenized[0].equals("SUD")){
+					if(tokenized[0].equals("SOUTH")){
 						if(!tokenized[1].equals("null")){
 							adjacentRooms.add(Integer.parseInt(tokenized[1]));
 						}
@@ -161,7 +161,7 @@ public class FileInit { // probabile singleton
 							adjacentRooms.add(null);
 						}
 					}
-					if(tokenized[0].equals("EST")){
+					if(tokenized[0].equals("EAST")){
 						if(!tokenized[1].equals("null")){
 							adjacentRooms.add(Integer.parseInt(tokenized[1]));
 						}
@@ -169,7 +169,7 @@ public class FileInit { // probabile singleton
 							adjacentRooms.add(null);
 						}
 					}
-					if(tokenized[0].equals("OVEST")){
+					if(tokenized[0].equals("WEST")){
 						if(!tokenized[1].equals("null")){
 							adjacentRooms.add(Integer.parseInt(tokenized[1]));
 						}
@@ -237,11 +237,11 @@ public class FileInit { // probabile singleton
 					if(tokenized[0].equals("ID")){
 						id = Integer.parseInt(tokenized[1]);
 					}
-					if(tokenized[0].equals("NOME")){
+					if(tokenized[0].equals("NAME")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						name = tokenized[1];
 					}
-					if(tokenized[0].equals("DESCRIZIONE")){
+					if(tokenized[0].equals("DESCRIPTION")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						description = tokenized[1];
 					}
@@ -375,11 +375,11 @@ public class FileInit { // probabile singleton
 					if(tokenized[0].equals("ID")){
 						id = Integer.parseInt(tokenized[1]);
 					}
-					if(tokenized[0].equals("NOME")){
+					if(tokenized[0].equals("NAME")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						contName = tokenized[1];
 					}
-					if(tokenized[0].equals("DESCRIZIONE")){
+					if(tokenized[0].equals("DESCRIPTION")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						description = tokenized[1];
 					}
@@ -499,11 +499,11 @@ public class FileInit { // probabile singleton
 					if(tokenized[0].equals("ID")){
 						id = Integer.parseInt(tokenized[1]);
 					}
-					if(tokenized[0].equals("NOME")){
+					if(tokenized[0].equals("NAME")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						doorName = tokenized[1];
 					}
-					if(tokenized[0].equals("DESCRIZIONE")){
+					if(tokenized[0].equals("DESCRIPTION")){
 						tokenized[1] = tokenized[1].replace("\"", "");
 						doorDesc = tokenized[1];
 					}
