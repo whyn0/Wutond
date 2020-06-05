@@ -16,15 +16,27 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
+import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.type.Dialog;
+import proj.map.progettoMap1920.adventure.type.Npc;
+import proj.map.progettoMap1920.adventure.type.Room;
 
 /**
  *
  * @author whyno
  */
-public class FileInit {
+public class FileInit { // probabile singleton
+    private List<AdvObject> objectList = new ArrayList<>();
+    private List<AdvObjectContainer> containerList = new ArrayList<>();
+    private List<Lock> lockList = new ArrayList<>();
+    private List<Room> roomList = new ArrayList<>();
+    private List<Dialog> dialogList = new ArrayList<>();
+    private List<Npc> npcList = new ArrayList<>();
+    
     public void objReader(String filename) throws FileNotFoundException, IOException{
         Map<Integer,List<Integer>> itemRefContainers;
         itemRefContainers = new HashMap<>();
@@ -223,7 +235,7 @@ public class FileInit {
         file.close();
         //una volta costruiti tutti gli oggetti è necessario linkarli tra loro
         }
-     public void npcReader(String filename) throws FileNotFoundException, IOException{
+    public void npcReader(String filename) throws FileNotFoundException, IOException{
           //attributi delle stanze
         int id = 0;
         String name;
@@ -296,7 +308,7 @@ public class FileInit {
         linkare inventario e dialogo
         */
      }
-     public void dialogReader(String filename) throws FileNotFoundException, IOException{
+    public void dialogReader(String filename) throws FileNotFoundException, IOException{
         //attributi
         int id = 0;
         String text;
@@ -358,7 +370,8 @@ public class FileInit {
         linkare dialoghi e opzioni
         */
      }
-     
+    
+
 }
 
         
