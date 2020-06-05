@@ -1,0 +1,36 @@
+{
+ID: 63
+NOME: "Porta torrione 1"
+DESCRIZIONE: "Dall'altro lato del ponte si erge una porta che garantisce l'accesso al torrione."
+LOOK: "Una normale porta in legno con una serratura semplice."
+ALIAS: 
+LOCK: 84
+ROOM: 7
+}
+{
+ID: 76
+NOME: "Porta torrione 2"
+DESCRIZIONE: "Una piccola rampa di scale con alla sommità una porta conduce al secondo piano."
+LOOK: "Vedi una porta con su scritta una frase, sembrano mancare alcune parole."
+ALIAS: 
+LOCK: 85
+ROOM: 8
+}
+{
+ID: 77
+NOME: "Porta torrione 3"
+DESCRIZIONE: "Vedi una porta in ferro."
+LOOK: "Sembra apribile solo dall'esterno."
+ALIAS: 
+LOCK: 86
+ROOM: 9
+}
+{
+ID: 78
+NOME: "Porta torrione 4"
+DESCRIZIONE: "Una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto."
+LOOK: "Senti provenire un calore insolito dalla porta, come se qualcosa stesse andando a fuoco. Noti un incavo cilindrico all'incirca a metà della porta."
+ALIAS: 
+LOCK: 87
+ROOM: 10
+}
