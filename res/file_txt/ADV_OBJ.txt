@@ -1,112 +1,112 @@
 {
 ID: 45
-NOME: "Chiave Magnetica"
-DESCRIZIONE: "Riesci a vedere su un tavolo alla tua destra una chiave magnetica probabilmente lasciata da qualche poliziotto disattento."
+NAME: "Chiave Magnetica"
+DESCRIPTION: "Riesci a vedere su un tavolo alla tua destra una chiave magnetica probabilmente lasciata da qualche poliziotto disattento."
 LOOK: "Una chiave magnetica, chissà cosa apre."
 ALIAS: 
 PICKABLE: t 
 }
 {
 ID: 46 
-NOME: "Fascicolo Polvere Magica"
-DESCRIZIONE: "Vedi un fascicolo"
+NAME: "Fascicolo Polvere Magica"
+DESCRIPTION: "Vedi un fascicolo"
 LOOK: "Sfogliando le pagine del fasciolo arrivi alla conclusione che questa città abbia un problema con una certa droga che chiamano polvere magica. Sembra che garantisca poteri sovrannaturali a discapito dell'intelligenza."
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 79
-NOME: "Chiave arrugginita"
-DESCRIZIONE: "Una chiave arrugginita"
+NAME: "Chiave arrugginita"
+DESCRIPTION: "Una chiave arrugginita"
 LOOK: "Una semplice chiave arrugginita, chissà cosa apre."
-ALIAS: ""
+ALIAS: 
 PICKABLE: 
 }
 {
 ID: 49
-NOME: "Distintivo"
-DESCRIZIONE: ""
+NAME: "Distintivo"
+DESCRIPTION: ""
 LOOK: "Un distintivo della polizia di Bitonto. Ti sembra di riconoscere la sua forma ma non ricordi dove l'hai già vista."
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 51
-NOME: "Polvere Magica"
-DESCRIZIONE: "Una bustina trasperente con della polvere."
+NAME: "Polvere Magica"
+DESCRIPTION: "Una bustina trasperente con della polvere."
 LOOK: "Una bustina con una polvere dal color argenteo."
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 52
-NOME: "Pistola"
-DESCRIZIONE: "Una pistola molto semplice, sembra sia stato cancellato il numero di serie."
+NAME: "Pistola"
+DESCRIPTION: "Una pistola molto semplice, sembra sia stato cancellato il numero di serie."
 LOOK: "Una pistola di piccolo calibro, sembra sia stato cancellato il numero di serie."
-ALIAS: ""
+ALIAS: 
 PICKABLE: 
 }
 {
 ID: 53
-NOME: "Dizionario"
-DESCRIZIONE: "Un dizionario Italiano-Bitontino"
+NAME: "Dizionario"
+DESCRIPTION: "Un dizionario Italiano-Bitontino"
 LOOK: "Un dizionario Italiano-Bitontino: ti dovrebbe aiutare a capire i cittadini, per quanto possibile."
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 54
-NOME: "Libretto Folkloristico"
-DESCRIZIONE: "Un Libretto Folkloristico"
+NAME: "Libretto Folkloristico"
+DESCRIPTION: "Un Libretto Folkloristico"
 LOOK: "Libro scritto da qualche scrittore bitontino che non aveva molto da fare, contiene alcune vicende sulla città e i principali detti."
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 55
-NOME: "PC"
-DESCRIZIONE: "Vedi un pc di ultima generazione."
+NAME: "PC"
+DESCRIPTION: "Vedi un pc di ultima generazione."
 LOOK: "Tra le tante postazioni spente, ne vedi una con un computer ancora in funzione."
-ALIAS: ""
+ALIAS: 
 PICKABLE: f 
 }
 {
 ID: 56
-NOME: "Cadavere"
-DESCRIZIONE: "Vedi il cadavere del proprietario del bar, la gente fa finta di nulla, come se non fosse lì presente"
+NAME: "Cadavere"
+DESCRIPTION: "Vedi il cadavere del proprietario del bar, la gente fa finta di nulla, come se non fosse lì presente"
 LOOK: "E' il cadavere del proprietario del bar, sembra sia stato drogato, ma non ti spieghi come mai sia ancora qui"
-ALIAS: ""
+ALIAS: 
 PICKABLE: f
 }
 {
 ID: 58
-NOME: "Birra"
-DESCRIZIONE: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
+NAME: "Birra"
+DESCRIPTION: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
 LOOK: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 62
-NOME: "Fossato"
-DESCRIZIONE: "Sotto il ponte riesci a vedere un fossato profondo circa 3 metri. Meglio stare attenti."
+NAME: "Fossato"
+DESCRIPTION: "Sotto il ponte riesci a vedere un fossato profondo circa 3 metri. Meglio stare attenti."
 LOOK: "Il famoso fossato del torrione, è ridotto  molto male, c'è parecchia spazzatura in fondo, tra le varie bottiglie scorgi addirittura una bici al suo interno."
-ALIAS: ""
+ALIAS: 
 PICKABLE: f
 }
 {
 ID: 61
-NOME: "Portafoglio"
-DESCRIZIONE: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione"
+NAME: "Portafoglio"
+DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione"
 LOOK: "Un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione."
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }
 {
 ID: 80
-NOME: "Pala"
-DESCRIZIONE: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
+NAME: "Pala"
+DESCRIPTION: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
 LOOK: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
-ALIAS: ""
+ALIAS: 
 PICKABLE: t
 }

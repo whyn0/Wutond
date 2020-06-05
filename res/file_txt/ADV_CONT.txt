@@ -1,7 +1,7 @@
 {
 ID: 47
-NOME: "Cofanetto"
-DESCRIZIONE: "Noti un cofanetto."
+NAME: "Cofanetto"
+DESCRIPTION: "Noti un cofanetto."
 LOOK: "Un cofanetto decorato. Vedi una serratura alquanto singolare."
 PICKABLE: t
 LIST_ID: 79
@@ -9,8 +9,8 @@ LOCK: 81
 }
 {
 ID: 48
-NOME: "Schedario"
-DESCRIZIONE: "Alle tue spalle invece si trova uno schedario con diversi fascicoli."
+NAME: "Schedario"
+DESCRIPTION: "Alle tue spalle invece si trova uno schedario con diversi fascicoli."
 LOOK: "Una sezione dello schedario è ben sigillata. Riesci a vedere una serratura tecnologica con due led, uno dei quali brilla di una luce rossa intensa."
 PICKABLE: f
 LIST_ID: 46 47
@@ -18,8 +18,8 @@ LOCK: 82
 }
 {
 ID:50
-NOME: "Cumulo di terra"
-DESCRIZIONE: "Più avanti noti un cumulo di terra fresco in una delle aiuole della villa."
+NAME: "Cumulo di terra"
+DESCRIPTION: "Più avanti noti un cumulo di terra fresco in una delle aiuole della villa."
 LOOK: "Un cumulo di terra fresca, con qualche oggetto potresti scavare, chissà cosa potresti trovarci al di sotto."
 PICKABLE: f
 LIST_ID: 49
@@ -27,8 +27,8 @@ LOCK: 83
 }
 {
 ID: 59
-NOME: "Refrigeratore"
-DESCRIZIONE: "Noti un frigo pieno come non mai di birre."
+NAME: "Refrigeratore"
+DESCRIPTION: "Noti un frigo pieno come non mai di birre."
 LOOK: "Un frigorifero pieno di birre, sembrano quasi infinite!"
 PICKABLE: f
 LIST_ID: 58
