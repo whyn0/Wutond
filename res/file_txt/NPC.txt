@@ -1,0 +1,70 @@
+{
+ID: 64
+NAME: "Commissario"
+DESCRIPTION: "Vedi finalmente l'uomo che stavi inseguendo"
+LOOK: "Non riesci a vedere il volto dell'uomo ma le sue fattezze ti sono familiari"
+KILLABLE: t
+UNDERSTANDABLE: t
+DIALOG: (ID)
+INVENTORY: null
+}
+{
+ID: 65
+NAME: "Vitino"
+DESCRIPTION: "Vedi un tipo strambo vestito in malo modo e sporco di terra seduto su una panchina. Ha una busta piena di fichi in mano."
+LOOK: "Lo senti farfugliare cose ma da questa distanza non riesci a capire cosa stia dicendo."
+KILLABLE: t
+UNDERSTANDABLE: f
+DIALOG: (ID)
+INVENTORY: null
+}
+{
+ID: 66
+NAME: "Tipo losco"
+DESCRIPTION: "Riesci a scorgere solo una figura incappucciata che viene illuminata in concomitanza con l'accensione della luce intermittente."
+LOOK: "Non ti sembra una persona molto raccomandabile, meglio stare attenti."
+KILLABLE: f 
+UNDERSTANDABLE: f
+DIALOG: (ID)
+INVENTORY: 51 52
+}
+{
+ID: 67
+NAME: "Bibliotecaria"
+DESCRIPTION: "Vedi una signora sulla mezza età con un'aria simpatica."
+LOOK: "La signora ti fissa aspettando che tu le parli."
+KILLABLE: f
+UNDERSTANDABLE: t
+DIALOG: (ID)
+INVENTORY: 53 54
+}
+{
+ID: 68
+NAME: "Ciccio la paranoia"
+DESCRIPTION: "Sotto la torre noti un uomo sulla cinquantina con la schiena incurvata."
+LOOK: "Sembra molto preso da un discorso fra sè e sè e nel frattempo ruota compulsivamente un pacchetto di sigarette nelle sue mani."
+KILLABLE: f
+UNDERSTANDABLE: f
+DIALOG: (ID)
+INVENTORY: null
+}
+{
+ID: 69
+NAME: "Tre ragazzi"
+DESCRIPTION: "Vedi tre ragazzi appoggiati alla ringhiera che costeggia la torre dell'orologio. Stanno sorseggiando una Peroni mentre dialogano tra loro."
+LOOK: "Ti sembrano parecchio tranquilli nonostante siano in presenza di un cadavere."
+KILLABLE: f
+UNDERSTANDABLE: t
+DIALOG: (ID)
+INVENTORY: null
+}
+{
+ID: 70
+NAME: "Samuele"
+DESCRIPTION: "Sul lato sinistro dell'entrata vedi un ragazzo occhialuto appoggiato al muro intento a fumarsi una sigaretta."
+LOOK: "Indossa una maglietta della Juventus. Ad un primo sguardo non sembra molto sveglio."
+KILLABLE: t
+UNDERSTANDABLE: f
+DIALOG: (ID)
+INVENTORY: null
+}
