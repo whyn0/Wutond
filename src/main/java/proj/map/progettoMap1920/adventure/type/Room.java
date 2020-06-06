@@ -14,138 +14,165 @@ import java.util.List;
  * @author whyno
  */
 public class Room implements Serializable {
-    private final int id;
-    
-    private String name;
+  private final int id;
 
-    private String description;
+  private String name;
 
-    private String look;
+  private String description;
 
-    private final Room south = null;
+  private String look;
 
-    private final Room north = null;
+  private  Room south = null;
 
-    private final Room east = null;
+  private  Room north = null;
 
-    private final Room west = null;
-    
-    private final List<AdvObject> objects_list=new ArrayList<>();
-    
-    private final List<Npc> npc_list = new ArrayList<>();
-    /*
-    
-    
-    COSTRUTTORI
-    
-    
-    */
-    public Room(int id) {
-        this.id = id;
+  private  Room east = null;
+
+  private  Room west = null;
+
+  private  List<AdvObject> objects_list = new ArrayList<>();
+
+  private  List<Npc> npc_list = new ArrayList<>();
+
+  /*
+   * 
+   * 
+   * COSTRUTTORI
+   * 
+   * 
+   */
+  
+
+  public Room(int id, String name, String description, String look) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.look = look;
+  }
+
+  /*
+   * 
+   * 
+   * GETTERS
+   * 
+   * 
+   */
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public String getLook() {
+    return look;
+  }
+
+  public Room getSouth() {
+    return south;
+  }
+
+  public Room getNorth() {
+    return north;
+  }
+
+  public Room getEast() {
+    return east;
+  }
+
+  public Room getWest() {
+    return west;
+  }
+
+  public List<AdvObject> getObjects_list() {
+    return objects_list;
+  }
+
+  public List<Npc> getNpc_list() {
+    return npc_list;
+  }
+  /*
+   * 
+   * 
+   * SETTER
+   * 
+   * 
+   * 
+   */
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setLook(String look) {
+    this.look = look;
+  }
+  public void setEast(Room east) {
+    this.east = east;
+  }
+  public void setNorth(Room north) {
+    this.north = north;
+  }
+  public void setSouth(Room south) {
+    this.south = south;
+  }
+
+  public void setWest(Room west) {
+    this.west = west;
+  }
+  public void setObjects_list(List<AdvObject> objects_list) {
+    this.objects_list = objects_list;
+  }
+
+  public void setNpc_list(List<Npc> npc_list) {
+    this.npc_list = npc_list;
+  }
+  /*
+   * 
+   * 
+   * EQUALS AND HASH
+   * 
+   * 
+   */
+
+  
+
+  
+
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 97 * hash + this.id;
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Room other = (Room) obj;
+    if (this.id != other.id) {
+      return false;
+    }
+    return true;
+  }
 
-    public Room(int id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-    /*
-    
-    
-    GETTERS
-    
-    
-    */
-    public int getId() {
-        return id;
-    }
+  
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getLook() {
-        return look;
-    }
-
-    public Room getSouth() {
-        return south;
-    }
-
-    public Room getNorth() {
-        return north;
-    }
-
-    public Room getEast() {
-        return east;
-    }
-
-    public Room getWest() {
-        return west;
-    }
-
-    public List<AdvObject> getObjects_list() {
-        return objects_list;
-    }
-
-    public List<Npc> getNpc_list() {
-        return npc_list;
-    }
-    /*
-    
-    
-    SETTER
-    
-    
-    
-    */
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setLook(String look) {
-        this.look = look;
-    }
-    /*
-    
-    
-    EQUALS AND HASH
-    
-    
-    */
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.id;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Room other = (Room) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
-    }
-    
 }

@@ -5,11 +5,14 @@
  */
 package proj.map.progettoMap1920.adventure.main;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
 import proj.map.progettoMap1920.adventure.parser.Alphabet;
 import proj.map.progettoMap1920.adventure.parser.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.Cky;
@@ -134,7 +137,7 @@ public class AppMain {
         Command talk_to = new Command(CommandType.TALK_TO,"parla",null);
         Article the = new Article(ArticleType.THE,"il",the_alias);
         Preposition to = new Preposition(PrepositionType.TO,"con",null);
-        AdvObject sasso = new AdvObject(1,"sasso");
+        AdvObject sasso = new AdvObject(1,"sasso","un sasso di merda","mario giordano",null,true);
         command_list.add(talk_to);
         article_list.add(the);
         prep_list.add(to);
@@ -153,6 +156,15 @@ public class AppMain {
      //   temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
         System.out.print(c.parse(temp_test));
+        
+        FileInit fi = new FileInit();
+        try {
+          fi.objReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ADV_OBJ.txt");
+        } catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+
     }
     
 }
