@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.locks.Lock;
 import java.util.stream.Collectors;
 
 import proj.map.progettoMap1920.adventure.type.AdvObject;
@@ -26,21 +25,25 @@ import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.type.Dialog;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.utils.GameList;
+import proj.map.progettoMap1920.adventure.type.Lock;
 
 /**
  *
  * @author whyno
  */
 public class FileInit { // probabile singleton
-  private List<AdvObject> objectList = new ArrayList<>();
-  private List<AdvObjectContainer> containerList = new ArrayList<>();
-  private List<Lock> lockList = new ArrayList<>();
-  private List<Room> roomList = new ArrayList<>();
-  private List<Dialog> dialogList = new ArrayList<>();
-  private List<Npc> npcList = new ArrayList<>();
+  private GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
+  private GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
+  private GameList<Lock> lockList = new GameList<>(new ArrayList<Lock>());
+  private GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
+  private GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
+  private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
+ 
+  /*
   public List<AdvObject> getObjectList() {
     return this.objectList;
-  }
+  }*/
   public void objReader(String filename) throws FileNotFoundException, IOException {
     int id = 0;
     String objName = "";
@@ -67,11 +70,11 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
           }
-          if (tokenized[0].equals("NOME")) {
+          if (tokenized[0].equals("NAME")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             objName = tokenized[1];
           }
-          if (tokenized[0].equals("DESCRIZIONE")) {
+          if (tokenized[0].equals("DESCRIPTION")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             description = tokenized[1];
           }
@@ -95,7 +98,7 @@ public class FileInit { // probabile singleton
          * 
          * costruire l'oggetto in questione
          */
-        this.objectList.add(new AdvObject(id,objName,description,onLook,alias,pickable));
+        objectList.add(new AdvObject(id,objName,description,onLook,alias,pickable));
       }
 
     } catch (EOFException e) {
@@ -122,22 +125,22 @@ public class FileInit { // probabile singleton
     String str;
     String[] tokenized;
     try {
-      while (true) {
-        str = buffer.readLine();
+      while ((str = buffer.readLine()) != null) {
         while (!"}".equals(str)) {
           if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
             str = buffer.readLine();
           }
           tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
 
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
           }
-          if (tokenized[0].equals("NOME")) {
+          if (tokenized[0].equals("NAME")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             name = tokenized[1];
           }
-          if (tokenized[0].equals("DESCRIZIONE")) {
+          if (tokenized[0].equals("DESCRIPTION")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             description = tokenized[1];
           }
@@ -145,28 +148,28 @@ public class FileInit { // probabile singleton
             tokenized[1] = tokenized[1].replace("\"", "");
             look = tokenized[1];
           }
-          if (tokenized[0].equals("NORD")) {
+          if (tokenized[0].equals("NORTH")) {
             if (!tokenized[1].equals("null")) {
               adjacentRooms.add(Integer.parseInt(tokenized[1]));
             } else {
               adjacentRooms.add(null);
             }
           }
-          if (tokenized[0].equals("SUD")) {
+          if (tokenized[0].equals("SOUTH")) {
             if (!tokenized[1].equals("null")) {
               adjacentRooms.add(Integer.parseInt(tokenized[1]));
             } else {
               adjacentRooms.add(null);
             }
           }
-          if (tokenized[0].equals("EST")) {
+          if (tokenized[0].equals("EAST")) {
             if (!tokenized[1].equals("null")) {
               adjacentRooms.add(Integer.parseInt(tokenized[1]));
             } else {
               adjacentRooms.add(null);
             }
           }
-          if (tokenized[0].equals("OVEST")) {
+          if (tokenized[0].equals("WEST")) {
             if (!tokenized[1].equals("null")) {
               adjacentRooms.add(Integer.parseInt(tokenized[1]));
             } else {
@@ -176,7 +179,7 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("OBJ_ID")) {
             if (!tokenized[1].equals("null")) {
               String[] idTokens = tokenized[1].split("\\s");
-              objectMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)));
+              objectMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
             } else {
               objectMap.put(id, null);
             }
@@ -184,7 +187,7 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("NPC_ID")) {
             if (!tokenized[1].equals("null")) {
               String[] idTokens = tokenized[1].split("\\s");
-              npcMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)));
+              npcMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
             } else {
               npcMap.put(id, null);
             }
@@ -192,10 +195,11 @@ public class FileInit { // probabile singleton
           str = buffer.readLine();
         }
         roomMap.put(id, adjacentRooms);
+        adjacentRooms.removeAll(adjacentRooms);
         /*
          * costruire l'oggetto in questione
          */
-        this.roomList.add(new Room(id,name,description,look));
+        roomList.add(new Room(id,name,description,look));
       }
     } catch (EOFException e) {
 
@@ -207,26 +211,22 @@ public class FileInit { // probabile singleton
       Room tempRoom = roomListIter.next();
       List<Room> adjRoomTemp = new ArrayList<>();
       for(Integer i : roomMap.get(tempRoom.getId())) {
-        for(Room r : roomList) {
-          if(i.equals(r.getId())) {
-            adjRoomTemp.add(r);
-          }
-        }
+        adjRoomTemp.add(roomList.getById(i));
       }
       tempRoom.setNorth(adjRoomTemp.get(0));
       tempRoom.setSouth(adjRoomTemp.get(1));
       tempRoom.setEast(adjRoomTemp.get(2));
       tempRoom.setWest(adjRoomTemp.get(3));
     }
-    
+    System.out.print("cioa");
   }
 
   public void npcReader(String filename) throws FileNotFoundException, IOException {
     // attributi delle stanze
     int id = 0;
-    String name;
-    String description;
-    String look;
+    String name = "";
+    String description = "";
+    String look = "";
     Map<Integer, List<Integer>> inventoryMap = new HashMap<>();
     Map<Integer, Integer> dialogId = new HashMap<>();
     boolean understandable = false;
@@ -239,8 +239,7 @@ public class FileInit { // probabile singleton
     String str;
     String[] tokenized;
     try {
-      while (true) {
-        str = buffer.readLine();
+      while ((str = buffer.readLine()) != null) {
         while (!"}".equals(str)) {
           if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
             str = buffer.readLine();
@@ -249,11 +248,11 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
           }
-          if (tokenized[0].equals("NOME")) {
+          if (tokenized[0].equals("NAME")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             name = tokenized[1];
           }
-          if (tokenized[0].equals("DESCRIZIONE")) {
+          if (tokenized[0].equals("DESCRIPTION")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             description = tokenized[1];
           }
@@ -288,6 +287,7 @@ public class FileInit { // probabile singleton
          * 
          * costruire l'oggetto in questione
          */
+        npcList.add(new Npc(id,name,description,look,understandable, killable));
       }
     } catch (EOFException e) {
 
@@ -296,6 +296,22 @@ public class FileInit { // probabile singleton
     /*
      * linkare inventario e dialogo
      */
+    //link dialogo
+    Iterator<Npc> npcIter = npcList.iterator();
+    while(npcIter.hasNext()) {
+      Npc tempNpc = npcIter.next();
+      tempNpc.setDialog(dialogList.getById(dialogId.get(tempNpc.getId())));//setDialog accedo alla lista dei dialoghi,
+                                                                           //ricerco per id corrispondente al get della mappa dell'id dell'npc
+    }
+    //linking oggetti inventario npc
+    npcIter = npcList.iterator();
+    while(npcIter.hasNext()) {
+      Npc tempNpc = npcIter.next();
+      List<AdvObject> inventory = new ArrayList<>();
+      for(Integer i : inventoryMap.get(tempNpc.getId())) {
+        inventory.add(objectList.getById(i));
+      }
+    }
   }
 
   public void dialogReader(String filename) throws FileNotFoundException, IOException {
@@ -390,11 +406,11 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
           }
-          if (tokenized[0].equals("NOME")) {
+          if (tokenized[0].equals("NAME")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             contName = tokenized[1];
           }
-          if (tokenized[0].equals("DESCRIZIONE")) {
+          if (tokenized[0].equals("DESCRIPTION")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             description = tokenized[1];
           }
@@ -428,7 +444,7 @@ public class FileInit { // probabile singleton
         /*
          * costruire l'oggetto in questione
          */
-        this.containerList.add(new AdvObjectContainer(null,null,id,contName,description,onLook,alias,pickable));
+        containerList.add(new AdvObjectContainer(null,null,id,contName,description,onLook,alias,pickable));
       }
 
     } catch (EOFException e) {
@@ -526,11 +542,11 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
           }
-          if (tokenized[0].equals("NOME")) {
+          if (tokenized[0].equals("NAME")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             doorName = tokenized[1];
           }
-          if (tokenized[0].equals("DESCRIZIONE")) {
+          if (tokenized[0].equals("DESCRIPTION")) {
             tokenized[1] = tokenized[1].replace("\"", "");
             doorDesc = tokenized[1];
           }

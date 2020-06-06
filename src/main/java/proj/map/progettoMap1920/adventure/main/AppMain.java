@@ -160,6 +160,7 @@ public class AppMain {
         FileInit fi = new FileInit();
         try {
           fi.objReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ADV_OBJ.txt");
+          fi.roomReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ROOM.txt");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();

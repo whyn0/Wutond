@@ -9,7 +9,7 @@ package proj.map.progettoMap1920.adventure.type;
  *
  * @author whyno
  */
-public class Lock {
+public class Lock extends GameElement{
     private int id;
     private AdvObject key;
     private boolean locked = true;

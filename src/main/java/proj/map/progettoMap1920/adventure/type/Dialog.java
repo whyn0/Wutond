@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author whyno
  */
 
-public class Dialog implements Serializable {
+public class Dialog extends GameElement implements Serializable{
 
 
 

@@ -15,7 +15,7 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Npc implements Serializable {
+public class Npc extends GameObject implements Serializable {
 
     private int id;
     private String name;
@@ -25,8 +25,8 @@ public class Npc implements Serializable {
     private boolean spoken = false;
     private boolean killable;
 
-    private Dialog dialog;
-    private List<AdvObject> npc_inventory;
+    private Dialog dialog = null;
+    private List<AdvObject> npc_inventory = null;
 
     /*
 	 * 
@@ -38,12 +38,12 @@ public class Npc implements Serializable {
         this.id = id;
     }
 
-    public Npc(int id, String name, String look, boolean understandable, boolean spoken, boolean killable,
-            ArrayList<Dialog> dialogs_list, ArrayList<AdvObject> npc_inventory_list) {
+    public Npc(int id, String name, String look, String description, boolean understandable, boolean killable) {
         super();
         this.id = id;
         this.name = name;
         this.look = look;
+        this.description = description;
         this.understandable = understandable;
         this.killable = killable;
 
@@ -106,7 +106,12 @@ public class Npc implements Serializable {
     public void setKillable(boolean killable) {
         this.killable = killable;
     }
-
+    public void setDialog(Dialog dialog) {
+      this.dialog = dialog;
+    }
+    public void setInventory(List<AdvObject> list) {
+      this.npc_inventory = list;
+    }
     /*
 	 * 
 	 * METHODS
