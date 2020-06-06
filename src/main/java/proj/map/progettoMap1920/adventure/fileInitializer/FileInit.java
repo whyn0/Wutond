@@ -32,7 +32,6 @@ import proj.map.progettoMap1920.adventure.type.Room;
  * @author whyno
  */
 public class FileInit { // probabile singleton
-
   private List<AdvObject> objectList = new ArrayList<>();
   private List<AdvObjectContainer> containerList = new ArrayList<>();
   private List<Lock> lockList = new ArrayList<>();
