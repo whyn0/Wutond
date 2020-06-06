@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author whyno
  */
-public class Room implements Serializable {
+public class Room extends GameElement implements Serializable {
   private final int id;
 
   private String name;

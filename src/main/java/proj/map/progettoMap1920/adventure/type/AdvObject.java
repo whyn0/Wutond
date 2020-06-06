@@ -13,7 +13,7 @@ import java.io.*;
  *
  * @author whyno
  */
-public class AdvObject implements Serializable {
+public class AdvObject extends GameObject implements Serializable{
 
     private final int id;
     private String name;
