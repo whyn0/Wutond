@@ -26,8 +26,8 @@ public class AdvObjectContainer extends AdvObject implements Serializable {
  * 
      */
 
-    public AdvObjectContainer(List<AdvObject> list, Lock lock, int id, String name, String description, Set<String> alias, boolean pickable) {
-        super(id, name, description, alias, pickable);
+    public AdvObjectContainer(List<AdvObject> list, Lock lock, int id, String name, String description, String look, Set<String> alias, boolean pickable) {
+        super(id, name, description, look, alias, pickable);
         this.list = list;
         this.lock = lock;
     }

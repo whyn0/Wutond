@@ -21,8 +21,8 @@ public class Door extends AdvObject{
     
     */
 
-    public Door(Lock lock, Room lockedRoom, int id, String name, String description, Set<String> alias, boolean pickable) {
-        super(id, name, description, alias, pickable);
+    public Door(Lock lock, Room lockedRoom, int id, String name, String description, String look, Set<String> alias, boolean pickable) {
+        super(id, name, description, look, alias, pickable);
         this.lock = lock;
         this.lockedRoom = lockedRoom;
     }

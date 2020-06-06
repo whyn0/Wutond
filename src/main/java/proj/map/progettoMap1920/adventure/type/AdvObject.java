@@ -18,6 +18,7 @@ public class AdvObject implements Serializable {
     private final int id;
     private String name;
     private String description;
+    private String look;
     private Set<String> alias;
     private boolean pickable;
 
@@ -27,10 +28,11 @@ public class AdvObject implements Serializable {
      * COSTRUTTORI
      * 
      */
-    public AdvObject(int id, String name, String description, Set<String> alias, boolean pickable) {    
+    public AdvObject(int id, String name, String description, String look, Set<String> alias, boolean pickable) {    
         this.id = id;
         this.name = name;
         this.description = description;
+        this.look = look;
         this.alias = alias;
         this.pickable = pickable;
     }
@@ -59,7 +61,9 @@ public class AdvObject implements Serializable {
     public boolean isPickable() {    
         return pickable;
     }
-
+    public String getLook() {
+        return look;
+    }
     /*
      *
      * SETTERS
@@ -80,6 +84,9 @@ public class AdvObject implements Serializable {
 
     public void setPickable(boolean pickable) {
         this.pickable = pickable;
+    }
+    public void setLook(String look) {
+        this.look = look;
     }
     /*
     EQUALS E HASHCODE
