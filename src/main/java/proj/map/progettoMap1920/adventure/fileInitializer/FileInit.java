@@ -195,6 +195,7 @@ public class FileInit { // probabile singleton
           str = buffer.readLine();
         }
         roomMap.put(id, adjacentRooms);
+        adjacentRooms.removeAll(adjacentRooms);
         /*
          * costruire l'oggetto in questione
          */
@@ -210,11 +211,7 @@ public class FileInit { // probabile singleton
       Room tempRoom = roomListIter.next();
       List<Room> adjRoomTemp = new ArrayList<>();
       for(Integer i : roomMap.get(tempRoom.getId())) {
-        for(Room r : roomList) {
-          if(i.equals(r.getId())) {
-            adjRoomTemp.add(r);
-          }
-        }
+        adjRoomTemp.add(roomList.getById(i));
       }
       tempRoom.setNorth(adjRoomTemp.get(0));
       tempRoom.setSouth(adjRoomTemp.get(1));

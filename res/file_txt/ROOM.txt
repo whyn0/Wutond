@@ -56,7 +56,7 @@ SOUTH: 12
 EAST: 7
 WEST: 6
 OBJ_ID: 56
-NPC_ID: 68, 69
+NPC_ID: 68 69
 }
 {
 ID: 6
