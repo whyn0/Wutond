@@ -93,8 +93,10 @@ public class FileInit { // probabile singleton
             onLook = tokenized[1];
           }
           if (tokenized[0].equals("ALIAS")) {
-            String[] aliasList = tokenized[1].split("\\s");
-            alias.addAll(Arrays.asList(aliasList));
+            if(!tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            }
           }
           if (tokenized[0].equals("PICKABLE")) {
             if (tokenized[1].equals("t")) {
@@ -296,6 +298,7 @@ public class FileInit { // probabile singleton
     String look = "";
     Map<Integer, List<Integer>> inventoryMap = new HashMap<>();
     Map<Integer, Integer> dialogId = new HashMap<>();
+    Set<String> alias = new HashSet<>();
     boolean understandable = false;
     boolean killable = false;
     // file buffer
@@ -333,6 +336,14 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("KILLABLE")) {
             if (tokenized[1].equals("t")) {
               killable = true;
+            }
+          }
+          if(tokenized[0].equals("ALIAS")) {
+            if(!tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            } else {
+              alias = null;
             }
           }
           if (tokenized[0].equals("UNDERSTANDABLE")) {
@@ -495,8 +506,10 @@ public class FileInit { // probabile singleton
             onLook = tokenized[1];
           }
           if (tokenized[0].equals("ALIAS")) {
-            String[] aliasList = tokenized[1].split("\\s");
-            alias.addAll(Arrays.asList(aliasList));
+            if(tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            }
           }
           if (tokenized[0].equals("PICKABLE")) {
             if (tokenized[1].equals("t")) {
