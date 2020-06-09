@@ -16,11 +16,11 @@ ADV_OBJ: 79
 }
 {
 ID: 85
-ADV_OBJ: (porta con indovinello)
+ADV_OBJ: null
 }
 {
 ID: 86
-ADV_OBJ: (porta con ciccio)
+ADV_OBJ: null
 }
 {
 ID: 87
