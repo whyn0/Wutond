@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
 import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.type.Dialog;
+import proj.map.progettoMap1920.adventure.type.Door;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Room;
 import proj.map.progettoMap1920.adventure.utils.GameList;
@@ -40,6 +41,7 @@ public class FileInit { // probabile singleton
   private GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
   private GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
   private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
+  private GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
 
   /*
    * ---------METHODS---------------
@@ -344,7 +346,9 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("INVENTORY")) {
             if (!tokenized[1].equals("null")) {
               String[] idTokens = tokenized[1].split("\\s");
-              inventoryMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)));
+              inventoryMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList()));
             } else {
               inventoryMap.put(id, null);
             }
@@ -454,7 +458,8 @@ public class FileInit { // probabile singleton
     String contName = "";
     String description = "";
     String onLook = "";
-    int lock = 0;
+    Integer lock = null;
+    Map<Integer,Integer> lockMap = new HashMap<>();
     Set<String> alias = new HashSet<>();
     boolean pickable = false;
     // List<AdvObject> containedItems = null;
@@ -502,16 +507,20 @@ public class FileInit { // probabile singleton
             String[] idTokens = tokenized[1].split("\\s");
             itemRefContainers.put(id, (List<Integer>) Arrays.asList(idTokens)
               .stream()
-              .map(s -> Integer.parseInt(s)));
+              .map(s -> Integer.parseInt(s))
+              .collect(Collectors.toList()));
           }
           if (tokenized[0].equals("LOCK")) {
             if (!tokenized[1].equals("null")) {
               lock = Integer.parseInt(tokenized[1]);
+            } else {
+              lock = null;
             }
           }
           // da testare
           str = buffer.readLine();
         }
+        lockMap.put(id, lock);
         /*
          * costruire l'oggetto in questione
          */
@@ -529,18 +538,13 @@ public class FileInit { // probabile singleton
     Iterator<AdvObjectContainer> containerListIter = containerList.iterator();
     while (containerListIter.hasNext()) {
       AdvObjectContainer tempCont = containerListIter.next();
-      List<AdvObject> advObjTemp = new ArrayList<>();
       for (Integer i : itemRefContainers.get(tempCont.getId())) {
-        for (AdvObject r : containerList) {
-          if (i.equals(r.getId())) {
-            advObjTemp.add(r);
-          }
+        tempCont.getList().add(objectList.getById(i));
         }
+      tempCont.setLock(lockList.getById(lockMap.get(tempCont.getId())));
       }
-      tempCont.getList().addAll(advObjTemp);
     }
-  }
-
+  
   public void lockReader(String filename) throws FileNotFoundException, IOException {
 
     Map<Integer,Integer> lockMap = new HashMap<>();
@@ -604,12 +608,14 @@ public class FileInit { // probabile singleton
   public void doorReader(String filename) throws FileNotFoundException, IOException {
 
     int id = 0;
-    String doorName;
-    String doorDesc;
-    String onLook;
-    List<String> alias = new ArrayList<>();
+    String doorName = "";
+    String doorDesc = "";
+    String onLook = "";
+    Set<String> alias = new HashSet<>();
     int lock = 0;
     int room = 0;
+    Map<Integer,Integer> lockMap = new HashMap<>();
+    Map<Integer,Integer> roomMap = new HashMap<>();
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -643,8 +649,12 @@ public class FileInit { // probabile singleton
             onLook = tokenized[1];
           }
           if (tokenized[0].equals("ALIAS")) {
-            String[] aliasList = tokenized[1].split("\\s");
-            alias.addAll(Arrays.asList(aliasList));
+            if(!tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            } else {
+              alias = null;
+            }
           }
           if (tokenized[0].equals("LOCK")) {
             if (!tokenized[1].equals("null")) {
@@ -658,16 +668,28 @@ public class FileInit { // probabile singleton
           // da testare
           str = buffer.readLine();
         }
+        lockMap.put(id, lock);
+        roomMap.put(id, room);
         /*
          * costruire l'oggetto in questione
          */
-
+        doorList.add(new Door(null,null,id,doorName,doorDesc,onLook,alias,false));
       }
 
     } catch (EOFException e) {
 
     }
     file.close();
+    
+    /*
+     * linking
+     */
+    Iterator<Door> doorListIter = doorList.iterator();
+    while(doorListIter.hasNext()) {
+      Door tempDoor = doorListIter.next();
+      tempDoor.setLockedRoom(roomList.getById(roomMap.get(tempDoor.getId())));
+      tempDoor.setLock(lockList.getById(lockMap.get(tempDoor.getId())));
+    }
   }
 
 }
