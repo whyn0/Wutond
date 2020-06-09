@@ -270,7 +270,7 @@ LOOK: "A sud hai la piazza, a nord hai il centro storico."
 NORTH: 19 
 SOUTH: 42
 EAST: null 
-OVEST: null 
+WEST: null 
 OBJ_ID: null 
 NPC_ID: null 
 }

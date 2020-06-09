@@ -10,12 +10,11 @@ package proj.map.progettoMap1920.adventure.type;
  * @author whyno
  */
 public class Lock extends GameElement{
-    private int id;
     private AdvObject key;
     private boolean locked = true;
     //Costruttore
     public Lock(int id, AdvObject key) {
-        this.id = id;
+        super(id);
         this.key = key;
     }
     //getters

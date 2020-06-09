@@ -8,30 +8,18 @@ package proj.map.progettoMap1920.adventure.type;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
  * @author whyno
  */
-public class Room extends GameElement implements Serializable {
-  private final int id;
-
-  private String name;
-
-  private String description;
-
-  private String look;
-
+public class Room extends GameObject implements Serializable {
   private  Room south = null;
-
   private  Room north = null;
-
   private  Room east = null;
-
   private  Room west = null;
-
   private  List<AdvObject> objects_list = new ArrayList<>();
-
   private  List<Npc> npc_list = new ArrayList<>();
 
   /*
@@ -43,11 +31,8 @@ public class Room extends GameElement implements Serializable {
    */
   
 
-  public Room(int id, String name, String description, String look) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.look = look;
+  public Room(int id, String name, String description, String look, Set<String> alias) {
+    super(id, name, description, look, alias);
   }
 
   /*
