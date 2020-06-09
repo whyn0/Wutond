@@ -1,10 +1,10 @@
 package proj.map.progettoMap1920.adventure.type;
 
 public abstract class GameElement {
-  private int id;
+  protected int id;
   
-  public GameElement() {
-    // TODO Auto-generated constructor stub
+  protected GameElement(int id) {
+    this.id = id;
   }
   public int getId() {
     return id;

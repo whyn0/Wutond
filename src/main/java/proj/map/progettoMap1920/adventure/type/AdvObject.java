@@ -14,26 +14,14 @@ import java.io.*;
  * @author whyno
  */
 public class AdvObject extends GameObject implements Serializable{
-
-    private final int id;
-    private String name;
-    private String description;
-    private String look;
-    private Set<String> alias;
     private boolean pickable;
-
-
     /*
      * 
      * COSTRUTTORI
      * 
      */
     public AdvObject(int id, String name, String description, String look, Set<String> alias, boolean pickable) {    
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.look = look;
-        this.alias = alias;
+        super(id, look, look, look, alias);
         this.pickable = pickable;
     }
     /*
@@ -41,9 +29,6 @@ public class AdvObject extends GameObject implements Serializable{
      *GETTERS
      * 
      */
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -95,7 +80,7 @@ public class AdvObject extends GameObject implements Serializable{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.id;
+        hash = 89 * hash + this.getId();
         return hash;
     }
 

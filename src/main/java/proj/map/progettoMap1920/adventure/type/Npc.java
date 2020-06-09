@@ -16,11 +16,6 @@ import java.util.Set;
  * @author whyno
  */
 public class Npc extends GameObject implements Serializable {
-
-    private int id;
-    private String name;
-    private String description;
-    private String look;
     private boolean understandable;
     private boolean spoken = false;
     private boolean killable;
@@ -33,17 +28,8 @@ public class Npc extends GameObject implements Serializable {
 	 * COSTRUTTORI
 	 * 
      */
-    public Npc(int id) {
-        super();
-        this.id = id;
-    }
-
-    public Npc(int id, String name, String look, String description, boolean understandable, boolean killable) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.look = look;
-        this.description = description;
+    public Npc(int id, String name, String look, String description, Set<String> alias, boolean understandable, boolean killable) {
+        super(id, description, description, description, alias);
         this.understandable = understandable;
         this.killable = killable;
 

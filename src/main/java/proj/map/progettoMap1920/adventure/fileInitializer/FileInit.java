@@ -33,30 +33,39 @@ import proj.map.progettoMap1920.adventure.type.Lock;
  * @author whyno
  */
 public class FileInit { // probabile singleton
+  
   private GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
   private GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
   private GameList<Lock> lockList = new GameList<>(new ArrayList<Lock>());
   private GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
   private GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
   private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
- 
+  
+  
   /*
-  public List<AdvObject> getObjectList() {
-    return this.objectList;
-  }*/
+   * ---------METHODS---------------
+   */
+  
   public void objReader(String filename) throws FileNotFoundException, IOException {
+    
+    //-----------------------------attributi
+    
     int id = 0;
     String objName = "";
     String description = "";
     String onLook = "";
     Set<String> alias = new HashSet<>();
     boolean pickable = false;
+    
+    //-----------------------------
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
     buffer = new BufferedReader(file);
+    //
     String str;
     String[] tokenized;
+    //
     try {
       while ((str = buffer.readLine()) != null) {
         while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
@@ -91,13 +100,9 @@ public class FileInit { // probabile singleton
               pickable = true;
             }
           }
-          // da testare
           str = buffer.readLine();
         }
-        /*
-         * 
-         * costruire l'oggetto in questione
-         */
+        //--costruzione oggetti ed inserzione nella lista 
         objectList.add(new AdvObject(id,objName,description,onLook,alias,pickable));
       }
 
@@ -108,7 +113,9 @@ public class FileInit { // probabile singleton
   }
 
   public void roomReader(String filename) throws FileNotFoundException, IOException {
-    // attributi delle stanze
+    
+    //---------------------------attributi delle stanze
+    
     int id = 0;
     String name = "";
     String description = "";
@@ -117,7 +124,9 @@ public class FileInit { // probabile singleton
     Map<Integer, List<Integer>> roomMap = new HashMap<>();
     Map<Integer, List<Integer>> objectMap = new HashMap<>();
     Map<Integer, List<Integer>> npcMap = new HashMap<>();
+    
     // file buffer
+   
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -179,7 +188,9 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("OBJ_ID")) {
             if (!tokenized[1].equals("null")) {
               String[] idTokens = tokenized[1].split("\\s");
-              objectMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+              objectMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList()));
             } else {
               objectMap.put(id, null);
             }
@@ -187,38 +198,78 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("NPC_ID")) {
             if (!tokenized[1].equals("null")) {
               String[] idTokens = tokenized[1].split("\\s");
-              npcMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+              npcMap.put(id, (List<Integer>) Arrays.asList(idTokens).stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList()));
             } else {
               npcMap.put(id, null);
             }
           }
           str = buffer.readLine();
         }
-        roomMap.put(id, adjacentRooms);
+        List<Integer> copyList = new ArrayList<>();
+        for(Integer i : adjacentRooms) {
+          if(i != null) {
+            copyList.add(i);
+          }
+          else {
+            copyList.add(null);
+          }
+        }
+        roomMap.put(id, copyList);
         adjacentRooms.removeAll(adjacentRooms);
-        /*
-         * costruire l'oggetto in questione
-         */
-        roomList.add(new Room(id,name,description,look));
-      }
-    } catch (EOFException e) {
 
-    }
+        //costruisco l'oggetto
+        
+        roomList.add(new Room(id,name,description,look,null));
+      }
+    } catch (EOFException e) {}
+    // file close
+    
     file.close();
+    
     // una volta costruiti tutti gli oggetti è necessario linkarli tra loro
+    
     Iterator<Room> roomListIter = roomList.iterator();
+    
+    //room Linker
+    
     while(roomListIter.hasNext()) {
+      
       Room tempRoom = roomListIter.next();
       List<Room> adjRoomTemp = new ArrayList<>();
+      List<AdvObject> objRoomTemp = new ArrayList<>();
+      List<Integer> objMapTempList = objectMap.get(tempRoom.getId());
+      List<Integer> roomMapTempList = roomMap.get(tempRoom.getId());
+      
+     /*
       for(Integer i : roomMap.get(tempRoom.getId())) {
         adjRoomTemp.add(roomList.getById(i));
       }
+*/
+      for(int i = 0; i < roomMapTempList.size(); i++) {
+        Integer roomId;
+        if((roomId = roomMapTempList.get(i)) != null) {
+          adjRoomTemp.add(roomList.getById(roomId));
+        }else {
+          adjRoomTemp.add(null);
+        }
+      }
+      //set stanze adiacenti neglio oggetti istanziati 
+      
       tempRoom.setNorth(adjRoomTemp.get(0));
       tempRoom.setSouth(adjRoomTemp.get(1));
       tempRoom.setEast(adjRoomTemp.get(2));
       tempRoom.setWest(adjRoomTemp.get(3));
+        for(Integer i : objMapTempList) {
+          if(i != null) {
+            tempRoom.getObjects_list().add(objectList.getById(i));//riempire anche con container list
+          }
+        }
+      
+      
+
     }
-    System.out.print("cioa");
   }
 
   public void npcReader(String filename) throws FileNotFoundException, IOException {
@@ -287,7 +338,7 @@ public class FileInit { // probabile singleton
          * 
          * costruire l'oggetto in questione
          */
-        npcList.add(new Npc(id,name,description,look,understandable, killable));
+        npcList.add(new Npc(id,name,description,look, null, understandable, killable));
       }
     } catch (EOFException e) {
 

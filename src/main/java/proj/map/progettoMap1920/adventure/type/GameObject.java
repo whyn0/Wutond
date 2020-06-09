@@ -3,11 +3,23 @@ package proj.map.progettoMap1920.adventure.type;
 import java.util.Set;
 
 public abstract class GameObject extends GameElement{
-  String name;
-  String description;
-  String look;
-  Set<String> alias;
-  
+  protected String name;
+  protected String description;
+  protected String look;
+  protected Set<String> alias;
+  /*
+   * Costruttori
+   */
+  protected GameObject(int id, String name, String description, String look, Set<String> alias) {
+    super(id);
+    this.name = name;
+    this.description = description;
+    this.look = look;
+    this.alias = alias;
+  }
+  /*
+   * Getter e setter
+   */
   public String getName() {
     return name;
   }

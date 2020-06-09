@@ -14,9 +14,6 @@ import java.io.Serializable;
 
 public class Dialog extends GameElement implements Serializable{
 
-
-
-	private final int id;
 	private String text;
 	private String opt_1;
 	private String opt_2;
@@ -33,14 +30,13 @@ public class Dialog extends GameElement implements Serializable{
 	 */
 	public Dialog(int id, String text) {
 
-		super();
-		this.id = id;
+		super(id);
 		this.text = text;
 	}
 
 
 	public Dialog(int id) {
-		super();
+		super(id);
 		this.id = id;
 	}
 
