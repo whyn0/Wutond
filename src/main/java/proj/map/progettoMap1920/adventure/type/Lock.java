@@ -17,6 +17,7 @@ public class Lock extends GameElement{
         super(id);
         this.key = key;
     }
+    
     //getters
 
     public int getId() {
