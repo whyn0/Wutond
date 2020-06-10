@@ -5,7 +5,7 @@ DESCRIPTION: "Vedi finalmente l'uomo che stavi inseguendo"
 LOOK: "Non riesci a vedere il volto dell'uomo ma le sue fattezze ti sono familiari"
 KILLABLE: t
 UNDERSTANDABLE: t
-DIALOG: (ID)
+DIALOG: 119
 INVENTORY: null
 }
 {
@@ -15,7 +15,7 @@ DESCRIPTION: "Vedi un tipo strambo vestito in malo modo e sporco di terra seduto
 LOOK: "Lo senti farfugliare cose ma da questa distanza non riesci a capire cosa stia dicendo."
 KILLABLE: t
 UNDERSTANDABLE: f
-DIALOG: (ID)
+DIALOG: 113
 INVENTORY: null
 }
 {
@@ -25,7 +25,7 @@ DESCRIPTION: "Riesci a scorgere solo una figura incappucciata che viene illumina
 LOOK: "Non ti sembra una persona molto raccomandabile, meglio stare attenti."
 KILLABLE: f 
 UNDERSTANDABLE: f
-DIALOG: (ID)
+DIALOG: 88
 INVENTORY: 51 52
 }
 {
@@ -35,7 +35,7 @@ DESCRIPTION: "Vedi una signora sulla mezza età con un'aria simpatica."
 LOOK: "La signora ti fissa aspettando che tu le parli."
 KILLABLE: f
 UNDERSTANDABLE: t
-DIALOG: (ID)
+DIALOG: 94
 INVENTORY: 53 54
 }
 {
@@ -45,7 +45,7 @@ DESCRIPTION: "Sotto la torre noti un uomo sulla cinquantina con la schiena incur
 LOOK: "Sembra molto preso da un discorso fra sè e sè e nel frattempo ruota compulsivamente un pacchetto di sigarette nelle sue mani."
 KILLABLE: f
 UNDERSTANDABLE: f
-DIALOG: (ID)
+DIALOG: 108
 INVENTORY: null
 }
 {
@@ -55,7 +55,7 @@ DESCRIPTION: "Vedi tre ragazzi appoggiati alla ringhiera che costeggia la torre 
 LOOK: "Ti sembrano parecchio tranquilli nonostante siano in presenza di un cadavere."
 KILLABLE: f
 UNDERSTANDABLE: t
-DIALOG: (ID)
+DIALOG: 97
 INVENTORY: null
 }
 {
@@ -65,6 +65,6 @@ DESCRIPTION: "Sul lato sinistro dell'entrata vedi un ragazzo occhialuto appoggia
 LOOK: "Indossa una maglietta della Juventus. Ad un primo sguardo non sembra molto sveglio."
 KILLABLE: t
 UNDERSTANDABLE: f
-DIALOG: (ID)
+DIALOG: 102
 INVENTORY: null
 }
