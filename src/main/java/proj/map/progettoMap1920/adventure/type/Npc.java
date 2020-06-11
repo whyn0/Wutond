@@ -63,6 +63,18 @@ public class Npc extends GameObject implements Serializable {
     public boolean isKillable() {
         return killable;
     }
+    
+    public List<AdvObject> getNpc_inventory() {
+      return npc_inventory;
+    }
+
+    public void setNpc_inventory(List<AdvObject> npc_inventory) {
+      this.npc_inventory = npc_inventory;
+    }
+
+    public Dialog getDialog() {
+      return dialog;
+    }
 
     /*
 	 * 

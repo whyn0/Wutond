@@ -39,10 +39,23 @@ public class Dialog extends GameElement implements Serializable{
 		super(id);
 		this.id = id;
 	}
+	
 
 
 
-	/*
+  public Dialog(int id, String text, String opt_1, String opt_2, String opt_3, Dialog next_1, Dialog next_2, Dialog next_3) {
+    super(id);
+    this.text = text;
+    this.opt_1 = opt_1;
+    this.opt_2 = opt_2;
+    this.opt_3 = opt_3;
+    this.next_1 = next_1;
+    this.next_2 = next_2;
+    this.next_3 = next_3;
+  }
+
+
+  /*
 	 * 
 	 * GETTERS
 	 * 

@@ -14,7 +14,7 @@ TEXT: "Lo sai cosa intendo bello, tieni, provala *il tipo ti porge una bustina c
 OPT_1: "*Prendi la bustina*"
 OPT_2: "*rifiuta la bustina*"
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: 93
 NEXT_3: null
 }
@@ -34,9 +34,9 @@ TEXT: "Non ho visto nè sentito niente fra, però se vuoi ho qualcosa che può a
 OPT_1: "*accetta la pistola*"
 OPT_2: "*rifiuta la pistola*"
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: 92
-NEXT_3:
+NEXT_3:	null
 }
 {
 ID: 92
@@ -44,7 +44,7 @@ TEXT: "Ti consiglio di prenderla prima che la usi su di te"
 OPT_1: *accetta la pistola*
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -54,7 +54,7 @@ TEXT: "è un omaggio della casa, ti conviene accettare*
 OPT_1: *prendi la bustina*
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -66,7 +66,7 @@ OPT_2: "*Chiedi se ha un libro sulle tradizioni e i detti bitontini*"
 OPT_3: "*Allontanati*"
 NEXT_1: 95
 NEXT_2: 96
-NEXT_3: END
+NEXT_3: -1
 }
 {
 ID: 95
@@ -74,7 +74,7 @@ TEXT: "Ho proprio quello che fa al caso tuo *ti porge un dizionario italiano-bit
 OPT_1: *Prendi dizionario*
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -84,7 +84,7 @@ TEXT: "Ecco a te *ti porge il libro che hai richiesto*"
 OPT_1: *Allontanati*
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -96,7 +96,7 @@ OPT_2: "*Chiedi se hanno visto qualcosa relativo all'omicidio*"
 OPT_3: "*Allontanati*"
 NEXT_1: 98
 NEXT_2: 99
-NEXT_3: END
+NEXT_3: -1
 }
 {
 ID: 98
@@ -106,7 +106,7 @@ OPT_2: "*Digli che non ti sembra una buona idea che tre ragazzi rimangano su una
 OPT_3: "*La risposta è criptica e decidi di lasciarli stare*"
 NEXT_1: 100
 NEXT_2: 101
-NEXT_3: END
+NEXT_3: -1
 }
 {
 ID: 99
@@ -114,7 +114,7 @@ TEXT: "Non lo abbiamo propriamente visto. In ogni caso, non possiamo dirtelo, no
 OPT_1: "*Questi ragazzi ti stanno chiaramente prendendo in giro. Decidi di non perdere più tempo con loro e ti allontani."*
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -124,7 +124,7 @@ TEXT: "Certo che lo sappiamo, ma non ci sarebbe nessun gusto a dirtelo, lo scopr
 OPT_1: "*Sembrano sapere il fatto loro ma non sono disposti a collaborare. Ti allontani*"
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -134,7 +134,7 @@ TEXT: "Non si preoccupi, abbiamo visto di tutto"
 OPT_1: "*Vai via*" 
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -146,7 +146,7 @@ OPT_2: "*Chiedi chi è*"
 OPT_3: "*Allontanati*"
 NEXT_1: 103
 NEXT_2: 104
-NEXT_3: END
+NEXT_3: -1
 }
 {
 ID: 103
@@ -155,7 +155,7 @@ OPT_1: "*Chiedi che tipo di informazioni potrebbe fornirti*"
 OPT_2: "*Allontanati*"
 OPT_3: null
 NEXT_1: 105
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -165,7 +165,7 @@ OPT_1: "*Chedi se ha informazioni sull'omicidio*"
 OPT_2: "*Allontanati*"
 OPT_3: null
 NEXT_1: 103
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -175,7 +175,7 @@ OPT_1: "*Digli che non ti interessa discutere di scommesse e chiedi altre inform
 OPT_2: "*Se sono queste le informazioni che possiede è meglio lasciar stare...*"
 OPT_3: null
 NEXT_1: 106
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -185,7 +185,7 @@ OPT_1: "*Sei visibilmente frustrato. Gli chiedi per l'ultima volta se ha qualche
 OPT_2: "*Il ragazzo è più stupido del previsto, meglio lasciarlo stare*"
 OPT_3: null
 NEXT_1: 107
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -194,7 +194,7 @@ TEXT: "Si... ho il sospetto che la Juve vincerà il campionato quest'anno"
 OPT_1: "*Non riesci a credere a ciò che hai sentito e te ne vai allibito*"
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -205,7 +205,7 @@ OPT_1: "*Saluta l'uomo e chiedi se ha visto o sentito qualcosa di relativo all'o
 OPT_2: "*Allontanati*"
 OPT_3: null
 NEXT_1: 109
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -215,7 +215,7 @@ OPT_1: "*Gli dici gentilmente che non hai capito nulla di quello che ha detto*"
 OPT_2: "*Quest'uomo è pazzo. Meglio lasciarlo stare*"
 OPT_3: null
 NEXT_1: 110
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -235,8 +235,8 @@ OPT_1: "*Ti giri a guardare il punto che sta fissando*"
 OPT_2: "*Inizi a pensare che non ci sia una persona normale in questa città. Ti allontani*"
 OPT_3: null
 NEXT_1: 112
-NEXT_2: END
-NEXT_3: 
+NEXT_2: -1
+NEXT_3: null
 }
 {
 ID: 112
@@ -244,7 +244,7 @@ TEXT: "*Il punto che stava fissando era il torrione, ti rigiri verso di lui ma..
 OPT_1: "*Non pensavi che un uomo della sua età potesse correre così velocemente. Non ti resta che andare via*"
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -256,7 +256,7 @@ OPT_2: "*Gli chiedi se ha qualche informazione sull'omicidio*"
 OPT_3: "*Allontanati*"
 NEXT_1: 114
 NEXT_2: 115
-NEXT_3: END
+NEXT_3: -1
 }
 {
 ID: 114
@@ -266,7 +266,7 @@ OPT_2: "*Gli chiedi se ha qualche informazione sull'omicidio*"
 OPT_3: "*Allontanati*"
 NEXT_1: 116
 NEXT_2: 115
-NEXT_3: END
+NEXT_3: -1
 }
 {
 ID: 115
@@ -275,7 +275,7 @@ OPT_1: "*Gli chiedi di raccontarti una storia*"
 OPT_2: "*Gli dici che non hai tempo per le storie e vai via*"
 OPT_3: null
 NEXT_1: 117
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -285,7 +285,7 @@ OPT_1: "*Gli chiedi se ha qualche informazione sull'omicidio*"
 OPT_2: "*Allontanati*"
 OPT_3: null
 NEXT_1: 115
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -295,7 +295,7 @@ OPT_1: "*Gli dici che è una storia orribile e alquanto fantasiosa. Gliene chied
 OPT_2: "*Ridi all'incredibile storia mentre ti allontani*"
 OPT_3: null
 NEXT_1: 118
-NEXT_2: END
+NEXT_2: -1
 NEXT_3: null
 }
 {
@@ -304,7 +304,7 @@ TEXT: "Una volta ero a casa di una bella ragazza ma non potevamo fare niente per
 OPT_1: "*Questa storia ti sembra l'invenzione di una mente molto fantasiosa. Non hai più tempo da perdere e te ne vai*"
 OPT_2: null
 OPT_3: null
-NEXT_1: END
+NEXT_1: -1
 NEXT_2: null
 NEXT_3: null
 }
@@ -336,7 +336,7 @@ OPT_2: "*Gli porgi il portafoglio che hai trovato a terra e gli chiedi se è il 
 OPT_3: null
 NEXT_1: 122
 NEXT_2: 123
-NEXT_3: 
+NEXT_3: null
 }
 {
 ID: 122
@@ -358,20 +358,13 @@ NEXT_1: 125
 NEXT_2: 124
 NEXT_3: null
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{
+ID: -1
+TEXT: ""
+OPT_1: null
+OPT_2: null
+OPT_3: null
+NEXT_1: null
+NEXT_2: null
+NEXT_3: null
+}
