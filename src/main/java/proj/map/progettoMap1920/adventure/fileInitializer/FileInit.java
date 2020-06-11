@@ -24,10 +24,10 @@ import proj.map.progettoMap1920.adventure.type.AdvObject;
 import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.type.Dialog;
 import proj.map.progettoMap1920.adventure.type.Door;
+import proj.map.progettoMap1920.adventure.type.Lock;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Room;
 import proj.map.progettoMap1920.adventure.utils.GameList;
-import proj.map.progettoMap1920.adventure.type.Lock;
 
 /**
  *
@@ -35,692 +35,748 @@ import proj.map.progettoMap1920.adventure.type.Lock;
  */
 public class FileInit { // probabile singleton
 
-	private GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
-	private GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
-	private GameList<Lock> lockList = new GameList<>(new ArrayList<Lock>());
-	private GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
-	private GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
-	private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
-	private GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
+  public GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
+  public GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
+  public GameList<Lock> lockList = new GameList<>(new ArrayList<Lock>());
+  public GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
+  public GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
+  public GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
+  public GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
+  
+  
 
-	/*
-	 * ---------METHODS---------------
-	 */
+  /*
+   * ---------METHODS---------------
+   */
 
-	public void objReader(String filename) throws FileNotFoundException, IOException {
 
-		// -----------------------------attributi
 
-		int id = 0;
-		String objName = "";
-		String description = "";
-		String onLook = "";
-		Set<String> alias = new HashSet<>();
-		boolean pickable = false;
+  public void objReader(String filename) throws FileNotFoundException, IOException {
 
-		// -----------------------------
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		//
-		String str;
-		String[] tokenized;
-		//
-		try {
-			while ((str = buffer.readLine()) != null) {
-				while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
+    // -----------------------------attributi
 
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
-					tokenized = str.split(":");
-					tokenized[1] = tokenized[1].trim();
+    int id = 0;
+    String objName = "";
+    String description = "";
+    String onLook = "";
+    Set<String> alias = new HashSet<>();
+    boolean pickable = false;
 
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("NAME")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						objName = tokenized[1];
-					}
-					if (tokenized[0].equals("DESCRIPTION")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						description = tokenized[1];
-					}
-					if (tokenized[0].equals("LOOK")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						onLook = tokenized[1];
-					}
-					if (tokenized[0].equals("ALIAS")) {
-						if (!tokenized[1].equals("null")) {
-							String[] aliasList = tokenized[1].split("\\s");
-							alias.addAll(Arrays.asList(aliasList));
-						}
-					}
-					if (tokenized[0].equals("PICKABLE")) {
-						if (tokenized[1].equals("t")) {
-							pickable = true;
-						}
-					}
-					str = buffer.readLine();
-				}
-				// --costruzione oggetti ed inserzione nella lista
-				objectList.add(new AdvObject(id, objName, description, onLook, alias, pickable));
-			}
+    // -----------------------------
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    //
+    String str;
+    String[] tokenized;
+    //
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
 
-		} catch (EOFException e) {
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim(); // diocane
 
-		}
-		file.close();
-	}
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("NAME")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            objName = String.valueOf(tokenized[1]);
+          }
+          if (tokenized[0].equals("DESCRIPTION")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            description= String.valueOf(tokenized[1]);
+          }
+          if (tokenized[0].equals("LOOK")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            onLook= String.valueOf(tokenized[1]);
+          }
+          if (tokenized[0].equals("ALIAS")) {
+            if (!tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            }
+          }
+          if (tokenized[0].equals("PICKABLE")) {
+            if (tokenized[1].equals("t")) {
+              pickable = true;
+            }
+          }
+          str = buffer.readLine();
+        }
+        // --costruzione oggetti ed inserzione nella lista
+        objectList.add(new AdvObject(id, objName, description, onLook, alias, pickable));
+      }
 
-	public void roomReader(String filename) throws FileNotFoundException, IOException {
+    } catch (EOFException e) {
 
-		// ---------------------------attributi delle stanze
+    }
+    file.close();
+  }
 
-		int id = 0;
-		String name = "";
-		String description = "";
-		String look = "";
-		List<Integer> adjacentRooms = new ArrayList<>();
-		Map<Integer, List<Integer>> roomMap = new HashMap<>();
-		Map<Integer, List<Integer>> objectMap = new HashMap<>();
-		Map<Integer, List<Integer>> npcMap = new HashMap<>();
+  public void roomReader(String filename) throws FileNotFoundException, IOException {
 
-		// file buffer
+    // ---------------------------attributi delle stanze
 
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		String str;
-		String[] tokenized;
-		try {
-			while ((str = buffer.readLine()) != null) {
-				while (!"}".equals(str)) {
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
-					tokenized = str.split(":");
-					tokenized[1] = tokenized[1].trim();
+    int id = 0;
+    String name = "";
+    String description = "";
+    String look = "";
+    List<Integer> adjacentRooms = new ArrayList<>();
+    Map<Integer, List<Integer>> roomMap = new HashMap<>();
+    Map<Integer, List<Integer>> objectMap = new HashMap<>();
+    Map<Integer, List<Integer>> npcMap = new HashMap<>();
 
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("NAME")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						name = tokenized[1];
-					}
-					if (tokenized[0].equals("DESCRIPTION")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						description = tokenized[1];
-					}
-					if (tokenized[0].equals("LOOK")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						look = tokenized[1];
-					}
-					if (tokenized[0].equals("NORTH")) {
-						if (!tokenized[1].equals("null")) {
-							adjacentRooms.add(Integer.parseInt(tokenized[1]));
-						} else {
-							adjacentRooms.add(null);
-						}
-					}
-					if (tokenized[0].equals("SOUTH")) {
-						if (!tokenized[1].equals("null")) {
-							adjacentRooms.add(Integer.parseInt(tokenized[1]));
-						} else {
-							adjacentRooms.add(null);
-						}
-					}
-					if (tokenized[0].equals("EAST")) {
-						if (!tokenized[1].equals("null")) {
-							adjacentRooms.add(Integer.parseInt(tokenized[1]));
-						} else {
-							adjacentRooms.add(null);
-						}
-					}
-					if (tokenized[0].equals("WEST")) {
-						if (!tokenized[1].equals("null")) {
-							adjacentRooms.add(Integer.parseInt(tokenized[1]));
-						} else {
-							adjacentRooms.add(null);
-						}
-					}
-					if (tokenized[0].equals("OBJ_ID")) {
-						if (!tokenized[1].equals("null")) {
-							String[] idTokens = tokenized[1].split("\\s");
-							objectMap.put(id, Arrays.asList(idTokens).stream()
-									.map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
-						} else {
-							objectMap.put(id, null);
-						}
-					}
-					if (tokenized[0].equals("NPC_ID")) {
-						if (!tokenized[1].equals("null")) {
-							String[] idTokens = tokenized[1].split("\\s");
-							npcMap.put(id, Arrays.asList(idTokens).stream()
-									.map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
-						} else {
-							npcMap.put(id, null);
-						}
-					}
-					str = buffer.readLine();
-				}
-				List<Integer> copyList = new ArrayList<>();
-				for (Integer i : adjacentRooms) {
-					if (i != null) {
-						copyList.add(i);
-					} else {
-						copyList.add(null);
-					}
-				}
-				roomMap.put(id, copyList);
-				adjacentRooms.removeAll(adjacentRooms);
+    // file buffer
 
-				// costruisco l'oggetto
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    String str;
+    String[] tokenized;
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
 
-				roomList.add(new Room(id, name, description, look, null));
-			}
-		} catch (EOFException e) {
-		}
-		// file close
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("NAME")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            name = tokenized[1];
+          }
+          if (tokenized[0].equals("DESCRIPTION")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            description = tokenized[1];
+          }
+          if (tokenized[0].equals("LOOK")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            look = tokenized[1];
+          }
+          if (tokenized[0].equals("NORTH")) {
+            if (!tokenized[1].equals("null")) {
+              adjacentRooms.add(Integer.parseInt(tokenized[1]));
+            } else {
+              adjacentRooms.add(null);
+            }
+          }
+          if (tokenized[0].equals("SOUTH")) {
+            if (!tokenized[1].equals("null")) {
+              adjacentRooms.add(Integer.parseInt(tokenized[1]));
+            } else {
+              adjacentRooms.add(null);
+            }
+          }
+          if (tokenized[0].equals("EAST")) {
+            if (!tokenized[1].equals("null")) {
+              adjacentRooms.add(Integer.parseInt(tokenized[1]));
+            } else {
+              adjacentRooms.add(null);
+            }
+          }
+          if (tokenized[0].equals("WEST")) {
+            if (!tokenized[1].equals("null")) {
+              adjacentRooms.add(Integer.parseInt(tokenized[1]));
+            } else {
+              adjacentRooms.add(null);
+            }
+          }
+          if (tokenized[0].equals("OBJ_ID")) {
+            if (!tokenized[1].equals("null")) {
+              String[] idTokens = tokenized[1].split("\\s");
+              objectMap.put(id, Arrays.asList(idTokens).stream()
+                .map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+            } else {
+              objectMap.put(id, null);
+            }
+          }
+          if (tokenized[0].equals("NPC_ID")) {
+            if (!tokenized[1].equals("null")) {
+              String[] idTokens = tokenized[1].split("\\s");
+              npcMap.put(id, Arrays.asList(idTokens).stream()
+                .map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+            } else {
+              npcMap.put(id, null);
+            }
+          }
+          str = buffer.readLine();
+        }
+        List<Integer> copyList = new ArrayList<>();
+        for (Integer i : adjacentRooms) {
+          if (i != null) {
+            copyList.add(i);
+          } else {
+            copyList.add(null);
+          }
+        }
+        roomMap.put(id, copyList);
+        adjacentRooms.removeAll(adjacentRooms);
 
-		file.close();
+        // costruisco l'oggetto
 
-		// una volta costruiti tutti gli oggetti è necessario linkarli tra loro
+        roomList.add(new Room(id, name, description, look, null));
+      }
+    } catch (EOFException e) {
+    }
+    // file close
 
-		Iterator<Room> roomListIter = roomList.iterator();
+    file.close();
 
-		// room Linker
+    // una volta costruiti tutti gli oggetti è necessario linkarli tra loro
 
-		while (roomListIter.hasNext()) {
+    Iterator<Room> roomListIter = roomList.iterator();
 
-			Room tempRoom = roomListIter.next();
-			List<Room> adjRoomTemp = new ArrayList<>();
-			List<AdvObject> objRoomTemp = new ArrayList<>();
-			List<Integer> objMapTempList = objectMap.get(tempRoom.getId());
-			List<Integer> roomMapTempList = roomMap.get(tempRoom.getId());
-			List<Integer> npcMapTempList = npcMap.get(tempRoom.getId());
+    // room Linker
 
-			/*
-			 * for(Integer i : roomMap.get(tempRoom.getId())) {
-			 * adjRoomTemp.add(roomList.getById(i)); }
-			 */
-			for (int i = 0; i < roomMapTempList.size(); i++) {
-				Integer roomId;
-				if ((roomId = roomMapTempList.get(i)) != null) {
-					adjRoomTemp.add(roomList.getById(roomId));
-				} else {
-					adjRoomTemp.add(null);
-				}
-			}
-			// set stanze adiacenti neglio oggetti istanziati
+    while (roomListIter.hasNext()) {
 
-			tempRoom.setNorth(adjRoomTemp.get(0));
-			tempRoom.setSouth(adjRoomTemp.get(1));
-			tempRoom.setEast(adjRoomTemp.get(2));
-			tempRoom.setWest(adjRoomTemp.get(3));
+      Room tempRoom = roomListIter.next();
+      List<Room> adjRoomTemp = new ArrayList<>();
+      List<AdvObject> objRoomTemp = new ArrayList<>();
+      List<Integer> objMapTempList = objectMap.get(tempRoom.getId());
+      List<Integer> roomMapTempList = roomMap.get(tempRoom.getId());
+      List<Integer> npcMapTempList = npcMap.get(tempRoom.getId());
 
-			// set item in room
+      /*
+       * for(Integer i : roomMap.get(tempRoom.getId())) {
+       * adjRoomTemp.add(roomList.getById(i)); }
+       */
+      for (int i = 0; i < roomMapTempList.size(); i++) {
+        Integer roomId;
+        if ((roomId = roomMapTempList.get(i)) != null) {
+          adjRoomTemp.add(roomList.getById(roomId));
+        } else {
+          adjRoomTemp.add(null);
+        }
+      }
+      // set stanze adiacenti neglio oggetti istanziati
 
-			if (objMapTempList != null) {
-				for (Integer i : objMapTempList) {
-					if (i != null) {
-						try {
-							tempRoom.getObjects_list().add(objectList.getById(i));// riempire anche con container list
-						} catch (NullPointerException e) {
-							tempRoom.getObjects_list().add(containerList.getById(i));
-						}
-					}
+      tempRoom.setNorth(adjRoomTemp.get(0));
+      tempRoom.setSouth(adjRoomTemp.get(1));
+      tempRoom.setEast(adjRoomTemp.get(2));
+      tempRoom.setWest(adjRoomTemp.get(3));
 
-				}
-			} /*
-				 * if(npcMapTempList != null) { for(Integer i : npcMapTempList) { if(i != null)
-				 * { tempRoom.getNpc_list().add(npcList.getById(i)); } } }
-				 */
-		}
-	}
+      // set item in room
 
-	public void npcReader(String filename) throws FileNotFoundException, IOException {
-		// attributi delle stanze
-		int id = 0;
-		String name = "";
-		String description = "";
-		String look = "";
-		Map<Integer, List<Integer>> inventoryMap = new HashMap<>();
-		Map<Integer, Integer> dialogId = new HashMap<>();
-		Set<String> alias = new HashSet<>();
-		boolean understandable = false;
-		boolean killable = false;
-		// file buffer
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		String str;
-		String[] tokenized;
-		try {
-			while ((str = buffer.readLine()) != null) {
-				while (!"}".equals(str)) {
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
+      if (objMapTempList != null) {
+        for (Integer i : objMapTempList) {
+          if (i != null) {
+            try {
+              tempRoom.getObjects_list().add(objectList.getById(i));// riempire anche con container list
+            } catch (NullPointerException e) {
+              tempRoom.getObjects_list().add(containerList.getById(i));
+            }
+          }
 
-					tokenized = str.split(":");
-					tokenized[1] = tokenized[1].trim();
+        }
+      }
+      if (npcMapTempList != null) {
+        for (Integer i : npcMapTempList) {
+          if (i != null) {
+            tempRoom.getNpc_list().add(npcList.getById(i));
+          }
+        }
+      }
 
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("NAME")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						name = tokenized[1];
-					}
-					if (tokenized[0].equals("DESCRIPTION")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						description = tokenized[1];
-					}
-					if (tokenized[0].equals("LOOK")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						look = tokenized[1];
-					}
-					if (tokenized[0].equals("KILLABLE")) {
-						if (tokenized[1].equals("t")) {
-							killable = true;
-						}
-					}
-					if (tokenized[0].equals("ALIAS")) {
-						if (!tokenized[1].equals("null")) {
-							String[] aliasList = tokenized[1].split("\\s");
-							alias.addAll(Arrays.asList(aliasList));
-						} else {
-							alias = null;
-						}
-					}
-					if (tokenized[0].equals("UNDERSTANDABLE")) {
-						if (tokenized[1].equals("t")) {
-							understandable = true;
-						}
-					}
-					if (tokenized[0].equals("DIALOG")) {
-						dialogId.put(id, Integer.parseInt(tokenized[1]));
-					}
-					if (tokenized[0].equals("INVENTORY")) {
-						if (!tokenized[1].equals("null")) {
-							String[] idTokens = tokenized[1].split("\\s");
-							inventoryMap.put(id, Arrays.asList(idTokens).stream()
-									.map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
-						} else {
-							inventoryMap.put(id, null);
-						}
-					}
-					str = buffer.readLine();
-				}
-				/*
-				 * 
-				 * costruire l'oggetto in questione
-				 */
-				npcList.add(new Npc(id, name, description, look, null, understandable, killable));
-			}
-		} catch (EOFException e) {
+    }
+  }
 
-		}
-		file.close();
-		/*
-		 * linkare inventario e dialogo
-		 */
+  public void npcReader(String filename) throws FileNotFoundException, IOException {
+    // attributi delle stanze
+    int id = 0;
+    String name = "";
+    String description = "";
+    String look = "";
+    Map<Integer, List<Integer>> inventoryMap = new HashMap<>();
+    Map<Integer, Integer> dialogId = new HashMap<>();
+    Set<String> alias = new HashSet<>();
+    boolean understandable = false;
+    boolean killable = false;
+    // file buffer
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    String str;
+    String[] tokenized;
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
 
-		// link dialogo
-		Iterator<Npc> npcIter = npcList.iterator();
-		/*
-		 * while (npcIter.hasNext()) { Npc tempNpc = npcIter.next();
-		 * tempNpc.setDialog(dialogList.getById(dialogId.get(tempNpc.getId())));//
-		 * setDialog accedo alla lista dei dialoghi, // ricerco per id corrispondente al
-		 * get della mappa dell'id // dell'npc }
-		 */
-		// linking oggetti inventario npc
-		npcIter = npcList.iterator();
-		while (npcIter.hasNext()) {
-			Npc tempNpc = npcIter.next();
-			List<AdvObject> inventory = new ArrayList<>();
-			for (Integer i : inventoryMap.get(tempNpc.getId())) {
-				inventory.add(objectList.getById(i));
-			}
-		}
-	}
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
 
-	public void dialogReader(String filename) throws FileNotFoundException, IOException {
-		// attributi
-		int id = 0;
-		String text = "";
-		Map<Integer, List<String>> optionMap = new HashMap<>();
-		Map<Integer, List<Integer>> dialogMap = new HashMap<>();
-		List<String> optionStr = new ArrayList<>();
-		List<Integer> dialogId = new ArrayList<>();
-		// file buffer
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		String str;
-		String[] tokenized;
-		try {
-			while (true) {
-				str = buffer.readLine();
-				while (!"}".equals(str)) {
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
-					tokenized = str.split(":");
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("TEXT")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						text = tokenized[1];
-					}
-					if (tokenized[0].equals("OPT_1")) {
-						if (!tokenized[1].equals("null")) {
-							optionStr.add(tokenized[1]);
-						} else {
-							optionStr.add(null);
-						}
-					}
-					if (tokenized[0].equals("OPT_2")) {
-						if (!tokenized[1].equals("null")) {
-							optionStr.add(tokenized[1]);
-						} else {
-							optionStr.add(null);
-						}
-					}
-					if (tokenized[0].equals("OPT_3")) {
-						if (!tokenized[1].equals("null")) {
-							optionStr.add(tokenized[1]);
-						} else {
-							optionStr.add(null);
-						}
-					}
-					if (tokenized[0].equals("NEXT_1")) {
-						if (!tokenized[1].equals("null")) {
-							dialogId.add(Integer.parseInt(tokenized[1]));
-						} else {
-							dialogId.add(null);
-						}
-					}
-					if (tokenized[0].equals("NEXT_2")) {
-						if (!tokenized[1].equals("null")) {
-							dialogId.add(Integer.parseInt(tokenized[1]));
-						} else {
-							dialogId.add(null);
-						}
-					}
-					if (tokenized[0].equals("NEXT_3")) {
-						if (!tokenized[1].equals("null")) {
-							dialogId.add(Integer.parseInt(tokenized[1]));
-						} else {
-							dialogId.add(null);
-						}
-					}
-					str = buffer.readLine();
-				}
-				optionMap.put(id, optionStr);
-				dialogMap.put(id, dialogId);
-				/*
-				 * costruire oggetto in questione
-				 */
-			}
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("NAME")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            name = tokenized[1];
+          }
+          if (tokenized[0].equals("DESCRIPTION")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            description = tokenized[1];
+          }
+          if (tokenized[0].equals("LOOK")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            look = tokenized[1];
+          }
+          if (tokenized[0].equals("KILLABLE")) {
+            if (tokenized[1].equals("t")) {
+              killable = true;
+            }
+          }
+          if (tokenized[0].equals("ALIAS")) {
+            if (!tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            } else {
+              alias = null;
+            }
+          }
+          if (tokenized[0].equals("UNDERSTANDABLE")) {
+            if (tokenized[1].equals("t")) {
+              understandable = true;
+            }
+          }
+          if (tokenized[0].equals("DIALOG")) {
+            dialogId.put(id, Integer.parseInt(tokenized[1]));
+          }
+          if (tokenized[0].equals("INVENTORY")) {
+            if (!tokenized[1].equals("null")) {
+              String[] idTokens = tokenized[1].split("\\s");
+              inventoryMap.put(id, Arrays.asList(idTokens).stream()
+                .map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+            } else {
+              inventoryMap.put(id, null);
+            }
+          }
+          str = buffer.readLine();
+        }
+        /*
+         * 
+         * costruire l'oggetto in questione
+         */
+        npcList.add(new Npc(id, name, description, look, null, understandable, killable));
+      }
+    } catch (EOFException e) {
 
-		} catch (EOFException e) {
+    }
+    file.close();
+    /*
+     * linkare inventario e dialogo
+     */
 
-		}
-		file.close();
-		/*
-		 * linkare dialoghi e opzioni
-		 */
-	}
+    // link dialogo
+    Iterator<Npc> npcIter = npcList.iterator();
 
-	public void contReader(String filename) throws FileNotFoundException, IOException {
-		Map<Integer, List<Integer>> itemRefContainers;
-		itemRefContainers = new HashMap<>();
-		int id = 0;
-		String contName = "";
-		String description = "";
-		String onLook = "";
-		Integer lock = null;
-		Map<Integer, Integer> lockMap = new HashMap<>();
-		Set<String> alias = new HashSet<>();
-		boolean pickable = false;
-		// List<AdvObject> containedItems = null;
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		String str;
-		String[] tokenized;
-		try {
-			while (true) {
-				str = buffer.readLine();
-				while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
+    while (npcIter.hasNext()) {
+      Npc tempNpc = npcIter.next();
+      tempNpc.setDialog(dialogList.getById(dialogId.get(tempNpc.getId())));
+    }
 
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
-					tokenized = str.split(":");
+    // linking oggetti inventario npc
+    npcIter = npcList.iterator();
+    while (npcIter.hasNext()) {
+      Npc tempNpc = npcIter.next();
+      List<AdvObject> inventory = new ArrayList<>();
+      if(inventoryMap.get(tempNpc.getId()) != null) {
+        for (Integer i : inventoryMap.get(tempNpc.getId())) {
+          inventory.add(objectList.getById(i));
+        }
+      }
+      
+    }
+  }
 
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("NAME")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						contName = tokenized[1];
-					}
-					if (tokenized[0].equals("DESCRIPTION")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						description = tokenized[1];
-					}
-					if (tokenized[0].equals("LOOK")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						onLook = tokenized[1];
-					}
-					if (tokenized[0].equals("ALIAS")) {
-						if (tokenized[1].equals("null")) {
-							String[] aliasList = tokenized[1].split("\\s");
-							alias.addAll(Arrays.asList(aliasList));
-						}
-					}
-					if (tokenized[0].equals("PICKABLE")) {
-						if (tokenized[1].equals("t")) {
-							pickable = true;
-						}
-					}
-					if (tokenized[0].equals("LIST_ID")) {
-						String[] idTokens = tokenized[1].split("\\s");
-						itemRefContainers.put(id, Arrays.asList(idTokens).stream()
-								.map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
-					}
-					if (tokenized[0].equals("LOCK")) {
-						if (!tokenized[1].equals("null")) {
-							lock = Integer.parseInt(tokenized[1]);
-						} else {
-							lock = null;
-						}
-					}
-					// da testare
-					str = buffer.readLine();
-				}
-				lockMap.put(id, lock);
-				/*
-				 * costruire l'oggetto in questione
-				 */
-				containerList
-						.add(new AdvObjectContainer(null, null, id, contName, description, onLook, alias, pickable));
-			}
+  public void dialogReader(String filename) throws FileNotFoundException, IOException {
+    // attributi
+    int id = 0;
+    String text = "";
+    // Map<Integer, List<String>> optionMap = new HashMap<>();
+    Map<Integer, List<Integer>> dialogMap = new HashMap<>();
+    List<String> optionStr = new ArrayList<>();
+    List<Integer> dialogId = new ArrayList<>();
+    // file buffer
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    String str;
+    String[] tokenized;
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
 
-		} catch (EOFException e) {
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("TEXT")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            text = tokenized[1];
+          }
+          if (tokenized[0].equals("OPT_1")) {
+            if (!tokenized[1].equals("null")) {
+              optionStr.add(tokenized[1]);
+            } else {
+              optionStr.add(null);
+            }
+          }
+          if (tokenized[0].equals("OPT_2")) {
+            if (!tokenized[1].equals("null")) {
+              optionStr.add(tokenized[1]);
+            } else {
+              optionStr.add(null);
+            }
+          }
+          if (tokenized[0].equals("OPT_3")) {
+            if (!tokenized[1].equals("null")) {
+              optionStr.add(tokenized[1]);
+            } else {
+              optionStr.add(null);
+            }
+          }
+          if (tokenized[0].equals("NEXT_1")) {
+            if (!tokenized[1].equals("null")) {
+              dialogId.add(Integer.parseInt(tokenized[1]));
+            } else {
+              dialogId.add(null);
+            }
+          }
+          if (tokenized[0].equals("NEXT_2")) {
+            if (!tokenized[1].equals("null")) {
+              dialogId.add(Integer.parseInt(tokenized[1]));
+            } else {
+              dialogId.add(null);
+            }
+          }
+          if (tokenized[0].equals("NEXT_3")) {
+            if (!tokenized[1].equals("null")) {
+              dialogId.add(Integer.parseInt(tokenized[1]));
+            } else {
+              dialogId.add(null);
+            }
+          }
+          str = buffer.readLine();
+        }
+        List<Integer> copyList = new ArrayList<>();
+        for (Integer i : dialogId) {
+          if (i != null) {
+            copyList.add(i);
+          } else {
+            copyList.add(null);
+          }
+        }
+        dialogMap.put(id, copyList);
+        dialogId.removeAll(dialogId);
+        /*
+         * costruire oggetto in questione
+         */
+        dialogList.add(new Dialog(id, text, optionStr.get(0), optionStr.get(1), optionStr.get(2), null, null, null));
+        optionStr.removeAll(optionStr);
+      }
 
-		}
-		file.close();
-		/*
-		 * dopo aver costruire l'oggetto è necessario linkare per ogni id contenuto in
-		 * itemRefContainers la rispettiva lista deglio oggetti contenuti
-		 */
-		Iterator<AdvObjectContainer> containerListIter = containerList.iterator();
-		while (containerListIter.hasNext()) {
-			AdvObjectContainer tempCont = containerListIter.next();
-			for (Integer i : itemRefContainers.get(tempCont.getId())) {
-				tempCont.getList().add(objectList.getById(i));
-			}
-			tempCont.setLock(lockList.getById(lockMap.get(tempCont.getId())));
-		}
-	}
+    } catch (EOFException e) {
 
-	public void lockReader(String filename) throws FileNotFoundException, IOException {
+    }
+    file.close();
+    /*
+     * linkare dialoghi
+     */
+    Iterator<Dialog> dialogListIter = dialogList.iterator();
+    while (dialogListIter.hasNext()) {
+      Dialog tempDialog = dialogListIter.next();
+      List<Integer> tempIdDialog = dialogMap.get(tempDialog.getId());
+      try {
+        tempDialog.setNext_1(dialogList.getById(tempIdDialog.get(0)));
+      } catch (NullPointerException e) {
+        tempDialog.setNext_1(null);
+      }
+      try {
+        tempDialog.setNext_2(dialogList.getById(tempIdDialog.get(1)));
+      } catch (NullPointerException e) {
+        tempDialog.setNext_2(null);
+      }
+      try {
+        tempDialog.setNext_3(dialogList.getById(tempIdDialog.get(2)));
+      } catch (NullPointerException e) {
+        tempDialog.setNext_3(null);
+      }
+    }
+  }
 
-		Map<Integer, Integer> lockMap = new HashMap<>();
-		Integer key = 0;
-		int id = 0;
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		String str;
-		String[] tokenized;
+  public void contReader(String filename) throws FileNotFoundException, IOException {
+    Map<Integer, List<Integer>> itemRefContainers;
+    itemRefContainers = new HashMap<>();
+    int id = 0;
+    String contName = "";
+    String description = "";
+    String onLook = "";
+    Integer lock = null;
+    Map<Integer, Integer> lockMap = new HashMap<>();
+    Set<String> alias = new HashSet<>();
+    boolean pickable = false;
+    // List<AdvObject> containedItems = null;
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    String str;
+    String[] tokenized;
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
 
-		try {
-			while ((str = buffer.readLine()) != null) {
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
 
-				while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("NAME")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            contName = tokenized[1];
+          }
+          if (tokenized[0].equals("DESCRIPTION")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            description = tokenized[1];
+          }
+          if (tokenized[0].equals("LOOK")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            onLook = tokenized[1];
+          }
+          if (tokenized[0].equals("ALIAS")) {
+            if (tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            }
+          }
+          if (tokenized[0].equals("PICKABLE")) {
+            if (tokenized[1].equals("t")) {
+              pickable = true;
+            }
+          }
+          if (tokenized[0].equals("LIST_ID")) {
+            String[] idTokens = tokenized[1].split("\\s");
+            itemRefContainers.put(id, Arrays.asList(idTokens).stream()
+              .map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
+          }
+          if (tokenized[0].equals("LOCK")) {
+            if (!tokenized[1].equals("null")) {
+              lock = Integer.parseInt(tokenized[1]);
+            } else {
+              lock = null;
+            }
+          }
+          // da testare
+          str = buffer.readLine();
+        }
+        lockMap.put(id, lock);
+        /*
+         * costruire l'oggetto in questione
+         */
+        containerList
+          .add(new AdvObjectContainer(null, null, id, contName, description, onLook, alias, pickable));
+      }
 
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
-					tokenized = str.split(":");
-					tokenized[1] = tokenized[1].trim();
+    } catch (EOFException e) {
 
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("ADV_OBJ")) {
-						if (!tokenized[1].equals("null")) {
-							key = Integer.parseInt(tokenized[1]);
-						} else {
-							key = null;
-						}
-					}
+    }
+    file.close();
+    /*
+     * dopo aver costruire l'oggetto è necessario linkare per ogni id contenuto in
+     * itemRefContainers la rispettiva lista deglio oggetti contenuti
+     */
+    Iterator<AdvObjectContainer> containerListIter = containerList.iterator();
+    while (containerListIter.hasNext()) {
+      AdvObjectContainer tempCont = containerListIter.next();
+      for (Integer i : itemRefContainers.get(tempCont.getId())) {
+        try {
+          tempCont.getList().add(objectList.getById(i));
+        }
+        catch(NullPointerException e) {
+          tempCont.getList().add(null);
+        }
+      }
+      try {
+        tempCont.setLock(lockList.getById(lockMap.get(tempCont.getId())));
+      }
+      catch(NullPointerException e) {
+        tempCont.setLock(null);
+      }
+    }
+  }
 
-					// da testare
-					str = buffer.readLine();
-				}
-				lockMap.put(id, key);
-				/*
-				 * costruire l'oggetto in questione
-				 */
-				lockList.add(new Lock(id, null));
-			}
+  public void lockReader(String filename) throws FileNotFoundException, IOException {
 
-		} catch (EOFException e) {
+    Map<Integer, Integer> lockMap = new HashMap<>();
+    Integer key = 0;
+    int id = 0;
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    String str;
+    String[] tokenized;
 
-		}
-		file.close();
+    try {
+      while ((str = buffer.readLine()) != null) {
 
-		/*
-		 * link keys
-		 */
-		Iterator<Lock> lockListIter = lockList.iterator();
-		while (lockListIter.hasNext()) {
-			Lock tempLock = lockListIter.next();
+        while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
 
-			tempLock.setKey(objectList.getById(lockMap.get(tempLock.getId())));
-		}
-	}
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
 
-	public void doorReader(String filename) throws FileNotFoundException, IOException {
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("ADV_OBJ")) {
+            if (!tokenized[1].equals("null")) {
+              key = Integer.parseInt(tokenized[1]);
+            } else {
+              key = null;
+            }
+          }
 
-		int id = 0;
-		String doorName = "";
-		String doorDesc = "";
-		String onLook = "";
-		Set<String> alias = new HashSet<>();
-		int lock = 0;
-		int room = 0;
-		Map<Integer, Integer> lockMap = new HashMap<>();
-		Map<Integer, Integer> roomMap = new HashMap<>();
-		FileReader file;
-		BufferedReader buffer;
-		file = new FileReader(filename);
-		buffer = new BufferedReader(file);
-		String str;
-		String[] tokenized;
+          // da testare
+          str = buffer.readLine();
+        }
+        lockMap.put(id, key);
+        /*
+         * costruire l'oggetto in questione
+         */
+        lockList.add(new Lock(id, null));
+      }
 
-		try {
-			while (true) {
-				str = buffer.readLine();
-				while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
+    } catch (EOFException e) {
 
-					if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
-						str = buffer.readLine();
-					}
-					tokenized = str.split(":");
+    }
+    file.close();
 
-					if (tokenized[0].equals("ID")) {
-						id = Integer.parseInt(tokenized[1]);
-					}
-					if (tokenized[0].equals("NAME")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						doorName = tokenized[1];
-					}
-					if (tokenized[0].equals("DESCRIPTION")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						doorDesc = tokenized[1];
-					}
-					if (tokenized[0].equals("LOOK")) {
-						tokenized[1] = tokenized[1].replace("\"", "");
-						onLook = tokenized[1];
-					}
-					if (tokenized[0].equals("ALIAS")) {
-						if (!tokenized[1].equals("null")) {
-							String[] aliasList = tokenized[1].split("\\s");
-							alias.addAll(Arrays.asList(aliasList));
-						} else {
-							alias = null;
-						}
-					}
-					if (tokenized[0].equals("LOCK")) {
-						if (!tokenized[1].equals("null")) {
-							lock = Integer.parseInt(tokenized[1]);
-						}
-					}
-					if (tokenized[0].equals("ROOM")) {
-						room = Integer.parseInt(tokenized[1]);
-					}
+    /*
+     * link keys
+     */
+    Iterator<Lock> lockListIter = lockList.iterator();
+    while (lockListIter.hasNext()) {
+      Lock tempLock = lockListIter.next();
+      try {
+      tempLock.setKey(objectList.getById(lockMap.get(tempLock.getId())));
+      } catch(NullPointerException e) {
+        tempLock.setKey(null);
+      }
+    }
+  }
 
-					// da testare
-					str = buffer.readLine();
-				}
-				lockMap.put(id, lock);
-				roomMap.put(id, room);
-				/*
-				 * costruire l'oggetto in questione
-				 */
-				doorList.add(new Door(null, null, id, doorName, doorDesc, onLook, alias, false));
-			}
+  public void doorReader(String filename) throws FileNotFoundException, IOException {
 
-		} catch (EOFException e) {
+    int id = 0;
+    String doorName = "";
+    String doorDesc = "";
+    String onLook = "";
+    Set<String> alias = new HashSet<>();
+    int lock = 0;
+    int room = 0;
+    Map<Integer, Integer> lockMap = new HashMap<>();
+    Map<Integer, Integer> roomMap = new HashMap<>();
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    String str;
+    String[] tokenized;
 
-		}
-		file.close();
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {// finchè non trovo la parentesi chiusa
 
-		/*
-		 * linking
-		 */
-		Iterator<Door> doorListIter = doorList.iterator();
-		while (doorListIter.hasNext()) {
-			Door tempDoor = doorListIter.next();
-			tempDoor.setLockedRoom(roomList.getById(roomMap.get(tempDoor.getId())));
-			tempDoor.setLock(lockList.getById(lockMap.get(tempDoor.getId())));
-		}
-	}
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim();
+
+          if (tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if (tokenized[0].equals("NAME")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            doorName = tokenized[1];
+          }
+          if (tokenized[0].equals("DESCRIPTION")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            doorDesc = tokenized[1];
+          }
+          if (tokenized[0].equals("LOOK")) {
+            tokenized[1] = tokenized[1].replace("\"", "");
+            onLook = tokenized[1];
+          }
+          if (tokenized[0].equals("ALIAS")) {
+            if (!tokenized[1].equals("null")) {
+              String[] aliasList = tokenized[1].split("\\s");
+              alias.addAll(Arrays.asList(aliasList));
+            } else {
+              alias = null;
+            }
+          }
+          if (tokenized[0].equals("LOCK")) {
+            if (!tokenized[1].equals("null")) {
+              lock = Integer.parseInt(tokenized[1]);
+            }
+          }
+          if (tokenized[0].equals("ROOM")) {
+            room = Integer.parseInt(tokenized[1]);
+          }
+
+          // da testare
+          str = buffer.readLine();
+        }
+        lockMap.put(id, lock);
+        roomMap.put(id, room);
+        /*
+         * costruire l'oggetto in questione
+         */
+        doorList.add(new Door(null, null, id, doorName, doorDesc, onLook, alias, false));
+      }
+
+    } catch (EOFException e) {
+
+    }
+    file.close();
+
+    /*
+     * linking
+     */
+    Iterator<Door> doorListIter = doorList.iterator();
+    while (doorListIter.hasNext()) {
+      Door tempDoor = doorListIter.next();
+      tempDoor.setLockedRoom(roomList.getById(roomMap.get(tempDoor.getId())));
+      tempDoor.setLock(lockList.getById(lockMap.get(tempDoor.getId())));
+    }
+  }
 
 }

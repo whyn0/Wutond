@@ -30,6 +30,7 @@ public class AdvObjectContainer extends AdvObject implements Serializable {
         super(id, name, description, look, alias, pickable);
         this.list = list;
         this.lock = lock;
+        this.list = new ArrayList<>();
     }
 
     /*

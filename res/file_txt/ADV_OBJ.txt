@@ -20,7 +20,7 @@ NAME: "Chiave arrugginita"
 DESCRIPTION: "Una chiave arrugginita"
 LOOK: "Una semplice chiave arrugginita, chissà cosa apre."
 ALIAS: 
-PICKABLE: 
+PICKABLE: t
 }
 {
 ID: 49

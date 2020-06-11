@@ -22,12 +22,18 @@ import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.parser.Production;
 import proj.map.progettoMap1920.adventure.parser.ProductionSide;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
+import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.type.Lock;
+import proj.map.progettoMap1920.adventure.type.Npc;
+import proj.map.progettoMap1920.adventure.type.Door;
 import proj.map.progettoMap1920.adventure.type.Article;
 import proj.map.progettoMap1920.adventure.type.ArticleType;
 import proj.map.progettoMap1920.adventure.type.Command;
 import proj.map.progettoMap1920.adventure.type.CommandType;
+import proj.map.progettoMap1920.adventure.type.Dialog;
 import proj.map.progettoMap1920.adventure.type.Preposition;
 import proj.map.progettoMap1920.adventure.type.PrepositionType;
+import proj.map.progettoMap1920.adventure.type.Room;
 
 /**
  *
@@ -160,13 +166,70 @@ public class AppMain {
         FileInit fi = new FileInit();
         try {
           fi.objReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ADV_OBJ.txt");
-         // fi.npcReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/NPC.txt");
+          fi.lockReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/LOCK.txt");
+          fi.contReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ADV_CONT.txt");
+          fi.doorReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/DOOR.txt");
+          fi.dialogReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/DIALOG.txt");
+          fi.npcReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/NPC.txt");
           fi.roomReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ROOM.txt");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-
+        //stampa oggetti
+        for(AdvObject i : fi.objectList) {
+          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
+        }
+        for(Lock i : fi.lockList) {
+          System.out.println(i.getId() );
+        }
+        for(AdvObjectContainer i : fi.containerList) {
+          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
+          if(i.getList().size() > 0) {
+            for(AdvObject j : i.getList()) {
+              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' + j.getLook());
+            }
+          }
+        }
+        for(Door i : fi.doorList) {
+          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
+          if(i.getLock() != null) {
+            
+            System.out.println(i.getLock().getId() +  + '\n' + i.getLock().getKey().getId() + '\n' + i.getLock().getKey().getName());
+          }
+        }
+        for(Dialog i : fi.dialogList) {
+          System.out.println(i.getId() + '\n' + i.getText() + '\n' + i.getOpt_1() + '\n' + i.getOpt_2() + '\n' + i.getOpt_3() + i.getNext_1() + i.getNext_2() + i.getNext_3());
+          
+        }
+        for(Npc i : fi.npcList) {
+          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
+          if(i.getNpc_inventory().size() > 0) {
+            System.out.print("Inventario : " );
+            for(AdvObject j : i.getNpc_inventory()) {
+              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' + j.getLook() );
+            }
+            
+          }
+          if(i.getDialog() != null) {
+            System.out.println(i.getDialog().getId() + '\n' + i.getDialog().getText() + '\n' + i.getDialog().getOpt_1() + '\n' + i.getDialog().getOpt_2() + '\n' + i.getDialog().getOpt_3() + i.getDialog().getNext_1() + i.getDialog().getNext_2() + i.getDialog().getNext_3());
+          }
+        }
+        for(Room i : fi.roomList) {
+          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
+          if(i.getObjects_list().size() > 0) {
+            for(AdvObject j : i.getObjects_list()) {
+              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' + j.getLook());
+            }
+          }
+          if(i.getNpc_list().size() > 0) {
+            for(Npc j : i.getNpc_list()) {
+              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' +
+                j.getLook() + '\n' );
+            }
+          }
+          System.out.println(i.getNorth().getId() + '\n' + i.getSouth().getId() + '\n' + i.getEast().getId() + '\n'  + i.getWest().getId());
+        }
     }
     
 }

@@ -21,7 +21,7 @@ public class AdvObject extends GameObject implements Serializable{
      * 
      */
     public AdvObject(int id, String name, String description, String look, Set<String> alias, boolean pickable) {    
-        super(id, look, look, look, alias);
+        super(id, name, description, look, alias);
         this.pickable = pickable;
     }
     /*
