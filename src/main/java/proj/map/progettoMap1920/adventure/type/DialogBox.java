@@ -4,34 +4,33 @@
  * and open the template in the editor.
  */
 package proj.map.progettoMap1920.adventure.type;
-import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.Image;
 
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
 
 /**
  *
  * @author whyno
  */
 public class DialogBox extends javax.swing.JFrame {
-
+	private static  Dialog d;
 	/**
 	 * Creates new form DialogBox
 	 */
-	public DialogBox() {
+	public DialogBox(Dialog dialog) {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
+		d = dialog;
 		initComponents();
 	}
 
@@ -44,7 +43,7 @@ public class DialogBox extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBackground(new java.awt.Color(0, 0, 0));
 
 		JScrollPane scrollPaneNpcDial = new JScrollPane();
@@ -56,37 +55,37 @@ public class DialogBox extends javax.swing.JFrame {
 		JScrollPane scrollPaneOpt3 = new JScrollPane();
 
 		JScrollPane scrollPaneOpt4 = new JScrollPane();
-		
+
 		JLabel lblNewLabel = new JLabel(new ImageIcon(DialogBox.class.getResource("/img/download.jpg")));
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(
-			layout.createParallelGroup(Alignment.TRAILING)
+				layout.createParallelGroup(Alignment.TRAILING)
 				.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
 				.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
 				.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
 				.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
 				.addGroup(Alignment.LEADING, layout.createSequentialGroup()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
-		);
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+				);
 		layout.setVerticalGroup(
-			layout.createParallelGroup(Alignment.LEADING)
+				layout.createParallelGroup(Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup()
-					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-					.addGap(31))
-		);
+						.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+						.addGap(31))
+				);
 
 		JButton btnOpt4 = new JButton("Opzione 4");
 		scrollPaneOpt4.setRowHeaderView(btnOpt4);
@@ -107,20 +106,108 @@ public class DialogBox extends javax.swing.JFrame {
 		scrollPaneOpt2.setViewportView(textAreaOpt2);
 
 		JButton btnOpt1 = new JButton("Opzione 1");
+
+
+
+
 		scrollPaneOpt1.setRowHeaderView(btnOpt1);
 
-		JTextArea textAreaOpt_1 = new JTextArea();
-		scrollPaneOpt1.setViewportView(textAreaOpt_1);
-
+		JTextArea textAreaOpt1 = new JTextArea();
+		scrollPaneOpt1.setViewportView(textAreaOpt1);
 		JTextArea npcText = new JTextArea();
 		npcText.setFont(new Font("Eras Light ITC", Font.BOLD, 13));
 		npcText.setBackground(Color.WHITE);
 		npcText.setEditable(false);
 		scrollPaneNpcDial.setViewportView(npcText);
 		getContentPane().setLayout(layout);
+		npcText.setText(d.getText());
+		textAreaOpt1.setText(d.getOpt_1());
+		textAreaOpt2.setText(d.getOpt_2());
+		textAreaOpt3.setText(d.getOpt_3());
+
+		btnOpt1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(d.getNext_1().getId()!= -1) {
+						
+						npcText.setText(d.getNext_1().getText());
+						textAreaOpt1.setText(d.getNext_1().getOpt_1());
+						textAreaOpt2.setText(d.getNext_1().getOpt_2());
+						textAreaOpt3.setText(d.getNext_1().getOpt_3());
+						
+						
+						try{
+							setDialog(d.getNext_1());
+						
+						}catch(NullPointerException n) {
+						setVisible(false);
+							dispose();
+						}
+
+					}else {
+						setVisible(false);
+						dispose();
+					}
+				} catch(NullPointerException n) {
+
+				}
+			}	
+		});
+		btnOpt2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(d.getNext_2().getId()!= -1) {
+						
+						npcText.setText(d.getNext_2().getText());
+						textAreaOpt1.setText(d.getNext_2().getOpt_1());
+						textAreaOpt2.setText(d.getNext_2().getOpt_2());
+						textAreaOpt3.setText(d.getNext_2().getOpt_3());
+					
+
+						try{
+							setDialog(d.getNext_2());
+						}catch(NullPointerException n) {
+							setVisible(false);
+							dispose();
+						}
+					}else {
+						setVisible(false);
+						dispose();
+					}
+				}catch(NullPointerException n) {
+
+				}	
+			}
+		});
+		btnOpt3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(d.getNext_3().getId()!= -1) {
+						
+						npcText.setText(d.getNext_3().getText());
+						textAreaOpt1.setText(d.getNext_3().getOpt_1());
+						textAreaOpt2.setText(d.getNext_3().getOpt_2());
+						textAreaOpt3.setText(d.getNext_3().getOpt_3());	
+					
+						try{
+							setDialog(d.getNext_3());
+						}catch(NullPointerException n) {
+							setVisible(false);
+							dispose();
+						}
+					}else {
+						setVisible(false);
+						dispose();
+					}
+				}catch(NullPointerException n) {
+
+				}
+			}
+		});
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
+
 
 	/**
 	 * @param args the command line arguments
@@ -152,8 +239,23 @@ public class DialogBox extends javax.swing.JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new DialogBox().setVisible(true);
+				new DialogBox(d).setVisible(true);
 			}
 		});
 	}
+	public void setDialog(Dialog other) {
+		d= other;
+	}
+	public void checkText(Dialog d, JScrollPane p) {
+		if(d.getOpt_1().equals("null")) {
+			p.setVisible(false);
+		}
+		if(d.getOpt_2().equals("null")) {
+			p.setVisible(false);
+		}
+		if(d.getOpt_3().equals("null")) {
+			p.setVisible(false);
+		}
+	}
+
 }

@@ -31,6 +31,7 @@ import proj.map.progettoMap1920.adventure.type.ArticleType;
 import proj.map.progettoMap1920.adventure.type.Command;
 import proj.map.progettoMap1920.adventure.type.CommandType;
 import proj.map.progettoMap1920.adventure.type.Dialog;
+import proj.map.progettoMap1920.adventure.type.DialogBox;
 import proj.map.progettoMap1920.adventure.type.Preposition;
 import proj.map.progettoMap1920.adventure.type.PrepositionType;
 import proj.map.progettoMap1920.adventure.type.Room;
@@ -165,18 +166,21 @@ public class AppMain {
         
         FileInit fi = new FileInit();
         try {
-          fi.objReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ADV_OBJ.txt");
-          fi.lockReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/LOCK.txt");
-          fi.contReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ADV_CONT.txt");
-          fi.doorReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/DOOR.txt");
-          fi.dialogReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/DIALOG.txt");
-          fi.npcReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/NPC.txt");
-          fi.roomReader("/home/whyno/NetBeansProjects/progettoMap1920/res/file_txt/ROOM.txt");
+          fi.objReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/ADV_OBJ.txt");
+          fi.lockReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/LOCK.txt");
+          fi.contReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/ADV_CONT.txt");
+          fi.doorReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/DOOR.txt");
+          fi.dialogReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/DIALOG.txt");
+          fi.npcReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/NPC.txt");
+          fi.roomReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/ROOM.txt");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-        //stampa oggetti
+      
+        DialogBox d= new DialogBox(  fi.npcList.getList().get(3).getDialog());
+        d.main(null);
+        /*/stampa oggetti
         for(AdvObject i : fi.objectList) {
           System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
         }
@@ -229,7 +233,7 @@ public class AppMain {
             }
           }
           System.out.println(i.getNorth().getId() + '\n' + i.getSouth().getId() + '\n' + i.getEast().getId() + '\n'  + i.getWest().getId());
-        }
+        }*/
     }
     
 }
