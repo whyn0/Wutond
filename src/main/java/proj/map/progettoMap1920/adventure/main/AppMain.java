@@ -166,20 +166,20 @@ public class AppMain {
         
         FileInit fi = new FileInit();
         try {
-          fi.objReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/ADV_OBJ.txt");
-          fi.lockReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/LOCK.txt");
-          fi.contReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/ADV_CONT.txt");
-          fi.doorReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/DOOR.txt");
-          fi.dialogReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/DIALOG.txt");
-          fi.npcReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/NPC.txt");
-          fi.roomReader("C:/Users/Emanuele/Desktop/map1920-GGM/res/file_txt/ROOM.txt");
+          fi.objReader("res/file_txt/ADV_OBJ.txt");
+          fi.lockReader("res/file_txt/LOCK.txt");
+          fi.contReader("res/file_txt/ADV_CONT.txt");
+          fi.doorReader("res/file_txt/DOOR.txt");
+          fi.dialogReader("res/file_txt/DIALOG.txt");
+          fi.npcReader("res/file_txt/NPC.txt");
+          fi.roomReader("res/file_txt/ROOM.txt");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
       
-        DialogBox d= new DialogBox(  fi.npcList.getList().get(3).getDialog());
-        d.main(null);
+        //DialogBox d= new DialogBox(  fi.npcList.getList().get(3).getDialog());
+        //d.main(null);
         /*/stampa oggetti
         for(AdvObject i : fi.objectList) {
           System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
