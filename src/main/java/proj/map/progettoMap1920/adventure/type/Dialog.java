@@ -5,7 +5,12 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
+
+import javax.swing.JButton;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -18,7 +23,6 @@ public class Dialog extends GameElement implements Serializable{
 	private String opt_1;
 	private String opt_2;
 	private String opt_3;
-	private final String end=">";
 	private Dialog next_1;
 	private Dialog next_2;
 	private Dialog next_3;
@@ -52,10 +56,9 @@ public class Dialog extends GameElement implements Serializable{
     this.next_1 = next_1;
     this.next_2 = next_2;
     this.next_3 = next_3;
+
   }
-
-
-  /*
+/*
 	 * 
 	 * GETTERS
 	 * 
@@ -137,6 +140,5 @@ public class Dialog extends GameElement implements Serializable{
 	public void setNext_3(Dialog next_3) {
 		this.next_3 = next_3;
 	}
-
 
 }
