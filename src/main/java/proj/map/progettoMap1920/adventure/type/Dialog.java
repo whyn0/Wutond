@@ -5,12 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
-
-import javax.swing.JButton;
-import javax.swing.JTextArea;
 
 /**
  *
