@@ -54,44 +54,33 @@ public class DialogBox extends javax.swing.JFrame {
 
 		JScrollPane scrollPaneOpt3 = new JScrollPane();
 
-		JScrollPane scrollPaneOpt4 = new JScrollPane();
-
 		JLabel lblNewLabel = new JLabel(new ImageIcon(DialogBox.class.getResource("/img/download.jpg")));
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		layout.setHorizontalGroup(
-				layout.createParallelGroup(Alignment.TRAILING)
-				.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
-				.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
-				.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
-				.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
-				.addGroup(Alignment.LEADING, layout.createSequentialGroup()
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
-				);
-		layout.setVerticalGroup(
-				layout.createParallelGroup(Alignment.LEADING)
+			layout.createParallelGroup(Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPaneOpt4, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-						.addGap(31))
-				);
-
-		JButton btnOpt4 = new JButton("Opzione 4");
-		scrollPaneOpt4.setRowHeaderView(btnOpt4);
-
-		JTextArea textAreaOpt4 = new JTextArea();
-		scrollPaneOpt4.setViewportView(textAreaOpt4);
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPaneNpcDial, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+				.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+				.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+				.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+		);
+		layout.setVerticalGroup(
+			layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(layout.createSequentialGroup()
+					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPaneNpcDial, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPaneOpt1, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPaneOpt2, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+					.addGap(9)
+					.addComponent(scrollPaneOpt3, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 
 		JButton btnOpt3 = new JButton("Opzione 3");
 		scrollPaneOpt3.setRowHeaderView(btnOpt3);
@@ -124,6 +113,8 @@ public class DialogBox extends javax.swing.JFrame {
 		textAreaOpt1.setText(d.getOpt_1());
 		textAreaOpt2.setText(d.getOpt_2());
 		textAreaOpt3.setText(d.getOpt_3());
+		
+
 
 		btnOpt1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,12 +126,12 @@ public class DialogBox extends javax.swing.JFrame {
 						textAreaOpt2.setText(d.getNext_1().getOpt_2());
 						textAreaOpt3.setText(d.getNext_1().getOpt_3());
 						
-						
+
 						try{
 							setDialog(d.getNext_1());
-						
+
 						}catch(NullPointerException n) {
-						setVisible(false);
+							setVisible(false);
 							dispose();
 						}
 
@@ -162,7 +153,7 @@ public class DialogBox extends javax.swing.JFrame {
 						textAreaOpt1.setText(d.getNext_2().getOpt_1());
 						textAreaOpt2.setText(d.getNext_2().getOpt_2());
 						textAreaOpt3.setText(d.getNext_2().getOpt_3());
-					
+						
 
 						try{
 							setDialog(d.getNext_2());
@@ -188,9 +179,10 @@ public class DialogBox extends javax.swing.JFrame {
 						textAreaOpt1.setText(d.getNext_3().getOpt_1());
 						textAreaOpt2.setText(d.getNext_3().getOpt_2());
 						textAreaOpt3.setText(d.getNext_3().getOpt_3());	
-					
+						
 						try{
 							setDialog(d.getNext_3());
+							
 						}catch(NullPointerException n) {
 							setVisible(false);
 							dispose();
@@ -247,13 +239,13 @@ public class DialogBox extends javax.swing.JFrame {
 		d= other;
 	}
 	public void checkText(Dialog d, JScrollPane p) {
-		if(d.getOpt_1().equals("null")) {
+		if(d.getOpt_1() == null) {
 			p.setVisible(false);
 		}
-		if(d.getOpt_2().equals("null")) {
+		if(d.getOpt_2() == null) {
 			p.setVisible(false);
 		}
-		if(d.getOpt_3().equals("null")) {
+		if(d.getOpt_3() == null) {
 			p.setVisible(false);
 		}
 	}
