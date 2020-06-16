@@ -178,7 +178,7 @@ public class AppMain {
           e.printStackTrace();
         }
       
-        DialogBox d= new DialogBox(  fi.npcList.getList().get(2).getDialog());
+        DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
         d.main(null);
         /*/stampa oggetti
         for(AdvObject i : fi.objectList) {

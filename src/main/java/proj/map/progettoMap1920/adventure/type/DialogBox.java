@@ -127,9 +127,10 @@ public class DialogBox extends javax.swing.JFrame {
 						textAreaOpt3.setText(d.getNext_1().getOpt_3());
 						
 
+
 						try{
 							setDialog(d.getNext_1());
-
+							checkText(d,scrollPaneOpt1,scrollPaneOpt2,scrollPaneOpt3);
 						}catch(NullPointerException n) {
 							setVisible(false);
 							dispose();
@@ -157,6 +158,7 @@ public class DialogBox extends javax.swing.JFrame {
 
 						try{
 							setDialog(d.getNext_2());
+							checkText(d,scrollPaneOpt1,scrollPaneOpt2,scrollPaneOpt3);
 						}catch(NullPointerException n) {
 							setVisible(false);
 							dispose();
@@ -182,6 +184,7 @@ public class DialogBox extends javax.swing.JFrame {
 						
 						try{
 							setDialog(d.getNext_3());
+							checkText(d,scrollPaneOpt1,scrollPaneOpt2,scrollPaneOpt3);
 							
 						}catch(NullPointerException n) {
 							setVisible(false);
@@ -238,15 +241,15 @@ public class DialogBox extends javax.swing.JFrame {
 	public void setDialog(Dialog other) {
 		d= other;
 	}
-	public void checkText(Dialog d, JScrollPane p) {
+	public void checkText(Dialog d, JScrollPane p1, JScrollPane p2, JScrollPane p3) {
 		if(d.getOpt_1() == null) {
-			p.setVisible(false);
+			p1.setVisible(false);
 		}
 		if(d.getOpt_2() == null) {
-			p.setVisible(false);
+			p2.setVisible(false);
 		}
 		if(d.getOpt_3() == null) {
-			p.setVisible(false);
+			p3.setVisible(false);
 		}
 	}
 
