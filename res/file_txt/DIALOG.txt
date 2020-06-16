@@ -270,7 +270,7 @@ NEXT_3: -1
 }
 {
 ID: 115
-TEXT: "Non giro molto da quelle parti, preferisco le campagne: non so nulla... però ho qualche storia da raccontarti."
+TEXT: "Non giro molto da quelle parti, preferisco le campagne, non so nulla... però ho qualche storia da raccontarti."
 OPT_1: "*Gli chiedi di raccontarti una storia*"
 OPT_2: "*Gli dici che non hai tempo per le storie e vai via*"
 OPT_3: null
