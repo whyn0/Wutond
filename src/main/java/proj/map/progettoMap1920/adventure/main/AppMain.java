@@ -6,6 +6,7 @@
 package proj.map.progettoMap1920.adventure.main;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,28 +14,8 @@ import java.util.List;
 import java.util.Set;
 
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
-import proj.map.progettoMap1920.adventure.parser.Alphabet;
-import proj.map.progettoMap1920.adventure.parser.CFGrammar;
-import proj.map.progettoMap1920.adventure.parser.Cky;
-import proj.map.progettoMap1920.adventure.parser.ItParser;
-import proj.map.progettoMap1920.adventure.parser.Parser;
-import proj.map.progettoMap1920.adventure.parser.ParserOutput;
-import proj.map.progettoMap1920.adventure.parser.Production;
-import proj.map.progettoMap1920.adventure.parser.ProductionSide;
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.Lock;
-import proj.map.progettoMap1920.adventure.type.Npc;
-import proj.map.progettoMap1920.adventure.type.Door;
-import proj.map.progettoMap1920.adventure.type.Article;
-import proj.map.progettoMap1920.adventure.type.ArticleType;
-import proj.map.progettoMap1920.adventure.type.Command;
-import proj.map.progettoMap1920.adventure.type.CommandType;
-import proj.map.progettoMap1920.adventure.type.Dialog;
-import proj.map.progettoMap1920.adventure.type.DialogBox;
-import proj.map.progettoMap1920.adventure.type.Preposition;
-import proj.map.progettoMap1920.adventure.type.PrepositionType;
-import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.parser.*;
+import proj.map.progettoMap1920.adventure.type.*;
 
 /**
  *
@@ -235,5 +216,69 @@ public class AppMain {
           System.out.println(i.getNorth().getId() + '\n' + i.getSouth().getId() + '\n' + i.getEast().getId() + '\n'  + i.getWest().getId());
         }*/
     }
+    public void nextMove(ParserOutput p, PrintStream out) {
+    	if (p.getCommand() == null) {
+    		System.out.println("non ho capito cosa vuoi fare. Prova un altro comando.");
+    	} else {
+    		//movimento
+    		boolean noroom = false;
+            boolean move = false;
+            if (p.getCommand().getType() == CommandType.NORTH) {
+                if (getCurrentRoom().getNorth() != null) {
+                    setCurrentRoom(getCurrentRoom().getNorth());
+                    move = true;
+                } else {
+                    noroom = true;
+                }
+            } else if (p.getCommand().getType() == CommandType.SOUTH) {
+                if (getCurrentRoom().getSouth() != null) {
+                    setCurrentRoom(getCurrentRoom().getSouth());
+                    move = true;
+                } else {
+                    noroom = true;
+                }
+            } else if (p.getCommand().getType() == CommandType.EAST) {
+                if (getCurrentRoom().getEast() != null) {
+                    setCurrentRoom(getCurrentRoom().getEast());
+                    move = true;
+                } else {
+                    noroom = true;
+                }
+            } else if (p.getCommand().getType() == CommandType.WEST) {
+                if (getCurrentRoom().getWest() != null) {
+                    setCurrentRoom(getCurrentRoom().getWest());
+                    move = true;
+                } else {
+                    noroom = true;
+                }
+            }else if (p.getCommand().getType() == CommandType.INVENTORY) {
+                out.println("Nel tuo inventario ci sono:");
+                
+                for (AdvObject o : ) {
+                    out.println(o.getName() + ": " + o.getDescription());
+                }
+            }else if (p.getCommand().getType() == CommandType.LOOK_AT) {
+                if (getCurrentRoom().getLook() != null) {
+                    out.println(getCurrentRoom().getLook());
+                } else {
+                    out.println("Non c'è niente di interessante qui.");
+                }
+            } else if (p.getCommand().getType() == CommandType.PICK_UP) {
+                if (p.getObject() != null) {
+                    if (p.getObject().isPickupable()) {
+                        getInventory().add(p.getObject());
+                        getCurrentRoom().getObjects().remove(p.getObject());
+                        out.println("Hai raccolto: " + p.getObject().getDescription());
+                    } else {
+                        out.println("Non puoi raccogliere questo oggetto.");
+                    }
+                } else {
+                    out.println("Non c'è niente da raccogliere qui.");
+                }
+            }
+    		
+    	
+    }
     
+}
 }
