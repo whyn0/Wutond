@@ -14,8 +14,10 @@ import java.util.List;
 import java.util.Set;
 
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
+import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
 import proj.map.progettoMap1920.adventure.parser.*;
 import proj.map.progettoMap1920.adventure.type.*;
+
 
 /**
  *
@@ -31,6 +33,7 @@ public class AppMain {
         
         
         */
+        /*
         Production s1 = new Production(new ProductionSide(Alphabet.START),new ProductionSide(Alphabet.DIRECTION));
         Production s2 = new Production(new ProductionSide(Alphabet.START),new ProductionSide(Alphabet.VERB));
         Production s3 = new Production(new ProductionSide(Alphabet.START),new ProductionSide(Alphabet.A,Alphabet.D));
@@ -115,6 +118,13 @@ public class AppMain {
         
         
         */
+        GrammarInit g = new GrammarInit();
+        try {
+          g.grammarReader("res/file_txt/GRAMMAR.txt");
+        }catch(IOException e) {
+          System.out.print("error");
+        }
+
         Set<String> the_alias = new HashSet<>();
         String[] list_alias = {"lo","la"};
         the_alias.addAll(Arrays.asList(list_alias));
@@ -132,8 +142,8 @@ public class AppMain {
         inventory_list.add(sasso);
         Parser parser = new ItParser();
         List<Alphabet> po = new ArrayList<>();
-        po = parser.parse("parla",inventory_list,null,null,null,command_list,article_list,prep_list);
-        Cky c = new Cky(grammar);
+      //  po = parser.parse("parla",inventory_list,null,null,null,command_list,article_list,prep_list);
+    //    Cky c = new Cky(grammar);
         Alphabet[] a_t = {Alphabet.VERB,Alphabet.ALL,Alphabet.EXCEPT,Alphabet.OBJECT};
         List<Alphabet> temp_test = new ArrayList<>();
         temp_test.add(Alphabet.VERB);
@@ -143,7 +153,7 @@ public class AppMain {
         temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
-        System.out.print(c.parse(temp_test));
+      //  System.out.print(c.parse(temp_test));
         
         FileInit fi = new FileInit();
         try {
@@ -159,63 +169,12 @@ public class AppMain {
           e.printStackTrace();
         }
       
-        DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
-        d.main(null);
-        /*/stampa oggetti
-        for(AdvObject i : fi.objectList) {
-          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
-        }
-        for(Lock i : fi.lockList) {
-          System.out.println(i.getId() );
-        }
-        for(AdvObjectContainer i : fi.containerList) {
-          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
-          if(i.getList().size() > 0) {
-            for(AdvObject j : i.getList()) {
-              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' + j.getLook());
-            }
-          }
-        }
-        for(Door i : fi.doorList) {
-          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
-          if(i.getLock() != null) {
-            
-            System.out.println(i.getLock().getId() +  + '\n' + i.getLock().getKey().getId() + '\n' + i.getLock().getKey().getName());
-          }
-        }
-        for(Dialog i : fi.dialogList) {
-          System.out.println(i.getId() + '\n' + i.getText() + '\n' + i.getOpt_1() + '\n' + i.getOpt_2() + '\n' + i.getOpt_3() + i.getNext_1() + i.getNext_2() + i.getNext_3());
-          
-        }
-        for(Npc i : fi.npcList) {
-          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
-          if(i.getNpc_inventory().size() > 0) {
-            System.out.print("Inventario : " );
-            for(AdvObject j : i.getNpc_inventory()) {
-              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' + j.getLook() );
-            }
-            
-          }
-          if(i.getDialog() != null) {
-            System.out.println(i.getDialog().getId() + '\n' + i.getDialog().getText() + '\n' + i.getDialog().getOpt_1() + '\n' + i.getDialog().getOpt_2() + '\n' + i.getDialog().getOpt_3() + i.getDialog().getNext_1() + i.getDialog().getNext_2() + i.getDialog().getNext_3());
-          }
-        }
-        for(Room i : fi.roomList) {
-          System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
-          if(i.getObjects_list().size() > 0) {
-            for(AdvObject j : i.getObjects_list()) {
-              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' + j.getLook());
-            }
-          }
-          if(i.getNpc_list().size() > 0) {
-            for(Npc j : i.getNpc_list()) {
-              System.out.println(j.getId() + '\n' + j.getName() + '\n' + j.getDescription() + '\n' +
-                j.getLook() + '\n' );
-            }
-          }
-          System.out.println(i.getNorth().getId() + '\n' + i.getSouth().getId() + '\n' + i.getEast().getId() + '\n'  + i.getWest().getId());
-        }*/
+        //DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
+        //d.main(null);
+        //CNF temp = new CNF();
+       
     }
+  /*
     public void nextMove(ParserOutput p, PrintStream out) {
     	if (p.getCommand() == null) {
     		System.out.println("non ho capito cosa vuoi fare. Prova un altro comando.");
@@ -280,5 +239,5 @@ public class AppMain {
     	
     }
     
-}
+}*/
 }

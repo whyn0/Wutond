@@ -1,0 +1,87 @@
+=====TERMINALS=====
+walk_to
+end
+save
+load
+curse
+pick_up
+open
+look_at
+talk_to
+use
+give
+object
+npc
+inventory
+all
+north
+south
+west 
+east
+objcontainer
+door
+except
+=====NTERMINALS=====
+START
+H0
+DIRECTION
+H1
+ALL
+H2
+H3
+OWHAT
+H4
+LWHAT
+H5
+H6
+H7
+H8
+H9
+OBJLIST
+H10
+H11
+H12
+=====CNF=====
+START -> H0 DIRECTION
+START -> end
+START -> save
+START -> load
+START -> curse
+START -> H1 ALL
+START -> H1 H2
+START -> H3 OWHAT
+START -> H4 LWHAT
+START -> H5 H6
+START -> H7 H2
+START -> H8 H6
+START -> inventory
+START -> look_at
+START -> north
+START -> south
+START -> west
+START -> east
+DIRECTION -> north
+DIRECTION -> south
+DIRECTION -> west
+DIRECTION -> east
+ALL -> all
+ALL -> H9 OBJLIST
+OBJLIST -> obj
+OBJLIST -> H2 OBJLIST
+OWHAT -> objcontainer
+OWHAT -> door
+LWHAT -> obj
+LWHAT -> npc
+H0 -> walk_to
+H1 -> pick_up
+H2 -> obj
+H3 -> open
+H4 -> look_at
+H5 -> talk_to
+H6 -> npc
+H7 -> use
+H8 -> H10 H2
+H9 -> H11 H12
+H10 -> give
+H11 -> all
+H12 -> except
