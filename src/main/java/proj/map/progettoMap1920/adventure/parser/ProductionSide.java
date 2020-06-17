@@ -14,12 +14,12 @@ import java.util.List;
  * @author whyno
  */
 public class ProductionSide {
-    private final List<Alphabet> list = new ArrayList<>();
+    private final List<String> list = new ArrayList<>();
   
-    public ProductionSide(Alphabet... symbol){
+    public ProductionSide(String... symbol){
         this.list.addAll(Arrays.asList(symbol));
     }
-    public List<Alphabet> get(){
+    public List<String> get(){
         return new ArrayList<>(this.list);
     }
 }

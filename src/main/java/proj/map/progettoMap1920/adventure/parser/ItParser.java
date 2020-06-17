@@ -85,8 +85,8 @@ public class ItParser implements Parser{
     }
 
     @Override
-    public List<Alphabet> parse(String command, List<AdvObject> inventory, List<AdvObject> room_items, List<AdvObject> cont_items, List<Npc> npc,List<Command> cmd_list,List<Article> articles,List<Preposition> prepositions) {
-        List<Alphabet> tokenlist_type = new ArrayList<>();
+    public List<String> parse(String command, List<AdvObject> inventory, List<AdvObject> room_items, List<AdvObject> cont_items, List<Npc> npc,List<Command> cmd_list,List<Article> articles,List<Preposition> prepositions) {
+        List<String> tokenlist_type = new ArrayList<>();
         List<Integer> index_list = new ArrayList<>();
         List<AdvObject> all_items = new ArrayList<>();
         all_items.addAll(inventory);
@@ -105,23 +105,23 @@ public class ItParser implements Parser{
                         
                         if((index = checkForArticle(token_list[i],articles))>=0){
                             index_list.add(index);
-                            tokenlist_type.add(Alphabet.ARTICLE);
+                            tokenlist_type.add("article");
                         }else if((index = checkForPrep(token_list[i],prepositions))>=0){
                             index_list.add(index);
-                            tokenlist_type.add(Alphabet.PREPOSITION);
+                            tokenlist_type.add("preposition");
                         }else if((index = checkForItem(token_list[i],all_items))>=0){
                             index_list.add(index);
-                            tokenlist_type.add(Alphabet.OBJECT);
+                            tokenlist_type.add("object");
                         }else if((index = checkForCommand(token_list[i],cmd_list))>=0){
                             index_list.add(index);
                            // tokenlist_type.add(Terminal.NPC);
-                           tokenlist_type.add(Alphabet.VERB);
+                           tokenlist_type.add("verb");
                         }
                     }
           //      }
            // }
      //   }
-        for(Alphabet i : tokenlist_type){
+        for(String i : tokenlist_type){
             System.out.print(i);
         }
         return tokenlist_type;

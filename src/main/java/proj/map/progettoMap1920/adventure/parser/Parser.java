@@ -22,5 +22,5 @@ public interface Parser {
     int checkForNpc(String token,List<Npc> list);
     int checkForCommand(String token,List<Command> list);
     int checkForItem(String token,List<AdvObject> list);
-    public List<Alphabet> parse(String command,List<AdvObject> inventory,List<AdvObject> room_items,List<AdvObject> cont_items,List<Npc> npc,List<Command> cmd_list,List<Article> articles,List<Preposition> prepositions);
+    public List<String> parse(String command,List<AdvObject> inventory,List<AdvObject> room_items,List<AdvObject> cont_items,List<Npc> npc,List<Command> cmd_list,List<Article> articles,List<Preposition> prepositions);
 }

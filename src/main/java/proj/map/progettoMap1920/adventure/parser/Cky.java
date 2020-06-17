@@ -24,7 +24,7 @@ public class Cky {
         this.grammar = grammar;
     }
 
-    public boolean parse(List<Alphabet> string) {
+    public boolean parse(List<String> string) {
         int wordLength = string.size();
         ParsePossibilities[][] matrix = new ParsePossibilities[wordLength][wordLength];
 
@@ -66,8 +66,8 @@ public class Cky {
 
                         for (ParseTreeNode second : secondPossibilities.getPossibilities()) {
 
-                            Alphabet firstNonTerminal = first.getValue().getLeftSide().get().get(0);
-                            Alphabet secondNonTerminal = second.getValue().getLeftSide().get().get(0);
+                            String firstNonTerminal = first.getValue().getLeftSide().get().get(0);
+                            String secondNonTerminal = second.getValue().getLeftSide().get().get(0);
 
                             List<Production> newPossibilities = findProductions(firstNonTerminal, secondNonTerminal);
                             newPossibilities.forEach(production -> possibilities.addPossibility(
@@ -221,10 +221,10 @@ public class Cky {
         int c;
     }
 
-    private int findIndex(Alphabet a) {
+    private int findIndex(String a) {
         int index = 0;
 
-        for (Alphabet a1 : this.grammar.getNonTerminals()) {
+        for (String a1 : this.grammar.getNonTerminals()) {
             if (a1.equals(a)) {
                 index = this.grammar.getNonTerminals().indexOf(a1);
             }
@@ -233,7 +233,7 @@ public class Cky {
         return index;
     }
 
-    private List<Production> findProductions(Alphabet first, Alphabet second) {
+    private List<Production> findProductions(String first, String second) {
 
         return this.grammar.getProductions()
                 .stream()
@@ -242,7 +242,7 @@ public class Cky {
 
     }
 
-    private List<Production> findProductions(Alphabet first) {
+    private List<Production> findProductions(String first) {
 
         return this.grammar.getProductions()
                 .stream()

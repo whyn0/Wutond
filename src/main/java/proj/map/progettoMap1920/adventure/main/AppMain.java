@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Set;
 
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
+import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
+import proj.map.progettoMap1920.adventure.grammars.CNF;
 import proj.map.progettoMap1920.adventure.parser.Alphabet;
 import proj.map.progettoMap1920.adventure.parser.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.Cky;
@@ -50,6 +52,7 @@ public class AppMain {
         
         
         */
+        /*
         Production s1 = new Production(new ProductionSide(Alphabet.START),new ProductionSide(Alphabet.DIRECTION));
         Production s2 = new Production(new ProductionSide(Alphabet.START),new ProductionSide(Alphabet.VERB));
         Production s3 = new Production(new ProductionSide(Alphabet.START),new ProductionSide(Alphabet.A,Alphabet.D));
@@ -134,6 +137,13 @@ public class AppMain {
         
         
         */
+        GrammarInit g = new GrammarInit();
+        try {
+          g.grammarReader("res/file_txt/GRAMMAR.txt");
+        }catch(IOException e) {
+          System.out.print("diocan");
+        }
+
         Set<String> the_alias = new HashSet<>();
         String[] list_alias = {"lo","la"};
         the_alias.addAll(Arrays.asList(list_alias));
@@ -151,8 +161,8 @@ public class AppMain {
         inventory_list.add(sasso);
         Parser parser = new ItParser();
         List<Alphabet> po = new ArrayList<>();
-        po = parser.parse("parla",inventory_list,null,null,null,command_list,article_list,prep_list);
-        Cky c = new Cky(grammar);
+      //  po = parser.parse("parla",inventory_list,null,null,null,command_list,article_list,prep_list);
+    //    Cky c = new Cky(grammar);
         Alphabet[] a_t = {Alphabet.VERB,Alphabet.ALL,Alphabet.EXCEPT,Alphabet.OBJECT};
         List<Alphabet> temp_test = new ArrayList<>();
         temp_test.add(Alphabet.VERB);
@@ -162,7 +172,7 @@ public class AppMain {
         temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
-        System.out.print(c.parse(temp_test));
+      //  System.out.print(c.parse(temp_test));
         
         FileInit fi = new FileInit();
         try {
@@ -178,8 +188,9 @@ public class AppMain {
           e.printStackTrace();
         }
       
-        DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
-        d.main(null);
+        //DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
+        //d.main(null);
+        CNF temp = new CNF();
         /*/stampa oggetti
         for(AdvObject i : fi.objectList) {
           System.out.println(i.getId() + '\n' + i.getName() + '\n' + i.getDescription() + '\n' + i.getLook());
