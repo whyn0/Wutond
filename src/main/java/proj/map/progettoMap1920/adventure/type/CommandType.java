@@ -10,5 +10,31 @@ package proj.map.progettoMap1920.adventure.type;
  * @author whyno
  */
 public enum CommandType {
-        PLAY,END,NORTH,SOUTH,WEST,EAST,OPEN,CLOSE,TALK_TO,PICK_UP,USE,GIVE,LOOK_AT,KILL,SAVE,LOAD,HELP,CURSE,THROW,INVENTORY
+        WALK_TO("walk_to"),
+        END("end"),
+        NORTH("north"),
+        SOUTH("south"),
+        WEST("west"),
+        EAST("east"),
+        OPEN("open"),
+        TALK_TO("talk_to"),
+        PICK_UP("pick_up"),
+        USE("use"),
+        GIVE("give"),
+        LOOK_AT("look_at"),
+        KILL("kill"),
+        SAVE("save"),
+        LOAD("load"),
+        HELP("help"),
+        CURSE("curse"),
+        INVENTORY("inventory");
+  
+        private String string;
+        private CommandType(String name) {
+          string = name;
+        }
+        @Override
+        public String toString() {
+          return string;
+        }
 }

@@ -11,6 +11,7 @@ import proj.map.progettoMap1920.adventure.type.Article;
 import proj.map.progettoMap1920.adventure.type.Command;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Preposition;
+import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
 
 /**
  *
@@ -22,5 +23,14 @@ public interface Parser {
     int checkForNpc(String token,List<Npc> list);
     int checkForCommand(String token,List<Command> list);
     int checkForItem(String token,List<AdvObject> list);
-    public List<String> parse(String command,List<AdvObject> inventory,List<AdvObject> room_items,List<AdvObject> cont_items,List<Npc> npc,List<Command> cmd_list,List<Article> articles,List<Preposition> prepositions);
+    int checkForParticles(String token, List<SyntaxParticles> list);
+    public List<String> parse(String command,
+      List<AdvObject> inventory,
+      List<AdvObject> room_items,
+      List<AdvObject> cont_items,
+      List<Npc> npc,
+      List<Command> cmd_list,
+      List<Article> articles,
+      List<Preposition> prepositions,
+      List<SyntaxParticles> particles);
 }

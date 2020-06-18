@@ -10,10 +10,20 @@ package proj.map.progettoMap1920.adventure.type;
  * @author whyno
  */
 public enum PrepositionType {
-    WITH,
-    THROUGH,
-    TOWARDS,
-    TO,
-    ON,
-    IN,
+    WITH("with"),
+    THROUGH("through"),
+    TOWARDS("towards"),
+    TO("to"),
+    ON("on"),
+    IN("in");
+  
+  private String name;
+  
+  private PrepositionType(String name) {
+    this.name = name;
+  }
+  @Override
+  public String toString() {
+    return name;
+  }
 }

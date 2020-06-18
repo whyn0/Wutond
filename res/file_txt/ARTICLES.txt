@@ -1,0 +1,5 @@
+{
+TYPE : the
+NAME : il
+ALIAS : lo la gli le i un una 
+}

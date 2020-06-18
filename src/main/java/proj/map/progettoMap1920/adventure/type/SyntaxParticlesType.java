@@ -10,14 +10,19 @@ package proj.map.progettoMap1920.adventure.type;
  *
  * @author whyno
  */
-public class SyntaxParticlesType {
-    public enum Articles{
-        THE,A,AN
-    }
-    public enum Particles{
-        WITH,THROUGH,TOWARDS,TO,ON,IN
-    }
-
+public enum SyntaxParticlesType {
+   ALL("all"),
+   EXCEPT("except");
+   
+   private String name;
+   
+   private SyntaxParticlesType(String name) {
+     this.name = name;
+   }
+   @Override
+   public String toString() {
+     return name;
+   }
 }
 /*
 public enum Types{

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
+import proj.map.progettoMap1920.adventure.fileInitializer.GameUtilInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
 import proj.map.progettoMap1920.adventure.parser.*;
 import proj.map.progettoMap1920.adventure.type.*;
@@ -129,18 +130,14 @@ public class AppMain {
         String[] list_alias = {"lo","la"};
         the_alias.addAll(Arrays.asList(list_alias));
         List<Command> command_list = new ArrayList<>();
+        Command pick_up = new Command(CommandType.PICK_UP,"prendi");
+        command_list.add(pick_up);
         List<Article> article_list = new ArrayList<>();
         List<Preposition> prep_list = new ArrayList<>();
         List<AdvObject> inventory_list = new ArrayList<>();
-        Command talk_to = new Command(CommandType.TALK_TO,"parla",null);
-        Article the = new Article(ArticleType.THE,"il",the_alias);
-        Preposition to = new Preposition(PrepositionType.TO,"con",null);
-        AdvObject sasso = new AdvObject(1,"sasso","un sasso di merda","mario giordano",null,true);
-        command_list.add(talk_to);
-        article_list.add(the);
-        prep_list.add(to);
-        inventory_list.add(sasso);
+        List<SyntaxParticles> particles_list = new ArrayList<>();
         Parser parser = new ItParser();
+        /*
         List<Alphabet> po = new ArrayList<>();
       //  po = parser.parse("parla",inventory_list,null,null,null,command_list,article_list,prep_list);
     //    Cky c = new Cky(grammar);
@@ -150,12 +147,13 @@ public class AppMain {
         temp_test.add(Alphabet.ALL);
         temp_test.add(Alphabet.EXCEPT);
         temp_test.add(Alphabet.OBJECT);
-        temp_test.add(Alphabet.OBJECT);
+        temp_test.add(Alphabet.OBJECT);*/
      //   temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
       //  System.out.print(c.parse(temp_test));
         
         FileInit fi = new FileInit();
+        GameUtilInit gi = new GameUtilInit();
         try {
           fi.objReader("res/file_txt/ADV_OBJ.txt");
           fi.lockReader("res/file_txt/LOCK.txt");
@@ -164,11 +162,16 @@ public class AppMain {
           fi.dialogReader("res/file_txt/DIALOG.txt");
           fi.npcReader("res/file_txt/NPC.txt");
           fi.roomReader("res/file_txt/ROOM.txt");
+          gi.articleReader("res/file_txt/ARTICLES.txt");
+          gi.commandReader("res/file_txt/COMMAND.txt");
+          gi.prepositionReader("res/file_txt/PREPOSITION.txt");
+          gi.particleReader("res/file_txt/PARTICLES.txt");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-      
+        parser.parse("prendi il Polvere Magica Polvere", fi.objectList.getList(), null, null, fi.npcList.getList(), command_list, article_list, prep_list, particles_list);
+        System.out.print("fin");
         //DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
         //d.main(null);
         //CNF temp = new CNF();

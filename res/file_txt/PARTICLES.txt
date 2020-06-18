@@ -1,0 +1,10 @@
+{
+TYPE : all
+NAME : tutto 
+ALIAS : tutto  
+}
+{
+TYPE : except
+NAME : eccetto 
+ALIAS : eccetto 
+}

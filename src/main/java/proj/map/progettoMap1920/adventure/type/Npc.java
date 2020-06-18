@@ -29,7 +29,7 @@ public class Npc extends GameObject implements Serializable {
 	 * 
      */
     public Npc(int id, String name, String look, String description, Set<String> alias, boolean understandable, boolean killable) {
-        super(id, description, description, description, alias);
+        super(id, name, look, description, alias);
         this.understandable = understandable;
         this.killable = killable;
 

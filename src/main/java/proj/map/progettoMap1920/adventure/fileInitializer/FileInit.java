@@ -79,7 +79,7 @@ public class FileInit { // probabile singleton
             str = buffer.readLine();
           }
           tokenized = str.split(":");
-          tokenized[1] = tokenized[1].trim(); // diocane
+          tokenized[1] = tokenized[1].trim(); 
 
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
@@ -110,7 +110,9 @@ public class FileInit { // probabile singleton
           str = buffer.readLine();
         }
         // --costruzione oggetti ed inserzione nella lista
-        objectList.add(new AdvObject(id, objName, description, onLook, alias, pickable));
+
+        objectList.add(new AdvObject(id, objName, description, onLook, new HashSet<String>(alias), pickable));
+        alias.clear();
       }
 
     } catch (EOFException e) {
@@ -243,7 +245,6 @@ public class FileInit { // probabile singleton
 
       Room tempRoom = roomListIter.next();
       List<Room> adjRoomTemp = new ArrayList<>();
-      List<AdvObject> objRoomTemp = new ArrayList<>();
       List<Integer> objMapTempList = objectMap.get(tempRoom.getId());
       List<Integer> roomMapTempList = roomMap.get(tempRoom.getId());
       List<Integer> npcMapTempList = npcMap.get(tempRoom.getId());
@@ -345,7 +346,7 @@ public class FileInit { // probabile singleton
               String[] aliasList = tokenized[1].split("\\s");
               alias.addAll(Arrays.asList(aliasList));
             } else {
-              alias = null;
+              alias.add(null);
             }
           }
           if (tokenized[0].equals("UNDERSTANDABLE")) {
@@ -371,7 +372,9 @@ public class FileInit { // probabile singleton
          * 
          * costruire l'oggetto in questione
          */
-        npcList.add(new Npc(id, name, description, look, null, understandable, killable));
+
+        npcList.add(new Npc(id, name, description, look, new HashSet<String>(alias), understandable, killable));
+        alias.clear();
       }
     } catch (EOFException e) {
 
@@ -571,6 +574,8 @@ public class FileInit { // probabile singleton
             if (tokenized[1].equals("null")) {
               String[] aliasList = tokenized[1].split("\\s");
               alias.addAll(Arrays.asList(aliasList));
+            }else {
+              alias.add(null);
             }
           }
           if (tokenized[0].equals("PICKABLE")) {
@@ -597,8 +602,10 @@ public class FileInit { // probabile singleton
         /*
          * costruire l'oggetto in questione
          */
+
         containerList
-          .add(new AdvObjectContainer(null, null, id, contName, description, onLook, alias, pickable));
+          .add(new AdvObjectContainer(null, null, id, contName, description, onLook, new HashSet<String>(alias), pickable));
+        alias.clear();
       }
 
     } catch (EOFException e) {
@@ -740,7 +747,7 @@ public class FileInit { // probabile singleton
               String[] aliasList = tokenized[1].split("\\s");
               alias.addAll(Arrays.asList(aliasList));
             } else {
-              alias = null;
+              alias.add(null);
             }
           }
           if (tokenized[0].equals("LOCK")) {
@@ -760,7 +767,10 @@ public class FileInit { // probabile singleton
         /*
          * costruire l'oggetto in questione
          */
-        doorList.add(new Door(null, null, id, doorName, doorDesc, onLook, alias, false));
+
+        doorList.add(new Door(null, null, id, doorName, doorDesc, onLook, new HashSet<String>(alias), false));
+
+        alias.clear();
       }
 
     } catch (EOFException e) {
