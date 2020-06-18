@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
+import proj.map.progettoMap1920.adventure.fileInitializer.GameUtilInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
 import proj.map.progettoMap1920.adventure.parser.*;
 import proj.map.progettoMap1920.adventure.type.*;
@@ -152,6 +153,7 @@ public class AppMain {
       //  System.out.print(c.parse(temp_test));
         
         FileInit fi = new FileInit();
+        GameUtilInit gi = new GameUtilInit();
         try {
           fi.objReader("res/file_txt/ADV_OBJ.txt");
           fi.lockReader("res/file_txt/LOCK.txt");
@@ -160,6 +162,10 @@ public class AppMain {
           fi.dialogReader("res/file_txt/DIALOG.txt");
           fi.npcReader("res/file_txt/NPC.txt");
           fi.roomReader("res/file_txt/ROOM.txt");
+          gi.articleReader("res/file_txt/ARTICLES.txt");
+          gi.commandReader("res/file_txt/COMMAND.txt");
+          gi.prepositionReader("res/file_txt/PREPOSITION.txt");
+          gi.particleReader("res/file_txt/PARTICLES.txt");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
