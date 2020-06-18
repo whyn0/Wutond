@@ -129,17 +129,12 @@ public class AppMain {
         String[] list_alias = {"lo","la"};
         the_alias.addAll(Arrays.asList(list_alias));
         List<Command> command_list = new ArrayList<>();
+        Command pick_up = new Command(CommandType.PICK_UP,"prendi");
+        command_list.add(pick_up);
         List<Article> article_list = new ArrayList<>();
         List<Preposition> prep_list = new ArrayList<>();
         List<AdvObject> inventory_list = new ArrayList<>();
-        Command talk_to = new Command(CommandType.TALK_TO,"parla",null);
-        Article the = new Article(ArticleType.THE,"il",the_alias);
-        Preposition to = new Preposition(PrepositionType.TO,"con",null);
-        AdvObject sasso = new AdvObject(1,"sasso","un sasso di merda","mario giordano",null,true);
-        command_list.add(talk_to);
-        article_list.add(the);
-        prep_list.add(to);
-        inventory_list.add(sasso);
+        List<SyntaxParticles> particles_list = new ArrayList<>();
         Parser parser = new ItParser();
         /*
         List<Alphabet> po = new ArrayList<>();
@@ -169,8 +164,8 @@ public class AppMain {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-        parser.parse("talk_to", inventory_list, null, null, null, command_list, null, null);
-      System.out.print("ciao");
+        parser.parse("prendi il Distintivo", fi.objectList.getList(), null, null, fi.npcList.getList(), command_list, article_list, prep_list, particles_list);
+        System.out.print("fin");
         //DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
         //d.main(null);
         //CNF temp = new CNF();
