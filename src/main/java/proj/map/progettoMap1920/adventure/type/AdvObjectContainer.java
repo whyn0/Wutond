@@ -19,7 +19,7 @@ public class AdvObjectContainer extends AdvObject implements Serializable {
     final private boolean openable = true;
     private List<AdvObject> list;
     private Lock lock;
-
+    private boolean opened = false;
     /*
  * 
  * COSTRUTTORI
@@ -53,6 +53,11 @@ public class AdvObjectContainer extends AdvObject implements Serializable {
 
     
 
+    public boolean isOpened() {
+      return opened;
+    }
+
+
     /*
      *
      * SETTERS
@@ -63,6 +68,10 @@ public class AdvObjectContainer extends AdvObject implements Serializable {
     }
     public void setList(List<AdvObject> list) {
         this.list = list;
+    }
+
+    public void setOpened(boolean opened) {
+      this.opened = opened;
     }
     /*
      *

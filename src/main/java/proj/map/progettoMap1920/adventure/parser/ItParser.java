@@ -8,10 +8,13 @@ package proj.map.progettoMap1920.adventure.parser;
 import java.util.ArrayList;
 import java.util.List;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
+import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.type.Article;
 import proj.map.progettoMap1920.adventure.type.Command;
+import proj.map.progettoMap1920.adventure.type.Door;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Preposition;
+import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
 
 /**
  *
@@ -19,7 +22,17 @@ import proj.map.progettoMap1920.adventure.type.Preposition;
  */
 public class ItParser implements Parser{
 
-
+    @Override
+    public int checkForParticles(String token, List<SyntaxParticles> list) {
+      int index = -1;
+      for(int i = 0; i < list.size(); i++) {
+        if(list.get(i).getName().equals(token)) {
+          index = i;
+          break;
+        }
+      }
+      return index;
+    }
     @Override
     public int checkForArticle(String token, List<Article> list) {
         int index = -1;
@@ -43,23 +56,18 @@ public class ItParser implements Parser{
         }
         return index;
     }
-    @Override
-    public int checkForNpc(String token,List<Npc> list){
-        return 1;
-    }
-/*
+
     @Override
     public int checkForNpc(String token, List<Npc> list) {
         int index = -1;
         for(int i=0;i<list.size();i++){
-            if(list.get(i).getName().equals(token) || list.get(i).getAlias().contains(token)){
+            if(list.get(i).getName().equals(token)){
                 index = i;
                 break;
             }
         }
         return index;
     }
-*/
     @Override
     public int checkForCommand(String token, List<Command> list) {
         int index = -1;
@@ -85,16 +93,30 @@ public class ItParser implements Parser{
     }
 
     @Override
-    public List<String> parse(String command, List<AdvObject> inventory, List<AdvObject> room_items, List<AdvObject> cont_items, List<Npc> npc,List<Command> cmd_list,List<Article> articles,List<Preposition> prepositions) {
+    public List<String> parse(String command, 
+      List<AdvObject> inventory, 
+      List<AdvObject> room_items, 
+      List<AdvObject> cont_items, 
+      List<Npc> npc,
+      List<Command> cmd_list,
+      List<Article> articles,
+      List<Preposition> prepositions,
+      List<SyntaxParticles> particles) {
+      
+      
         List<String> tokenlist_type = new ArrayList<>();
         List<Integer> index_list = new ArrayList<>();
         List<AdvObject> all_items = new ArrayList<>();
         all_items.addAll(inventory);
-//        all_items.addAll(room_items);
-//        all_items.addAll(cont_items);
+        all_items.addAll(room_items);
+        if(cont_items.size() > 0) {
+          all_items.addAll(cont_items);
+        }
+
         String cmd = command.toLowerCase().trim();
-        String[] token_list = cmd.split("\\s+");
+        String[] token_list = cmd.split("\\s+");//vai a nord 
         int index;
+        /*
       //  if(token_list.length > 0){
         //    index = checkForCommand(token_list[0],cmd_list);
           //  tokenlist_type.add(Alphabet.VERB);
@@ -120,7 +142,76 @@ public class ItParser implements Parser{
                     }
           //      }
            // }
-     //   }
+     //   }*/
+        if(token_list.length > 0) {
+          index = checkForCommand(token_list[0],cmd_list);
+          if(index > -1) {
+            tokenlist_type.add(cmd_list.get(index).getType().toString());
+          }
+          if(index > -1) {
+            index_list.add(index);
+            if(token_list.length > 1) {
+              for(int i = 1; i < token_list.length; i++) {
+                if((index = checkForArticle(token_list[i],articles))>=0){
+                  index_list.add(index);
+                  tokenlist_type.add("article");
+                  continue;
+              }else if((index = checkForPrep(token_list[i],prepositions))>=0){
+                  index_list.add(index);
+                  tokenlist_type.add("preposition");
+                  continue;
+              }else if((index = checkForItem(token_list[i],all_items))>=0){
+                  index_list.add(index);
+                  if(all_items.get(index) instanceof AdvObjectContainer) {
+                    tokenlist_type.add("objcontainer");
+                    continue;
+                  }else if(all_items.get(index) instanceof Door) {
+                    tokenlist_type.add("door");
+                    continue;
+                  }else if(all_items.get(index) instanceof AdvObject) {
+                    tokenlist_type.add("object");
+                    continue;
+                  }
+                  continue;
+              }else if((index = checkForCommand(token_list[i],cmd_list))>=0){
+                  
+                  switch(cmd_list.get(index).getType().toString()) {
+                    case "north":
+                      index_list.add(index);
+                      tokenlist_type.add("direction");
+                      break;
+                    case "east":
+                      index_list.add(index);
+                      tokenlist_type.add("direction");
+                      break;
+                    case "west":
+                      index_list.add(index);
+                      tokenlist_type.add("direction");
+                      break;
+                    case "south":
+                      index_list.add(index);
+                      tokenlist_type.add("direction");
+                      break;
+                    default:
+                      index_list.add(index);
+                      tokenlist_type.add(cmd_list.get(index).getType().toString());
+                      break;
+                  }
+                  continue;
+              }else if((index = checkForNpc(token_list[i],npc))>=0) {
+                index_list.add(index);
+                tokenlist_type.add("npc");
+                continue;
+              }else if((index = checkForParticles(token_list[i],particles))>=0) {
+                index_list.add(index);
+                tokenlist_type.add(particles.get(index).getType().toString());
+              }
+                
+              }
+            }
+          }
+          
+        }
         for(String i : tokenlist_type){
             System.out.print(i);
         }

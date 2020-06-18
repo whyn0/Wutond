@@ -42,7 +42,7 @@ public class SyntaxParticles {
     
     
     */
-    public SyntaxParticlesType getParticle() {
+    public SyntaxParticlesType getType() {
         return particle;
     }
 

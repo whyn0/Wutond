@@ -141,6 +141,7 @@ public class AppMain {
         prep_list.add(to);
         inventory_list.add(sasso);
         Parser parser = new ItParser();
+        /*
         List<Alphabet> po = new ArrayList<>();
       //  po = parser.parse("parla",inventory_list,null,null,null,command_list,article_list,prep_list);
     //    Cky c = new Cky(grammar);
@@ -150,7 +151,7 @@ public class AppMain {
         temp_test.add(Alphabet.ALL);
         temp_test.add(Alphabet.EXCEPT);
         temp_test.add(Alphabet.OBJECT);
-        temp_test.add(Alphabet.OBJECT);
+        temp_test.add(Alphabet.OBJECT);*/
      //   temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
       //  System.out.print(c.parse(temp_test));
@@ -168,7 +169,8 @@ public class AppMain {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-      
+        parser.parse("talk_to", inventory_list, null, null, null, command_list, null, null);
+      System.out.print("ciao");
         //DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
         //d.main(null);
         //CNF temp = new CNF();
