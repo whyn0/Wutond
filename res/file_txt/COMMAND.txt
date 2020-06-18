@@ -1,0 +1,85 @@
+{
+TYPE : pick_up
+NAME : prendi 
+ALIAS : raccogli prendere raccogliere
+}
+{
+TYPE : walk_to
+NAME : vai  
+ALIAS : cammina andare camminare
+}
+{
+TYPE : end
+NAME : esci 
+ALIAS : fine uscire firire 
+}
+{
+TYPE : north
+NAME : nord 
+ALIAS : su 
+}
+{
+TYPE : south
+NAME : sud 
+ALIAS : giu 
+}
+{
+TYPE : west
+NAME : ovest 
+ALIAS : sinistra 
+}
+{
+TYPE : east
+NAME : est 
+ALIAS : destra 
+}
+{
+TYPE : open
+NAME : apri 
+ALIAS : aprire 
+}
+{
+TYPE : talk_to
+NAME : parla
+ALIAS : discuti parlare discutere
+}
+{
+TYPE : use
+NAME : usa 
+ALIAS : utilizza usare utilizzare
+}
+{
+TYPE : give
+NAME : dai 
+ALIAS : dona dare donare
+}
+{
+TYPE : look_at
+NAME : guarda 
+ALIAS : osserva guardare ossercare
+}
+{
+TYPE : kill
+NAME : uccidi 
+ALIAS : ammazzare uccidre trucidare sterminare
+}
+{
+TYPE : save
+NAME : salva 
+ALIAS : salvare 
+}
+{
+TYPE : load
+NAME : carica 
+ALIAS : caricare 
+}
+{
+TYPE : curse
+NAME : stronzo  
+ALIAS : idiota
+}
+{
+TYPE : inventory
+NAME : inventario 
+ALIAS : zaino 
+}

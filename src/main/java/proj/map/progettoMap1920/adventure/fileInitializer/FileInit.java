@@ -79,7 +79,7 @@ public class FileInit { // probabile singleton
             str = buffer.readLine();
           }
           tokenized = str.split(":");
-          tokenized[1] = tokenized[1].trim(); // diocane
+          tokenized[1] = tokenized[1].trim(); 
 
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);

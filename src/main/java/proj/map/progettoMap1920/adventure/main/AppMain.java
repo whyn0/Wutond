@@ -164,7 +164,7 @@ public class AppMain {
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-        parser.parse("prendi il Distintivo", fi.objectList.getList(), null, null, fi.npcList.getList(), command_list, article_list, prep_list, particles_list);
+        parser.parse("prendi il Polvere Magica Polvere", fi.objectList.getList(), null, null, fi.npcList.getList(), command_list, article_list, prep_list, particles_list);
         System.out.print("fin");
         //DialogBox d= new DialogBox(  fi.npcList.getList().get(1).getDialog());
         //d.main(null);

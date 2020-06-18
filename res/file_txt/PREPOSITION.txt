@@ -1,0 +1,30 @@
+{
+TYPE : with
+NAME : con
+ALIAS : insieme 
+}
+{
+TYPE : through
+NAME : attraverso 
+ALIAS : tra 
+}
+{
+TYPE : towards
+NAME : verso 
+ALIAS : verso 
+}
+{
+TYPE : to
+NAME : a  
+ALIAS : a 
+}
+{
+TYPE : on
+NAME : su 
+ALIAS : su 
+}
+{
+TYPE : in
+NAME : dentro 
+ALIAS : dentro 
+}

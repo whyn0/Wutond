@@ -8,7 +8,7 @@ PICKABLE: t
 }
 {
 ID: 46 
-NAME: "Fascicolo Polvere Magica"
+NAME: "Fascicolo"
 DESCRIPTION: "Vedi un fascicolo"
 LOOK: "Sfogliando le pagine del fasciolo arrivi alla conclusione che questa città abbia un problema con una certa droga che chiamano polvere magica. Sembra che garantisca poteri sovrannaturali a discapito dell'intelligenza."
 ALIAS: 
@@ -16,7 +16,7 @@ PICKABLE: t
 }
 {
 ID: 79
-NAME: "Chiave arrugginita"
+NAME: "Chiave Arrugginita"
 DESCRIPTION: "Una chiave arrugginita"
 LOOK: "Una semplice chiave arrugginita, chissà cosa apre."
 ALIAS: 

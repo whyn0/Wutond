@@ -154,6 +154,7 @@ public class ItParser implements Parser {
                 tokenlist_type.add("object");
 
               }
+              
               continue;
             } else if ((index = checkForCommand(token_list[i], cmd_list)) >= 0) {
 
@@ -189,7 +190,39 @@ public class ItParser implements Parser {
               tokenlist_type.add(particles.get(index).getType().toString());
               continue;
             }
+            //
+            //int validInput = 0;
+            //
+            if(index == -1) {
+              try {
+                if(token_list[i+1] != null) {//se ho un oggetto composito di due parole 
+                  String temp = token_list[i] + " " + token_list[i+1];
+                  if ((index = checkForItem(temp, all_items)) >= 0) {
+                    index_list.add(index);
+                    if (all_items.get(index) instanceof AdvObjectContainer) {
+                      tokenlist_type.add("objcontainer");
 
+                    } else if (all_items.get(index) instanceof Door) {
+                      tokenlist_type.add("door");
+
+                    } else if (all_items.get(index) instanceof AdvObject) {
+                      tokenlist_type.add("object");
+
+                    }
+                    i++;
+                    continue;
+                  }
+                }
+                //
+              }
+              catch(ArrayIndexOutOfBoundsException e) {
+                
+              }
+            }
+            if(index == -1) {
+             // throw InvalidInputException(e);
+            }
+            
           }
         }
       }
