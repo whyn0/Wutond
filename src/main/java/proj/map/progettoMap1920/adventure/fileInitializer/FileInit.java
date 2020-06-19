@@ -35,23 +35,31 @@ import proj.map.progettoMap1920.adventure.utils.GameList;
  */
 public class FileInit { // probabile singleton
 
-  public GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
-  public GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
-  public GameList<Lock> lockList = new GameList<>(new ArrayList<Lock>());
-  public GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
-  public GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
-  public GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
-  public GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
+  private GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
+  private GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
+  private GameList<Lock> lockList = new GameList<>(new ArrayList<Lock>());
+  private GameList<Room> roomList = new GameList<>(new ArrayList<Room>());
+  private GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
+  private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
+  private GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
   
-  
+  public FileInit(String... paths) throws IOException, FileNotFoundException{
+    objReader(paths[0]);
+    lockReader(paths[1]);
+    contReader(paths[2]);
+    doorReader(paths[3]);
+    dialogReader(paths[4]);
+    npcReader(paths[5]);
+    roomReader(paths[6]);
+  }
 
   /*
    * ---------METHODS---------------
    */
 
+  
 
-
-  public void objReader(String filename) throws FileNotFoundException, IOException {
+  private void objReader(String filename) throws FileNotFoundException, IOException {
 
     // -----------------------------attributi
 
@@ -121,7 +129,7 @@ public class FileInit { // probabile singleton
     file.close();
   }
 
-  public void roomReader(String filename) throws FileNotFoundException, IOException {
+  private void roomReader(String filename) throws FileNotFoundException, IOException {
 
     // ---------------------------attributi delle stanze
 
@@ -293,7 +301,7 @@ public class FileInit { // probabile singleton
     }
   }
 
-  public void npcReader(String filename) throws FileNotFoundException, IOException {
+  private void npcReader(String filename) throws FileNotFoundException, IOException {
     // attributi delle stanze
     int id = 0;
     String name = "";
@@ -406,7 +414,7 @@ public class FileInit { // probabile singleton
     }
   }
 
-  public void dialogReader(String filename) throws FileNotFoundException, IOException {
+  private void dialogReader(String filename) throws FileNotFoundException, IOException {
     // attributi
     int id = 0;
     String text = "";
@@ -527,7 +535,7 @@ public class FileInit { // probabile singleton
     }
   }
 
-  public void contReader(String filename) throws FileNotFoundException, IOException {
+  private void contReader(String filename) throws FileNotFoundException, IOException {
     Map<Integer, List<Integer>> itemRefContainers;
     itemRefContainers = new HashMap<>();
     int id = 0;
@@ -636,7 +644,7 @@ public class FileInit { // probabile singleton
     }
   }
 
-  public void lockReader(String filename) throws FileNotFoundException, IOException {
+  private void lockReader(String filename) throws FileNotFoundException, IOException {
 
     Map<Integer, Integer> lockMap = new HashMap<>();
     Integer key = 0;
@@ -699,7 +707,7 @@ public class FileInit { // probabile singleton
     }
   }
 
-  public void doorReader(String filename) throws FileNotFoundException, IOException {
+  private void doorReader(String filename) throws FileNotFoundException, IOException {
 
     int id = 0;
     String doorName = "";
@@ -789,4 +797,36 @@ public class FileInit { // probabile singleton
     }
   }
 
+ 
+  //Getter
+  
+  public GameList<AdvObject> getObjectList() {
+    return objectList;
+  }
+
+  public GameList<AdvObjectContainer> getContainerList() {
+    return containerList;
+  }
+
+  public GameList<Lock> getLockList() {
+    return lockList;
+  }
+
+  public GameList<Room> getRoomList() {
+    return roomList;
+  }
+
+  public GameList<Dialog> getDialogList() {
+    return dialogList;
+  }
+
+  public GameList<Npc> getNpcList() {
+    return npcList;
+  }
+
+  public GameList<Door> getDoorList() {
+    return doorList;
+  }
+
+  
 }
