@@ -31,6 +31,7 @@ public abstract class GameDescription {
   private GameList<Dialog> dialogs = new GameList<>(new ArrayList<Dialog>());
   private GameList<Npc> npcs = new GameList<>(new ArrayList<Npc>());
   private GameList<Door> doors = new GameList<>(new ArrayList<Door>());
+  private GameList<AdvObject> inventory = new GameList<>(new ArrayList<AdvObject>());
 
   private List<Article> articles = new ArrayList<>();
   private List<Command> commands = new ArrayList<>();
@@ -43,6 +44,10 @@ public abstract class GameDescription {
   
   
   //--------------------------------------------SETTER---------------
+  public void setInventory(GameList<AdvObject> inventory) {
+    this.inventory = inventory;
+  }
+  
   
   public void setGrammar(CFGrammar grammar) {
     this.cnfGrammar = grammar;
@@ -84,6 +89,11 @@ public abstract class GameDescription {
   public Room getCurrentRoom() {
     return currentRoom;
   }
+
+  public GameList<AdvObject> getInventory() {
+    return inventory;
+  }
+
 
   public List<Article> getArticles() {
     return articles;

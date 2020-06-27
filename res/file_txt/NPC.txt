@@ -40,7 +40,7 @@ INVENTORY: 53 54
 }
 {
 ID: 68
-NAME: "Ciccio la paranoia"
+NAME: "Ciccio"
 DESCRIPTION: "Sotto la torre noti un uomo sulla cinquantina con la schiena incurvata."
 LOOK: "Sembra molto preso da un discorso fra sè e sè e nel frattempo ruota compulsivamente un pacchetto di sigarette nelle sue mani."
 KILLABLE: f
