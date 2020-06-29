@@ -150,7 +150,11 @@ public class ItParser implements Parser {
             } else if ((index = checkForItem(token_list[i], all_items)) >= 0) {
               index_list.add(index);
               if (all_items.get(index) instanceof AdvObjectContainer) {
-                tokenlist_type.add("objcontainer");
+                if(all_items.get(index).isPickable()) {
+                  tokenlist_type.add("obj");
+                } else {
+                  tokenlist_type.add("objcontainer");
+                }
                 
                 if (!isExcept) {
                   pOutput.setContainer((AdvObjectContainer) all_items.get(index));
@@ -186,22 +190,22 @@ public class ItParser implements Parser {
               switch (cmd_list.get(index).getType().toString()) {
                 case "north":
                   index_list.add(index);
-                  tokenlist_type.add("direction");
+                  tokenlist_type.add("north");
                   pOutput.setDirection(cmd_list.get(index));
                   break;
                 case "east":
                   index_list.add(index);
-                  tokenlist_type.add("direction");
+                  tokenlist_type.add("east");
                   pOutput.setDirection(cmd_list.get(index));
                   break;
                 case "west":
                   index_list.add(index);
-                  tokenlist_type.add("direction");
+                  tokenlist_type.add("west");
                   pOutput.setDirection(cmd_list.get(index));
                   break;
                 case "south":
                   index_list.add(index);
-                  tokenlist_type.add("direction");
+                  tokenlist_type.add("south");
                   pOutput.setDirection(cmd_list.get(index));
                   break;
                 default:
