@@ -13,13 +13,14 @@ import proj.map.progettoMap1920.adventure.parser.Production;
 import proj.map.progettoMap1920.adventure.parser.ProductionSide;
 
 public class GrammarInit {
-  List<String> nTerminals = new ArrayList<>();
-  List<String> terminals = new ArrayList<>();
-  List<Production> productions = new ArrayList<>();
-  public GrammarInit() {
-    // TODO Auto-generated constructor stub
+  private List<String> nTerminals = new ArrayList<>();
+  private List<String> terminals = new ArrayList<>();
+  private List<Production> productions = new ArrayList<>();
+  
+  public GrammarInit(String path) throws FileNotFoundException, IOException{
+    grammarReader(path);
   }
-  public void grammarReader(String filename)throws FileNotFoundException, IOException{
+  private void grammarReader(String filename)throws FileNotFoundException, IOException{
     // -----------------------------
     FileReader file;
     BufferedReader buffer;
@@ -34,6 +35,7 @@ public class GrammarInit {
       while((inputLine = buffer.readLine()) != null) {
         if(count == 0) {
           while(!(inputLine = buffer.readLine()).equals("=====NTERMINALS=====")) {
+            inputLine.trim();
             terminals.add(inputLine);
           }
         }
@@ -41,6 +43,7 @@ public class GrammarInit {
         count++;
         if(count == 1) {
           while(!(inputLine = buffer.readLine()).equals("=====CNF=====")) {
+            inputLine.trim();
             nTerminals.add(inputLine);
           }
         }
@@ -48,7 +51,9 @@ public class GrammarInit {
         count++;
         if(count == 2) {
           inputLine = buffer.readLine();
+          inputLine.trim();
         }
+        inputLine.trim();
         tokenized = inputLine.split(" -> ");
         tokenized1 = tokenized[1].split("\\s");
         if(tokenized1.length > 1) {
@@ -66,5 +71,15 @@ public class GrammarInit {
     }
     file.close();
   }
+  public List<String> getnTerminals() {
+    return nTerminals;
+  }
+  public List<String> getTerminals() {
+    return terminals;
+  }
+  public List<Production> getProductions() {
+    return productions;
+  }
 
+  
 }

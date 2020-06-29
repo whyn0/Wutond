@@ -16,16 +16,19 @@ import proj.map.progettoMap1920.adventure.type.*;
 
 public class GameUtilInit {
   
-  public List<Command> cmd_list = new ArrayList<>();
-  public List<Article> articles_list = new ArrayList<>();
-  public List<Preposition> prepositions_list = new ArrayList<>();
-  public List<SyntaxParticles> particles_list = new ArrayList<>();
+  private List<Command> cmd_list = new ArrayList<>();
+  private List<Article> articles_list = new ArrayList<>();
+  private List<Preposition> prepositions_list = new ArrayList<>();
+  private List<SyntaxParticles> particles_list = new ArrayList<>();
   
-  public GameUtilInit() {
-    // TODO Auto-generated constructor stub
+  public GameUtilInit(String... paths) throws FileNotFoundException, IOException{
+    articleReader(paths[0]);
+    commandReader(paths[1]);
+    prepositionReader(paths[2]);
+    particleReader(paths[3]);
   }
   
-  public void commandReader(String filename) throws FileNotFoundException, IOException {
+  private void commandReader(String filename) throws FileNotFoundException, IOException {
     //-----------------------------
     FileReader file;
     BufferedReader buffer;
@@ -105,6 +108,7 @@ public class GameUtilInit {
         }
         
         else if(tokenized[0].equals("NAME")) {
+          tokenized[1] = tokenized[1].trim();
           name = tokenized[1];
         }
         else if(tokenized[0].equals("ALIAS")) {
@@ -119,7 +123,7 @@ public class GameUtilInit {
     }
     file.close();
   }
-  public void articleReader(String filename) throws FileNotFoundException, IOException {
+  private void articleReader(String filename) throws FileNotFoundException, IOException {
     //-----------------------------
     FileReader file;
     BufferedReader buffer;
@@ -162,7 +166,7 @@ public class GameUtilInit {
     }
     file.close();
   }
-  public void prepositionReader(String filename) throws FileNotFoundException,IOException {
+  private void prepositionReader(String filename) throws FileNotFoundException,IOException {
   //-----------------------------
     FileReader file;
     BufferedReader buffer;
@@ -221,7 +225,7 @@ public class GameUtilInit {
     }
     file.close();
   }
-  public void particleReader(String filename) throws FileNotFoundException,IOException {
+  private void particleReader(String filename) throws FileNotFoundException,IOException {
   //-----------------------------
     FileReader file;
     BufferedReader buffer;
@@ -255,6 +259,7 @@ public class GameUtilInit {
           }
         }
         else if(tokenized[0].equals("NAME")) {
+          tokenized[1] = tokenized[1].trim();
           name = tokenized[1];
         }
         else if(tokenized[0].equals("ALIAS")) {
@@ -269,4 +274,24 @@ public class GameUtilInit {
     }
     file.close();
   }
+
+  
+  public List<Command> getCmd_list() {
+    return cmd_list;
+  }
+
+  public List<Article> getArticles_list() {
+    return articles_list;
+  }
+
+  public List<Preposition> getPrepositions_list() {
+    return prepositions_list;
+  }
+
+  public List<SyntaxParticles> getParticles_list() {
+    return particles_list;
+  }
+
+  
 }
+

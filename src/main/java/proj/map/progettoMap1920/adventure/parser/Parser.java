@@ -24,7 +24,7 @@ public interface Parser {
     int checkForCommand(String token,List<Command> list);
     int checkForItem(String token,List<AdvObject> list);
     int checkForParticles(String token, List<SyntaxParticles> list);
-    public List<String> parse(String command,
+    public ParserOutput parse(String command,
       List<AdvObject> inventory,
       List<AdvObject> room_items,
       List<AdvObject> cont_items,
@@ -32,5 +32,6 @@ public interface Parser {
       List<Command> cmd_list,
       List<Article> articles,
       List<Preposition> prepositions,
-      List<SyntaxParticles> particles);
+      List<SyntaxParticles> particles,
+      CFGrammar grammar);
 }

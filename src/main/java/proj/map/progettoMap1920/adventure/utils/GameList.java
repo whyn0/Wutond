@@ -60,6 +60,20 @@ public class GameList <T extends GameElement> implements Iterable<T>{
   public void addAll(T... objs) {
     this.list.addAll(Arrays.asList(objs));
   }
+  public void addAll(List<T> obj_list) {
+    for(T t : obj_list) {
+      this.list.add(t);
+    }
+  }
+  public void addAll(GameList<T> obj_game_list) {
+    addAll(obj_game_list.getList());
+  }
+  public void remove(T obj) {
+    this.list.remove(obj);
+  }
+  public void clear() {
+    this.list.clear();
+  }
   public Iterator<T> iterator() {
     return list.iterator();
   }

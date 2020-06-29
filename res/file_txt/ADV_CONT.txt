@@ -18,7 +18,7 @@ LOCK: 82
 }
 {
 ID:50
-NAME: "Cumulo di terra"
+NAME: "Cumulo terra"
 DESCRIPTION: "Più avanti noti un cumulo di terra fresco in una delle aiuole della villa."
 LOOK: "Un cumulo di terra fresca, con qualche oggetto potresti scavare, chissà cosa potresti trovarci al di sotto."
 PICKABLE: f

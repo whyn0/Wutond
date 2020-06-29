@@ -24,12 +24,12 @@ import proj.map.progettoMap1920.adventure.type.*;
  *
  * @author whyno
  */
-public class AppMain {
+public class AppMain {}
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         /*produzioni
         
         
@@ -119,6 +119,7 @@ public class AppMain {
         
         
         */
+      /*
         GrammarInit g = new GrammarInit();
         try {
           g.grammarReader("res/file_txt/GRAMMAR.txt");
@@ -151,7 +152,7 @@ public class AppMain {
      //   temp_test.add(Alphabet.OBJECT);
      //   temp_test.add(Alphabet.OBJECT);
       //  System.out.print(c.parse(temp_test));
-        
+        /*
         FileInit fi = new FileInit();
         GameUtilInit gi = new GameUtilInit();
         try {
@@ -242,5 +243,5 @@ public class AppMain {
     	
     }
     
+}*//*
 }*/
-}

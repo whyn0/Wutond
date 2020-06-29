@@ -1,6 +1,6 @@
 {
 ID: 63
-NAME: "Porta torrione 1"
+NAME: "Ingresso"
 DESCRIPTION: "Dall'altro lato del ponte si erge una porta che garantisce l'accesso al torrione."
 LOOK: "Una normale porta in legno con una serratura semplice."
 ALIAS: Portone
