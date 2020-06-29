@@ -281,9 +281,10 @@ public class FileInit { // probabile singleton
       if (objMapTempList != null) {
         for (Integer i : objMapTempList) {
           if (i != null) {
-            try {
+            if(objectList.getById(i) != null) {
               tempRoom.getObjects_list().add(objectList.getById(i));// riempire anche con container list
-            } catch (NullPointerException e) {
+            }
+            else {
               tempRoom.getObjects_list().add(containerList.getById(i));
             }
           }

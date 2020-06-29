@@ -77,7 +77,7 @@ public class ItParser implements Parser {
   public int checkForCommand(String token, List<Command> list) {
     int index = -1;
     for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().equals(token)) {
+      if (list.get(i).getName().matches(token)) {
         index = i;
         break;
       }
@@ -89,7 +89,7 @@ public class ItParser implements Parser {
   public int checkForItem(String token, List<AdvObject> list) {
     int index = -1;
     for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().equals(token)) {
+      if (list.get(i).getName().toLowerCase().equals(token)) {
         index = i;
         break;
       }
@@ -163,7 +163,7 @@ public class ItParser implements Parser {
                 pOutput.setDoor((Door) all_items.get(index));
 
               } else if (all_items.get(index) instanceof AdvObject) {
-                tokenlist_type.add("object");
+                tokenlist_type.add("obj");
                 // se il flag except == false ricerco l'oggetto nella specifica lista
                 // e in caso di match, valido il rispettivo campo di ParserOutput
                 if (!isExcept) {
@@ -219,9 +219,11 @@ public class ItParser implements Parser {
             } else if ((index = checkForParticles(token_list[i], particles)) >= 0) {
               index_list.add(index);
               if (particles.get(index).getType().equals(SyntaxParticlesType.EXCEPT)) {
+               // tokenlist_type.add("except");
                 pOutput.setExcept(true);
                 isExcept = true;
               } else {
+               // tokenlist_type.add("all");
                 pOutput.setAll(true);
               }
               tokenlist_type.add(particles.get(index).getType().toString());
@@ -244,7 +246,7 @@ public class ItParser implements Parser {
                         tokenlist_type.add("door");
                         pOutput.setDoor((Door) all_items.get(index));
                       } else if (all_items.get(index) instanceof AdvObject) {
-                        tokenlist_type.add("object");
+                        tokenlist_type.add("obj");
                         int indexTemp;
                         if ((indexTemp = checkForItem(temp, inventory)) > -1) {
                           pOutput.setInvObject(all_items.get(index));
@@ -258,6 +260,7 @@ public class ItParser implements Parser {
                     i++;
                     continue;
                   } else {
+                    tokenlist_type.add("obj");
                     pOutput.getExObjects().add(all_items.get(index));
                   }
                   }

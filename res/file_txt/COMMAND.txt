@@ -11,7 +11,7 @@ ALIAS : cammina andare camminare
 {
 TYPE : end
 NAME : esci 
-ALIAS : fine uscire firire 
+ALIAS : fine uscire finire 
 }
 {
 TYPE : north

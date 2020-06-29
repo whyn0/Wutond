@@ -60,7 +60,7 @@ public class Wutond extends GameDescription {
      this.getCommands().addAll(utilInit.getCmd_list());
      this.getParticles().addAll(utilInit.getParticles_list());
     //set starting room
-     this.setCurrentRoom(getRooms().getByName("Questura"));
+     this.setCurrentRoom(this.getRooms().getById(1));
   }
 
   @Override

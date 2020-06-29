@@ -108,6 +108,7 @@ public class GameUtilInit {
         }
         
         else if(tokenized[0].equals("NAME")) {
+          tokenized[1] = tokenized[1].trim();
           name = tokenized[1];
         }
         else if(tokenized[0].equals("ALIAS")) {
@@ -258,6 +259,7 @@ public class GameUtilInit {
           }
         }
         else if(tokenized[0].equals("NAME")) {
+          tokenized[1] = tokenized[1].trim();
           name = tokenized[1];
         }
         else if(tokenized[0].equals("ALIAS")) {

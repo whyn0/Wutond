@@ -35,6 +35,7 @@ public class GrammarInit {
       while((inputLine = buffer.readLine()) != null) {
         if(count == 0) {
           while(!(inputLine = buffer.readLine()).equals("=====NTERMINALS=====")) {
+            inputLine.trim();
             terminals.add(inputLine);
           }
         }
@@ -42,6 +43,7 @@ public class GrammarInit {
         count++;
         if(count == 1) {
           while(!(inputLine = buffer.readLine()).equals("=====CNF=====")) {
+            inputLine.trim();
             nTerminals.add(inputLine);
           }
         }
@@ -49,7 +51,9 @@ public class GrammarInit {
         count++;
         if(count == 2) {
           inputLine = buffer.readLine();
+          inputLine.trim();
         }
+        inputLine.trim();
         tokenized = inputLine.split(" -> ");
         tokenized1 = tokenized[1].split("\\s");
         if(tokenized1.length > 1) {
