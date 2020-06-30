@@ -77,4 +77,7 @@ public class GameList <T extends GameElement> implements Iterable<T>{
   public Iterator<T> iterator() {
     return list.iterator();
   }
+  public boolean contains(T obj) {
+    return list.contains(obj);
+  }
 }

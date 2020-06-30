@@ -72,9 +72,12 @@ OWHAT -> objcontainer
 OWHAT -> door
 LWHAT -> obj
 LWHAT -> npc
+LWHAT -> objcontainer
+LWHAT -> door
 H0 -> walk_to
 H1 -> pick_up
 H2 -> obj
+H2 -> objcontainer
 H3 -> open
 H4 -> look_at
 H5 -> talk_to
