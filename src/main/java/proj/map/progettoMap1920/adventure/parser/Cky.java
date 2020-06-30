@@ -51,13 +51,13 @@ public class Cky {
                 for (int combination = 1; combination < (wordLength - y); combination++) {
 
                     int firstY = wordLength - combination;
-                    System.out.println(firstY);
+
                     int firstX = x;
-                    System.out.println(firstX);
+
                     int secondY = y + combination;
-                    System.out.println(secondY);
+
                     int secondX = x + combination;
-                    System.out.println(secondX);
+
 
                     ParsePossibilities firstPossibilities = matrix[firstY][firstX];
                     ParsePossibilities secondPossibilities = matrix[secondY][secondX];
