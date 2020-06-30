@@ -197,7 +197,7 @@ public class Wutond extends GameDescription {
         } else {
           out.println("Non c'è nulla da guardare qui!");
         }
-      } else if(p.getCommand().getType() == CommandType.PICK_UP) {
+      } else if(p.getCommand().getType() == CommandType.PICK_UP) {//da fixare con Parser output
         if(p.getObject() != null) {
           if(p.getObject().isPickable()) {
             if(getCurrentRoom().getObjects_list().contains(p.getObject())) {
@@ -216,8 +216,6 @@ public class Wutond extends GameDescription {
 
           } 
         }
-      } else if(wallCounter >= 30) {
-        out.println("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!");
       } else if(p.getCommand().getType() == CommandType.OPEN) {
         if(p.getContainer() != null) {
           if(p.getContainer().getLock() != null) {
@@ -234,6 +232,8 @@ public class Wutond extends GameDescription {
             }
           }
         }
+      } else if(wallCounter >= 30) {
+        out.println("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!");
       }
 
       
