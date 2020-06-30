@@ -629,11 +629,17 @@ public class FileInit { // probabile singleton
     while (containerListIter.hasNext()) {
       AdvObjectContainer tempCont = containerListIter.next();
       for (Integer i : itemRefContainers.get(tempCont.getId())) {
+        /*
         try {
           tempCont.getList().add(objectList.getById(i));
         }
         catch(NullPointerException e) {
           tempCont.getList().add(null);
+        }*/
+        if(objectList.getById(i) != null) {
+          tempCont.getList().add(objectList.getById(i));
+        } else {
+          tempCont.getList().add(containerList.getById(i));
         }
       }
       try {
