@@ -590,6 +590,8 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("PICKABLE")) {
             if (tokenized[1].equals("t")) {
               pickable = true;
+            } else {
+              pickable = false;
             }
           }
           if (tokenized[0].equals("LIST_ID")) {

@@ -67,6 +67,7 @@ DIRECTION -> east
 ALL -> all
 ALL -> H9 OBJLIST
 OBJLIST -> obj
+OBJLIST -> objcontainer
 OBJLIST -> H2 OBJLIST
 OWHAT -> objcontainer
 OWHAT -> door

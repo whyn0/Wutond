@@ -65,16 +65,17 @@ public class Wutond extends GameDescription {
     this.getParticles().addAll(utilInit.getParticles_list());
     // set starting room
     this.setCurrentRoom(this.getRooms().getById(1));
+    getInventory().add(getObjects().getById(49));
   }
 
   @Override
   public void nextMove(ParserOutput p, PrintStream out) {
     if(p.getCommand() == null) {
-     
+
       out.println("Non ho capito cosa dovrei fare! Prova con un altro comando.");
-      
+
     } else {
-      
+
       int wallCounter = 0;
       boolean noroom = false;
       boolean move = false;
@@ -85,15 +86,16 @@ public class Wutond extends GameDescription {
         .map(AdvObjectContainer.class::cast)
         .filter(o -> o.isOpened())
         .collect(Collectors.toList()));
-      
-      
-      
-      
+
+
+
+
       //------------------------DIREZIONI E MOVIMENTI-------------------------------
       if(p.getCommand().getType() == CommandType.NORTH) {
         if(getCurrentRoom().getNorth() != null) {
           setCurrentRoom(getCurrentRoom().getNorth());
           move = true;
+          out.println(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription());
         } else {
           noroom = true;
           out.println("*Sbatti la testa contro un muro*");
@@ -103,6 +105,7 @@ public class Wutond extends GameDescription {
         if (getCurrentRoom().getSouth() != null) {
           setCurrentRoom(getCurrentRoom().getSouth());
           move = true;
+          out.println(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription());
         } else {
           noroom = true;
           out.println("*Sbatti la testa contro un muro*");
@@ -112,6 +115,7 @@ public class Wutond extends GameDescription {
         if (getCurrentRoom().getEast() != null) {
           setCurrentRoom(getCurrentRoom().getEast());
           move = true;
+          out.println(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription());
         } else {
           noroom = true;
           out.println("*Sbatti la testa contro un muro*");
@@ -121,6 +125,7 @@ public class Wutond extends GameDescription {
         if (getCurrentRoom().getWest() != null) {
           setCurrentRoom(getCurrentRoom().getWest());
           move = true;
+          out.println(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription());
         } else {
           noroom = true;
           out.println("*Sbatti la testa contro un muro*");
@@ -132,92 +137,157 @@ public class Wutond extends GameDescription {
           out.println(a.getName());
         }
       } else if(p.getCommand().getType() == CommandType.LOOK_AT) {
-        
+
         if(getCurrentRoom().getLook() != null) {
-          
+
           if(p.getObject() == null 
             && p.getNpc() == null 
             && p.getContainedObject() == null 
             && p.getContainer() == null 
             && p.getInvObject() == null) { //Look su stanza
-            
+
             out.println(getCurrentRoom().getLook());
-            
+
             for(AdvObject a : getCurrentRoom().getObjects_list()) {
-              
+
               out.println(a.getDescription());
             }
-            
+
             for(Npc n : getCurrentRoom().getNpc_list()) {
-              
+
               out.println(n.getDescription());
             }
-            
+
           } else if(p.getObject() != null 
             && p.getNpc() == null 
             && p.getContainedObject() == null 
             && p.getContainer() == null 
             && p.getInvObject() == null) {//look su un oggetto della stanza
-            
-          out.println(p.getObject().getLook());
-          
+
+            out.println(p.getObject().getLook());
+
           } else if(p.getObject() == null 
             && p.getNpc() != null 
             && p.getContainedObject() == null 
             && p.getContainer() == null 
             && p.getInvObject() == null) {//look su un npc
-            
+
             out.println(p.getNpc().getLook());
           } else if(p.getObject() == null 
             && p.getNpc() == null 
             && p.getContainedObject() != null 
             && p.getContainer() == null 
             && p.getInvObject() == null) {//look su un oggetto contenuto in un container aperto
-            
+
             out.println(p.getContainedObject().getLook());
-            
+
           } else if(p.getObject() == null 
             && p.getNpc() == null 
             && p.getContainedObject() == null 
             && p.getContainer() != null 
             && p.getInvObject() == null) {//look su un oggetto di tipo container
-            
+
             out.println(p.getContainer().getLook());
-            
+
           } else if(p.getObject() == null 
             && p.getNpc() == null 
             && p.getContainedObject() == null 
             && p.getContainer() == null 
             && p.getInvObject() != null) {//look su un oggetto dell'inventario
-            
+
             out.println(p.getInvObject().getLook());
-            
+
           }
-          
+
         } else {
           out.println("Non c'è nulla da guardare qui!");
         }
-      } else if(p.getCommand().getType() == CommandType.PICK_UP) {//da fixare con Parser output
-        if(p.getObject() != null) {
+      } else if(p.getCommand().getType() == CommandType.PICK_UP) {
+        if(p.getObject() != null) {//caso di oggetto nella stanza
           if(p.getObject().isPickable()) {
-            if(getCurrentRoom().getObjects_list().contains(p.getObject())) {
-              getInventory().add(p.getObject());
-              getCurrentRoom().getObjects_list().remove(p.getObject());
-              out.println("Hai raccolto: " + p.getObject().getName());
-            } else if(roomContList.size() > 0) {
-              for(AdvObjectContainer o : roomContList) {
-                if(o.getList().contains(p.getObject())) {
-                  getInventory().add(p.getObject());
-                  o.getList().remove(p.getObject());
-                  out.println("Hai raccolto: " + p.getObject().getName());
+            getInventory().add(p.getObject());
+            getCurrentRoom().getObjects_list().remove(p.getObject());
+            out.println("Hai raccolto: " + p.getObject().getName());
+          } else {
+            out.println("Non puoi raccoglierlo!");
+          }
+        } else if(p.getContainedObject() != null) {//caso di oggetto in un contenitore
+          List<AdvObjectContainer> templist = getCurrentRoom().getObjects_list().stream()
+            .filter(a -> a instanceof AdvObjectContainer)
+            .map(AdvObjectContainer.class::cast)
+            .collect(Collectors.toList());
+          for(AdvObjectContainer a : templist) {
+            if(a.getList().contains(p.getContainedObject())) {
+              getInventory().add(p.getContainedObject());
+              a.remove(p.getContainedObject());
+              out.println("Hai raccolto: " + p.getContainedObject().getName());
+              break;
+            }
+          }
+
+
+        } else if (p.isAll() && !p.isExcept()) {
+          boolean flag = false;
+          for(AdvObject c : getCurrentRoom().getObjects_list()) {
+            if(c instanceof AdvObjectContainer) {
+              if(((AdvObjectContainer) c).isOpened()) {
+                for(AdvObject a : ((AdvObjectContainer) c).getList()) {
+                  flag = true;
+                  out.println("Hai raccolto: " + a.getName());
+                  getInventory().add(a);
                 }
+                ((AdvObjectContainer) c).getList().removeAll(((AdvObjectContainer) c).getList());
               }
             }
-
-          } 
+          }
+          for(AdvObject a : getCurrentRoom().getObjects_list()) {
+            if(a.isPickable()) {
+              flag = true;
+              out.println("Hai raccolto: " + a.getName());
+              getInventory().add(a);
+              getCurrentRoom().getObjects_list().remove(a);
+            }
+          }
+          if(!flag) {
+            out.println("Non hai raccolto nulla!");
+          }
+        } else if(p.isAll() && p.isExcept()) {
+          boolean flag = false;
+          for(AdvObject c : getCurrentRoom().getObjects_list()) {
+            if(c instanceof AdvObjectContainer) {
+              if(((AdvObjectContainer) c).isOpened()) {
+                for(AdvObject a : ((AdvObjectContainer) c).getList()) {
+                  if(!p.getExObjects().contains(a)) {
+                    flag = true;
+                    out.println("Hai raccolto: " + a.getName());
+                    getInventory().add(a);
+                  }
+                }
+               for(AdvObject b : ((AdvObjectContainer) c).getList()) {
+                 if(!p.getExObjects().contains(b)) {
+                   ((AdvObjectContainer) c).getList().remove(b);
+                 }
+               }
+              }
+            }
+          }
+          for(AdvObject a : getCurrentRoom().getObjects_list()) {
+            if(a.isPickable()) {
+              if(!p.getExObjects().contains(a)) {
+                flag = true;
+                out.println("Hai raccolto: " + a.getName());
+                getInventory().add(a);
+                getCurrentRoom().getObjects_list().remove(a);
+              }
+            }
+          }
+          if(!flag) {
+            out.println("Non hai raccolto nulla!");
+          }
         }
+        
       } else if(p.getCommand().getType() == CommandType.OPEN) {
-        if(p.getContainer() != null) {
+        if(p.getContainer() != null) {//caso di oggetto nella stanza
           if(p.getContainer().getLock() != null) {
             if(getInventory().contains(p.getContainer().getLock().getKey())) {
               out.println("Hai usato " + p.getContainer().getLock().getKey().getName() + " per aprire " + p.getContainer().getName() + " !");
@@ -231,14 +301,31 @@ public class Wutond extends GameDescription {
               out.println("Non hai la chiave giusta per aprire " + p.getContainer().getName());
             }
           }
+        } else if(p.getInvObject() != null && p.getInvObject() instanceof AdvObjectContainer) {//caso di container nell'inventario
+          AdvObjectContainer copyObj = (AdvObjectContainer)p.getInvObject();
+          if(copyObj.getLock() != null) {
+            if(getInventory().contains(copyObj.getLock().getKey())) {
+              out.println("Hai usato " + copyObj.getLock().getKey().getName() + " per aprire " + copyObj.getName() + " !");
+              for(AdvObject a : copyObj.getList()) {
+                out.println("Hai raccolto: " + a.getName());
+                getInventory().add(a);
+              }
+              copyObj.setOpened(true);
+              copyObj.setLock(null);
+              out.println(copyObj.getName() + " non ti serve più a nulla, decidi di donarlo alla natura.");
+              getInventory().remove(copyObj);
+            } else {
+              out.println("Non hai la chiave giusta per aprire " + copyObj.getName());
+            }
         }
-      } else if(wallCounter >= 30) {
+      }} else if(wallCounter >= 30) {
         out.println("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!");
       }
 
-      
-      
+
+
     }
 
   }
 }
+
