@@ -49,7 +49,7 @@ public class Engine {
             }
           }
         }
-        ParserOutput p = parser.parse(command, game.getInventory().getList(), game.getCurrentRoom().getObjects_list(), containerItems,game.getNpcs().getList(),game.getCommands(),game.getArticles(),game.getPrepositions(),game.getParticles(),game.getGrammar());
+        ParserOutput p = parser.parse(command, game.getInventory().getList(), game.getCurrentRoom().getObjects_list(), containerItems,game.getCurrentRoom().getNpc_list(),game.getCommands(),game.getArticles(),game.getPrepositions(),game.getParticles(),game.getGrammar());
         if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
             System.out.println("Addio!");
             scanner.close();

@@ -150,16 +150,18 @@ public class ItParser implements Parser {
             } else if ((index = checkForItem(token_list[i], all_items)) >= 0) {
               index_list.add(index);
               if (all_items.get(index) instanceof AdvObjectContainer) {
-                /*if(all_items.get(index).isPickable()) {
-                  
-                  tokenlist_type.add("obj");
-                } else {
-                  tokenlist_type.add("objcontainer");
-                }
-                */
+                
                   tokenlist_type.add("objcontainer");
                 if (!isExcept) {
-                  pOutput.setContainer((AdvObjectContainer) all_items.get(index));
+                  int indexTemp;
+                  if ((indexTemp = checkForItem(token_list[i], inventory)) > -1) {
+                    pOutput.setInvObject(all_items.get(index));
+                  } else if ((indexTemp = checkForItem(token_list[i], cont_items)) > -1) {
+                    pOutput.setContainedObject(all_items.get(index));
+                  } else if ((indexTemp = checkForItem(token_list[i], room_items)) > -1) {
+                    pOutput.setContainer((AdvObjectContainer) all_items.get(index));
+                  }
+                  
                 } else {
                   pOutput.getExObjects().add(all_items.get(index));
                 }
