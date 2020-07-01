@@ -16,12 +16,12 @@ ALIAS : fine uscire finire
 {
 TYPE : north
 NAME : nord 
-ALIAS : su 
+ALIAS : su sopra
 }
 {
 TYPE : south
 NAME : sud 
-ALIAS : giu 
+ALIAS : giu sotto
 }
 {
 TYPE : west
@@ -36,7 +36,7 @@ ALIAS : destra
 {
 TYPE : open
 NAME : apri 
-ALIAS : aprire 
+ALIAS : aprire sbloccare sblocca 
 }
 {
 TYPE : talk_to
@@ -56,12 +56,12 @@ ALIAS : dona dare donare
 {
 TYPE : look_at
 NAME : guarda 
-ALIAS : osserva guardare ossercare
+ALIAS : osserva guardare osservare scrutare scruta
 }
 {
 TYPE : kill
 NAME : uccidi 
-ALIAS : ammazzare uccidre trucidare sterminare
+ALIAS : ammazzare uccidere trucidare sterminare
 }
 {
 TYPE : save
