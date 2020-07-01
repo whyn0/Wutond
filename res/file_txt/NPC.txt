@@ -3,6 +3,7 @@ ID: 64
 NAME: "Commissario"
 DESCRIPTION: "Vedi finalmente l'uomo che stavi inseguendo"
 LOOK: "Non riesci a vedere il volto dell'uomo ma le sue fattezze ti sono familiari"
+ALIAS: poliziotto uomo persona
 KILLABLE: t
 UNDERSTANDABLE: t
 DIALOG: 119
@@ -13,6 +14,7 @@ ID: 65
 NAME: "Vitino"
 DESCRIPTION: "Vedi un tipo strambo vestito in malo modo e sporco di terra seduto su una panchina. Ha una busta piena di fichi in mano."
 LOOK: "Lo senti farfugliare cose ma da questa distanza non riesci a capire cosa stia dicendo."
+ALIAS: tipo uomo persona
 KILLABLE: t
 UNDERSTANDABLE: f
 DIALOG: 113
@@ -23,6 +25,7 @@ ID: 66
 NAME: "Tipo losco"
 DESCRIPTION: "Riesci a scorgere solo una figura incappucciata che viene illuminata in concomitanza con l'accensione della luce intermittente."
 LOOK: "Non ti sembra una persona molto raccomandabile, meglio stare attenti."
+ALIAS: tipo figura persona
 KILLABLE: f 
 UNDERSTANDABLE: f
 DIALOG: 88
@@ -33,6 +36,7 @@ ID: 67
 NAME: "Bibliotecaria"
 DESCRIPTION: "Vedi una signora sulla mezza età con un'aria simpatica."
 LOOK: "La signora ti fissa aspettando che tu le parli."
+ALIAS: donna signora 
 KILLABLE: f
 UNDERSTANDABLE: t
 DIALOG: 94
@@ -43,6 +47,7 @@ ID: 68
 NAME: "Ciccio"
 DESCRIPTION: "Sotto la torre noti un uomo sulla cinquantina con la schiena incurvata."
 LOOK: "Sembra molto preso da un discorso fra sè e sè e nel frattempo ruota compulsivamente un pacchetto di sigarette nelle sue mani."
+ALIAS: uomo matto pazzo signore
 KILLABLE: f
 UNDERSTANDABLE: f
 DIALOG: 108
@@ -53,6 +58,7 @@ ID: 69
 NAME: "Tre ragazzi"
 DESCRIPTION: "Vedi tre ragazzi appoggiati alla ringhiera che costeggia la torre dell'orologio. Stanno sorseggiando una Peroni mentre dialogano tra loro."
 LOOK: "Ti sembrano parecchio tranquilli nonostante siano in presenza di un cadavere."
+ALIAS: ragazzi ragazzo persone 
 KILLABLE: f
 UNDERSTANDABLE: t
 DIALOG: 97
@@ -63,6 +69,7 @@ ID: 70
 NAME: "Samuele"
 DESCRIPTION: "Sul lato sinistro dell'entrata vedi un ragazzo occhialuto appoggiato al muro intento a fumarsi una sigaretta."
 LOOK: "Indossa una maglietta della Juventus. Ad un primo sguardo non sembra molto sveglio."
+ALIAS: ragazzo persona uomo
 KILLABLE: t
 UNDERSTANDABLE: f
 DIALOG: 102

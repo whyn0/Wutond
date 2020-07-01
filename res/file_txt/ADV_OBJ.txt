@@ -3,7 +3,7 @@ ID: 45
 NAME: "Chiave Magnetica"
 DESCRIPTION: "Riesci a vedere su un tavolo alla tua destra una chiave magnetica probabilmente lasciata da qualche poliziotto disattento."
 LOOK: "Una chiave magnetica, chissà cosa apre."
-ALIAS: 
+ALIAS: chiave tessera carta 
 PICKABLE: t 
 }
 {
@@ -11,7 +11,7 @@ ID: 46
 NAME: "Fascicolo"
 DESCRIPTION: "Vedi un fascicolo"
 LOOK: "Sfogliando le pagine del fasciolo arrivi alla conclusione che questa città abbia un problema con una certa droga che chiamano polvere magica. Sembra che garantisca poteri sovrannaturali a discapito dell'intelligenza."
-ALIAS: 
+ALIAS: fogli foglio documento documenti
 PICKABLE: t
 }
 {
@@ -19,15 +19,15 @@ ID: 79
 NAME: "Chiave Arrugginita"
 DESCRIPTION: "Una chiave arrugginita"
 LOOK: "Una semplice chiave arrugginita, chissà cosa apre."
-ALIAS: 
-PICKABLE: t
+ALIAS: chiave
+PCKABLE: t
 }
 {
 ID: 49
 NAME: "Distintivo"
 DESCRIPTION: ""
 LOOK: "Un distintivo della polizia di Bitonto. Ti sembra di riconoscere la sua forma ma non ricordi dove l'hai già vista."
-ALIAS: 
+ALIAS: stemma
 PICKABLE: t
 }
 {
@@ -35,7 +35,7 @@ ID: 51
 NAME: "Polvere Magica"
 DESCRIPTION: "Una bustina trasperente con della polvere."
 LOOK: "Una bustina con una polvere dal color argenteo."
-ALIAS: 
+ALIAS: polvere droga bustina
 PICKABLE: t
 }
 {
@@ -43,15 +43,15 @@ ID: 52
 NAME: "Pistola"
 DESCRIPTION: "Una pistola molto semplice, sembra sia stato cancellato il numero di serie."
 LOOK: "Una pistola di piccolo calibro, sembra sia stato cancellato il numero di serie."
-ALIAS: 
-PICKABLE: 
+ALIAS: arma
+PICKABLE: t
 }
 {
 ID: 53
 NAME: "Dizionario"
 DESCRIPTION: "Un dizionario Italiano-Bitontino"
 LOOK: "Un dizionario Italiano-Bitontino: ti dovrebbe aiutare a capire i cittadini, per quanto possibile."
-ALIAS: 
+ALIAS: libro
 PICKABLE: t
 }
 {
@@ -59,7 +59,7 @@ ID: 54
 NAME: "Libretto Folkloristico"
 DESCRIPTION: "Un Libretto Folkloristico"
 LOOK: "Libro scritto da qualche scrittore bitontino che non aveva molto da fare, contiene alcune vicende sulla città e i principali detti."
-ALIAS: 
+ALIAS: libro libretto
 PICKABLE: t
 }
 {
@@ -67,7 +67,7 @@ ID: 55
 NAME: "PC"
 DESCRIPTION: "Vedi un pc di ultima generazione."
 LOOK: "Tra le tante postazioni spente, ne vedi una con un computer ancora in funzione."
-ALIAS: 
+ALIAS: computer
 PICKABLE: f 
 }
 {
@@ -75,7 +75,7 @@ ID: 56
 NAME: "Cadavere"
 DESCRIPTION: "Vedi il cadavere del proprietario del bar, la gente fa finta di nulla, come se non fosse lì presente"
 LOOK: "E' il cadavere del proprietario del bar, sembra sia stato drogato, ma non ti spieghi come mai sia ancora qui"
-ALIAS: 
+ALIAS: corpo morto
 PICKABLE: f
 }
 {
@@ -83,7 +83,7 @@ ID: 58
 NAME: "Birra"
 DESCRIPTION: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
 LOOK: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
-ALIAS: 
+ALIAS: peroni bottiglia
 PICKABLE: t
 }
 {
@@ -91,7 +91,7 @@ ID: 62
 NAME: "Fossato"
 DESCRIPTION: "Sotto il ponte riesci a vedere un fossato profondo circa 3 metri. Meglio stare attenti."
 LOOK: "Il famoso fossato del torrione, è ridotto  molto male, c'è parecchia spazzatura in fondo, tra le varie bottiglie scorgi addirittura una bici al suo interno."
-ALIAS: 
+ALIAS: burrone
 PICKABLE: f
 }
 {
@@ -99,7 +99,7 @@ ID: 61
 NAME: "Portafoglio"
 DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione"
 LOOK: "Un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione."
-ALIAS: 
+ALIAS: portadocumenti
 PICKABLE: t
 }
 {
@@ -107,6 +107,6 @@ ID: 80
 NAME: "Pala"
 DESCRIPTION: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
 LOOK: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
-ALIAS: 
+ALIAS: vanga
 PICKABLE: t
 }
