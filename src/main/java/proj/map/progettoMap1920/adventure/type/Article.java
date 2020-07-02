@@ -12,10 +12,9 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Article {
+public class Article extends GameUtil{
     private ArticleType type;
-    private String name;
-    private Set<String> alias;
+
 
     public Article(ArticleType type, String name) {
         this.type = type;

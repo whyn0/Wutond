@@ -25,6 +25,7 @@ import javax.swing.JFrame;
  */
 public class DialogBox extends javax.swing.JFrame {
 	private static  Dialog d;
+	
 	/**
 	 * Creates new form DialogBox
 	 */

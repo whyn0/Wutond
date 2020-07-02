@@ -13,6 +13,8 @@ import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.type.Article;
 import proj.map.progettoMap1920.adventure.type.Command;
 import proj.map.progettoMap1920.adventure.type.Door;
+import proj.map.progettoMap1920.adventure.type.GameObject;
+import proj.map.progettoMap1920.adventure.type.GameUtil;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Preposition;
 import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
@@ -23,7 +25,39 @@ import proj.map.progettoMap1920.adventure.type.SyntaxParticlesType;
  * @author whyno
  */
 public class ItParser implements Parser {
-
+  public int checkGrammar(String token, List<? extends GameUtil> list) {
+    int index = -1;
+    for(int i = 0; i < list.size(); i++) {
+      if(list.get(i) != null) {
+        if(list.get(i).getName().toLowerCase().equals(token) 
+          || list.get(i).getName().equals(token) 
+          || list.get(i).getAlias().contains(token) 
+          || list.get(i).getAlias().contains(token.toLowerCase())) {
+          index = i;
+          break;
+        }
+      }
+      }
+      
+    return index;
+  }
+  public int checkElement(String token, List<? extends GameObject> list) {
+    int index = -1;
+    for(int i = 0; i < list.size(); i++) {
+      if(list.get(i) != null) {
+        if(list.get(i).getName().toLowerCase().equals(token) 
+          || list.get(i).getName().equals(token) 
+          || list.get(i).getAlias().contains(token) 
+          || list.get(i).getAlias().contains(token.toLowerCase())) {
+          index = i;
+          break;
+        }
+      }
+      }
+      
+    return index;
+  }
+  /*
   @Override
   public int checkForParticles(String token, List<SyntaxParticles> list) {
     int index = -1;
@@ -96,7 +130,7 @@ public class ItParser implements Parser {
     }
     return index;
   }
-
+*/
   @Override
   public ParserOutput parse(String command,
     List<AdvObject> inventory,
@@ -129,7 +163,7 @@ public class ItParser implements Parser {
     int index;
 
     if (token_list.length > 0) {
-      index = checkForCommand(token_list[0], cmd_list);
+      index = checkGrammar(token_list[0], cmd_list);
       if (index > -1) {
         tokenlist_type.add(cmd_list.get(index).getType().toString());
         pOutput.setCommand(cmd_list.get(index));
@@ -139,26 +173,26 @@ public class ItParser implements Parser {
         if (token_list.length > 1) {
           for (int i = 1; i < token_list.length; i++) {
 
-            if ((index = checkForArticle(token_list[i], articles)) >= 0) {
+            if ((index = checkGrammar(token_list[i], articles)) >= 0) {
               index_list.add(index);
               // tokenlist_type.add("article");
               continue;
-            } else if ((index = checkForPrep(token_list[i], prepositions)) >= 0) {
+            } else if ((index = checkGrammar(token_list[i], prepositions)) >= 0) {
               index_list.add(index);
               // tokenlist_type.add("preposition");
               continue;
-            } else if ((index = checkForItem(token_list[i], all_items)) >= 0) {
+            } else if ((index = checkElement(token_list[i], all_items)) >= 0) {
               index_list.add(index);
               if (all_items.get(index) instanceof AdvObjectContainer) {
                 
                   tokenlist_type.add("objcontainer");
                 if (!isExcept) {
-                  int indexTemp;
-                  if ((indexTemp = checkForItem(token_list[i], inventory)) > -1) {
+
+                  if (checkElement(token_list[i], inventory) > -1) {
                     pOutput.setInvObject(all_items.get(index));
-                  } else if ((indexTemp = checkForItem(token_list[i], cont_items)) > -1) {
+                  } else if (checkElement(token_list[i], cont_items) > -1) {
                     pOutput.setContainedObject(all_items.get(index));
-                  } else if ((indexTemp = checkForItem(token_list[i], room_items)) > -1) {
+                  } else if (checkElement(token_list[i], room_items) > -1) {
                     pOutput.setContainer((AdvObjectContainer) all_items.get(index));
                   }
                   
@@ -175,12 +209,17 @@ public class ItParser implements Parser {
                 // se il flag except == false ricerco l'oggetto nella specifica lista
                 // e in caso di match, valido il rispettivo campo di ParserOutput
                 if (!isExcept) {
-                  int indexTemp;
-                  if ((indexTemp = checkForItem(token_list[i], inventory)) > -1) {
+                  
+                  if ( checkElement(token_list[i], inventory) > -1) {
+                    
                     pOutput.setInvObject(all_items.get(index));
-                  } else if ((indexTemp = checkForItem(token_list[i], cont_items)) > -1) {
+                    
+                  } else if ( checkElement(token_list[i], cont_items) > -1) {
+                    
                     pOutput.setContainedObject(all_items.get(index));
-                  } else if ((indexTemp = checkForItem(token_list[i], room_items)) > -1) {
+                    
+                  } else if ( checkElement(token_list[i], room_items) > -1) {
+                    
                     pOutput.setObject(all_items.get(index));
                   }
                 } else {
@@ -189,7 +228,7 @@ public class ItParser implements Parser {
               }
 
               continue;
-            } else if ((index = checkForCommand(token_list[i], cmd_list)) >= 0) {
+            } else if ((index = checkGrammar(token_list[i], cmd_list)) >= 0) {
 
               switch (cmd_list.get(index).getType().toString()) {
                 case "north":
@@ -219,12 +258,12 @@ public class ItParser implements Parser {
                   break;
               }
               continue;
-            } else if ((index = checkForNpc(token_list[i], npc)) >= 0) {
+            } else if ((index = checkElement(token_list[i], npc)) >= 0) {
               index_list.add(index);
               tokenlist_type.add("npc");
               pOutput.setNpc(npc.get(index));
               continue;
-            } else if ((index = checkForParticles(token_list[i], particles)) >= 0) {
+            } else if ((index = checkGrammar(token_list[i], particles)) >= 0) {
               index_list.add(index);
               if (particles.get(index).getType().equals(SyntaxParticlesType.EXCEPT)) {
                // tokenlist_type.add("except");
@@ -244,7 +283,7 @@ public class ItParser implements Parser {
               try {
                 if (token_list[i + 1] != null) {// se ho un oggetto composito di due parole
                   String temp = token_list[i] + " " + token_list[i + 1];
-                  if ((index = checkForItem(temp, all_items)) >= 0) {
+                  if ((index = checkElement(temp, all_items)) >= 0) {
                     index_list.add(index);
                     if(!isExcept) {
                       if (all_items.get(index) instanceof AdvObjectContainer) {
@@ -255,12 +294,12 @@ public class ItParser implements Parser {
                         pOutput.setDoor((Door) all_items.get(index));
                       } else if (all_items.get(index) instanceof AdvObject) {
                         tokenlist_type.add("obj");
-                        int indexTemp;
-                        if ((indexTemp = checkForItem(temp, inventory)) > -1) {
+
+                        if (checkElement(temp, inventory) > -1) {
                           pOutput.setInvObject(all_items.get(index));
-                        } else if ((indexTemp = checkForItem(temp, cont_items)) > -1) {
+                        } else if (checkElement(temp, cont_items) > -1) {
                           pOutput.setContainedObject(all_items.get(index));
-                        } else if ((indexTemp = checkForItem(temp, room_items)) > -1) {
+                        } else if (checkElement(temp, room_items) > -1) {
                           pOutput.setObject(all_items.get(index));
                       }
                     }
@@ -272,7 +311,7 @@ public class ItParser implements Parser {
                     pOutput.getExObjects().add(all_items.get(index));
                   }
                   }
-                  if((index = checkForNpc(temp, npc)) >= 0) {
+                  if((index = checkElement(temp, npc)) >= 0) {
                     index_list.add(index);
                     tokenlist_type.add("npc");
                     pOutput.setNpc(npc.get(index));

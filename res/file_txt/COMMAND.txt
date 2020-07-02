@@ -16,22 +16,22 @@ ALIAS : fine uscire finire
 {
 TYPE : north
 NAME : nord 
-ALIAS : su sopra
+ALIAS : su sopra n
 }
 {
 TYPE : south
 NAME : sud 
-ALIAS : giu sotto
+ALIAS : giu sotto s 
 }
 {
 TYPE : west
 NAME : ovest 
-ALIAS : sinistra 
+ALIAS : sinistra w o
 }
 {
 TYPE : east
 NAME : est 
-ALIAS : destra 
+ALIAS : destra e
 }
 {
 TYPE : open

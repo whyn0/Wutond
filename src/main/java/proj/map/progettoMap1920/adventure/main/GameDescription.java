@@ -144,4 +144,10 @@ public abstract class GameDescription {
   public abstract void init() throws IOException, FileNotFoundException;
 
   public abstract void nextMove(ParserOutput p, PrintStream out);
+
+
+  public void run(ParserOutput p, PrintStream out) {
+    // TODO Auto-generated method stub
+    
+  }
 }

@@ -11,7 +11,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
+
 
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GameUtilInit;
@@ -65,9 +67,9 @@ public class Wutond extends GameDescription {
     this.getParticles().addAll(utilInit.getParticles_list());
     // set starting room
     this.setCurrentRoom(this.getRooms().getById(1));
-    getInventory().add(getObjects().getById(49));
+    getInventory().add(getObjects().getByName("Questura"));//Questura
   }
-
+  
   @Override
   public void nextMove(ParserOutput p, PrintStream out) {
     if(p.getCommand() == null) {
@@ -263,11 +265,11 @@ public class Wutond extends GameDescription {
                     getInventory().add(a);
                   }
                 }
-               for(AdvObject b : ((AdvObjectContainer) c).getList()) {
-                 if(!p.getExObjects().contains(b)) {
-                   ((AdvObjectContainer) c).getList().remove(b);
-                 }
-               }
+                for(AdvObject b : ((AdvObjectContainer) c).getList()) {
+                  if(!p.getExObjects().contains(b)) {
+                    ((AdvObjectContainer) c).getList().remove(b);
+                  }
+                }
               }
             }
           }
@@ -285,7 +287,7 @@ public class Wutond extends GameDescription {
             out.println("Non hai raccolto nulla!");
           }
         }
-        
+
       } else if(p.getCommand().getType() == CommandType.OPEN) {
         if(p.getContainer() != null) {//caso di oggetto nella stanza
           if(p.getContainer().getLock() != null) {
@@ -317,13 +319,56 @@ public class Wutond extends GameDescription {
             } else {
               out.println("Non hai la chiave giusta per aprire " + copyObj.getName());
             }
+          }
         }
-      }} else if(wallCounter >= 30) {
+      } else if(wallCounter >= 30) {
         out.println("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!");
+      } else if(p.getCommand().getType() == CommandType.TALK_TO) {
+
+        DThread t = new DThread(p.getNpc());
+        try {
+          System.in.close();
+        } catch (IOException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
+        t.start();
+        synchronized(t) {
+          try {
+            t.wait();
+            //System.in.wait();
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+        }
       }
 
 
 
+    }
+
+  }
+  
+}
+class DThread extends Thread{
+  Npc npc;
+  boolean lock = false;
+  public DThread(Npc n) {
+    this.npc = n;
+  }
+  public void run() {
+    synchronized(this){
+      DialogBox d= new DialogBox(npc.getDialog(),lock);
+      d.main(null);
+      while(!lock) {
+        try {
+          System.in.close();
+        } catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+      System.in.
     }
 
   }
