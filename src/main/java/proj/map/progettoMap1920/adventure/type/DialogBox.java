@@ -11,6 +11,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import proj.map.progettoMap1920.adventure.utils.LockT;
+
 import javax.swing.JButton;
 import java.awt.Font;
 
@@ -194,6 +197,7 @@ public class DialogBox extends javax.swing.JFrame {
 					}else {
 						setVisible(false);
 						dispose();
+						
 					}
 				}catch(NullPointerException n) {
 
