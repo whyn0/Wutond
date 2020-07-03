@@ -10,7 +10,12 @@ package proj.map.progettoMap1920.adventure.type;
  * @author whyno
  */
 public class DialogB extends javax.swing.JDialog {
-
+    /*
+    
+    Custom field
+    
+    */
+    private Dialog d;
     /**
      * Creates new form DialogB
      */
@@ -18,7 +23,7 @@ public class DialogB extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,26 +35,88 @@ public class DialogB extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textNpc = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
+        textB = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
+        textC = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
+        textA = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        optA = new javax.swing.JButton();
+        optB = new javax.swing.JButton();
+        optC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(5, 6, 7));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jButton1.setText("jButton1");
+        textNpc.setEditable(false);
+        textNpc.setBackground(new java.awt.Color(0, 0, 0));
+        textNpc.setColumns(20);
+        textNpc.setFont(new java.awt.Font("Free Courier", 0, 12)); // NOI18N
+        textNpc.setForeground(new java.awt.Color(255, 255, 255));
+        textNpc.setLineWrap(true);
+        textNpc.setRows(5);
+        jScrollPane2.setViewportView(textNpc);
 
-        jButton2.setText("jButton2");
+        textB.setEditable(false);
+        textB.setBackground(new java.awt.Color(0, 0, 0));
+        textB.setColumns(20);
+        textB.setFont(new java.awt.Font("Free Courier", 0, 12)); // NOI18N
+        textB.setForeground(new java.awt.Color(255, 255, 255));
+        textB.setLineWrap(true);
+        textB.setRows(5);
+        jScrollPane1.setViewportView(textB);
 
-        jButton3.setText("jButton3");
+        textC.setEditable(false);
+        textC.setBackground(new java.awt.Color(0, 0, 0));
+        textC.setColumns(20);
+        textC.setFont(new java.awt.Font("Free Courier", 0, 12)); // NOI18N
+        textC.setForeground(new java.awt.Color(255, 255, 255));
+        textC.setLineWrap(true);
+        textC.setRows(5);
+        jScrollPane3.setViewportView(textC);
+
+        textA.setEditable(false);
+        textA.setBackground(new java.awt.Color(0, 0, 0));
+        textA.setColumns(20);
+        textA.setFont(new java.awt.Font("Free Courier", 0, 12)); // NOI18N
+        textA.setForeground(new java.awt.Color(255, 255, 255));
+        textA.setLineWrap(true);
+        textA.setRows(5);
+        jScrollPane4.setViewportView(textA);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+
+        optA.setBackground(new java.awt.Color(153, 153, 153));
+        optA.setForeground(new java.awt.Color(0, 0, 0));
+        optA.setText("A");
+        optA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optAActionPerformed(evt);
+            }
+        });
+
+        optB.setBackground(new java.awt.Color(153, 153, 153));
+        optB.setForeground(new java.awt.Color(0, 0, 0));
+        optB.setText("B");
+        optB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optBActionPerformed(evt);
+            }
+        });
+
+        optC.setBackground(new java.awt.Color(153, 153, 153));
+        optC.setForeground(new java.awt.Color(0, 0, 0));
+        optC.setText("C");
+        optC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -58,25 +125,20 @@ public class DialogB extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addComponent(optC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(optA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(optB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(optA, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(optB, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(optC, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -89,11 +151,11 @@ public class DialogB extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
@@ -102,16 +164,16 @@ public class DialogB extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -129,16 +191,86 @@ public class DialogB extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void optCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optCActionPerformed
+        if(checkDialog(d.getNext_3())){
+            checkText(d.getNext_3());
+            setDialog(d.getNext_3());
+            setText();    
+        } else {
+            exit();
+        }
+
+    }//GEN-LAST:event_optCActionPerformed
+
+    private void optAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optAActionPerformed
+         if(checkDialog(d.getNext_1())){
+            checkText(d.getNext_1());
+            setDialog(d.getNext_1());
+            setText();    
+        }else {
+            exit();
+        }
+    }//GEN-LAST:event_optAActionPerformed
+
+    private void optBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optBActionPerformed
+         if(checkDialog(d.getNext_2())){
+             checkText(d.getNext_2());
+            setDialog(d.getNext_2());
+            setText();    
+        }else {
+            exit();
+        }
+    }//GEN-LAST:event_optBActionPerformed
+    public void setDialog(Dialog d){
+        this.d = d;
+        setText();
+    }
+    public Dialog getDialog(){
+        return this.d;
+    }
+    private void setText(){
+        textA.setText(d.getOpt_1());
+        textB.setText(d.getOpt_2());
+        textC.setText(d.getOpt_3());
+        textNpc.setText(d.getText());
+    }
+    private boolean checkDialog(Dialog next){
+        if(next.getId() == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    private void exit(){//throws custo exception per trigger di eventi etc
+        this.setVisible(false);
+        this.dispose();
+    }
+    private void checkText(Dialog d){
+        if(d.getOpt_1() == null) {
+            this.jScrollPane4.setVisible(false);
+            this.optA.setVisible(false);
+	}
+	if(d.getOpt_2() == null) {
+            this.jScrollPane1.setVisible(false);
+            this.optB.setVisible(false);
+	}
+	if(d.getOpt_3() == null) {
+            this.jScrollPane3.setVisible(false);
+            this.optC.setVisible(false);
+	}
+    }
+
     /**
      * @param args the command line arguments
      */
+    /*
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+   /*     try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -157,7 +289,7 @@ public class DialogB extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+    /*    java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 DialogB dialog = new DialogB(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -169,18 +301,21 @@ public class DialogB extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton optA;
+    private javax.swing.JButton optB;
+    private javax.swing.JButton optC;
+    private javax.swing.JTextArea textA;
+    private javax.swing.JTextArea textB;
+    private javax.swing.JTextArea textC;
+    private javax.swing.JTextArea textNpc;
     // End of variables declaration//GEN-END:variables
 }

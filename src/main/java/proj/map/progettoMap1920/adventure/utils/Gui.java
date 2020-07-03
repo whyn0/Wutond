@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.Keymap;
 
 /**
@@ -73,12 +74,17 @@ public class Gui extends javax.swing.JFrame {
         outputArea.setForeground(new java.awt.Color(255, 255, 255));
         outputArea.setLineWrap(true);
         outputArea.setRows(5);
+        outputArea.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(outputArea);
+        DefaultCaret caret = (DefaultCaret) outputArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
         jScrollPane3.setBackground(new java.awt.Color(0, 0, 0));
 
         inputArea.setBackground(new java.awt.Color(1, 1, 1));
         inputArea.setColumns(20);
+        inputArea.setFont(new java.awt.Font("Free Courier", 0, 12)); // NOI18N
+        inputArea.setForeground(new java.awt.Color(255, 255, 255));
         inputArea.setRows(5);
         inputArea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -110,7 +116,7 @@ public class Gui extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -202,7 +208,7 @@ public class Gui extends javax.swing.JFrame {
     public void setString(String s){
         this.string = s;
     }
-    
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea inputArea;
     private javax.swing.JMenu jMenu1;
