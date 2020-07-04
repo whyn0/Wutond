@@ -57,80 +57,7 @@ public class ItParser implements Parser {
       
     return index;
   }
-  /*
-  @Override
-  public int checkForParticles(String token, List<SyntaxParticles> list) {
-    int index = -1;
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().equals(token)) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
 
-  @Override
-  public int checkForArticle(String token, List<Article> list) {
-    int index = -1;
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().equals(token)) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
-
-  // || list.get(i).getAlias().contains(token)
-  @Override
-  public int checkForPrep(String token, List<Preposition> list) {
-    int index = -1;
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().equals(token)) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
-
-  @Override
-  public int checkForNpc(String token, List<Npc> list) {
-    int index = -1;
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().equals(token)) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
-
-  @Override
-  public int checkForCommand(String token, List<Command> list) {
-    int index = -1;
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().matches(token)) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
-
-  @Override
-  public int checkForItem(String token, List<AdvObject> list) {
-    int index = -1;
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getName().toLowerCase().equals(token)) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
-*/
   @Override
   public ParserOutput parse(String command,
     List<AdvObject> inventory,
@@ -141,7 +68,7 @@ public class ItParser implements Parser {
     List<Article> articles,
     List<Preposition> prepositions,
     List<SyntaxParticles> particles,
-    CFGrammar grammar) {
+    CFGrammar grammar) throws NullPointerException{
 
     ParserOutput pOutput = new ParserOutput();
     List<String> tokenlist_type = new ArrayList<>();
@@ -339,9 +266,7 @@ public class ItParser implements Parser {
     }
     //verifica semantica
     Cky cky = new Cky(grammar);
-    if(!cky.parse(tokenlist_type)) {
-      pOutput = null;
-    }
+
     //
     return pOutput;
   }

@@ -11,8 +11,10 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
+import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 
@@ -73,7 +75,7 @@ public class Wutond extends GameDescription {
   }
   
   @Override
-  public void nextMove(ParserOutput p, JTextArea out) {
+  public void nextMove(ParserOutput p, JTextArea out, JFrame gui) {
     if(p.getCommand() == null) {
 
       out.append("Non ho capito cosa dovrei fare! Prova con un altro comando." + '\n');
@@ -326,21 +328,27 @@ public class Wutond extends GameDescription {
       } else if(wallCounter >= 30) {
         out.append("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!" + '\n');
       } else if(p.getCommand().getType() == CommandType.TALK_TO) {
-        synchronized(out) {
+        //synchronized(out) {
           
-          DialogBox d= new DialogBox(p.getNpc().getDialog());
-          d.main(null);
-          /*try {
-            out.wait();
-          } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
-          while(d.isVisible()) {
-            
-          }
-          out.notify();*/
-        }
+          DialogB d= new DialogB(gui,true);
+          d.setDialog(p.getNpc().getDialog());
+          d.setVisible(true);
+       } else if(p.getCommand().getType() == CommandType.CURSE){
+           
+           StringBuilder temp = new StringBuilder();
+           Random r = new Random();
+           for(int i = 0; i < out.getText().length(); i++){
+               Character c;
+               c = (char)(r.nextInt('z' - 'a') + 'a');
+               temp.append(c);
+               
+           }
+
+           out.setText(temp.toString());
+           out.append("\n" + "\n");
+           out.append(p.getCommand().getName() + " a me?! Ora sono *!?*** tuoi !");
+       }
+      
 
       }
 
@@ -350,5 +358,5 @@ public class Wutond extends GameDescription {
 
   }
   
-}
+
 
