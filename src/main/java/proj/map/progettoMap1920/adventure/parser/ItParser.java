@@ -7,6 +7,7 @@ package proj.map.progettoMap1920.adventure.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 
 import proj.map.progettoMap1920.adventure.type.AdvObject;
 import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
@@ -24,7 +25,7 @@ import proj.map.progettoMap1920.adventure.type.SyntaxParticlesType;
  *
  * @author whyno
  */
-public class ItParser implements Parser {
+public class ItParser implements Parser{
   public int checkGrammar(String token, List<? extends GameUtil> list) {
     int index = -1;
     for(int i = 0; i < list.size(); i++) {
@@ -68,7 +69,7 @@ public class ItParser implements Parser {
     List<Article> articles,
     List<Preposition> prepositions,
     List<SyntaxParticles> particles,
-    CFGrammar grammar) throws NullPointerException{
+    CFGrammar grammar) throws NullOutputException{
 
     ParserOutput pOutput = new ParserOutput();
     List<String> tokenlist_type = new ArrayList<>();
@@ -266,7 +267,9 @@ public class ItParser implements Parser {
     }
     //verifica semantica
     Cky cky = new Cky(grammar);
-
+    if(!cky.parse(tokenlist_type)){
+        throw new NullOutputException(pOutput);
+    }
     //
     return pOutput;
   }

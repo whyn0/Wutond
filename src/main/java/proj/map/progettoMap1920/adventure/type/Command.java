@@ -26,6 +26,9 @@ public class Command extends GameUtil{
         this.name = name;
         this.alias = alias;
     }
+    public Command(CommandType t){
+        this.type = t;
+    }
 
     public String getName() {
         return name;
