@@ -95,6 +95,7 @@ public class Wutond extends GameDescription {
     } else {
 
       int wallCounter = 0;
+      boolean noroom = false;
       boolean move = false;
       List<Room> thisLockedRoom = new ArrayList<>();
       List<AdvObjectContainer> roomContList = new ArrayList<>();
@@ -359,6 +360,13 @@ public class Wutond extends GameDescription {
               p.getContainer().setLock(null);
             } else {
               out.append("Non hai la chiave giusta per aprire " + p.getContainer().getName() + '\n');
+            }            
+          }
+          else if(p.getContainer().getLock() == null) {
+            out.append(p.getContainer().getName() + " contiene:" + '\n');
+            p.getContainer().setOpened(true);
+            for (AdvObject a : p.getContainer().getList()) {
+              out.append("-" + " " + a.getName() + '\n');
             }
           }
         } else if (p.getInvObject() != null && p.getInvObject() instanceof AdvObjectContainer) {// caso di container nell'inventario
@@ -393,11 +401,20 @@ public class Wutond extends GameDescription {
         out.append("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!" + '\n');
       } else if (p.getCommand().getType() == CommandType.TALK_TO) {
         // synchronized(out) {
-        if (p.getNpc().isUnderstandable()) {
+        if (p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null) {
           DialogB d = new DialogB(gui, true);
           d.setDialog(p.getNpc().getDialog());
           d.setVisible(true);
-        } else {
+          if(p.getNpc().getNpc_inventory().size() > 0) {
+            getInventory().addAll(p.getNpc().getNpc_inventory());
+            out.append(p.getNpc().getName() + " ti ha dato:" + "\n");
+            for(AdvObject a : p.getNpc().getNpc_inventory()) {
+              out.append("-" + a.getName() + "\n");
+            }
+            p.getNpc().getNpc_inventory().removeAll(p.getNpc().getNpc_inventory());
+            p.getNpc().setDialog(null);
+          }
+        } else if(!p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null){
           out.append(p.getNpc().getName() + " dice:" + "\n");
           Random r = new Random();
           for (int i = 0; i < 40; i++) {
@@ -407,6 +424,8 @@ public class Wutond extends GameDescription {
 
           }
           out.append("\n" + "Ti sembra che parli in dialetto strettissimo, ti allontani sorridendo.");
+        } else if(p.getNpc().getDialog() == null) {
+          out.append(p.getNpc().getName() + " non ha nulla da dirti" + "\n");
         }
 
       } else if (p.getCommand().getType() == CommandType.CURSE) {
@@ -430,6 +449,13 @@ public class Wutond extends GameDescription {
           out.append("Non puoi usare questo oggetto!" + "\n");
         }
 
+      } else if(p.getCommand().getType() == CommandType.GIVE) {
+        this.getEvent().check(p, this.getCurrentRoom(), move, out);
+      }
+      try {
+        this.getEvent().check(p, this.getCurrentRoom(), move, out);
+      } catch(NullPointerException e) {
+        out.append(e.toString());
       }
 
     }
