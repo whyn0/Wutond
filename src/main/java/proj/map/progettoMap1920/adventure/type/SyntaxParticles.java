@@ -14,10 +14,8 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class SyntaxParticles {
+public class SyntaxParticles extends GameUtil{
     private final SyntaxParticlesType particle;
-    private final String name;
-    private Set<String> alias;
     /*
     
     

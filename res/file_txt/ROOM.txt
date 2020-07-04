@@ -1,7 +1,7 @@
 {
 ID: 1
 NAME: "Questura"
-DESCRIPTION: "Sei Alfoso Paccagnello, un detective padovano. Sei stato inviato nell'apparententemente tranquilla cittadina di B-tond per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: il bar castello.Ti trovi in questura in compagnia del commissario Beretta. Sembra che ti debba informare sul caso prima di farti iniziare le indagini."
+DESCRIPTION: "Sei Alfoso Paccagnello, un detective padovano. Sei stato inviato nell'apparententemente tranquilla cittadina di Wutond per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: il bar castello.Ti trovi in questura in compagnia del commissario Beretta. Sembra che ti debba informare sul caso prima di farti iniziare le indagini."
 LOOK: "Ti trovi in questura"
 NORTH: null
 SOUTH: null

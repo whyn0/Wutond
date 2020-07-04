@@ -14,13 +14,8 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Command {
+public class Command extends GameUtil{
      private final CommandType type;
-
-    private final String name;
-
-    private Set<String> alias;
-
     public Command(CommandType type, String name) {
         this.type = type;
         this.name = name;

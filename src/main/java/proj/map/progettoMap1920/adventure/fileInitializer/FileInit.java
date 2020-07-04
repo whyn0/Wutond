@@ -580,7 +580,7 @@ public class FileInit { // probabile singleton
             onLook = tokenized[1];
           }
           if (tokenized[0].equals("ALIAS")) {
-            if (tokenized[1].equals("null")) {
+            if (!tokenized[1].equals("null")) {
               String[] aliasList = tokenized[1].split("\\s");
               alias.addAll(Arrays.asList(aliasList));
             }else {

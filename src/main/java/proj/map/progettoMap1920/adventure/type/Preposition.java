@@ -12,10 +12,9 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Preposition {
+public class Preposition extends GameUtil{
     private PrepositionType type;
-    private String name;
-    private Set<String> alias;
+
 
     public Preposition(PrepositionType type, String name, Set<String> alias) {
         this.type = type;

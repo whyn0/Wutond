@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
 
 import proj.map.progettoMap1920.adventure.parser.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
@@ -143,5 +145,11 @@ public abstract class GameDescription {
   //----------------------------------------------METHODS------------
   public abstract void init() throws IOException, FileNotFoundException;
 
-  public abstract void nextMove(ParserOutput p, PrintStream out);
+  public abstract void nextMove(ParserOutput p, JTextArea out, JFrame gui);
+
+
+  public void run(ParserOutput p, PrintStream out) {
+    // TODO Auto-generated method stub
+    
+  }
 }

@@ -26,7 +26,7 @@ PCKABLE: t
 ID: 49
 NAME: "Distintivo"
 DESCRIPTION: ""
-LOOK: "Un distintivo della polizia di Bitonto. Ti sembra di riconoscere la sua forma ma non ricordi dove l'hai già vista."
+LOOK: "Un distintivo della polizia di Wutond. Ti sembra di riconoscere la sua forma ma non ricordi dove l'hai già vista."
 ALIAS: stemma
 PICKABLE: t
 }
@@ -49,8 +49,8 @@ PICKABLE: t
 {
 ID: 53
 NAME: "Dizionario"
-DESCRIPTION: "Un dizionario Italiano-Bitontino"
-LOOK: "Un dizionario Italiano-Bitontino: ti dovrebbe aiutare a capire i cittadini, per quanto possibile."
+DESCRIPTION: "Un dizionario Italiano-Wutondino"
+LOOK: "Un dizionario Italiano-Wutondino: ti dovrebbe aiutare a capire i cittadini, per quanto possibile."
 ALIAS: libro
 PICKABLE: t
 }
@@ -58,7 +58,7 @@ PICKABLE: t
 ID: 54
 NAME: "Libretto Folkloristico"
 DESCRIPTION: "Un Libretto Folkloristico"
-LOOK: "Libro scritto da qualche scrittore bitontino che non aveva molto da fare, contiene alcune vicende sulla città e i principali detti."
+LOOK: "Libro scritto da qualche scrittore wutondino che non aveva molto da fare, contiene alcune vicende sulla città e i principali detti."
 ALIAS: libro libretto
 PICKABLE: t
 }
@@ -90,15 +90,15 @@ PICKABLE: t
 ID: 62
 NAME: "Fossato"
 DESCRIPTION: "Sotto il ponte riesci a vedere un fossato profondo circa 3 metri. Meglio stare attenti."
-LOOK: "Il famoso fossato del torrione, è ridotto  molto male, c'è parecchia spazzatura in fondo, tra le varie bottiglie scorgi addirittura una bici al suo interno."
+LOOK: "Il famoso fossato del torrione, è ridotto  molto male, c'è parecchia spazzatura in fondo. Tra le varie bottiglie e cartacce scorgi addirittura una bici"
 ALIAS: burrone
 PICKABLE: f
 }
 {
 ID: 61
 NAME: "Portafoglio"
-DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione."
-LOOK: "Un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione."
+DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone lasciato cadere dall'uomo fuggito nel torrione."
+LOOK: "Un portafoglio rovinato in pelle marrone lasciato cadere dall'uomo fuggito nel torrione."
 ALIAS: portadocumenti
 PICKABLE: t
 }
