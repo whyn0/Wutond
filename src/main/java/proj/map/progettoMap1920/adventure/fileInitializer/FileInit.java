@@ -51,6 +51,7 @@ public class FileInit { // probabile singleton
     dialogReader(paths[4]);
     npcReader(paths[5]);
     roomReader(paths[6]);
+    doorLinker(paths[3]);
   }
 
   /*
@@ -284,7 +285,9 @@ public class FileInit { // probabile singleton
             if(objectList.getById(i) != null) {
               tempRoom.getObjects_list().add(objectList.getById(i));// riempire anche con container list
             }
-            else {
+            else if(doorList.getById(i) != null) {
+              tempRoom.getObjects_list().add(doorList.getById(i));
+            }else {
               tempRoom.getObjects_list().add(containerList.getById(i));
             }
           }
@@ -361,6 +364,8 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("UNDERSTANDABLE")) {
             if (tokenized[1].equals("t")) {
               understandable = true;
+            } else {
+              understandable = false;
             }
           }
           if (tokenized[0].equals("DIALOG")) {
@@ -806,7 +811,47 @@ public class FileInit { // probabile singleton
     }
   }
 
- 
+  private void doorLinker(String filename) throws FileNotFoundException, IOException{
+    Map<Integer,Integer> lockRoomMap = new HashMap<>();
+    int id = 0;
+    int lroom = 0;
+    // -----------------------------
+    FileReader file;
+    BufferedReader buffer;
+    file = new FileReader(filename);
+    buffer = new BufferedReader(file);
+    //
+    String str;
+    String[] tokenized;
+    //
+    
+    try {
+      while ((str = buffer.readLine()) != null) {
+        while (!"}".equals(str)) {
+          if ("{".equals(str)) {// se trovo una parentesi graffa aperta la skippo
+            str = buffer.readLine();
+          }
+          tokenized = str.split(":");
+          tokenized[1] = tokenized[1].trim(); 
+          if(tokenized[0].equals("ID")) {
+            id = Integer.parseInt(tokenized[1]);
+          }
+          if(tokenized[0].equals("ROOM")) {
+            lroom = Integer.parseInt(tokenized[1]);
+          }
+          str = buffer.readLine();
+        }
+        lockRoomMap.put(id, lroom);
+      }
+      for(Door d : doorList) {
+        d.setLockedRoom(roomList.getById(lockRoomMap.get(d.getId())));
+      }
+      
+    }catch(EOFException e) {
+      
+    }
+    file.close();
+  }
   //Getter
   
   public GameList<AdvObject> getObjectList() {

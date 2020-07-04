@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.events;
 
+import javax.swing.JTextArea;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.type.Room;
 
@@ -13,6 +14,6 @@ import proj.map.progettoMap1920.adventure.type.Room;
  * @author whyno
  */
 public interface EventInterface {
-    public void check(ParserOutput p,Room currentRoom, boolean move);
+    public void check(ParserOutput p,Room currentRoom, boolean move,JTextArea out);
     public void execute();
 }
