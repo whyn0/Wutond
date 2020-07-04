@@ -84,8 +84,8 @@ NPC_ID: null
 }
 {
 ID: 8 
-NAME: "Torrione1"
-DESCRIPTION: "ti trovi nel torrione agionino, ricordi che mentre eri sul ponte hai notato un uomo scappare in modo sospetto all'interno."
+NAME: "Torrione"
+DESCRIPTION: "ti trovi nel torrione angioino, ricordi che mentre eri sul ponte hai notato un uomo scappare in modo sospetto all'interno."
 LOOK: "Noti molti quadri antichi accatastati e impolverati."
 NORTH: 9
 SOUTH: null
@@ -96,7 +96,7 @@ NPC_ID: null
 }
 {
 ID: 9 
-NAME: "Torrione2"
+NAME: "Primo piano"
 DESCRIPTION: "Sei nel secondo piano del torrione."
 LOOK: "Rimani qualche secondo ad osservare con cautela i dintorni."
 NORTH: 10
@@ -108,7 +108,7 @@ NPC_ID: 68
 }
 {
 ID: 10 
-NAME: "Torrione3"
+NAME: "Secondo piano"
 DESCRIPTION: "Sei nel terzo piano del torrione."
 LOOK: "Sei in una stanza circolare. Da una feritoria riesci a guardare giù sulla piazza; una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto. Il tuo uomo potrebbe essere lì."
 NORTH: 11
@@ -120,7 +120,7 @@ NPC_ID: null
 }
 {
 ID: 11 
-NAME: "Torrione4"
+NAME: "Tetto"
 DESCRIPTION: "Sei sul tetto del torrione. Appena varcata la soglia una forte folata di vento ti fa barcollare leggermente."
 LOOK: "Riesci a vedere le stelle da quassù, ma non è ciò per cui sei venuto."
 NORTH: null
@@ -168,7 +168,7 @@ NPC_ID: null
 }
 {
 ID: 12 
-NAME: "Labirinto 1"
+NAME: "Labirinto"
 DESCRIPTION: "Sei all'entrata del centro storico, vedi vie e viuzze che si propagano in tutte le direzioni. Sembra quasi un labirinto."
 LOOK: "L'unica strada percorribile è a sud"
 NORTH: 5
@@ -180,7 +180,7 @@ NPC_ID: null
 }
 {
 ID: 13
-NAME: "Labirinto 2"
+NAME: "Labirinto"
 DESCRIPTION: "Sei arrivato ad un vicolo cieco!"
 LOOK: "E' un vicolo cieco, devi tornare indietro."
 NORTH: null
@@ -192,7 +192,7 @@ NPC_ID: null
 }
 {
 ID: 14  
-NAME: "Labirinto 3"
+NAME: "Labirinto"
 DESCRIPTION: "Una strada come tante altre."
 LOOK: "Una strada come tante altre."
 NORTH: null 
@@ -204,7 +204,7 @@ NPC_ID: null
 }
 {
 ID: 15  
-NAME: "Labirinto 4"
+NAME: "Labirinto"
 DESCRIPTION: "Inizi a perdere l'orientamento, sembra tutto uguale!"
 LOOK: "Vedi diverse strade."
 NORTH: 12 
@@ -216,7 +216,7 @@ NPC_ID: null
 }
 {
 ID: 16 
-NAME: "Labirinto 5"
+NAME: "Labirinto"
 DESCRIPTION: "Una strada come tante altre."
 LOOK: "Una strada come tante altre."
 NORTH: 13 
@@ -228,7 +228,7 @@ NPC_ID: null
 }
 {
 ID: 17 
-NAME: "Labirinto 6"
+NAME: "Labirinto"
 DESCRIPTION: "Sei finito in una delle famose corti bitontine. Purtroppo per te è l'ennesimo vicolo cieco."
 LOOK: "Sei in un vicolo cieco! Puoi solo tornare indietro."
 NORTH: null 
@@ -240,7 +240,7 @@ NPC_ID: null
 }
 {
 ID: 18 
-NAME: "Labirinto 7"
+NAME: "Labirinto"
 DESCRIPTION: "Una strada come tante altre."
 LOOK: "Una strada come tante altre."
 NORTH: 14 
@@ -252,7 +252,7 @@ NPC_ID: null
 }
 {
 ID: 19 
-NAME: "Labirinto 8"
+NAME: "Labirinto"
 DESCRIPTION: "Una strada come tante altre."
 LOOK: "Una strada come tante altre."
 NORTH: null 
@@ -264,7 +264,7 @@ NPC_ID: null
 }
 {
 ID: 20 
-NAME: "Labirinto 9"
+NAME: "Labirinto"
 DESCRIPTION: "Noti una piazza a sud."
 LOOK: "A sud hai la piazza, a nord hai il centro storico."
 NORTH: 19 
