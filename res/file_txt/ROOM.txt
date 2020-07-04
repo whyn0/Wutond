@@ -134,7 +134,7 @@ NPC_ID: 64
 ID: 42 
 NAME: "Piazza"
 DESCRIPTION: "Ti trovi in piazza cattedrale. L'imponente struttura in stile romanico pugliese fu edificata tra l'XI e il XII secolo."
-LOOK: "Sei al centro di piazza cattedrale. Ad Ovest vedi un internet point, ad Est la biblioteca cittadina."
+LOOK: "Sei al centro di piazza cattedrale. Ad Est vedi un internet point, ad Ovest la biblioteca cittadina."
 NORTH: 20
 SOUTH: null
 EAST: 44
