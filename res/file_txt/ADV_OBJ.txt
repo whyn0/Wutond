@@ -81,8 +81,8 @@ PICKABLE: f
 {
 ID: 58
 NAME: "Birra"
-DESCRIPTION: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
-LOOK: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi"
+DESCRIPTION: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi."
+LOOK: "Una bottiglia di birra sudata, più passa il tempo più rischi che si riscaldi."
 ALIAS: peroni bottiglia
 PICKABLE: t
 }
@@ -97,7 +97,7 @@ PICKABLE: f
 {
 ID: 61
 NAME: "Portafoglio"
-DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione"
+DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione."
 LOOK: "Un portafoglio rovinato in pelle marrone, lasciato cadere dall'uomo fuggito nel torrione."
 ALIAS: portadocumenti
 PICKABLE: t
@@ -105,8 +105,8 @@ PICKABLE: t
 {
 ID: 80
 NAME: "Pala"
-DESCRIPTION: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
-LOOK: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-"
+DESCRIPTION: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-."
+LOOK: "Una pala all'avanguardia, ha inciso sul manico -Excavator3000-."
 ALIAS: vanga
 PICKABLE: t
 }
