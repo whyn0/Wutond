@@ -6,6 +6,7 @@
 package proj.map.progettoMap1920.adventure.parser;
 
 import java.util.List;
+import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
 import proj.map.progettoMap1920.adventure.type.Article;
 import proj.map.progettoMap1920.adventure.type.Command;
@@ -40,5 +41,5 @@ public interface Parser {
       List<Article> articles,
       List<Preposition> prepositions,
       List<SyntaxParticles> particles,
-      CFGrammar grammar);
+      CFGrammar grammar) throws NullOutputException;
 }

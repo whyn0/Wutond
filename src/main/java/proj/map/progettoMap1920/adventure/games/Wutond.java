@@ -97,6 +97,9 @@ public class Wutond extends GameDescription {
 
 
       //------------------------DIREZIONI E MOVIMENTI-------------------------------
+      if(p.getCommand().getType() == CommandType.WALK_TO){
+          p.setCommand(p.getDirection());
+      }
       if(p.getCommand().getType() == CommandType.NORTH) {
         if(getCurrentRoom().getNorth() != null) {
           setCurrentRoom(getCurrentRoom().getNorth());
