@@ -14,7 +14,7 @@ NPC_ID: null
 ID: 2
 NAME: "Crocevia"
 DESCRIPTION: "Ti trovi ad un crocevia."
-LOOK: "Vedi solo un cartello. Ti posizioni frontalmente al cartello e leggi le seguenti indicazioni: Questura-est, Villa-nord, Orologio-sud. Noti però anche una strada non segnalata."
+LOOK: "Vedi solo un cartello. Ti posizioni frontalmente al cartello e leggi le seguenti indicazioni. Questura-est, Villa-nord, Orologio-sud. Noti però anche una strada non segnalata."
 NORTH: 3
 SOUTH: 5
 EAST: 1
@@ -110,7 +110,7 @@ NPC_ID: 68
 ID: 10 
 NAME: "Torrione3"
 DESCRIPTION: "Sei nel terzo piano del torrione."
-LOOK: "Sei in una stanza circolare. Da una feritoria riesci a guardare giù sulla piazza; una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto. Il tuo uomo potrebbe essere lì"
+LOOK: "Sei in una stanza circolare. Da una feritoria riesci a guardare giù sulla piazza; una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto. Il tuo uomo potrebbe essere lì."
 NORTH: 11
 SOUTH: 9
 EAST: null

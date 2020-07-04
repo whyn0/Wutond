@@ -2,30 +2,20 @@
 ID: 88
 TEXT: "Ti serve qualcosa?"
 OPT_1: "Chiedi cosa intende con 'servire qualcosa'."
-OPT_2: "Chiedi che ci fa in un vicolo buio."
-OPT_3: "Chiedi se ha qualche informazione sull'omicidio."
+OPT_2: null
+OPT_3: null
 NEXT_1: 89
-NEXT_2: 90
-NEXT_3: 91
+NEXT_2: null
+NEXT_3: null
 }
 {
 ID: 89
 TEXT: "Lo sai cosa intendo bello, tieni, provala *il tipo ti porge una bustina con una polvere bianca*"
-OPT_1: "*Prendi la bustina*"
-OPT_2: "*rifiuta la bustina*"
-OPT_3: null
-NEXT_1: -1
-NEXT_2: 93
-NEXT_3: null
-}
-{
-ID: 90
-TEXT: "Faccio il mio lavoro. Ora basta con le domande."
-OPT_1: "Chiedi se ha qualche informazione sull'omicidio."
-OPT_2: "*Allontanati*"
+OPT_1: "*Prendi la bustina e chiedi se ha qualche informazione sull'omicidio*"
+OPT_2: null
 OPT_3: null
 NEXT_1: 91
-NEXT_2: null 
+NEXT_2: null
 NEXT_3: null
 }
 {
@@ -49,39 +39,19 @@ NEXT_2: null
 NEXT_3: null
 }
 {
-ID: 93
-TEXT: "è un omaggio della casa, ti conviene accettare*
-OPT_1: *prendi la bustina*
-OPT_2: null
-OPT_3: null
-NEXT_1: -1
-NEXT_2: null
-NEXT_3: null
-}
-{
 ID: 94
 TEXT: "Buongiorno, sta cercando un testo in particolare?"
-OPT_1: "*Chiedi se ha qualcosa che riesca a farti capire meglio i cittadini*"
-OPT_2: "*Chiedi se ha un libro sulle tradizioni e i detti bitontini*"
-OPT_3: "*Allontanati*"
+OPT_1: "*Chiedi se ha qualcosa che riesca a farti capire meglio i cittadini e se ha un libro sulle tradizioni e i detti bitontini*"
+OPT_2: null
+OPT_3: null
 NEXT_1: 95
-NEXT_2: 96
-NEXT_3: -1
+NEXT_2: null
+NEXT_3: null
 }
 {
 ID: 95
-TEXT: "Ho proprio quello che fa al caso tuo *ti porge un dizionario italiano-bitontino*"
-OPT_1: *Prendi dizionario*
-OPT_2: null
-OPT_3: null
-NEXT_1: -1
-NEXT_2: null
-NEXT_3: null
-}
-{
-ID: 96
-TEXT: "Ecco a te *ti porge il libro che hai richiesto*"
-OPT_1: *Allontanati*
+TEXT: "Ecco i libri che ha richiesto *ti porge un dizionario italiano-bitontino e un libro folkloristico*. Arrivederci."
+OPT_1: "*Allontanati*"
 OPT_2: null
 OPT_3: null
 NEXT_1: -1
