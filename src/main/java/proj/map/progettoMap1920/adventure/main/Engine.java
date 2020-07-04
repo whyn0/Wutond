@@ -29,6 +29,7 @@ public class Engine {
     //private final Object lock = new Object();
 
     public Engine(GameDescription game) {
+        gui = new Gui();
         this.game = game;
         try {
             this.game.init();
@@ -39,7 +40,7 @@ public class Engine {
 
         }
         parser = new ItParser();//italian parser
-        gui = new Gui();
+        
         gui.setVisible(true);
     }
 

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import proj.map.progettoMap1920.adventure.events.EventHandler;
 
 import proj.map.progettoMap1920.adventure.parser.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
@@ -34,6 +35,7 @@ public abstract class GameDescription {
   private GameList<Npc> npcs = new GameList<>(new ArrayList<Npc>());
   private GameList<Door> doors = new GameList<>(new ArrayList<Door>());
   private GameList<AdvObject> inventory = new GameList<>(new ArrayList<AdvObject>());
+  private EventHandler event;
 
   private List<Article> articles = new ArrayList<>();
   private List<Command> commands = new ArrayList<>();
@@ -85,7 +87,9 @@ public abstract class GameDescription {
   public void setDoors(GameList<Door> doors) {
     this.doors = doors;
   }
-
+  public void setEvent(EventHandler e){
+      this.event = e;
+  }
   //--------------------------------------------GETTER---------------
   
   public Room getCurrentRoom() {
@@ -141,6 +145,9 @@ public abstract class GameDescription {
   }
   public CFGrammar getGrammar() {
     return cnfGrammar;
+  }
+  public EventHandler getEvent(){
+      return event;
   }
   //----------------------------------------------METHODS------------
   public abstract void init() throws IOException, FileNotFoundException;
