@@ -4,9 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import proj.map.progettoMap1920.adventure.games.Wutond;
 import proj.map.progettoMap1920.adventure.parser.ItParser;
@@ -96,7 +93,7 @@ public class Engine {
                 break;
             } else {
                 if (flag) {
-                    game.nextMove(p, output, gui);
+                    game.nextMove(p, output,input, gui);
                     output.append("\n");
                     output.append("================================================" + '\n');
                 }
@@ -104,6 +101,7 @@ public class Engine {
                 gui.setString(null);
             }
         }
+        gui.setVisible(false);
     }
 
     public static void main(String[] args) {

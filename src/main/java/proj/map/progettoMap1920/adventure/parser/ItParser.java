@@ -289,10 +289,6 @@ public class ItParser implements Parser{
       }
 
     }
-    //stampa
-    for (String i : tokenlist_type) {
-      System.out.println(i);
-    }
     //verifica semantica
     Cky cky = new Cky(grammar);
     if(!cky.parse(tokenlist_type)){

@@ -34,7 +34,7 @@ PICKABLE: t
 ID: 51
 NAME: "Polvere Magica"
 DESCRIPTION: "Una bustina trasperente con della polvere."
-LOOK: "Una bustina con una polvere dal color argenteo."
+LOOK: "Una bustina con una polvere dal color salmone."
 ALIAS: polvere droga bustina
 PICKABLE: t
 }
@@ -98,7 +98,7 @@ PICKABLE: f
 ID: 61
 NAME: "Portafoglio"
 DESCRIPTION: "Ai tuoi piedi noti un portafoglio rovinato in pelle marrone lasciato cadere dall'uomo fuggito nel torrione."
-LOOK: "Un portafoglio rovinato in pelle marrone lasciato cadere dall'uomo fuggito nel torrione."
+LOOK: "Un portafoglio rovinato in pelle marrone stracolmo di soldi, lasciato cadere dall'uomo fuggito nel torrione."
 ALIAS: portadocumenti
 PICKABLE: t
 }

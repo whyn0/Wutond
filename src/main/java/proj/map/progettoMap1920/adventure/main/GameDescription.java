@@ -14,7 +14,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import proj.map.progettoMap1920.adventure.events.EventHandler;
-
+import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 import proj.map.progettoMap1920.adventure.parser.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.type.*;
@@ -23,6 +23,7 @@ import proj.map.progettoMap1920.adventure.type.*;
  * @author whyno
  */
 import proj.map.progettoMap1920.adventure.utils.GameList;
+import proj.map.progettoMap1920.adventure.utils.Gui;
 public abstract class GameDescription {
   
   //FIELDS
@@ -152,7 +153,7 @@ public abstract class GameDescription {
   //----------------------------------------------METHODS------------
   public abstract void init() throws IOException, FileNotFoundException;
 
-  public abstract void nextMove(ParserOutput p, JTextArea out, JFrame gui);
+  public abstract void nextMove(ParserOutput p, JTextArea out, JTextArea in, Gui gui);
 
 
   public void run(ParserOutput p, PrintStream out) {

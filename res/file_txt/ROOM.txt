@@ -84,7 +84,7 @@ NPC_ID: null
 }
 {
 ID: 8 
-NAME: "Torrione"
+NAME: "Primo Piano"
 DESCRIPTION: "ti trovi nel torrione angioino, ricordi che mentre eri sul ponte hai notato un uomo scappare in modo sospetto all'interno."
 LOOK: "Noti molti quadri antichi accatastati e impolverati."
 NORTH: 9
@@ -96,7 +96,7 @@ NPC_ID: null
 }
 {
 ID: 9 
-NAME: "Primo piano"
+NAME: "Secondo piano"
 DESCRIPTION: "Sei nel secondo piano del torrione."
 LOOK: "Rimani qualche secondo ad osservare con cautela i dintorni."
 NORTH: 10
@@ -108,7 +108,7 @@ NPC_ID: 68
 }
 {
 ID: 10 
-NAME: "Secondo piano"
+NAME: "Terzo piano"
 DESCRIPTION: "Sei nel terzo piano del torrione."
 LOOK: "Sei in una stanza circolare. Da una feritoria riesci a guardare giù sulla piazza; una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto. Il tuo uomo potrebbe essere lì."
 NORTH: 11

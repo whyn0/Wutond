@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.text.DefaultCaret;
 
 import proj.map.progettoMap1920.adventure.events.EventHandler;
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
@@ -37,6 +38,7 @@ import proj.map.progettoMap1920.adventure.type.Lock;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Room;
 import proj.map.progettoMap1920.adventure.utils.GameList;
+import proj.map.progettoMap1920.adventure.utils.Gui;
 
 /**
  *
@@ -80,7 +82,7 @@ public class Wutond extends GameDescription implements Serializable{
     this.getCommands().addAll(utilInit.getCmd_list());
     this.getParticles().addAll(utilInit.getParticles_list());
     // set starting room
-    this.setCurrentRoom(this.getRooms().getById(43));
+    this.setCurrentRoom(this.getRooms().getById(1));
     // getInventory().add(getObjects().getByName("Questura"));//Questura
     //getInventory().add(getObjects().getById(79));
     //getInventory().add(this.getObjects().getById(53));
@@ -95,14 +97,15 @@ public class Wutond extends GameDescription implements Serializable{
   }
 
   @Override
-  public void nextMove(ParserOutput p, JTextArea out, JFrame gui) {
+  public void nextMove(ParserOutput p, JTextArea out,JTextArea in, Gui gui) {
     if (p.getCommand() == null) {
 
       out.append("Non ho capito cosa dovrei fare! Prova con un altro comando." + '\n');
 
     } else {
-
+      
       int wallCounter = 0;
+      boolean checkHit = false;
       boolean noroom = false;
       boolean move = false;
       List<Room> thisLockedRoom = new ArrayList<>();
@@ -180,7 +183,7 @@ public class Wutond extends GameDescription implements Serializable{
         }
       } else if (p.getCommand().getType() == CommandType.WEST) {
         if (getCurrentRoom().getWest() != null) {
-          if (!thisLockedRoom.contains(getCurrentRoom().getEast())) {
+          if (!thisLockedRoom.contains(getCurrentRoom().getWest())) {
             setCurrentRoom(getCurrentRoom().getWest());
             move = true;
             out.append(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription() + '\n');
@@ -213,7 +216,8 @@ public class Wutond extends GameDescription implements Serializable{
             && p.getNpc() == null
             && p.getContainedObject() == null
             && p.getContainer() == null
-            && p.getInvObject() == null) { // Look su stanza
+            && p.getInvObject() == null
+            && p.getDoor() == null) { // Look su stanza
 
             out.append(getCurrentRoom().getLook() + '\n' + '\n');
             if (getCurrentRoom().getObjects_list().size() > 0) {
@@ -232,7 +236,8 @@ public class Wutond extends GameDescription implements Serializable{
             && p.getNpc() == null
             && p.getContainedObject() == null
             && p.getContainer() == null
-            && p.getInvObject() == null) {// look su un oggetto della stanza
+            && p.getInvObject() == null
+            && p.getDoor() == null) {// look su un oggetto della stanza
 
               out.append(p.getObject().getLook() + '\n' + '\n');
 
@@ -240,14 +245,16 @@ public class Wutond extends GameDescription implements Serializable{
               && p.getNpc() != null
               && p.getContainedObject() == null
               && p.getContainer() == null
-              && p.getInvObject() == null) {// look su un npc
+              && p.getInvObject() == null
+              && p.getDoor() == null) {// look su un npc
 
                 out.append(p.getNpc().getLook() + '\n' + '\n');
               } else if (p.getObject() == null
                 && p.getNpc() == null
                 && p.getContainedObject() != null
                 && p.getContainer() == null
-                && p.getInvObject() == null) {// look su un oggetto contenuto in un container aperto
+                && p.getInvObject() == null
+                && p.getDoor() == null) {// look su un oggetto contenuto in un container aperto
 
                   out.append(p.getContainedObject().getLook() + '\n' + '\n');
 
@@ -255,7 +262,8 @@ public class Wutond extends GameDescription implements Serializable{
                   && p.getNpc() == null
                   && p.getContainedObject() == null
                   && p.getContainer() != null
-                  && p.getInvObject() == null) {// look su un oggetto di tipo container
+                  && p.getInvObject() == null
+                  && p.getDoor() == null) {// look su un oggetto di tipo container
 
                     out.append(p.getContainer().getLook() + '\n' + '\n');
 
@@ -263,11 +271,20 @@ public class Wutond extends GameDescription implements Serializable{
                     && p.getNpc() == null
                     && p.getContainedObject() == null
                     && p.getContainer() == null
-                    && p.getInvObject() != null) {// look su un oggetto dell'inventario
+                    && p.getInvObject() != null
+                    && p.getDoor() == null) {// look su un oggetto dell'inventario
 
                       out.append(p.getInvObject().getLook() + '\n' + '\n');
 
+                    } else if(p.getDoor() != null
+                      && p.getObject() == null
+                      && p.getNpc() == null
+                      && p.getContainedObject() == null
+                      && p.getContainer() == null
+                      && p.getInvObject() == null) {
+                      out.append(p.getDoor().getLook() + '\n' + '\n');
                     }
+          
 
         } else {
           out.append("Non c'è nulla da guardare qui!" + '\n');
@@ -309,14 +326,16 @@ public class Wutond extends GameDescription implements Serializable{
               }
             }
           }
+          List<AdvObject> tempList = new ArrayList<>();
           for (AdvObject a : getCurrentRoom().getObjects_list()) {
             if (a.isPickable()) {
               flag = true;
               out.append("Hai raccolto: " + a.getName() + '\n');
               getInventory().add(a);
-              getCurrentRoom().getObjects_list().remove(a);
+              tempList.add(a);
             }
           }
+          getCurrentRoom().getObjects_list().removeAll(tempList);
           if (!flag) {
             out.append("Non hai raccolto nulla!" + '\n');
           }
@@ -413,7 +432,7 @@ public class Wutond extends GameDescription implements Serializable{
           DialogB d = new DialogB(gui, true);
           d.setDialog(p.getNpc().getDialog());
           d.setVisible(true);
-          if(p.getNpc().getNpc_inventory().size() > 0) {
+          if(p.getNpc().getNpc_inventory() != null) {
             getInventory().addAll(p.getNpc().getNpc_inventory());
             out.append(p.getNpc().getName() + " ti ha dato:" + "\n");
             for(AdvObject a : p.getNpc().getNpc_inventory()) {
@@ -421,6 +440,7 @@ public class Wutond extends GameDescription implements Serializable{
             }
             p.getNpc().getNpc_inventory().removeAll(p.getNpc().getNpc_inventory());
             p.getNpc().setDialog(null);
+            p.getNpc().setKillable(true);
           }
         } else if(!p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null){
           out.append(p.getNpc().getName() + " dice:" + "\n");
@@ -436,6 +456,7 @@ public class Wutond extends GameDescription implements Serializable{
           out.append(p.getNpc().getName() + " non ha nulla da dirti" + "\n");
         }
 
+        ((DefaultCaret)out.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
       } else if (p.getCommand().getType() == CommandType.CURSE) {
 
         StringBuilder temp = new StringBuilder();
@@ -452,13 +473,15 @@ public class Wutond extends GameDescription implements Serializable{
         out.append(p.getCommand().getName() + " a me?! Ora sono *!?*** tuoi !");
       } else if (p.getCommand().getType() == CommandType.USE) {
         try {
-          this.getEvent().check(p, this.getCurrentRoom(), move, out);
-        } catch (NullPointerException e) {
-          out.append("Non puoi usare questo oggetto!" + "\n");
+          getEvent().check(p, this.getCurrentRoom(), move, out , in , gui);
+        } catch(NullPointerException e) {
+          out.append("Non puoi usare quest'oggetto" + "\n");
         }
-
+        checkHit = true;
       } else if(p.getCommand().getType() == CommandType.GIVE) {
-        this.getEvent().check(p, this.getCurrentRoom(), move, out);
+        
+        getEvent().check(p, this.getCurrentRoom(), move, out, in , gui);
+        checkHit = true;
       } else if(p.getCommand().getType() == CommandType.SAVE) {
         try {
           save("res/file_txt/out.dat");
@@ -477,12 +500,24 @@ public class Wutond extends GameDescription implements Serializable{
         out.setText("");
         out.append("Caricamento avvenuto con successo!" + "\n" + "====================================" + "\n");
         out.append(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription() + '\n' + '\n');
+      } else if(p.getCommand().getType() == CommandType.KILL) {
+        if(p.getNpc() != null && p.getNpc().isKillable()) {
+          if(getInventory().contains(this.getObjects().getById(52))) {
+            out.append("A malincuore hai posto fine alle sofferenze di " + p.getNpc().getName() + "." + "\n" + "Non pensi che qualcuno ne sentirà la mancanza" + "\n");
+            this.getCurrentRoom().getNpc_list().remove(p.getNpc());
+          } else {
+            out.append("Non sei così barbaro da uccidere qualcuno a mani nude!" + "\n");
+          }
+        } else {
+          out.append("Non ti sembra il caso di uccidere " + p.getNpc().getName() + " almeno per il momento...");
+        }
       }
-      try {
-        this.getEvent().check(p, this.getCurrentRoom(), move, out);
-      } catch(NullPointerException e) {
+      if(!checkHit) {
+        try {
+          this.getEvent().check(p, this.getCurrentRoom(), move, out, in , gui);
+        } catch(NullPointerException e) {
+        }
       }
-
     }
 
   }
@@ -499,6 +534,7 @@ public class Wutond extends GameDescription implements Serializable{
     out.writeObject(this.getLocks());
     out.writeObject(this.getRooms());
     out.writeObject(this.getCurrentRoom());
+    out.writeObject(this.getEvent());
     out.close();
   }
   private void load(String filename) throws IOException, ClassNotFoundException{
@@ -514,6 +550,7 @@ public class Wutond extends GameDescription implements Serializable{
     this.setLocks((GameList<Lock>) in.readObject());
     this.setRooms((GameList<Room>) in.readObject());
     this.setCurrentRoom((Room) in.readObject());
+    this.setEvent((EventHandler) in.readObject());
     in.close();
   }
 
