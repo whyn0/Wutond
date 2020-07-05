@@ -384,7 +384,9 @@ public class Wutond extends GameDescription implements Serializable{
                 out.append("-" + " " + a.getName() + '\n');
               }
               p.getContainer().setOpened(true);
+              getInventory().remove(p.getContainer().getLock().getKey());//rimuovo la chiave dall'inventario
               p.getContainer().setLock(null);
+              
             } else {
               out.append("Non hai la chiave giusta per aprire " + p.getContainer().getName() + '\n');
             }            
@@ -406,7 +408,9 @@ public class Wutond extends GameDescription implements Serializable{
                 getInventory().add(a);
               }
               copyObj.setOpened(true);
+              getInventory().remove(copyObj.getLock().getKey());
               copyObj.setLock(null);
+              
               out.append(copyObj.getName() + " non ti serve più a nulla, decidi di donarlo alla natura." + '\n');
               getInventory().remove(copyObj);
             } else {
@@ -417,8 +421,9 @@ public class Wutond extends GameDescription implements Serializable{
           if (p.getDoor().getLock() != null) {
             if (getInventory().contains(p.getDoor().getLock().getKey())) {
               out.append("Hai usato " + p.getDoor().getLock().getKey().getName() + " per aprire la porta !" + '\n');
+              getInventory().remove(p.getDoor().getLock().getKey());
               getCurrentRoom().getObjects_list().remove(p.getDoor());
-
+              
             } else {
               out.append("Non hai la chiave giusta per aprire la porta" + "\n");
             }

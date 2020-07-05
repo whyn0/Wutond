@@ -113,6 +113,8 @@ public class EventHandler implements EventInterface,Serializable{
           p.getNpc().getId() == 68 && p.getNpc().isUnderstandable()) {//la prima volta che si parla con ciccio in piazza orologio
           currentRoom.getNpc_list().remove(p.getNpc()); //rimuovo ciccio dalla stanza
           p.getNpc().setDialog(dialogList.getById(124));
+          p.getNpc().setDescription("Vedi il tipo della piazza dell'orologio scomparso improvvisamente, ora molto più agitato" + "\n");
+          p.getNpc().setLook("E' l'uomo della piazza di prima, sembra stia cercando qualcosa con evidente impazienza" + "\n");
           flags[5] = true;
         }
       }
@@ -140,6 +142,7 @@ public class EventHandler implements EventInterface,Serializable{
           doorList.getById(77).setLock(null);//sblocco la porta
           out.append("Senti un rumore alle tue spalle, ti distrai un attimo" + "\n" + "Vedi la porta aprirsi ma Ciccio è scomparso...");
           currentRoom.getNpc_list().remove(p.getNpc());
+          flags[7] = false;
         }
       }
     }
@@ -166,6 +169,7 @@ public class EventHandler implements EventInterface,Serializable{
           if(input.equals("sciamaninn")) {
             p.getDoor().setLock(null);
             out.append("Senti gli ingranaggi della porta muoversi!" + "\n" + "Ora è aperta!" + "\n");
+            flags[8] = false;
           } else {
             out.append("Il marchingegno non si muove !" + "\n");
           }

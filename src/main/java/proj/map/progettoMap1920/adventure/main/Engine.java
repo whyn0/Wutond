@@ -1,5 +1,6 @@
 package proj.map.progettoMap1920.adventure.main;
 
+import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import proj.map.progettoMap1920.adventure.utils.Gui;
 import proj.map.progettoMap1920.adventure.utils.LockT;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
+
 import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 
 public class Engine {
@@ -44,13 +47,18 @@ public class Engine {
     public void run() {
         JTextArea output = gui.getOutputArea();
         JTextArea input = gui.getInputArea();
+        output.append(intro());
         output.append(game.getCurrentRoom().getName() + '\n');
         output.append("================================================" + '\n');
         output.append(game.getCurrentRoom().getDescription() + '\n');
         output.append("================================================" + '\n');
+        for(int i = 0; i < output.getColumns(); i++) {
+          output.append("=");
+        }
 
         while (true) {
             boolean flag = true;
+            ((DefaultCaret)output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
             synchronized (LockT.lock) {
                 try {
                     LockT.lock.wait();
@@ -102,6 +110,15 @@ public class Engine {
             }
         }
         gui.setVisible(false);
+    }
+    public String intro() {
+      String intro = "Sei Alfoso Paccagnello, un detective padovano. "+ "\n"
+        + "Sei stato inviato nell'apparententemente tranquilla cittadina di Wutond "+ "\n"
+        + "per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: "+ "\n"
+        + "il bar Castello .Ti trovi in questura completamente solo." + "\n"
+        + "Non hai nulla con te se non il tuo intuito, inizi a guardarti intorno..." + "\n"
+        + "================================================" + '\n';
+      return intro;
     }
 
     public static void main(String[] args) {

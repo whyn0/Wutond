@@ -73,6 +73,7 @@ public class Gui extends javax.swing.JFrame {
         outputArea.setFont(new java.awt.Font("Free Courier", 0, 12)); // NOI18N
         outputArea.setForeground(new java.awt.Color(255, 255, 255));
         outputArea.setLineWrap(true);
+        outputArea.setWrapStyleWord(true);
         outputArea.setRows(5);
         outputArea.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(outputArea);
