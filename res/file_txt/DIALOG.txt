@@ -41,7 +41,7 @@ NEXT_3: null
 {
 ID: 94
 TEXT: "Buongiorno, sta cercando un testo in particolare?"
-OPT_1: "*Chiedi se ha qualcosa che riesca a farti capire meglio i cittadini e se ha un libro sulle tradizioni e i detti bitontini*"
+OPT_1: "*Chiedi se ha qualcosa che riesca a farti capire meglio i cittadini e se ha un libro sulle tradizioni e i detti wutondini*"
 OPT_2: null
 OPT_3: null
 NEXT_1: 95
@@ -50,7 +50,7 @@ NEXT_3: null
 }
 {
 ID: 95
-TEXT: "Ecco i libri che ha richiesto *ti porge un dizionario italiano-bitontino e un libro folkloristico*. Arrivederci."
+TEXT: "Ecco i libri che ha richiesto *ti porge un dizionario italiano-wutondino e un libro folkloristico*. Arrivederci."
 OPT_1: "*Allontanati*"
 OPT_2: null
 OPT_3: null

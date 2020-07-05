@@ -415,6 +415,7 @@ public class FileInit { // probabile singleton
         for (Integer i : inventoryMap.get(tempNpc.getId())) {
           inventory.add(objectList.getById(i));
         }
+        tempNpc.setInventory(new ArrayList<>(inventory));
       }
       
     }
