@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.text.DefaultCaret;
 import proj.map.progettoMap1920.adventure.type.*;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.utils.GameList;
@@ -55,10 +56,11 @@ public class EventHandler implements EventInterface,Serializable{
             n.setUnderstandable(true);
           }
           if(n.getId() == 67){
-            n.setDialog(dialogList.getById(-1));
+            n.setDialog(null);
           }
         }
-        out.append("Ora puoi comprendere tutti i cittadini!");
+        out.append("\n" + "Ora puoi comprendere tutti i cittadini!" + "\n");
+        ((DefaultCaret)out.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         flags[0] = true;
       }
     } 

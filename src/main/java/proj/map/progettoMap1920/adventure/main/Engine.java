@@ -48,16 +48,16 @@ public class Engine {
         JTextArea output = gui.getOutputArea();
         JTextArea input = gui.getInputArea();
         output.append(intro());
-        output.append(game.getCurrentRoom().getName() + '\n');
-        output.append("================================================" + '\n');
-        output.append(game.getCurrentRoom().getDescription() + '\n');
-        output.append("================================================" + '\n');
-        for(int i = 0; i < output.getColumns(); i++) {
-          output.append("=");
-        }
+        separator();
+        output.append(game.getCurrentRoom().getName().toUpperCase());
+        separator();
+        output.append(game.getCurrentRoom().getDescription());
+        separator();
+        
 
         while (true) {
             boolean flag = true;
+           // output.setCaretPosition(output.getTabSize());
             ((DefaultCaret)output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
             synchronized (LockT.lock) {
                 try {
@@ -103,7 +103,7 @@ public class Engine {
                 if (flag) {
                     game.nextMove(p, output,input, gui);
                     output.append("\n");
-                    output.append("================================================" + '\n');
+                    separator();
                 }
 
                 gui.setString(null);
@@ -116,9 +116,15 @@ public class Engine {
         + "Sei stato inviato nell'apparententemente tranquilla cittadina di Wutond "+ "\n"
         + "per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: "+ "\n"
         + "il bar Castello .Ti trovi in questura completamente solo." + "\n"
-        + "Non hai nulla con te se non il tuo intuito, inizi a guardarti intorno..." + "\n"
-        + "================================================" + '\n';
+        + "Non hai nulla con te se non il tuo intuito, inizi a guardarti intorno...";
       return intro;
+    }
+    private void separator(){
+        this.gui.getOutputArea().append("\n");
+        for(int i = 0; i < 88 ; i++){
+             this.gui.getOutputArea().append("=");
+        }
+        this.gui.getOutputArea().append("\n");
     }
 
     public static void main(String[] args) {
