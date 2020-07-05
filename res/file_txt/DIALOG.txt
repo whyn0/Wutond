@@ -172,10 +172,10 @@ NEXT_3: null
 ID: 108
 TEXT: ".............."
 OPT_1: "*Saluta l'uomo e chiedi se ha visto o sentito qualcosa di relativo all'omicidio*"
-OPT_2: "*Allontanati*"
+OPT_2: null
 OPT_3: null
 NEXT_1: 109
-NEXT_2: -1
+NEXT_2: null
 NEXT_3: null
 }
 {
@@ -185,7 +185,7 @@ OPT_1: "*Gli dici gentilmente che non hai capito nulla di quello che ha detto*"
 OPT_2: "*Quest'uomo è pazzo. Meglio lasciarlo stare*"
 OPT_3: null
 NEXT_1: 110
-NEXT_2: -1
+NEXT_2: 110
 NEXT_3: null
 }
 {
@@ -202,16 +202,16 @@ NEXT_3: null
 ID: 111
 TEXT: "........"
 OPT_1: "*Ti giri a guardare il punto che sta fissando*"
-OPT_2: "*Inizi a pensare che non ci sia una persona normale in questa città. Ti allontani*"
+OPT_2: "*Inizi a pensare che non ci sia una persona normale in questa città.*"
 OPT_3: null
 NEXT_1: 112
-NEXT_2: -1
+NEXT_2: 112
 NEXT_3: null
 }
 {
 ID: 112
 TEXT: "*Il punto che stava fissando era il torrione, ti rigiri verso di lui ma... è scomparso!*"
-OPT_1: "*Non pensavi che un uomo della sua età potesse correre così velocemente. Non ti resta che andare via*"
+OPT_1: "*Non pensavi che un uomo della sua età potesse correre così velocemente. Non ti resta che andar via*"
 OPT_2: null
 OPT_3: null
 NEXT_1: -1
@@ -326,6 +326,16 @@ OPT_2: "*Gli chiedi il motivo per cui stesse scappando*"
 OPT_3: null
 NEXT_1: 125
 NEXT_2: 124
+NEXT_3: null
+}
+{
+ID: 124
+TEXT: "*LINEA CICCIO TORRIONE"
+OPT_1: "*Gli dici che li hai usati per procedere nelle indagini*"
+OPT_2: null
+OPT_3: null
+NEXT_1: -1
+NEXT_2: null
 NEXT_3: null
 }
 {

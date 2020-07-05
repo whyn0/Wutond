@@ -1,12 +1,10 @@
 package proj.map.progettoMap1920.adventure.main;
 
+import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import proj.map.progettoMap1920.adventure.games.Wutond;
 import proj.map.progettoMap1920.adventure.parser.ItParser;
@@ -19,6 +17,8 @@ import proj.map.progettoMap1920.adventure.utils.Gui;
 import proj.map.progettoMap1920.adventure.utils.LockT;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
+
 import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 
 public class Engine {
@@ -47,13 +47,18 @@ public class Engine {
     public void run() {
         JTextArea output = gui.getOutputArea();
         JTextArea input = gui.getInputArea();
-        output.append(game.getCurrentRoom().getName() + '\n');
-        output.append("================================================" + '\n');
-        output.append(game.getCurrentRoom().getDescription() + '\n');
-        output.append("================================================" + '\n');
+        output.append(intro());
+        separator();
+        output.append(game.getCurrentRoom().getName().toUpperCase());
+        separator();
+        output.append(game.getCurrentRoom().getDescription());
+        separator();
+        
 
         while (true) {
             boolean flag = true;
+           // output.setCaretPosition(output.getTabSize());
+            ((DefaultCaret)output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
             synchronized (LockT.lock) {
                 try {
                     LockT.lock.wait();
@@ -96,14 +101,30 @@ public class Engine {
                 break;
             } else {
                 if (flag) {
-                    game.nextMove(p, output, gui);
+                    game.nextMove(p, output,input, gui);
                     output.append("\n");
-                    output.append("================================================" + '\n');
+                    separator();
                 }
 
                 gui.setString(null);
             }
         }
+        gui.setVisible(false);
+    }
+    public String intro() {
+      String intro = "Sei Alfoso Paccagnello, un detective padovano. "+ "\n"
+        + "Sei stato inviato nell'apparententemente tranquilla cittadina di Wutond "+ "\n"
+        + "per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: "+ "\n"
+        + "il bar Castello .Ti trovi in questura completamente solo." + "\n"
+        + "Non hai nulla con te se non il tuo intuito, inizi a guardarti intorno...";
+      return intro;
+    }
+    private void separator(){
+        this.gui.getOutputArea().append("\n");
+        for(int i = 0; i < 88 ; i++){
+             this.gui.getOutputArea().append("=");
+        }
+        this.gui.getOutputArea().append("\n");
     }
 
     public static void main(String[] args) {

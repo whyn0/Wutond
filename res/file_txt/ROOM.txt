@@ -1,8 +1,8 @@
 {
 ID: 1
 NAME: "Questura"
-DESCRIPTION: "Sei Alfoso Paccagnello, un detective padovano. Sei stato inviato nell'apparententemente tranquilla cittadina di Wutond per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: il bar castello.Ti trovi in questura in compagnia del commissario Beretta. Sembra che ti debba informare sul caso prima di farti iniziare le indagini."
-LOOK: "Ti trovi in questura"
+DESCRIPTION: "Ti trovi in questura"
+LOOK: "Ti trovi in questura, sei circondato da un ambiente disordinato e hai la strana sensazione che non si lavori troppo"
 NORTH: null
 SOUTH: null
 EAST: null
@@ -84,7 +84,7 @@ NPC_ID: null
 }
 {
 ID: 8 
-NAME: "Torrione"
+NAME: "Primo Piano"
 DESCRIPTION: "ti trovi nel torrione angioino, ricordi che mentre eri sul ponte hai notato un uomo scappare in modo sospetto all'interno."
 LOOK: "Noti molti quadri antichi accatastati e impolverati."
 NORTH: 9
@@ -96,7 +96,7 @@ NPC_ID: null
 }
 {
 ID: 9 
-NAME: "Primo piano"
+NAME: "Secondo piano"
 DESCRIPTION: "Sei nel secondo piano del torrione."
 LOOK: "Rimani qualche secondo ad osservare con cautela i dintorni."
 NORTH: 10
@@ -108,7 +108,7 @@ NPC_ID: 68
 }
 {
 ID: 10 
-NAME: "Secondo piano"
+NAME: "Terzo piano"
 DESCRIPTION: "Sei nel terzo piano del torrione."
 LOOK: "Sei in una stanza circolare. Da una feritoria riesci a guardare giù sulla piazza; una lunga e stretta scala a gradoni di marmo conduce ad una porta. A giudicare dall'altezza che hai raggiunto, dovrebbe trattarsi dell'accesso al tetto. Il tuo uomo potrebbe essere lì."
 NORTH: 11

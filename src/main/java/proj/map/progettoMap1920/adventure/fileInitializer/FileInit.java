@@ -114,6 +114,8 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("PICKABLE")) {
             if (tokenized[1].equals("t")) {
               pickable = true;
+            } else {
+              pickable = false;
             }
           }
           str = buffer.readLine();
@@ -351,6 +353,8 @@ public class FileInit { // probabile singleton
           if (tokenized[0].equals("KILLABLE")) {
             if (tokenized[1].equals("t")) {
               killable = true;
+            } else {
+              killable = false;
             }
           }
           if (tokenized[0].equals("ALIAS")) {

@@ -21,6 +21,7 @@ east
 objcontainer
 door
 except
+kill
 =====NTERMINALS=====
 START
 H0
@@ -41,6 +42,8 @@ OBJLIST
 H10
 H11
 H12
+H13
+H14
 =====CNF=====
 START -> H0 DIRECTION
 START -> end
@@ -60,6 +63,8 @@ START -> north
 START -> south
 START -> west
 START -> east
+START -> H13 H6
+START -> H14 H6
 DIRECTION -> north
 DIRECTION -> south
 DIRECTION -> west
@@ -89,3 +94,5 @@ H9 -> H11 H12
 H10 -> give
 H11 -> all
 H12 -> except
+H13 -> kill
+H14 -> H10 H2
