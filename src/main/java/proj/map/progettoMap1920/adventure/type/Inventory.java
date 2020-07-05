@@ -5,13 +5,14 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author whyno
  */
-public class Inventory {
+public class Inventory implements Serializable{
     private List<AdvObject> inventory;
 
     public Inventory(List<AdvObject> inventory) {

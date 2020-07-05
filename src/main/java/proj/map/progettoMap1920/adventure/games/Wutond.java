@@ -5,8 +5,13 @@
  */
 package proj.map.progettoMap1920.adventure.games;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,16 +30,19 @@ import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.type.AdvObject;
 import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.type.CommandType;
+import proj.map.progettoMap1920.adventure.type.Dialog;
 import proj.map.progettoMap1920.adventure.type.DialogB;
 import proj.map.progettoMap1920.adventure.type.Door;
+import proj.map.progettoMap1920.adventure.type.Lock;
 import proj.map.progettoMap1920.adventure.type.Npc;
 import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.utils.GameList;
 
 /**
  *
  * @author whyno
  */
-public class Wutond extends GameDescription {
+public class Wutond extends GameDescription implements Serializable{
 
   @Override
   public void init() throws IOException, FileNotFoundException {
@@ -72,10 +80,10 @@ public class Wutond extends GameDescription {
     this.getCommands().addAll(utilInit.getCmd_list());
     this.getParticles().addAll(utilInit.getParticles_list());
     // set starting room
-    this.setCurrentRoom(this.getRooms().getById(1));
+    this.setCurrentRoom(this.getRooms().getById(43));
     // getInventory().add(getObjects().getByName("Questura"));//Questura
-    getInventory().add(getObjects().getById(79));
-    getInventory().add(this.getObjects().getById(53));
+    //getInventory().add(getObjects().getById(79));
+    //getInventory().add(this.getObjects().getById(53));
     this.setEvent(new EventHandler(this.getInventory(),
       this.getObjects(),
       this.getContainers(),
@@ -273,7 +281,7 @@ public class Wutond extends GameDescription {
           } else {
             out.append("Non puoi raccoglierlo!" + '\n');
           }
-        } else if (p.getContainedObject() != null) {// caso di oggetto in un contenitore
+        }if (p.getContainedObject() != null) {// caso di oggetto in un contenitore
           List<AdvObjectContainer> templist = getCurrentRoom().getObjects_list().stream()
             .filter(a -> a instanceof AdvObjectContainer)
             .map(AdvObjectContainer.class::cast)
@@ -287,7 +295,7 @@ public class Wutond extends GameDescription {
             }
           }
 
-        } else if (p.isAll() && !p.isExcept()) {
+        }if (p.isAll() && !p.isExcept()) {
           boolean flag = false;
           for (AdvObject c : getCurrentRoom().getObjects_list()) {
             if (c instanceof AdvObjectContainer) {
@@ -312,7 +320,7 @@ public class Wutond extends GameDescription {
           if (!flag) {
             out.append("Non hai raccolto nulla!" + '\n');
           }
-        } else if (p.isAll() && p.isExcept()) {
+        }if (p.isAll() && p.isExcept()) {
           boolean flag = false;
           for (AdvObject c : getCurrentRoom().getObjects_list()) {
             if (c instanceof AdvObjectContainer) {
@@ -451,15 +459,62 @@ public class Wutond extends GameDescription {
 
       } else if(p.getCommand().getType() == CommandType.GIVE) {
         this.getEvent().check(p, this.getCurrentRoom(), move, out);
+      } else if(p.getCommand().getType() == CommandType.SAVE) {
+        try {
+          save("res/file_txt/out.dat");
+        } catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+        out.append("Salvataggio avvenuto con successo" + "\n");
+      } else if(p.getCommand().getType() == CommandType.LOAD) {
+        try {
+          load("res/file_txt/out.dat");
+        } catch (ClassNotFoundException | IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+        out.setText("");
+        out.append("Caricamento avvenuto con successo!" + "\n" + "====================================" + "\n");
+        out.append(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription() + '\n' + '\n');
       }
       try {
         this.getEvent().check(p, this.getCurrentRoom(), move, out);
       } catch(NullPointerException e) {
-        out.append(e.toString());
       }
 
     }
 
+  }
+  private void save(String filename) throws IOException{
+    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
+
+    out.writeObject(this.getObjects());
+    out.writeObject(this.getInventory());
+    out.writeObject(this.getContainers());
+    out.writeObject(this.getDoors());
+    out.writeObject(this.getDialogs());
+    out.writeObject(this.getNpcs());
+    out.writeObject(this.getInventory());
+    out.writeObject(this.getLocks());
+    out.writeObject(this.getRooms());
+    out.writeObject(this.getCurrentRoom());
+    out.close();
+  }
+  private void load(String filename) throws IOException, ClassNotFoundException{
+    ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
+    
+    this.setObjects((GameList<AdvObject>) in.readObject());
+    this.setInventory((GameList<AdvObject>) in.readObject());
+    this.setContainers((GameList<AdvObjectContainer>) in.readObject());
+    this.setDoors((GameList<Door>) in.readObject());
+    this.setDialogs((GameList<Dialog>) in.readObject());
+    this.setNpcs((GameList<Npc>) in.readObject());
+    this.setInventory((GameList<AdvObject>) in.readObject());
+    this.setLocks((GameList<Lock>) in.readObject());
+    this.setRooms((GameList<Room>) in.readObject());
+    this.setCurrentRoom((Room) in.readObject());
+    in.close();
   }
 
 }

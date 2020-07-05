@@ -1,6 +1,8 @@
 package proj.map.progettoMap1920.adventure.type;
 
-public abstract class GameElement {
+import java.io.Serializable;
+
+public abstract class GameElement implements Serializable{
   protected int id;
   
   protected GameElement(int id) {

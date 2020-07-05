@@ -5,11 +5,13 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
+
 /**
  *
  * @author whyno
  */
-public class Lock extends GameElement{
+public class Lock extends GameElement implements Serializable{
     private AdvObject key;
     private boolean locked = true;
     //Costruttore

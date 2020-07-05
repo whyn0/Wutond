@@ -125,7 +125,16 @@ public class ItParser implements Parser{
                   }
                   
                 } else {
-                  pOutput.getExObjects().add(all_items.get(index));
+                  List<AdvObject> temp = new ArrayList<>();
+                  temp.addAll(all_items);
+                  for(AdvObject a : all_items) {
+                    if(inventory.contains(a)) {
+                      temp.remove(a);
+                    }
+                  }
+                  if(temp.contains(all_items.get(index))) {
+                    pOutput.getExObjects().add(all_items.get(index));
+                  }
                 }
 
               } else if (all_items.get(index) instanceof Door) {
@@ -151,7 +160,17 @@ public class ItParser implements Parser{
                     pOutput.setObject(all_items.get(index));
                   }
                 } else {
-                  pOutput.getExObjects().add(all_items.get(index));
+                  List<AdvObject> temp = new ArrayList<>();
+                  temp.addAll(all_items);
+                  for(AdvObject a : all_items) {
+                    if(inventory.contains(a)) {
+                      temp.remove(a);
+                    }
+                  }
+                  System.out.println(all_items.get(index).getName());
+                  if(temp.contains(all_items.get(index))) {
+                    pOutput.getExObjects().add(all_items.get(index));
+                  }
                 }
               }
 
@@ -236,7 +255,16 @@ public class ItParser implements Parser{
                     continue;
                   } else {
                     tokenlist_type.add("obj");
-                    pOutput.getExObjects().add(all_items.get(index));
+                    List<AdvObject> tempList = new ArrayList<>();
+                    tempList.addAll(all_items);
+                    for(AdvObject a : all_items) {
+                      if(inventory.contains(a)) {
+                        tempList.remove(a);
+                      }
+                    }
+                    if(tempList.contains(all_items.get(index))) {
+                      pOutput.getExObjects().add(all_items.get(index));
+                    }
                   }
                   }
                   if((index = checkElement(temp, npc)) >= 0) {

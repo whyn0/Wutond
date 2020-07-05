@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.events;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import javax.swing.JTextArea;
 import proj.map.progettoMap1920.adventure.type.*;
@@ -15,7 +16,7 @@ import proj.map.progettoMap1920.adventure.utils.GameList;
  *
  * @author whyno
  */
-public class EventHandler implements EventInterface{
+public class EventHandler implements EventInterface,Serializable{
   private GameList<AdvObject> inventory;
   private GameList<AdvObject> objList;
   private GameList<AdvObjectContainer> contList;
