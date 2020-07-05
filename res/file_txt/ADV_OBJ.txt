@@ -3,7 +3,7 @@ ID: 45
 NAME: "Chiave Magnetica"
 DESCRIPTION: "Riesci a vedere su un tavolo alla tua destra una chiave magnetica probabilmente lasciata da qualche poliziotto disattento."
 LOOK: "Una chiave magnetica, chissà cosa apre."
-ALIAS: chiave tessera carta 
+ALIAS: tessera carta 
 PICKABLE: t 
 }
 {
@@ -19,7 +19,7 @@ ID: 79
 NAME: "Chiave Arrugginita"
 DESCRIPTION: "Una chiave arrugginita"
 LOOK: "Una semplice chiave arrugginita, chissà cosa apre."
-ALIAS: chiave
+ALIAS: null
 PCKABLE: t
 }
 {

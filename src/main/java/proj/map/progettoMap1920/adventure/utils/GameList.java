@@ -1,5 +1,6 @@
 package proj.map.progettoMap1920.adventure.utils;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 import proj.map.progettoMap1920.adventure.type.GameElement;
 import proj.map.progettoMap1920.adventure.type.GameObject;
 
-public class GameList <T extends GameElement> implements Iterable<T>{
+public class GameList <T extends GameElement> implements Iterable<T> , Serializable{
   private List<T> list;
   
   /*

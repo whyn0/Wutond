@@ -14,6 +14,10 @@ import java.io.*;
  * @author whyno
  */
 public class AdvObject extends GameObject implements Serializable{
+    /**
+   * 
+   */
+
     private boolean pickable;
     /*
      * 
