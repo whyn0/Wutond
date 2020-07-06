@@ -25,7 +25,6 @@ public class Engine {
   private final GameDescription game;
   private final Parser parser;
   private final Gui gui;
-  // private final Object lock = new Object();
 
   public Engine(GameDescription game) {
     gui = new Gui();
@@ -58,14 +57,11 @@ public class Engine {
 
       while (true) {
         boolean flag = true;
-
-        // output.setCaretPosition(output.getTabSize());
         ((DefaultCaret) output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         synchronized (LockT.lock) {
           try {
             LockT.lock.wait();
           } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
           }
         }
@@ -99,7 +95,6 @@ public class Engine {
 
         if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
           output.append("Addio!");
-          // scanner.close();
           break;
         } else {
           if (flag) {
@@ -145,10 +140,8 @@ public class Engine {
           game.clearList();
           game.init();
         } catch (FileNotFoundException e) {
-          // TODO Auto-generated catch block
           e.printStackTrace();
         } catch (IOException e) {
-          // TODO Auto-generated catch block
           e.printStackTrace();
         }
       }
