@@ -22,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
 
 import proj.map.progettoMap1920.adventure.events.EventHandler;
+import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GameUtilInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
@@ -93,7 +94,26 @@ public class Wutond extends GameDescription implements Serializable{
       this.getDoors(),
       this.getLocks(),
       this.getRooms(),
-      this.getDialogs()));
+      this.getDialogs(),
+      this.getArticles(),
+      this.getCommands(),
+      this.getPrepositions(),
+      this.getParticles(),
+      this.getCnfGrammar()));
+  }
+  public void clearList() {
+	  this.getInventory().clear();
+      this.getObjects().clear();
+      this.getContainers().clear();
+      this.getNpcs().clear();
+      this.getDoors().clear();
+      this.getLocks().clear();
+      this.getRooms().clear();
+      this.getDialogs().clear();
+      this.getArticles().clear();
+      this.getCommands().clear();
+      this.getPrepositions().clear();
+      this.getParticles().clear();
   }
   private void separator(JTextArea out){
         out.append("\n");
@@ -104,7 +124,7 @@ public class Wutond extends GameDescription implements Serializable{
     } 
   
   @Override
-  public void nextMove(ParserOutput p, JTextArea out,JTextArea in, Gui gui) {
+  public void nextMove(ParserOutput p, JTextArea out,JTextArea in, Gui gui) throws EOGameException {
     if (p.getCommand() == null) {
 
       out.append("Non ho capito cosa dovrei fare! Prova con un altro comando.");
@@ -465,6 +485,7 @@ public class Wutond extends GameDescription implements Serializable{
         if (p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null) {
           DialogB d = new DialogB(gui, true);
           d.setDialog(p.getNpc().getDialog());
+          p.getNpc().setSpoken(true);
           d.setVisible(true);
           if(p.getNpc().getNpc_inventory() != null) {
             getInventory().addAll(p.getNpc().getNpc_inventory());

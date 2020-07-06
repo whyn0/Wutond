@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.parser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author whyno
  */
-public class ProductionSide {
+public class ProductionSide  implements Serializable{
     private final List<String> list = new ArrayList<>();
   
     public ProductionSide(String... symbol){

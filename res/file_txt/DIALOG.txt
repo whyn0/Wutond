@@ -182,7 +182,7 @@ NEXT_3: null
 ID: 109
 TEXT: "bwaaah.... ahhh"
 OPT_1: "*Gli dici gentilmente che non hai capito nulla di quello che ha detto*"
-OPT_2: "*Quest'uomo è pazzo. Meglio lasciarlo stare*"
+OPT_2: "*Quest'uomo è pazzo.*"
 OPT_3: null
 NEXT_1: 110
 NEXT_2: 110
@@ -200,7 +200,7 @@ NEXT_3: null
 }
 {
 ID: 111
-TEXT: "........"
+TEXT: ".............."
 OPT_1: "*Ti giri a guardare il punto che sta fissando*"
 OPT_2: "*Inizi a pensare che non ci sia una persona normale in questa città.*"
 OPT_3: null
@@ -324,14 +324,64 @@ TEXT: "*Il commissario prende il portafoglio e lo apre* Noto che mancano dei sol
 OPT_1: "*Gli dici che li hai usati per procedere nelle indagini*"
 OPT_2: "*Gli chiedi il motivo per cui stesse scappando*"
 OPT_3: null
-NEXT_1: 125
-NEXT_2: 124
+NEXT_1: 128
+NEXT_2: 128
+NEXT_3: null
+}
+{
+ID: 128
+TEXT: "Il proprietario del bar, se solo non mi avesse servito quella maledettissima dreher..."
+OPT_1: "Sei stato tu?"
+OPT_2: null
+OPT_3: null
+NEXT_1: 129
+NEXT_2: null
+NEXT_3: null
+}
+{
+ID: 129
+TEXT: "L'avrei passata liscia se non ci fossi stato tu, ficcanaso,Ora dovrai vedertela con me... *Ti viene incontro con aria minacciosa*"
+OPT_1: "*Capisci che devi ucciderlo prima che lo faccia lui*"
+OPT_2: null
+OPT_3: null
+NEXT_1: -1
+NEXT_2: null
 NEXT_3: null
 }
 {
 ID: 124
-TEXT: "*LINEA CICCIO TORRIONE"
-OPT_1: "*Gli dici che li hai usati per procedere nelle indagini*"
+TEXT: ".............."
+OPT_1: "*Gli chiedi come abbia fatto a correre così veloce*"
+OPT_2: "*GLi chiedi se abbia visto passare un uomo con un cappotto nero*"
+OPT_3: null
+NEXT_1: 125
+NEXT_2: 125
+NEXT_3: null
+}
+{
+ID: 125
+TEXT: "Il mio tessssoro... dov'è??!?"
+OPT_1: "Cosa stai cercando? *Guardi se c'è qualcosa a terra*"
+OPT_2: null
+OPT_3: null
+NEXT_1: 126
+NEXT_2: null
+NEXT_3: null
+}
+{
+ID: 126
+TEXT: "Magia...bustina..."
+OPT_1: "*Inizi a sospettare che abbia poteri paranormali*"
+OPT_2: null
+OPT_3: null
+NEXT_1: 127
+NEXT_2: null
+NEXT_3: null
+}
+{
+ID: 127
+TEXT: "Porta bloccata...Magia per sbloccarla..."
+OPT_1: "*Capisci che devi dargli qualcosa per procedere con le indagini*"
 OPT_2: null
 OPT_3: null
 NEXT_1: -1

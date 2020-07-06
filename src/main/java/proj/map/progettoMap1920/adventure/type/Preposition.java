@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Preposition extends GameUtil{
+public class Preposition extends GameUtil implements Serializable{
     private PrepositionType type;
 
 

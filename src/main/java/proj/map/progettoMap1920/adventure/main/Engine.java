@@ -19,6 +19,7 @@ import proj.map.progettoMap1920.adventure.utils.LockT;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 
+import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
 import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 
 public class Engine {
@@ -45,20 +46,89 @@ public class Engine {
     }
 
     public void run() {
-        JTextArea output = gui.getOutputArea();
-        JTextArea input = gui.getInputArea();
-        output.append(intro());
-        separator();
-        output.append(game.getCurrentRoom().getName().toUpperCase());
-        separator();
-        output.append(game.getCurrentRoom().getDescription());
-        separator();
-        
+    	boolean restart = true;
+    	while(restart) {
+    		int ending = -1;
+            JTextArea output = gui.getOutputArea();
+            JTextArea input = gui.getInputArea();
+            output.append(intro());
+            separator();
+            output.append(game.getCurrentRoom().getName().toUpperCase());
+            separator();
+            output.append(game.getCurrentRoom().getDescription());
+            separator();
+            
 
-        while (true) {
-            boolean flag = true;
-           // output.setCaretPosition(output.getTabSize());
-            ((DefaultCaret)output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+            while (true) {
+                boolean flag = true;
+                
+               // output.setCaretPosition(output.getTabSize());
+                ((DefaultCaret)output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+                synchronized (LockT.lock) {
+                    try {
+                        LockT.lock.wait();
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                String command = gui.getString();
+                List<AdvObject> containerItems = new ArrayList<>();
+                for (AdvObject a : game.getCurrentRoom().getObjects_list()) {
+                    if (a instanceof AdvObjectContainer) {
+                        if (((AdvObjectContainer) a).isOpened()) {
+                            containerItems.addAll(((AdvObjectContainer) a).getList());
+                        }
+                    }
+                }
+                ParserOutput p = new ParserOutput();
+                try {
+                    p = parser.parse(command,
+                            game.getInventory().getList(),
+                            game.getCurrentRoom().getObjects_list(),
+                            containerItems,
+                            game.getCurrentRoom().getNpc_list(),
+                            game.getCommands(),
+                            game.getArticles(),
+                            game.getPrepositions(),
+                            game.getParticles(),
+                            game.getGrammar());
+                } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                    System.out.print(e);
+                } catch (NullOutputException e1) {
+                    output.append(e1.getMsg());
+                    flag = false;
+                }
+
+                if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
+                    output.append("Addio!");
+                    //scanner.close();
+                    break;
+                } else {
+                    if (flag) {
+                        try {
+    						game.nextMove(p, output,input, gui);
+    					} catch (EOGameException e) {
+    						separator();
+    						separator();
+    						ending = e.getCode();
+    						break;
+    					}
+                        output.append("\n");
+                        separator();
+                    }
+
+                    gui.setString(null);
+                }
+            }
+            if(ending == 0) {
+            	output.append("Hai terminato il gioco da morto, che peccato!");
+            	separator();
+            } else if(ending == 1) {
+            	output.append("Complimenti, hai vinto!");
+            	separator();
+            }
+            output.append("Vuoi ricominciare? (scrivi si/no)" + "\n");
             synchronized (LockT.lock) {
                 try {
                     LockT.lock.wait();
@@ -67,52 +137,31 @@ public class Engine {
                     e.printStackTrace();
                 }
             }
-            String command = gui.getString();
-            List<AdvObject> containerItems = new ArrayList<>();
-            for (AdvObject a : game.getCurrentRoom().getObjects_list()) {
-                if (a instanceof AdvObjectContainer) {
-                    if (((AdvObjectContainer) a).isOpened()) {
-                        containerItems.addAll(((AdvObjectContainer) a).getList());
-                    }
-                }
-            }
-            ParserOutput p = new ParserOutput();
-            try {
-                p = parser.parse(command,
-                        game.getInventory().getList(),
-                        game.getCurrentRoom().getObjects_list(),
-                        containerItems,
-                        game.getCurrentRoom().getNpc_list(),
-                        game.getCommands(),
-                        game.getArticles(),
-                        game.getPrepositions(),
-                        game.getParticles(),
-                        game.getGrammar());
-            } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-                System.out.print(e);
-            } catch (NullOutputException e1) {
-                output.append(e1.getMsg());
-                flag = false;
-            }
-
-            if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
-                output.append("Addio!");
-                //scanner.close();
-                break;
+            String ans = gui.getString();
+            ans = ans.trim();
+            ans.strip();
+            if(ans.matches("no")) {
+            	restart = false;
             } else {
-                if (flag) {
-                    game.nextMove(p, output,input, gui);
-                    output.append("\n");
-                    separator();
-                }
-
-                gui.setString(null);
+            	try {
+            		output.setText("");
+            		game.clearList();
+					game.init();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
-        }
-        gui.setVisible(false);
+            
+    	}
+    	gui.setVisible(false);
+    	System.exit(0);
     }
     public String intro() {
-      String intro = "Sei Alfoso Paccagnello, un detective padovano. "+ "\n"
+      String intro = "Sei Alfonso Paccagnello, un detective padovano. "+ "\n"
         + "Sei stato inviato nell'apparententemente tranquilla cittadina di Wutond "+ "\n"
         + "per risolvere il mistero dell'omicidio del proprietario del più famoso bar cittadino: "+ "\n"
         + "il bar Castello .Ti trovi in questura completamente solo." + "\n"

@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Article extends GameUtil{
+public class Article extends GameUtil implements Serializable{
     private ArticleType type;
 
 

@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.parser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author whyno
  */
-public class CFGrammar {
+public class CFGrammar  implements Serializable{
     private final String start;
     private final List<Production> productions;
     private final List<String> nonTerminals;

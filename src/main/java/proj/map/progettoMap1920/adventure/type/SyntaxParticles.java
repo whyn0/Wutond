@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
@@ -14,7 +15,7 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class SyntaxParticles extends GameUtil{
+public class SyntaxParticles extends GameUtil implements Serializable{
     private final SyntaxParticlesType particle;
     /*
     

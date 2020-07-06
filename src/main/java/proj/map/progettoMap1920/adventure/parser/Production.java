@@ -5,11 +5,13 @@
  */
 package proj.map.progettoMap1920.adventure.parser;
 
+import java.io.Serializable;
+
 /**
  *
  * @author whyno
  */
-public class Production {
+public class Production  implements Serializable {
     private final ProductionSide leftSide;
     private final ProductionSide rightSide;
 
