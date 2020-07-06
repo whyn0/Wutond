@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,72 +13,74 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Article extends GameUtil{
-    private ArticleType type;
+public class Article extends GameUtil implements Serializable {
+  private ArticleType type;
 
+  public Article(ArticleType type, String name) {
+    this.type = type;
+    this.name = name;
+  }
 
-    public Article(ArticleType type, String name) {
-        this.type = type;
-        this.name = name;
+  public Article(ArticleType type) {
+    this.type = type;
+  }
+
+  public ArticleType getType() {
+    return type;
+  }
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  @Override
+  public Set<String> getAlias() {
+    return alias;
+  }
+
+  public void setType(ArticleType type) {
+    this.type = type;
+  }
+
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setAlias(Set<String> alias) {
+    this.alias = alias;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 13 * hash + Objects.hashCode(this.type);
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
-
-    public Article(ArticleType type) {
-        this.type = type;
+    if (obj == null) {
+      return false;
     }
-
-    public ArticleType getType() {
-        return type;
+    if (getClass() != obj.getClass()) {
+      return false;
     }
-
-    public String getName() {
-        return name;
+    final Article other = (Article) obj;
+    if (this.type != other.type) {
+      return false;
     }
+    return true;
+  }
 
-    public Set<String> getAlias() {
-        return alias;
-    }
+  public Article(ArticleType type, String name, Set<String> alias) {
+    this.type = type;
+    this.name = name;
+    this.alias = alias;
+  }
 
-    public void setType(ArticleType type) {
-        this.type = type;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAlias(Set<String> alias) {
-        this.alias = alias;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.type);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Article other = (Article) obj;
-        if (this.type != other.type) {
-            return false;
-        }
-        return true;
-    }
-
-    public Article(ArticleType type, String name, Set<String> alias) {
-        this.type = type;
-        this.name = name;
-        this.alias = alias;
-    }
-    
 }

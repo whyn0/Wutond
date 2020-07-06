@@ -42,8 +42,8 @@ public class FileInit { // probabile singleton
   private GameList<Dialog> dialogList = new GameList<>(new ArrayList<Dialog>());
   private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
   private GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
-  
-  public FileInit(String... paths) throws IOException, FileNotFoundException{
+
+  public FileInit(String... paths) throws IOException, FileNotFoundException {
     objReader(paths[0]);
     lockReader(paths[1]);
     contReader(paths[2]);
@@ -57,8 +57,6 @@ public class FileInit { // probabile singleton
   /*
    * ---------METHODS---------------
    */
-
-  
 
   private void objReader(String filename) throws FileNotFoundException, IOException {
 
@@ -88,7 +86,7 @@ public class FileInit { // probabile singleton
             str = buffer.readLine();
           }
           tokenized = str.split(":");
-          tokenized[1] = tokenized[1].trim(); 
+          tokenized[1] = tokenized[1].trim();
 
           if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
@@ -99,11 +97,11 @@ public class FileInit { // probabile singleton
           }
           if (tokenized[0].equals("DESCRIPTION")) {
             tokenized[1] = tokenized[1].replace("\"", "");
-            description= String.valueOf(tokenized[1]);
+            description = String.valueOf(tokenized[1]);
           }
           if (tokenized[0].equals("LOOK")) {
             tokenized[1] = tokenized[1].replace("\"", "");
-            onLook= String.valueOf(tokenized[1]);
+            onLook = String.valueOf(tokenized[1]);
           }
           if (tokenized[0].equals("ALIAS")) {
             if (!tokenized[1].equals("null")) {
@@ -122,7 +120,7 @@ public class FileInit { // probabile singleton
         }
         // --costruzione oggetti ed inserzione nella lista
 
-        objectList.add(new AdvObject(id, objName, description, onLook, new HashSet<String>(alias), pickable));
+        objectList.add(new AdvObject(id, objName, description, onLook, new HashSet<>(alias), pickable));
         alias.clear();
       }
 
@@ -284,12 +282,11 @@ public class FileInit { // probabile singleton
       if (objMapTempList != null) {
         for (Integer i : objMapTempList) {
           if (i != null) {
-            if(objectList.getById(i) != null) {
+            if (objectList.getById(i) != null) {
               tempRoom.getObjects_list().add(objectList.getById(i));// riempire anche con container list
-            }
-            else if(doorList.getById(i) != null) {
+            } else if (doorList.getById(i) != null) {
               tempRoom.getObjects_list().add(doorList.getById(i));
-            }else {
+            } else {
               tempRoom.getObjects_list().add(containerList.getById(i));
             }
           }
@@ -391,7 +388,7 @@ public class FileInit { // probabile singleton
          * costruire l'oggetto in questione
          */
 
-        npcList.add(new Npc(id, name, description, look, new HashSet<String>(alias), understandable, killable));
+        npcList.add(new Npc(id, name, description, look, new HashSet<>(alias), understandable, killable));
         alias.clear();
       }
     } catch (EOFException e) {
@@ -415,13 +412,13 @@ public class FileInit { // probabile singleton
     while (npcIter.hasNext()) {
       Npc tempNpc = npcIter.next();
       List<AdvObject> inventory = new ArrayList<>();
-      if(inventoryMap.get(tempNpc.getId()) != null) {
+      if (inventoryMap.get(tempNpc.getId()) != null) {
         for (Integer i : inventoryMap.get(tempNpc.getId())) {
           inventory.add(objectList.getById(i));
         }
         tempNpc.setInventory(new ArrayList<>(inventory));
       }
-      
+
     }
   }
 
@@ -593,7 +590,7 @@ public class FileInit { // probabile singleton
             if (!tokenized[1].equals("null")) {
               String[] aliasList = tokenized[1].split("\\s");
               alias.addAll(Arrays.asList(aliasList));
-            }else {
+            } else {
               alias.add(null);
             }
           }
@@ -625,7 +622,7 @@ public class FileInit { // probabile singleton
          */
 
         containerList
-          .add(new AdvObjectContainer(null, null, id, contName, description, onLook, new HashSet<String>(alias), pickable));
+          .add(new AdvObjectContainer(null, null, id, contName, description, onLook, new HashSet<>(alias), pickable));
         alias.clear();
       }
 
@@ -642,13 +639,14 @@ public class FileInit { // probabile singleton
       AdvObjectContainer tempCont = containerListIter.next();
       for (Integer i : itemRefContainers.get(tempCont.getId())) {
         /*
-        try {
-          tempCont.getList().add(objectList.getById(i));
-        }
-        catch(NullPointerException e) {
-          tempCont.getList().add(null);
-        }*/
-        if(objectList.getById(i) != null) {
+         * try {
+         * tempCont.getList().add(objectList.getById(i));
+         * }
+         * catch(NullPointerException e) {
+         * tempCont.getList().add(null);
+         * }
+         */
+        if (objectList.getById(i) != null) {
           tempCont.getList().add(objectList.getById(i));
         } else {
           tempCont.getList().add(containerList.getById(i));
@@ -656,8 +654,7 @@ public class FileInit { // probabile singleton
       }
       try {
         tempCont.setLock(lockList.getById(lockMap.get(tempCont.getId())));
-      }
-      catch(NullPointerException e) {
+      } catch (NullPointerException e) {
         tempCont.setLock(null);
       }
     }
@@ -719,8 +716,8 @@ public class FileInit { // probabile singleton
     while (lockListIter.hasNext()) {
       Lock tempLock = lockListIter.next();
       try {
-      tempLock.setKey(objectList.getById(lockMap.get(tempLock.getId())));
-      } catch(NullPointerException e) {
+        tempLock.setKey(objectList.getById(lockMap.get(tempLock.getId())));
+      } catch (NullPointerException e) {
         tempLock.setKey(null);
       }
     }
@@ -795,7 +792,7 @@ public class FileInit { // probabile singleton
          * costruire l'oggetto in questione
          */
 
-        doorList.add(new Door(null, null, id, doorName, doorDesc, onLook, new HashSet<String>(alias), false));
+        doorList.add(new Door(null, null, id, doorName, doorDesc, onLook, new HashSet<>(alias), false));
 
         alias.clear();
       }
@@ -816,8 +813,8 @@ public class FileInit { // probabile singleton
     }
   }
 
-  private void doorLinker(String filename) throws FileNotFoundException, IOException{
-    Map<Integer,Integer> lockRoomMap = new HashMap<>();
+  private void doorLinker(String filename) throws FileNotFoundException, IOException {
+    Map<Integer, Integer> lockRoomMap = new HashMap<>();
     int id = 0;
     int lroom = 0;
     // -----------------------------
@@ -829,7 +826,7 @@ public class FileInit { // probabile singleton
     String str;
     String[] tokenized;
     //
-    
+
     try {
       while ((str = buffer.readLine()) != null) {
         while (!"}".equals(str)) {
@@ -837,28 +834,28 @@ public class FileInit { // probabile singleton
             str = buffer.readLine();
           }
           tokenized = str.split(":");
-          tokenized[1] = tokenized[1].trim(); 
-          if(tokenized[0].equals("ID")) {
+          tokenized[1] = tokenized[1].trim();
+          if (tokenized[0].equals("ID")) {
             id = Integer.parseInt(tokenized[1]);
           }
-          if(tokenized[0].equals("ROOM")) {
+          if (tokenized[0].equals("ROOM")) {
             lroom = Integer.parseInt(tokenized[1]);
           }
           str = buffer.readLine();
         }
         lockRoomMap.put(id, lroom);
       }
-      for(Door d : doorList) {
+      for (Door d : doorList) {
         d.setLockedRoom(roomList.getById(lockRoomMap.get(d.getId())));
       }
-      
-    }catch(EOFException e) {
-      
+
+    } catch (EOFException e) {
+
     }
     file.close();
   }
-  //Getter
-  
+  // Getter
+
   public GameList<AdvObject> getObjectList() {
     return objectList;
   }
@@ -887,5 +884,4 @@ public class FileInit { // probabile singleton
     return doorList;
   }
 
-  
 }

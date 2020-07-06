@@ -10,5 +10,5 @@ package proj.map.progettoMap1920.adventure.type;
  * @author whyno
  */
 public enum ArticleType {
-    THE
+  THE
 }

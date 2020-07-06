@@ -4,7 +4,7 @@ NAME: "Commissario"
 DESCRIPTION: "Vedi finalmente l'uomo che stavi inseguendo"
 LOOK: "Non riesci a vedere il volto dell'uomo ma le sue fattezze ti sono familiari"
 ALIAS: poliziotto uomo persona
-KILLABLE: t
+KILLABLE: f
 UNDERSTANDABLE: t
 DIALOG: 119
 INVENTORY: null

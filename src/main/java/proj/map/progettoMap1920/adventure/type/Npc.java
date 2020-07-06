@@ -6,9 +6,7 @@
 package proj.map.progettoMap1920.adventure.type;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Set;
 
 /**
@@ -16,103 +14,110 @@ import java.util.Set;
  * @author whyno
  */
 public class Npc extends GameObject implements Serializable {
-    private boolean understandable;
-    private boolean spoken = false;
-    private boolean killable;
+  private boolean understandable;
+  private boolean spoken = false;
+  private boolean killable;
 
-    private Dialog dialog = null;
-    private List<AdvObject> npc_inventory = null;
+  private Dialog dialog = null;
+  private List<AdvObject> npc_inventory = null;
 
-    /*
-	 * 
-	 * COSTRUTTORI
-	 * 
-     */
-    public Npc(int id, String name, String look, String description, Set<String> alias, boolean understandable, boolean killable) {
-        super(id, name, look, description, alias);
-        this.understandable = understandable;
-        this.killable = killable;
+  /*
+   * 
+   * COSTRUTTORI
+   * 
+   */
+  public Npc(int id, String name, String look, String description, Set<String> alias, boolean understandable, boolean killable) {
+    super(id, name, look, description, alias);
+    this.understandable = understandable;
+    this.killable = killable;
 
-    }
+  }
 
-    /*
-	 * 
-	 * GETTERS
-	 * 
-     */
-    public int getId() {
-        return id;
-    }
+  /*
+   * 
+   * GETTERS
+   * 
+   */
+  @Override
+  public int getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  @Override
+  public String getName() {
+    return name;
+  }
 
-    public String getLook() {
-        return look;
-    }
+  @Override
+  public String getLook() {
+    return look;
+  }
 
-    public boolean isUnderstandable() {
-        return understandable;
-    }
+  public boolean isUnderstandable() {
+    return understandable;
+  }
 
-    public boolean isSpoken() {
-        return spoken;
-    }
+  public boolean isSpoken() {
+    return spoken;
+  }
 
-    public boolean isKillable() {
-        return killable;
-    }
-    
-    public List<AdvObject> getNpc_inventory() {
-      return npc_inventory;
-    }
+  public boolean isKillable() {
+    return killable;
+  }
 
-    public void setNpc_inventory(List<AdvObject> npc_inventory) {
-      this.npc_inventory = npc_inventory;
-    }
+  public List<AdvObject> getNpc_inventory() {
+    return npc_inventory;
+  }
 
-    public Dialog getDialog() {
-      return dialog;
-    }
+  public void setNpc_inventory(List<AdvObject> npc_inventory) {
+    this.npc_inventory = npc_inventory;
+  }
 
-    /*
-	 * 
-	 * SETTERS
-	 * 
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
+  public Dialog getDialog() {
+    return dialog;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  /*
+   * 
+   * SETTERS
+   * 
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setLook(String look) {
-        this.look = look;
-    }
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setUnderstandable(boolean understandable) {
-        this.understandable = understandable;
-    }
+  @Override
+  public void setLook(String look) {
+    this.look = look;
+  }
 
-    public void setSpoken(boolean spoken) {
-        this.spoken = spoken;
-    }
+  public void setUnderstandable(boolean understandable) {
+    this.understandable = understandable;
+  }
 
-    public void setKillable(boolean killable) {
-        this.killable = killable;
-    }
-    public void setDialog(Dialog dialog) {
-      this.dialog = dialog;
-    }
-    public void setInventory(List<AdvObject> list) {
-      this.npc_inventory = list;
-    }
-    /*
-	 * 
-	 * METHODS
-	 * 
-     */
+  public void setSpoken(boolean spoken) {
+    this.spoken = spoken;
+  }
+
+  public void setKillable(boolean killable) {
+    this.killable = killable;
+  }
+
+  public void setDialog(Dialog dialog) {
+    this.dialog = dialog;
+  }
+
+  public void setInventory(List<AdvObject> list) {
+    this.npc_inventory = list;
+  }
+  /*
+   * 
+   * METHODS
+   * 
+   */
 }

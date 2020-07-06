@@ -11,41 +11,42 @@ import java.io.Serializable;
  *
  * @author whyno
  */
-public class Lock extends GameElement implements Serializable{
-    private AdvObject key;
-    private boolean locked = true;
-    //Costruttore
-    public Lock(int id, AdvObject key) {
-        super(id);
-        this.key = key;
-    }
-    
-    //getters
+public class Lock extends GameElement implements Serializable {
+  private AdvObject key;
+  private boolean locked = true;
 
-    public int getId() {
-        return id;
-    }
+  // Costruttore
+  public Lock(int id, AdvObject key) {
+    super(id);
+    this.key = key;
+  }
 
-    public AdvObject getKey() {
-        return key;
-    }
+  // getters
 
-    public boolean isLocked() {
-        return locked;
-    }
-    //setter
+  @Override
+  public int getId() {
+    return id;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public AdvObject getKey() {
+    return key;
+  }
 
-    public void setKey(AdvObject key) {
-        this.key = key;
-    }
+  public boolean isLocked() {
+    return locked;
+  }
+  // setter
 
-    public void setLocked(boolean locked) {
-        this.locked = locked;
-    }
-    
-    
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setKey(AdvObject key) {
+    this.key = key;
+  }
+
+  public void setLocked(boolean locked) {
+    this.locked = locked;
+  }
+
 }

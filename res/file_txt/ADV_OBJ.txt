@@ -58,7 +58,7 @@ PICKABLE: t
 ID: 54
 NAME: "Libretto Folkloristico"
 DESCRIPTION: "Un Libretto Folkloristico"
-LOOK: "Libro scritto da qualche scrittore wutondino che non aveva molto da fare, contiene alcune vicende sulla città e i principali detti."
+LOOK: "Libro scritto da qualche scrittore wutondino che non aveva molto da fare, contiene alcune vicende sulla città e i principali detti. Ti colpisce uno in particolare *C' nama sci SCIAMANINN...*"
 ALIAS: libro libretto
 PICKABLE: t
 }

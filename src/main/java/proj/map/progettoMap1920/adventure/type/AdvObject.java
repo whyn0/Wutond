@@ -5,105 +5,114 @@
  */
 package proj.map.progettoMap1920.adventure.type;
 
-
+import java.io.Serializable;
 import java.util.Set;
-import java.io.*;
 
 /**
  *
  * @author whyno
  */
-public class AdvObject extends GameObject implements Serializable{
-    /**
+public class AdvObject extends GameObject implements Serializable {
+  /**
+  * 
+  */
+
+  private boolean pickable;
+
+  /*
+   * 
+   * COSTRUTTORI
+   * 
+   */
+  public AdvObject(int id, String name, String description, String look, Set<String> alias, boolean pickable) {
+    super(id, name, description, look, alias);
+    this.pickable = pickable;
+  }
+  /*
+   *
+   * GETTERS
    * 
    */
 
-    private boolean pickable;
-    /*
-     * 
-     * COSTRUTTORI
-     * 
-     */
-    public AdvObject(int id, String name, String description, String look, Set<String> alias, boolean pickable) {    
-        super(id, name, description, look, alias);
-        this.pickable = pickable;
-    }
-    /*
-     *
-     *GETTERS
-     * 
-     */
+  @Override
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
-        return name;
-    }
+  @Override
+  public String getDescription() {
+    return description;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  @Override
+  public Set<String> getAlias() {
+    return alias;
+  }
 
-    public Set<String> getAlias() {
-        return alias;
-    }
+  public boolean isPickable() {
+    return pickable;
+  }
 
-    
-    public boolean isPickable() {    
-        return pickable;
-    }
-    public String getLook() {
-        return look;
-    }
-    /*
-     *
-     * SETTERS
-     * 
-     */
+  @Override
+  public String getLook() {
+    return look;
+  }
+  /*
+   *
+   * SETTERS
+   * 
+   */
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  @Override
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setAlias(Set<String> alias) {
-        this.alias = alias;
-    }
+  @Override
+  public void setAlias(Set<String> alias) {
+    this.alias = alias;
+  }
 
-    public void setPickable(boolean pickable) {
-        this.pickable = pickable;
-    }
-    public void setLook(String look) {
-        this.look = look;
-    }
-    /*
-    EQUALS E HASHCODE
-    */
+  public void setPickable(boolean pickable) {
+    this.pickable = pickable;
+  }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + this.getId();
-        return hash;
-    }
+  @Override
+  public void setLook(String look) {
+    this.look = look;
+  }
+  /*
+   * EQUALS E HASHCODE
+   */
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final AdvObject other = (AdvObject) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 89 * hash + this.getId();
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
-    
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final AdvObject other = (AdvObject) obj;
+    if (this.id != other.id) {
+      return false;
+    }
+    return true;
+  }
+
 }

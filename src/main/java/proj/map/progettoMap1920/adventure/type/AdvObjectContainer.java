@@ -16,74 +16,73 @@ import java.util.Set;
  */
 public class AdvObjectContainer extends AdvObject implements Serializable {
 
-    final private boolean openable = true;
-    private List<AdvObject> list;
-    private Lock lock;
-    private boolean opened = false;
-    /*
- * 
- * COSTRUTTORI
- * 
-     */
+  final private boolean openable = true;
+  private List<AdvObject> list;
+  private Lock lock;
+  private boolean opened = false;
+  /*
+   * 
+   * COSTRUTTORI
+   * 
+   */
 
-    public AdvObjectContainer(List<AdvObject> list, Lock lock, int id, String name, String description, String look, Set<String> alias, boolean pickable) {
-        super(id, name, description, look, alias, pickable);
-        this.list = list;
-        this.lock = lock;
-        this.list = new ArrayList<>();
-    }
+  public AdvObjectContainer(List<AdvObject> list, Lock lock, int id, String name, String description, String look, Set<String> alias, boolean pickable) {
+    super(id, name, description, look, alias, pickable);
+    this.list = list;
+    this.lock = lock;
+    this.list = new ArrayList<>();
+  }
 
-    /*
- * 
- * GETTERS
- * 
-     */
+  /*
+   * 
+   * GETTERS
+   * 
+   */
 
-    public boolean isOpenable() {
-        return openable;
-    }
+  public boolean isOpenable() {
+    return openable;
+  }
 
-    public List<AdvObject> getList() {
-        return list;
-    }
+  public List<AdvObject> getList() {
+    return list;
+  }
 
-    public Lock getLock() {
-        return lock;
-    }
+  public Lock getLock() {
+    return lock;
+  }
 
-    
+  public boolean isOpened() {
+    return opened;
+  }
 
-    public boolean isOpened() {
-      return opened;
-    }
+  /*
+   *
+   * SETTERS
+   *
+   */
+  public void setLock(Lock lock) {
+    this.lock = lock;
+  }
 
+  public void setList(List<AdvObject> list) {
+    this.list = list;
+  }
 
-    /*
-     *
-     * SETTERS
-     *
-     */
-    public void setLock(Lock lock) {
-        this.lock = lock;
-    }
-    public void setList(List<AdvObject> list) {
-        this.list = list;
-    }
+  public void setOpened(boolean opened) {
+    this.opened = opened;
+  }
 
-    public void setOpened(boolean opened) {
-      this.opened = opened;
-    }
-    /*
-     *
-     * METHOD
-     *
-     */
-    public void add(AdvObject o) {
-        list.add(o);
-    }
+  /*
+   *
+   * METHOD
+   *
+   */
+  public void add(AdvObject o) {
+    list.add(o);
+  }
 
-    public void remove(AdvObject o) {
-        list.remove(o);
-    }
+  public void remove(AdvObject o) {
+    list.remove(o);
+  }
 
 }

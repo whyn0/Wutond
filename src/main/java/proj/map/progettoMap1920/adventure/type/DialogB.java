@@ -11,11 +11,12 @@ package proj.map.progettoMap1920.adventure.type;
  */
 public class DialogB extends javax.swing.JDialog {
   /*
-
-    Custom field
-
+   * 
+   * Custom field
+   * 
    */
   private Dialog d;
+
   /**
    * Creates new form DialogB
    */
@@ -95,6 +96,7 @@ public class DialogB extends javax.swing.JDialog {
     optA.setForeground(new java.awt.Color(0, 0, 0));
     optA.setText("A");
     optA.addActionListener(new java.awt.event.ActionListener() {
+      @Override
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         optAActionPerformed(evt);
       }
@@ -104,6 +106,7 @@ public class DialogB extends javax.swing.JDialog {
     optB.setForeground(new java.awt.Color(0, 0, 0));
     optB.setText("B");
     optB.addActionListener(new java.awt.event.ActionListener() {
+      @Override
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         optBActionPerformed(evt);
       }
@@ -113,6 +116,7 @@ public class DialogB extends javax.swing.JDialog {
     optC.setForeground(new java.awt.Color(0, 0, 0));
     optC.setText("C");
     optC.addActionListener(new java.awt.event.ActionListener() {
+      @Override
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         optCActionPerformed(evt);
       }
@@ -122,140 +126,140 @@ public class DialogB extends javax.swing.JDialog {
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel2Layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(optC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(optA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(optB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addContainerGap())
-      );
+        .addGroup(jPanel2Layout.createSequentialGroup()
+          .addContainerGap()
+          .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(optC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(optA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(optB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          .addContainerGap()));
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel2Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(optA, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-        .addGap(18, 18, 18)
-        .addComponent(optB, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-        .addGap(30, 30, 30)
-        .addComponent(optC, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-        .addContainerGap())
-      );
+        .addGroup(jPanel2Layout.createSequentialGroup()
+          .addContainerGap()
+          .addComponent(optA, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+          .addGap(18, 18, 18)
+          .addComponent(optB, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+          .addGap(30, 30, 30)
+          .addComponent(optC, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+          .addContainerGap()));
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addGap(6, 6, 6)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
-              .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-              .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))))
-        .addContainerGap())
-      );
+        .addGroup(jPanel1Layout.createSequentialGroup()
+          .addContainerGap()
+          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+              .addGap(6, 6, 6)
+              .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+              .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))))
+          .addContainerGap()));
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addGroup(jPanel1Layout.createSequentialGroup()
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)))
-        .addContainerGap())
-      );
+        .addGroup(jPanel1Layout.createSequentialGroup()
+          .addContainerGap()
+          .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+              .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+              .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+              .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)))
+          .addContainerGap()));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      );
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      );
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void optCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optCActionPerformed
-    if(checkDialog(d.getNext_3())){
+  private void optCActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_optCActionPerformed
+    if (checkDialog(d.getNext_3())) {
       checkText(d.getNext_3());
       setDialog(d.getNext_3());
-      setText();    
+      setText();
     } else {
       exit();
     }
 
-  }//GEN-LAST:event_optCActionPerformed
+  }// GEN-LAST:event_optCActionPerformed
 
-  private void optAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optAActionPerformed
-    if(checkDialog(d.getNext_1())){
+  private void optAActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_optAActionPerformed
+    if (checkDialog(d.getNext_1())) {
       checkText(d.getNext_1());
       setDialog(d.getNext_1());
-      setText();    
-    }else {
+      setText();
+    } else {
       exit();
     }
-  }//GEN-LAST:event_optAActionPerformed
+  }// GEN-LAST:event_optAActionPerformed
 
-  private void optBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optBActionPerformed
-    if(checkDialog(d.getNext_2())){
+  private void optBActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_optBActionPerformed
+    if (checkDialog(d.getNext_2())) {
       checkText(d.getNext_2());
       setDialog(d.getNext_2());
-      setText();    
-    }else {
+      setText();
+    } else {
       exit();
     }
-  }//GEN-LAST:event_optBActionPerformed
-  public void setDialog(Dialog d){
+  }// GEN-LAST:event_optBActionPerformed
+
+  public void setDialog(Dialog d) {
     this.d = d;
     checkText(d);
     setText();
   }
-  public Dialog getDialog(){
+
+  public Dialog getDialog() {
     return this.d;
   }
-  private void setText(){
+
+  private void setText() {
     textA.setText(d.getOpt_1());
     textB.setText(d.getOpt_2());
     textC.setText(d.getOpt_3());
     textNpc.setText(d.getText());
   }
-  private boolean checkDialog(Dialog next){
-    if(next.getId() == -1){
+
+  private boolean checkDialog(Dialog next) {
+    if (next.getId() == -1) {
       return false;
-    }else{
+    } else {
       return true;
     }
   }
-  private void exit(){//throws custo exception per trigger di eventi etc
+
+  private void exit() {// throws custo exception per trigger di eventi etc
     this.setVisible(false);
     this.dispose();
   }
-  private void checkText(Dialog d){
-    if(d.getOpt_1() == null) {
+
+  private void checkText(Dialog d) {
+    if (d.getOpt_1() == null) {
       this.jScrollPane4.setVisible(false);
       this.optA.setVisible(false);
     }
-    if(d.getOpt_2() == null) {
+    if (d.getOpt_2() == null) {
       this.jScrollPane1.setVisible(false);
       this.optB.setVisible(false);
     }
-    if(d.getOpt_3() == null) {
+    if (d.getOpt_3() == null) {
       this.jScrollPane3.setVisible(false);
       this.optC.setVisible(false);
     }
@@ -265,44 +269,51 @@ public class DialogB extends javax.swing.JDialog {
    * @param args the command line arguments
    */
   /*
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-  //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-  /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-   * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+   * public static void main(String args[]) {
+   * /* Set the Nimbus look and feel
    */
-  /*     try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-  /*    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogB dialog = new DialogB(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }*/
+  // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+  /*
+   * If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+   * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+   */
+  /*
+   * try {
+   * for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+   * if ("Nimbus".equals(info.getName())) {
+   * javax.swing.UIManager.setLookAndFeel(info.getClassName());
+   * break;
+   * }
+   * }
+   * } catch (ClassNotFoundException ex) {
+   * java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+   * } catch (InstantiationException ex) {
+   * java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+   * } catch (IllegalAccessException ex) {
+   * java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+   * } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+   * java.util.logging.Logger.getLogger(DialogB.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+   * }
+   * //</editor-fold>
+   * 
+   * /* Create and display the dialog
+   */
+  /*
+   * java.awt.EventQueue.invokeLater(new Runnable() {
+   * public void run() {
+   * DialogB dialog = new DialogB(new javax.swing.JFrame(), true);
+   * dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+   * 
+   * @Override
+   * public void windowClosing(java.awt.event.WindowEvent e) {
+   * System.exit(0);
+   * }
+   * });
+   * dialog.setVisible(true);
+   * }
+   * });
+   * }
+   */
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JPanel jPanel1;

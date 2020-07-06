@@ -12,19 +12,19 @@ import java.util.List;
  *
  * @author whyno
  */
-public class Inventory implements Serializable{
-    private List<AdvObject> inventory;
+public class Inventory implements Serializable {
+  private List<AdvObject> inventory;
 
-    public Inventory(List<AdvObject> inventory) {
-        this.inventory = inventory;
-    }
+  public Inventory(List<AdvObject> inventory) {
+    this.inventory = inventory;
+  }
 
-    public List<AdvObject> getInventory() {
-        return inventory;
-    }
+  public List<AdvObject> getInventory() {
+    return inventory;
+  }
 
-    public void setInventory(List<AdvObject> inventory) {
-        this.inventory = inventory;
-    }
-    
+  public void setInventory(List<AdvObject> inventory) {
+    this.inventory = inventory;
+  }
+
 }
