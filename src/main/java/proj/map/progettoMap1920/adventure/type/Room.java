@@ -15,12 +15,12 @@ import java.util.Set;
  * @author whyno
  */
 public class Room extends GameObject implements Serializable {
-  private  Room south = null;
-  private  Room north = null;
-  private  Room east = null;
-  private  Room west = null;
-  private  List<AdvObject> objects_list = new ArrayList<>();
-  private  List<Npc> npc_list = new ArrayList<>();
+  private Room south = null;
+  private Room north = null;
+  private Room east = null;
+  private Room west = null;
+  private List<AdvObject> objects_list = new ArrayList<>();
+  private List<Npc> npc_list = new ArrayList<>();
 
   /*
    * 
@@ -29,7 +29,6 @@ public class Room extends GameObject implements Serializable {
    * 
    * 
    */
-  
 
   public Room(int id, String name, String description, String look, Set<String> alias) {
     super(id, name, description, look, alias);
@@ -42,18 +41,22 @@ public class Room extends GameObject implements Serializable {
    * 
    * 
    */
+  @Override
   public int getId() {
     return id;
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public String getDescription() {
     return description;
   }
 
+  @Override
   public String getLook() {
     return look;
   }
@@ -90,23 +93,29 @@ public class Room extends GameObject implements Serializable {
    * 
    */
 
+  @Override
   public void setName(String name) {
     this.name = name;
   }
 
+  @Override
   public void setDescription(String description) {
     this.description = description;
   }
 
+  @Override
   public void setLook(String look) {
     this.look = look;
   }
+
   public void setEast(Room east) {
     this.east = east;
   }
+
   public void setNorth(Room north) {
     this.north = north;
   }
+
   public void setSouth(Room south) {
     this.south = south;
   }
@@ -114,6 +123,7 @@ public class Room extends GameObject implements Serializable {
   public void setWest(Room west) {
     this.west = west;
   }
+
   public void setObjects_list(List<AdvObject> objects_list) {
     this.objects_list = objects_list;
   }
@@ -128,10 +138,6 @@ public class Room extends GameObject implements Serializable {
    * 
    * 
    */
-
-  
-
-  
 
   @Override
   public int hashCode() {
@@ -157,7 +163,5 @@ public class Room extends GameObject implements Serializable {
     }
     return true;
   }
-
-  
 
 }

@@ -10,26 +10,31 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import proj.map.progettoMap1920.adventure.type.*;
-
-
+import proj.map.progettoMap1920.adventure.type.Article;
+import proj.map.progettoMap1920.adventure.type.ArticleType;
+import proj.map.progettoMap1920.adventure.type.Command;
+import proj.map.progettoMap1920.adventure.type.CommandType;
+import proj.map.progettoMap1920.adventure.type.Preposition;
+import proj.map.progettoMap1920.adventure.type.PrepositionType;
+import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
+import proj.map.progettoMap1920.adventure.type.SyntaxParticlesType;
 
 public class GameUtilInit {
-  
+
   private List<Command> cmd_list = new ArrayList<>();
   private List<Article> articles_list = new ArrayList<>();
   private List<Preposition> prepositions_list = new ArrayList<>();
   private List<SyntaxParticles> particles_list = new ArrayList<>();
-  
-  public GameUtilInit(String... paths) throws FileNotFoundException, IOException{
+
+  public GameUtilInit(String... paths) throws FileNotFoundException, IOException {
     articleReader(paths[0]);
     commandReader(paths[1]);
     prepositionReader(paths[2]);
     particleReader(paths[3]);
   }
-  
+
   private void commandReader(String filename) throws FileNotFoundException, IOException {
-    //-----------------------------
+    // -----------------------------
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -41,18 +46,18 @@ public class GameUtilInit {
     //
     String input;
     String[] tokenized;
-    //--------------
-    while((input = buffer.readLine())!=null) {
-      while(!input.equals("}")) {
-        if(input.equals("{")) {
+    // --------------
+    while ((input = buffer.readLine()) != null) {
+      while (!input.equals("}")) {
+        if (input.equals("{")) {
           input = buffer.readLine();
         }
         tokenized = input.split(" : ");
-        for(String t : tokenized) {
+        for (String t : tokenized) {
           t = t.trim();
         }
-        if(tokenized[0].equals("TYPE")) {
-          switch(tokenized[1]) {
+        if (tokenized[0].equals("TYPE")) {
+          switch (tokenized[1]) {
             case "pick_up":
               ct = CommandType.PICK_UP;
               break;
@@ -106,25 +111,25 @@ public class GameUtilInit {
               break;
           }
         }
-        
-        else if(tokenized[0].equals("NAME")) {
+
+        else if (tokenized[0].equals("NAME")) {
           tokenized[1] = tokenized[1].trim();
           name = tokenized[1];
-        }
-        else if(tokenized[0].equals("ALIAS")) {
+        } else if (tokenized[0].equals("ALIAS")) {
           String[] tk1 = tokenized[1].split("\\s");
           alias.addAll(Arrays.asList(tk1));
         }
         input = buffer.readLine();
       }
 
-      cmd_list.add(new Command(ct,name,new HashSet<String>(alias)));
+      cmd_list.add(new Command(ct, name, new HashSet<>(alias)));
       alias.clear();
     }
     file.close();
   }
+
   private void articleReader(String filename) throws FileNotFoundException, IOException {
-    //-----------------------------
+    // -----------------------------
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -136,38 +141,37 @@ public class GameUtilInit {
     //
     String input;
     String[] tokenized;
-    //--------------
-    while((input = buffer.readLine())!=null) {
-      while(!input.equals("}")) {
-        if(input.equals("{")) {
+    // --------------
+    while ((input = buffer.readLine()) != null) {
+      while (!input.equals("}")) {
+        if (input.equals("{")) {
           input = buffer.readLine();
         }
         tokenized = input.split(" : ");
-        for(String t : tokenized) {
+        for (String t : tokenized) {
           t = t.trim();
         }
-        if(tokenized[0].equals("TYPE")) {
-          switch(tokenized[1]) {
+        if (tokenized[0].equals("TYPE")) {
+          switch (tokenized[1]) {
             case "the":
               at = ArticleType.THE;
           }
-        }
-        else if(tokenized[0].equals("NAME")) {
+        } else if (tokenized[0].equals("NAME")) {
           name = tokenized[1];
-        }
-        else if(tokenized[0].equals("ALIAS")) {
+        } else if (tokenized[0].equals("ALIAS")) {
           String[] tk1 = tokenized[1].split("\\s");
           alias.addAll(Arrays.asList(tk1));
         }
         input = buffer.readLine();
       }
-      articles_list.add(new Article(at,name,new HashSet<String>(alias)));
+      articles_list.add(new Article(at, name, new HashSet<>(alias)));
       alias.clear();
     }
     file.close();
   }
-  private void prepositionReader(String filename) throws FileNotFoundException,IOException {
-  //-----------------------------
+
+  private void prepositionReader(String filename) throws FileNotFoundException, IOException {
+    // -----------------------------
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -179,18 +183,18 @@ public class GameUtilInit {
     //
     String input;
     String[] tokenized;
-    //--------------
-    while((input = buffer.readLine())!=null) {
-      while(!input.equals("}")) {
-        if(input.equals("{")) {
+    // --------------
+    while ((input = buffer.readLine()) != null) {
+      while (!input.equals("}")) {
+        if (input.equals("{")) {
           input = buffer.readLine();
         }
         tokenized = input.split(" : ");
-        for(String t : tokenized) {
+        for (String t : tokenized) {
           t = t.trim();
         }
-        if(tokenized[0].equals("TYPE")) {
-          switch(tokenized[1]) {
+        if (tokenized[0].equals("TYPE")) {
+          switch (tokenized[1]) {
             case "with":
               pt = PrepositionType.WITH;
               break;
@@ -210,23 +214,22 @@ public class GameUtilInit {
               pt = PrepositionType.TO;
               break;
           }
-        }
-        else if(tokenized[0].equals("NAME")) {
+        } else if (tokenized[0].equals("NAME")) {
           name = tokenized[1];
-        }
-        else if(tokenized[0].equals("ALIAS")) {
+        } else if (tokenized[0].equals("ALIAS")) {
           String[] tk1 = tokenized[1].split("\\s");
           alias.addAll(Arrays.asList(tk1));
         }
         input = buffer.readLine();
       }
-      prepositions_list.add(new Preposition(pt,name,new HashSet<String>(alias)));
+      prepositions_list.add(new Preposition(pt, name, new HashSet<>(alias)));
       alias.clear();
     }
     file.close();
   }
-  private void particleReader(String filename) throws FileNotFoundException,IOException {
-  //-----------------------------
+
+  private void particleReader(String filename) throws FileNotFoundException, IOException {
+    // -----------------------------
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -238,18 +241,18 @@ public class GameUtilInit {
     //
     String input;
     String[] tokenized;
-    //--------------
-    while((input = buffer.readLine())!=null) {
-      while(!input.equals("}")) {
-        if(input.equals("{")) {
+    // --------------
+    while ((input = buffer.readLine()) != null) {
+      while (!input.equals("}")) {
+        if (input.equals("{")) {
           input = buffer.readLine();
         }
         tokenized = input.split(" : ");
-        for(String t : tokenized) {
+        for (String t : tokenized) {
           t = t.trim();
         }
-        if(tokenized[0].equals("TYPE")) {
-          switch(tokenized[1]) {
+        if (tokenized[0].equals("TYPE")) {
+          switch (tokenized[1]) {
             case "all":
               st = SyntaxParticlesType.ALL;
               break;
@@ -257,25 +260,22 @@ public class GameUtilInit {
               st = SyntaxParticlesType.EXCEPT;
               break;
           }
-        }
-        else if(tokenized[0].equals("NAME")) {
+        } else if (tokenized[0].equals("NAME")) {
           tokenized[1] = tokenized[1].trim();
           name = tokenized[1];
-        }
-        else if(tokenized[0].equals("ALIAS")) {
+        } else if (tokenized[0].equals("ALIAS")) {
           String[] tk1 = tokenized[1].split("\\s");
           alias.addAll(Arrays.asList(tk1));
         }
         input = buffer.readLine();
       }
-      
-      particles_list.add(new SyntaxParticles(st,name,new HashSet<>(alias)));
+
+      particles_list.add(new SyntaxParticles(st, name, new HashSet<>(alias)));
       alias.clear();
     }
     file.close();
   }
 
-  
   public List<Command> getCmd_list() {
     return cmd_list;
   }
@@ -292,6 +292,4 @@ public class GameUtilInit {
     return particles_list;
   }
 
-  
 }
-

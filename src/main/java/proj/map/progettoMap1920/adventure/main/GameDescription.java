@@ -5,30 +5,40 @@
  */
 package proj.map.progettoMap1920.adventure.main;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
+
 import javax.swing.JTextArea;
+
 import proj.map.progettoMap1920.adventure.events.EventHandler;
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
-import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
-import proj.map.progettoMap1920.adventure.parser.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
-import proj.map.progettoMap1920.adventure.type.*;
+import proj.map.progettoMap1920.adventure.parser.grammar.CFGrammar;
+import proj.map.progettoMap1920.adventure.type.AdvObject;
+import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.type.Article;
+import proj.map.progettoMap1920.adventure.type.Command;
+import proj.map.progettoMap1920.adventure.type.Dialog;
+import proj.map.progettoMap1920.adventure.type.Door;
+import proj.map.progettoMap1920.adventure.type.Lock;
+import proj.map.progettoMap1920.adventure.type.Npc;
+import proj.map.progettoMap1920.adventure.type.Preposition;
+import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
 /**
  *
  * @author whyno
  */
 import proj.map.progettoMap1920.adventure.utils.GameList;
 import proj.map.progettoMap1920.adventure.utils.Gui;
+
 public abstract class GameDescription {
-  
-  //FIELDS
-  
+
+  // FIELDS
+
   private GameList<AdvObject> objects = new GameList<>(new ArrayList<AdvObject>());
   private GameList<AdvObjectContainer> containers = new GameList<>(new ArrayList<AdvObjectContainer>());
   private GameList<Lock> locks = new GameList<>(new ArrayList<Lock>());
@@ -43,25 +53,23 @@ public abstract class GameDescription {
   private List<Command> commands = new ArrayList<>();
   private List<Preposition> prepositions = new ArrayList<>();
   private List<SyntaxParticles> particles = new ArrayList<>();
-  
+
   private Room currentRoom;
   private CFGrammar cnfGrammar;
-  
-  
-  
-  //--------------------------------------------SETTER---------------
+
+  // --------------------------------------------SETTER---------------
   public void setInventory(GameList<AdvObject> inventory) {
     this.inventory = inventory;
   }
-  
-  
+
   public void setGrammar(CFGrammar grammar) {
     this.cnfGrammar = grammar;
   }
+
   public void setCurrentRoom(Room currentRoom) {
     this.currentRoom = currentRoom;
   }
-  
+
   public void setObjects(GameList<AdvObject> objects) {
     this.objects = objects;
   }
@@ -89,11 +97,12 @@ public abstract class GameDescription {
   public void setDoors(GameList<Door> doors) {
     this.doors = doors;
   }
-  public void setEvent(EventHandler e){
-      this.event = e;
+
+  public void setEvent(EventHandler e) {
+    this.event = e;
   }
-  //--------------------------------------------GETTER---------------
-  
+  // --------------------------------------------GETTER---------------
+
   public Room getCurrentRoom() {
     return currentRoom;
   }
@@ -102,22 +111,26 @@ public abstract class GameDescription {
     return inventory;
   }
 
-
   public List<Article> getArticles() {
     return articles;
   }
+
   public List<Command> getCommands() {
     return commands;
   }
+
   public List<Preposition> getPrepositions() {
     return prepositions;
   }
+
   public List<SyntaxParticles> getParticles() {
     return particles;
   }
+
   public CFGrammar getCnfGrammar() {
     return cnfGrammar;
   }
+
   public GameList<AdvObject> getObjects() {
     return objects;
   }
@@ -145,13 +158,16 @@ public abstract class GameDescription {
   public GameList<Door> getDoors() {
     return doors;
   }
+
   public CFGrammar getGrammar() {
     return cnfGrammar;
   }
-  public EventHandler getEvent(){
-      return event;
+
+  public EventHandler getEvent() {
+    return event;
   }
-  //----------------------------------------------METHODS------------
+
+  // ----------------------------------------------METHODS------------
   public abstract void init() throws IOException, FileNotFoundException;
 
   public abstract void nextMove(ParserOutput p, JTextArea out, JTextArea in, Gui gui) throws EOGameException;
@@ -160,6 +176,6 @@ public abstract class GameDescription {
 
   public void run(ParserOutput p, PrintStream out) {
     // TODO Auto-generated method stub
-    
+
   }
 }

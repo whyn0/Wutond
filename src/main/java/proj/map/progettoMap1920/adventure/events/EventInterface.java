@@ -5,7 +5,6 @@
  */
 package proj.map.progettoMap1920.adventure.events;
 
-import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
@@ -18,5 +17,5 @@ import proj.map.progettoMap1920.adventure.utils.Gui;
  * @author whyno
  */
 public interface EventInterface {
-    public void check(ParserOutput p,Room currentRoom, boolean move,JTextArea out, JTextArea in,Gui gui) throws EOGameException;
+  public void check(ParserOutput p, Room currentRoom, boolean move, JTextArea out, JTextArea in, Gui gui) throws EOGameException;
 }
