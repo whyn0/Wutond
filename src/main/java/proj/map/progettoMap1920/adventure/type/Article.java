@@ -29,23 +29,9 @@ public class Article extends GameUtil implements Serializable {
     return type;
   }
 
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  @Override
-  public Set<String> getAlias() {
-    return alias;
-  }
 
   public void setType(ArticleType type) {
     this.type = type;
-  }
-
-  @Override
-  public void setName(String name) {
-    this.name = name;
   }
 
   public void setAlias(Set<String> alias) {
