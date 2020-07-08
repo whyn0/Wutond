@@ -50,8 +50,10 @@ La classe **Engine** contiene un'istanza di GameDescription e dell' interfaccia 
 ### 2.2 Package "games"
 Il package "games" è designato a contenere tutte le classi che ereditano da **GameDescription** e rappresentano le avventure vere e proprie.
 
+Nel nostro caso il package contiene la classe **Wutond** che estende **GameDescription** e ne ridefinisce il metovo nextMove().
+
 ### 2.3 Package "fileInitializer"
-Il package "fileInitializer" contiene le tre classi che inizializzano da file contenuti nella cartella **res/file_txt** : 
+Il package "fileInitializer" contiene le tre classi che inizializzano da file, contenuti nella cartella **res/file_txt**, le GameList che saranno successivamente trasferite a **GameDescription** : 
 - componenti di gioco (oggetti, stanze ecc..) -> **FileInit**
 - utilià di gioco (comandi, articoli, preposizioni ecc..) -> **GameUtil**
 - la grammatica e i simboli terminali, non terminale e le produzioni -> **GrammarInit** 
@@ -59,12 +61,35 @@ Il package "fileInitializer" contiene le tre classi che inizializzano da file co
 ### 2.4 Package "types"
 Il package "types" contiene tutte le classi che rappresentano i tipi, sia dei componenti di gioco, come **AdvObject** o **Room**, che delle utilità di gioco come **Command**.
 
+Nello specifico il package contiene i tipi:
+- AdvObject
+- AdvObjectContainer
+- Room
+- Npc
+- Door
+- Lock
+- Dialog
+
+Tutte queste classi ereditano dalla classe astratta **GameObject** che definisce gli attributi comuni e a sua volta eredita dalla classe astratta **GameElement** il cui unico attributo è l'id comune a tutti gli elementi del gioco.
+
+Inoltre sono anche definiti gli elementi strutturali di ogni frase:
+- Command
+- Article
+- Preposition
+- SyntaxParticle
+
+Di ognuno di loro è definito un enumerativo utile alla classificazione univoca di ogni elemento per astrarre dagli alias e dai nomi. 
+
+Inoltre queste classi ereditano tutte dalla classe astratta **GameUtil** che definisce gli attributi comuni a tutte le sottoclassi.
+
 ### 2.5 Package "utils"
 Il package "utils" contiene tutte le classi di utilità e che si suppone vengano riutilizzate nel corso dello sviluppo, come ad esempio **GameList**, una classe template "wrapper" che rappresenta una struttura dati custom di tipo lista, creata per poter lavorare agilmente con i nomi e gli id associati ai vari componenti di gioco, dal momento che tutti gli oggetti stanze ecc.. si trovano nelle liste associate.
 
 ### 2.6 Package "gui" 
 Il package "gui" contiene tutte le classi di interfaccia grafica, come **Gui** o **DialogB** che sono le principali finestre di interazione previste dall'engine.
 La prima per il normale flusso di gioco, la seconda dedicata all'interazione con gli Npc.
+
+La particolarità di **DialogB** risiede nell'ereditare da JDialog (differentemente da **Gui** che eredita da JFrame) e nell'essere una finestra modale impedendo l'interazione simultanea con la gui.
 
 ### 2.7 Package "events"
 Il package "events" contiene un'interfaccia **EventInterface** e una classe che la implementa **EventHandler**. 
