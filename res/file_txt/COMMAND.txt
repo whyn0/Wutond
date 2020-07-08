@@ -83,3 +83,8 @@ TYPE : inventory
 NAME : inventario 
 ALIAS : zaino 
 }
+{
+TYPE : help
+NAME : aiuto
+ALIAS : help aiutare aiutami 
+}

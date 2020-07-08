@@ -10,14 +10,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import proj.map.progettoMap1920.adventure.type.Article;
-import proj.map.progettoMap1920.adventure.type.ArticleType;
-import proj.map.progettoMap1920.adventure.type.Command;
-import proj.map.progettoMap1920.adventure.type.CommandType;
-import proj.map.progettoMap1920.adventure.type.Preposition;
-import proj.map.progettoMap1920.adventure.type.PrepositionType;
-import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
-import proj.map.progettoMap1920.adventure.type.SyntaxParticlesType;
+import proj.map.progettoMap1920.adventure.types.Article;
+import proj.map.progettoMap1920.adventure.types.ArticleType;
+import proj.map.progettoMap1920.adventure.types.Command;
+import proj.map.progettoMap1920.adventure.types.CommandType;
+import proj.map.progettoMap1920.adventure.types.Preposition;
+import proj.map.progettoMap1920.adventure.types.PrepositionType;
+import proj.map.progettoMap1920.adventure.types.SyntaxParticles;
+import proj.map.progettoMap1920.adventure.types.SyntaxParticlesType;
 
 public class GameUtilInit {
 
@@ -108,6 +108,9 @@ public class GameUtilInit {
               break;
             case "load":
               ct = CommandType.LOAD;
+              break;
+            case "help":
+              ct = CommandType.HELP;
               break;
           }
         }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.types;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,19 +13,16 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Article extends GameUtil implements Serializable {
-  private ArticleType type;
+public class Preposition extends GameUtil implements Serializable {
+  private PrepositionType type;
 
-  public Article(ArticleType type, String name) {
+  public Preposition(PrepositionType type, String name, Set<String> alias) {
     this.type = type;
     this.name = name;
+    this.alias = alias;
   }
 
-  public Article(ArticleType type) {
-    this.type = type;
-  }
-
-  public ArticleType getType() {
+  public PrepositionType getType() {
     return type;
   }
 
@@ -39,7 +36,7 @@ public class Article extends GameUtil implements Serializable {
     return alias;
   }
 
-  public void setType(ArticleType type) {
+  public void setType(PrepositionType type) {
     this.type = type;
   }
 
@@ -54,8 +51,8 @@ public class Article extends GameUtil implements Serializable {
 
   @Override
   public int hashCode() {
-    int hash = 7;
-    hash = 13 * hash + Objects.hashCode(this.type);
+    int hash = 5;
+    hash = 97 * hash + Objects.hashCode(this.type);
     return hash;
   }
 
@@ -70,17 +67,20 @@ public class Article extends GameUtil implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Article other = (Article) obj;
+    final Preposition other = (Preposition) obj;
     if (this.type != other.type) {
       return false;
     }
     return true;
   }
 
-  public Article(ArticleType type, String name, Set<String> alias) {
+  public Preposition(PrepositionType type) {
+    this.type = type;
+  }
+
+  public Preposition(PrepositionType type, String name) {
     this.type = type;
     this.name = name;
-    this.alias = alias;
   }
 
 }

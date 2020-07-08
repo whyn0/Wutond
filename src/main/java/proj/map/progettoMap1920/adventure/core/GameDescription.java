@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.main;
+package proj.map.progettoMap1920.adventure.core;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,17 +17,17 @@ import proj.map.progettoMap1920.adventure.events.EventHandler;
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.parser.grammar.CFGrammar;
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.Article;
-import proj.map.progettoMap1920.adventure.type.Command;
-import proj.map.progettoMap1920.adventure.type.Dialog;
-import proj.map.progettoMap1920.adventure.type.Door;
-import proj.map.progettoMap1920.adventure.type.Lock;
-import proj.map.progettoMap1920.adventure.type.Npc;
-import proj.map.progettoMap1920.adventure.type.Preposition;
-import proj.map.progettoMap1920.adventure.type.Room;
-import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
+import proj.map.progettoMap1920.adventure.types.AdvObject;
+import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.types.Article;
+import proj.map.progettoMap1920.adventure.types.Command;
+import proj.map.progettoMap1920.adventure.types.Dialog;
+import proj.map.progettoMap1920.adventure.types.Door;
+import proj.map.progettoMap1920.adventure.types.Lock;
+import proj.map.progettoMap1920.adventure.types.Npc;
+import proj.map.progettoMap1920.adventure.types.Preposition;
+import proj.map.progettoMap1920.adventure.types.Room;
+import proj.map.progettoMap1920.adventure.types.SyntaxParticles;
 /**
  *
  * @author whyno

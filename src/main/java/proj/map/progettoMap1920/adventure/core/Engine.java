@@ -1,4 +1,4 @@
-package proj.map.progettoMap1920.adventure.main;
+package proj.map.progettoMap1920.adventure.core;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,9 +14,9 @@ import proj.map.progettoMap1920.adventure.games.Wutond;
 import proj.map.progettoMap1920.adventure.parser.ItParser;
 import proj.map.progettoMap1920.adventure.parser.Parser;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.CommandType;
+import proj.map.progettoMap1920.adventure.types.AdvObject;
+import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.types.CommandType;
 import proj.map.progettoMap1920.adventure.utils.Gui;
 import proj.map.progettoMap1920.adventure.utils.LockT;
 

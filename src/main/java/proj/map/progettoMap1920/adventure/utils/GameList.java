@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import proj.map.progettoMap1920.adventure.type.GameElement;
-import proj.map.progettoMap1920.adventure.type.GameObject;
+import proj.map.progettoMap1920.adventure.types.GameElement;
+import proj.map.progettoMap1920.adventure.types.GameObject;
 
 public class GameList<T extends GameElement> implements Iterable<T>, Serializable {
   private List<T> list;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.types;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -15,22 +15,36 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Command extends GameUtil implements Serializable {
-  private final CommandType type;
+public class SyntaxParticles extends GameUtil implements Serializable {
+  private final SyntaxParticlesType particle;
 
-  public Command(CommandType type, String name) {
-    this.type = type;
-    this.name = name;
-  }
-
-  public Command(CommandType type, String name, Set<String> alias) {
-    this.type = type;
+  /*
+   * 
+   * 
+   * COSTRUTTORI
+   * 
+   * 
+   */
+  public SyntaxParticles(SyntaxParticlesType particle, String name, Set<String> alias) {
+    this.particle = particle;
     this.name = name;
     this.alias = alias;
   }
 
-  public Command(CommandType t) {
-    this.type = t;
+  public SyntaxParticles(SyntaxParticlesType particle, String name) {
+    this.particle = particle;
+    this.name = name;
+  }
+
+  /*
+   * 
+   * 
+   * GETTERS
+   * 
+   * 
+   */
+  public SyntaxParticlesType getType() {
+    return particle;
   }
 
   @Override
@@ -42,6 +56,13 @@ public class Command extends GameUtil implements Serializable {
   public Set<String> getAlias() {
     return alias;
   }
+  /*
+   * 
+   * 
+   * SETTERS
+   * 
+   * 
+   */
 
   public void setAlias(Set<String> alias) {
     this.alias = alias;
@@ -50,15 +71,18 @@ public class Command extends GameUtil implements Serializable {
   public void setAlias(String[] alias) {
     this.alias = new HashSet<>(Arrays.asList(alias));
   }
-
-  public CommandType getType() {
-    return type;
-  }
+  /*
+   * 
+   * 
+   * EQUALS AND HASH
+   * 
+   * 
+   */
 
   @Override
   public int hashCode() {
     int hash = 3;
-    hash = 97 * hash + Objects.hashCode(this.type);
+    hash = 71 * hash + Objects.hashCode(this.particle);
     return hash;
   }
 
@@ -73,8 +97,8 @@ public class Command extends GameUtil implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Command other = (Command) obj;
-    if (this.type != other.type) {
+    final SyntaxParticles other = (SyntaxParticles) obj;
+    if (!Objects.equals(this.particle, other.particle)) {
       return false;
     }
     return true;
