@@ -258,10 +258,6 @@ public class FileInit { // probabile singleton
       List<Integer> roomMapTempList = roomMap.get(tempRoom.getId());
       List<Integer> npcMapTempList = npcMap.get(tempRoom.getId());
 
-      /*
-       * for(Integer i : roomMap.get(tempRoom.getId())) {
-       * adjRoomTemp.add(roomList.getById(i)); }
-       */
       for (int i = 0; i < roomMapTempList.size(); i++) {
         Integer roomId;
         if ((roomId = roomMapTempList.get(i)) != null) {
@@ -426,7 +422,6 @@ public class FileInit { // probabile singleton
     // attributi
     int id = 0;
     String text = "";
-    // Map<Integer, List<String>> optionMap = new HashMap<>();
     Map<Integer, List<Integer>> dialogMap = new HashMap<>();
     List<String> optionStr = new ArrayList<>();
     List<Integer> dialogId = new ArrayList<>();
@@ -554,7 +549,6 @@ public class FileInit { // probabile singleton
     Map<Integer, Integer> lockMap = new HashMap<>();
     Set<String> alias = new HashSet<>();
     boolean pickable = false;
-    // List<AdvObject> containedItems = null;
     FileReader file;
     BufferedReader buffer;
     file = new FileReader(filename);
@@ -613,7 +607,6 @@ public class FileInit { // probabile singleton
               lock = null;
             }
           }
-          // da testare
           str = buffer.readLine();
         }
         lockMap.put(id, lock);
@@ -638,14 +631,7 @@ public class FileInit { // probabile singleton
     while (containerListIter.hasNext()) {
       AdvObjectContainer tempCont = containerListIter.next();
       for (Integer i : itemRefContainers.get(tempCont.getId())) {
-        /*
-         * try {
-         * tempCont.getList().add(objectList.getById(i));
-         * }
-         * catch(NullPointerException e) {
-         * tempCont.getList().add(null);
-         * }
-         */
+
         if (objectList.getById(i) != null) {
           tempCont.getList().add(objectList.getById(i));
         } else {

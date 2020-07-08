@@ -34,58 +34,21 @@ public class AdvObject extends GameObject implements Serializable {
    * 
    */
 
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  @Override
-  public String getDescription() {
-    return description;
-  }
-
-  @Override
-  public Set<String> getAlias() {
-    return alias;
-  }
 
   public boolean isPickable() {
     return pickable;
   }
 
-  @Override
-  public String getLook() {
-    return look;
-  }
   /*
    *
    * SETTERS
    * 
    */
 
-  @Override
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Override
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  @Override
-  public void setAlias(Set<String> alias) {
-    this.alias = alias;
-  }
-
   public void setPickable(boolean pickable) {
     this.pickable = pickable;
   }
 
-  @Override
-  public void setLook(String look) {
-    this.look = look;
-  }
   /*
    * EQUALS E HASHCODE
    */

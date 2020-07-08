@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
@@ -57,7 +59,9 @@ public class Engine {
 
       while (true) {
         boolean flag = true;
+        
         ((DefaultCaret) output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
         synchronized (LockT.lock) {
           try {
             LockT.lock.wait();
@@ -65,7 +69,10 @@ public class Engine {
             e.printStackTrace();
           }
         }
+        
         String command = gui.getString();
+        command = clearInput(command);
+        
         List<AdvObject> containerItems = new ArrayList<>();
         for (AdvObject a : game.getCurrentRoom().getObjects_list()) {
           if (a instanceof AdvObjectContainer) {
@@ -167,10 +174,16 @@ public class Engine {
     }
     this.gui.getOutputArea().append("\n");
   }
+  private String clearInput(String s) {
+    String temp = s.replaceAll(",", "");   
+    System.out.println(temp);
+    return temp;
+  }
 
   public static void main(String[] args) {
     Engine engine = new Engine(new Wutond());
     engine.run();
   }
+  
 
 }

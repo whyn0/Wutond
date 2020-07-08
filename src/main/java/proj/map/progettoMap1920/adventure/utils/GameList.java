@@ -48,14 +48,13 @@ public class GameList<T extends GameElement> implements Iterable<T>, Serializabl
   }
 
   public T getByName(String name) {
-    T obj = null;
-    if (obj instanceof GameObject) {
+    T obj = null ;
       for (T elem : list) {
         if (((GameObject) elem).getName().equals(name)) {
           obj = elem;
         }
       }
-    }
+    
     return obj;
   }
 
