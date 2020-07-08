@@ -1,12 +1,15 @@
 # RELAZIONE
 
 ## INDICE
+1. <a href=#description> DESCRIZIONE DELL' AVVENTURA</a>
+2. <a href=#details> DETTAGLI E SCELTE PROGETTUALI</a>
+3. <a href=#commands> COMANDI DI GIOCO</a>
 
-## 1. Descrizione dell'avventura
+## <h2 id="description"> 1. Descrizione  dell'avventura <h2>
 Lo sviluppo del progetto è stato teso a realizzare più che una semplice avventura testuale standalone, un vero e proprio "Game engine" affinchè fosse possibile implementare diverse avventure testuali, senza la necessità di dovere cambiare troppo codice.
 L'engine di gioco offre anche la possibiltà di utilizzare una gui al posto della linea di comando.
 
-### 1.1 Descrizione della storia
+### 1.1 Descrizione della storia 
 Il gioco presentato, Wutond, è una reinterpretazione in chiave goliardica e autoironica della realtà della nostra città e tratta le (dis-)avventure di un ipotetico, quanto improbabile detective inviato dal nord Italia ad investigare sull'omicidio del propietario del bar più in voga della città, durante la quale il detective dovrà interfacciarsi con l'incomprensibile, almeno all'inizio, lingua locale e con alcune delle più famose e controverse personalità cittadine fino alla scoperta dell'assassino e del suo movente.
 
 ### 1.2 Alcune funzionalità
@@ -16,12 +19,13 @@ I file gestiscono tutti gli oggetti, npc, stanze ecc.., e diverse componenti rel
 Una volta avviato il gioco si apre l'interfaccia grafica composita di un'area di testo in output non editabile e una dedicata all'input dei comandi, viene stampata a video una lista di comandi e possibili combinazioni e subito dopo parte la storia.
 C'è anche la possibilità di caricare una precedente partita da un file di salvataggio o di salvarne una nuova inserendo l'apposito comando **salva**.
 
-E' possibile giocare al gioco, muoversi ed esplorare il mondo inserendo i comandi che verranno interpretati ed eseguiti, se corretti.
+E' possibile giocare, muoversi ed esplorare il mondo inserendo i comandi che verranno interpretati ed eseguiti, se corretti.
 
-E' presenta anche una finestra JDialog dedicata ai dialoghi con gli Npc, che riproduce una tipica finestra a scelta multipla gdr.
-## foto qui
+E' presente anche una finestra JDialog dedicata ai dialoghi con gli Npc, che riproduce una tipica finestra a scelta multipla gdr.
 
-## 2. Dettagli e Scelte Progettuali
+![JDialog](JDialog.png)
+
+## <h2 id="details"> 2. Dettagli e Scelte Progettuali <h2>
 
 Il progetto è diviso nei seguenti package:
 - events
@@ -39,7 +43,7 @@ La divisione in package è stata realizzata tenendo conto dei punti in comune de
 ### 2.1 Package "core"
 Il package "core", come dice il nome stesso, contiene le due classi principali del game engine che garantiscono la sua estendibiltà : **Engine** e **GameDescription**.
 
-La classe astratta **GameDescription** contiene tutti i campi utili all'implementazione dei vari giochi, tipo le liste degli oggetti, la stanza corrente ecc.. e definisce metodi astratti (da reimplementare necessariamente nelle classi che ereditano e costituiscono i giochi veri e propri) come init() per inizializzare tutti i file, e nextMove(), che esegue il comando parsato.
+La classe astratta **GameDescription** contiene tutti i campi utili all'implementazione dei vari giochi, come le liste degli oggetti, la stanza corrente ecc.. e definisce metodi astratti (da reimplementare necessariamente nelle classi che ereditano e costituiscono i giochi veri e propri) come init() per inizializzare tutti i file, e nextMove(), che esegue il comando parsato.
 
 La classe **Engine** contiene un'istanza di GameDescription e dell' interfaccia grafica, ed è l' unico entry point del progetto in quanto contiene il metodo main() che a sua volta richiama un metodo run() che consente di inserire il comando, parsarlo ed eseguirlo.
 
@@ -97,7 +101,7 @@ La classe **Cyk** descrive l'algoritmo cyk utilizzato per discernere se una list
 
  - **EOGameException** lanciata nell'evento associato alla fine del gioco, e permette di distinguere tra un good-ending o un bad-ending
 
- ## 3. Comandi di gioco
+ ## <h2 id="commands"> 3. Comandi di gioco <h2>
  I comandi implementati nel game engine sono:
  - **nord, sud, est, ovest** (con rispettivi alias), per la navigazione all'interno del mondo di gioco;
 
