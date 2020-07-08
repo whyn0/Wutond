@@ -172,7 +172,6 @@ public class ItParser implements Parser {
                       temp.remove(a);
                     }
                   }
-                  System.out.println(all_items.get(index).getName());
                   if (temp.contains(all_items.get(index))) {
                     pOutput.getExObjects().add(all_items.get(index));
                   }

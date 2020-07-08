@@ -3,6 +3,7 @@ package proj.map.progettoMap1920.adventure.core;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +20,9 @@ import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.types.AdvObject;
 import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.types.CommandType;
-import proj.map.progettoMap1920.adventure.utils.Gui;
+import proj.map.progettoMap1920.adventure.gui.Gui;
+
+
 import proj.map.progettoMap1920.adventure.utils.LockT;
 
 public class Engine {
@@ -97,6 +100,7 @@ public class Engine {
           System.out.print(e);
         } catch (NullOutputException e1) {
           output.append(e1.getMsg());
+          separator();
           flag = false;
         }
 
@@ -106,7 +110,7 @@ public class Engine {
         } else {
           if (flag) {
             try {
-              game.nextMove(p, output, input, gui);
+              game.nextMove(p, gui);
             } catch (EOGameException e) {
               separator();
               separator();
@@ -138,7 +142,7 @@ public class Engine {
       }
       String ans = gui.getString();
       ans = ans.trim();
-      ans.strip();
+      ans = ans.strip();
       if (ans.matches("no")) {
         restart = false;
       } else {
@@ -169,16 +173,32 @@ public class Engine {
 
   private void separator() {
     this.gui.getOutputArea().append("\n");
-    for (int i = 0; i < 88; i++) {
+    for (int i = 0; i < 61; i++) {
       this.gui.getOutputArea().append("=");
     }
     this.gui.getOutputArea().append("\n");
   }
   private String clearInput(String s) {
-    String temp = s.replaceAll(",", "");   
-    System.out.println(temp);
-    return temp;
+    StringBuilder blank = new StringBuilder();
+    s = s.replaceAll(",", "");   
+    s = s.replaceAll("l'","");
+    String[] token = s.split("\\s+");
+    
+
+    for(int i = 0; i < token.length; i++){
+        if(!token[i].equals("e")){
+            if(i != token.length -1){
+                blank.append(token[i] + " ");
+        } else {
+                blank.append(token[i]);
+            }
+    }
+    }
+
+    System.out.println(blank);
+    return blank.toString();
   }
+    
 
   public static void main(String[] args) {
     Engine engine = new Engine(new Wutond());
