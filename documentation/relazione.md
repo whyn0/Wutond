@@ -23,7 +23,7 @@ E' possibile giocare, muoversi ed esplorare il mondo inserendo i comandi che ver
 
 E' presente anche una finestra JDialog dedicata ai dialoghi con gli Npc, che riproduce una tipica finestra a scelta multipla gdr.
 
-![JDialog](documentation/res/JDialog.PNG)
+![JDialog](/documentation/res/JDialog.PNG)
 
 ## <h2 id="details"> 2. Dettagli e Scelte Progettuali <h2>
 
