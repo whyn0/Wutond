@@ -10,12 +10,12 @@ import javax.swing.JTextArea;
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.types.Room;
-import proj.map.progettoMap1920.adventure.utils.Gui;
+import proj.map.progettoMap1920.adventure.gui.Gui;
 
 /**
  *
  * @author whyno
  */
 public interface EventInterface {
-  public void check(ParserOutput p, Room currentRoom, boolean move, JTextArea out, JTextArea in, Gui gui) throws EOGameException;
+  public void check(ParserOutput p, Room currentRoom, boolean move, Gui gui) throws EOGameException;
 }

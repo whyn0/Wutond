@@ -5,6 +5,7 @@
  */
 package proj.map.progettoMap1920.adventure.exceptions;
 
+import javax.swing.JTextArea;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 
 /**
@@ -24,25 +25,25 @@ public class NullOutputException extends Exception {
     String msg = null;
     switch (p.getCommand().getType()) {
       case TALK_TO:
-        msg = "La persona che cerchi non è qui!" + '\n' + "================================================" + '\n';
+        msg = "La persona che cerchi non è qui!";
         break;
       case PICK_UP:
-        msg = "L'oggetto che cerchi non è qui!" + '\n' + "================================================" + '\n';
+        msg = "L'oggetto che cerchi non è qui!" ;
         break;
       case OPEN:
-        msg = "Ciò che vuoi aprire non è qui!" + '\n' + "================================================" + '\n';
+        msg = "Ciò che vuoi aprire non è qui!";
         break;
       case USE:
-        msg = "Non puoi usare questo oggetto|" + '\n' + "================================================" + '\n';
+        msg = "Non puoi usare questo oggetto|" ;
         break;
       case LOOK_AT:
-        msg = "Provi a guardare l'oggetto ma non è qui presente" + '\n' + "================================================" + '\n';
+        msg = "Provi a guardare l'oggetto ma non è qui presente" ;
         break;
       case WALK_TO:
-        msg = "Non ho capito dove andare!" + '\n' + "================================================" + '\n';
+        msg = "Non ho capito dove andare!" ;
         break;
       case KILL:
-        msg = "Non ho capito chi dovrei uccidere!" + '\n' + "================================================" + '\n';
+        msg = "Non ho capito chi dovrei uccidere!";
         break;
     }
     return msg;
@@ -51,5 +52,5 @@ public class NullOutputException extends Exception {
   public String getMsg() {
     return msg;
   }
-
+  
 }

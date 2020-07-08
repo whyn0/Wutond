@@ -32,13 +32,13 @@ import proj.map.progettoMap1920.adventure.types.AdvObject;
 import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
 import proj.map.progettoMap1920.adventure.types.CommandType;
 import proj.map.progettoMap1920.adventure.types.Dialog;
-import proj.map.progettoMap1920.adventure.types.DialogB;
+import proj.map.progettoMap1920.adventure.gui.DialogB;
 import proj.map.progettoMap1920.adventure.types.Door;
 import proj.map.progettoMap1920.adventure.types.Lock;
 import proj.map.progettoMap1920.adventure.types.Npc;
 import proj.map.progettoMap1920.adventure.types.Room;
 import proj.map.progettoMap1920.adventure.utils.GameList;
-import proj.map.progettoMap1920.adventure.utils.Gui;
+import proj.map.progettoMap1920.adventure.gui.Gui;
 
 /**
  *
@@ -117,14 +117,15 @@ public class Wutond extends GameDescription implements Serializable {
 
   private void separator(JTextArea out) {
     out.append("\n");
-    for (int i = 0; i < 88; i++) {
+    for (int i = 0; i < 61; i++) {
       out.append("=");
     }
     out.append("\n");
   }
 
   @Override
-  public void nextMove(ParserOutput p, JTextArea out, JTextArea in, Gui gui) throws EOGameException {
+  public void nextMove(ParserOutput p, Gui gui) throws EOGameException {
+    JTextArea out = gui.getOutputArea();
     if (p.getCommand() == null) {
 
       out.append("Non ho capito cosa dovrei fare! Prova con un altro comando.");
@@ -289,13 +290,14 @@ public class Wutond extends GameDescription implements Serializable {
             && p.getDoor() == null) { // Look su stanza
 
             out.append(getCurrentRoom().getLook());
+            out.append("\n"+ "\n");
             if (getCurrentRoom().getObjects_list().size() > 0) {
               for (AdvObject a : getCurrentRoom().getObjects_list()) {
 
                 out.append(a.getDescription());
               }
             }
-
+            out.append("\n" + "\n");
             for (Npc n : getCurrentRoom().getNpc_list()) {
 
               out.append(n.getDescription());
@@ -613,7 +615,7 @@ public class Wutond extends GameDescription implements Serializable {
         
         try {
           
-          getEvent().check(p, this.getCurrentRoom(), move, out, in, gui);
+          getEvent().check(p, this.getCurrentRoom(), move, gui);
         } catch (NullPointerException e) {
           
           out.append("Non puoi usare quest'oggetto");
@@ -621,11 +623,11 @@ public class Wutond extends GameDescription implements Serializable {
         checkHit = true;
       } else if (p.getCommand().getType() == CommandType.GIVE) {
 
-        getEvent().check(p, this.getCurrentRoom(), move, out, in, gui);
+        getEvent().check(p, this.getCurrentRoom(), move, gui);
         checkHit = true;
       } else if (p.getCommand().getType() == CommandType.SAVE) {
         try {
-          save("res/file_txt/out.dat");
+          save("res/saves/save.dat");
         } catch (IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
@@ -633,7 +635,7 @@ public class Wutond extends GameDescription implements Serializable {
         out.append("Salvataggio avvenuto con successo" + "\n");
       } else if (p.getCommand().getType() == CommandType.LOAD) {
         try {
-          load("res/file_txt/out.dat");
+          load("res/saves/save.dat");
         } catch (ClassNotFoundException | IOException e) {
           // TODO Auto-generated catch block
           e.printStackTrace();
@@ -660,8 +662,8 @@ public class Wutond extends GameDescription implements Serializable {
         out.append("I comandi implementati nel game engine sono:" + "\n" +
           "- nord, sud, est, ovest;" + "\n" + "\n" +
           "- vai + <nord, sud, est, ovest>;" + "\n" + "\n" +
-          "- salva + nomefile;" + "\n" + "\n" +
-          "- carica + nomefile;" + "\n" + "\n" +
+          "- salva ;" + "\n" + "\n" +
+          "- carica ;" + "\n" + "\n" +
           "- guarda / guarda + <oggetto/npc/porta/container>;" + "\n" + "\n" +
           "- inventario;" + "\n" + "\n" +
           "- apri + <container/porta/oggetto nell'inventario>;" + "\n" + "\n" +
@@ -676,7 +678,7 @@ public class Wutond extends GameDescription implements Serializable {
       }
       if (!checkHit) {
         try {
-          this.getEvent().check(p, this.getCurrentRoom(), move, out, in, gui);
+          this.getEvent().check(p, this.getCurrentRoom(), move, gui);
         } catch (NullPointerException e) {
         }
       }

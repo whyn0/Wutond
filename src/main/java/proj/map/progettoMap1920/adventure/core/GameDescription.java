@@ -33,7 +33,7 @@ import proj.map.progettoMap1920.adventure.types.SyntaxParticles;
  * @author whyno
  */
 import proj.map.progettoMap1920.adventure.utils.GameList;
-import proj.map.progettoMap1920.adventure.utils.Gui;
+import proj.map.progettoMap1920.adventure.gui.Gui;
 
 public abstract class GameDescription {
 
@@ -170,7 +170,7 @@ public abstract class GameDescription {
   // ----------------------------------------------METHODS------------
   public abstract void init() throws IOException, FileNotFoundException;
 
-  public abstract void nextMove(ParserOutput p, JTextArea out, JTextArea in, Gui gui) throws EOGameException;
+  public abstract void nextMove(ParserOutput p, Gui gui) throws EOGameException;
 
   public abstract void clearList();
 

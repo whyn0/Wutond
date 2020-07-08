@@ -31,7 +31,7 @@ import proj.map.progettoMap1920.adventure.types.Preposition;
 import proj.map.progettoMap1920.adventure.types.Room;
 import proj.map.progettoMap1920.adventure.types.SyntaxParticles;
 import proj.map.progettoMap1920.adventure.utils.GameList;
-import proj.map.progettoMap1920.adventure.utils.Gui;
+import proj.map.progettoMap1920.adventure.gui.Gui;
 import proj.map.progettoMap1920.adventure.utils.LockT;
 
 /**
@@ -86,7 +86,9 @@ public class EventHandler implements EventInterface, Serializable {
   }
 
   @Override
-  public void check(ParserOutput p, Room currentRoom, boolean move, JTextArea out, JTextArea in, Gui gui) throws EOGameException {
+  public void check(ParserOutput p, Room currentRoom, boolean move, Gui gui) throws EOGameException {
+    JTextArea out = gui.getOutputArea();
+    JTextArea in = gui.getInputArea();
     // se possiedo dizionario - > npc comprensibili
     if (!flags[0]) {
       if (inventory.contains(objList.getById(53))) { // quando l'inventario contiene il dizionario sei in grado di comprendere tutti
