@@ -26,24 +26,12 @@ public class Preposition extends GameUtil implements Serializable {
     return type;
   }
 
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  @Override
-  public Set<String> getAlias() {
-    return alias;
-  }
 
   public void setType(PrepositionType type) {
     this.type = type;
   }
 
-  @Override
-  public void setName(String name) {
-    this.name = name;
-  }
+
 
   public void setAlias(Set<String> alias) {
     this.alias = alias;

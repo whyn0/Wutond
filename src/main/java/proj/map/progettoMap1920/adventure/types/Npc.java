@@ -38,20 +38,6 @@ public class Npc extends GameObject implements Serializable {
    * GETTERS
    * 
    */
-  @Override
-  public int getId() {
-    return id;
-  }
-
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  @Override
-  public String getLook() {
-    return look;
-  }
 
   public boolean isUnderstandable() {
     return understandable;
@@ -86,15 +72,6 @@ public class Npc extends GameObject implements Serializable {
     this.id = id;
   }
 
-  @Override
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Override
-  public void setLook(String look) {
-    this.look = look;
-  }
 
   public void setUnderstandable(boolean understandable) {
     this.understandable = understandable;

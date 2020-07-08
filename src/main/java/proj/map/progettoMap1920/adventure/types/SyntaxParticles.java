@@ -47,15 +47,7 @@ public class SyntaxParticles extends GameUtil implements Serializable {
     return particle;
   }
 
-  @Override
-  public String getName() {
-    return name;
-  }
 
-  @Override
-  public Set<String> getAlias() {
-    return alias;
-  }
   /*
    * 
    * 

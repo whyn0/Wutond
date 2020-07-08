@@ -41,25 +41,6 @@ public class Room extends GameObject implements Serializable {
    * 
    * 
    */
-  @Override
-  public int getId() {
-    return id;
-  }
-
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  @Override
-  public String getDescription() {
-    return description;
-  }
-
-  @Override
-  public String getLook() {
-    return look;
-  }
 
   public Room getSouth() {
     return south;
@@ -93,20 +74,6 @@ public class Room extends GameObject implements Serializable {
    * 
    */
 
-  @Override
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Override
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  @Override
-  public void setLook(String look) {
-    this.look = look;
-  }
 
   public void setEast(Room east) {
     this.east = east;

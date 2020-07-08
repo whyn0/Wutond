@@ -33,15 +33,6 @@ public class Command extends GameUtil implements Serializable {
     this.type = t;
   }
 
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  @Override
-  public Set<String> getAlias() {
-    return alias;
-  }
 
   public void setAlias(Set<String> alias) {
     this.alias = alias;

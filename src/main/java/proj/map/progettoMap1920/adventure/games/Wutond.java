@@ -84,9 +84,6 @@ public class Wutond extends GameDescription implements Serializable {
     this.getParticles().addAll(utilInit.getParticles_list());
     // set starting room
     this.setCurrentRoom(this.getRooms().getById(1));
-    // getInventory().add(getObjects().getByName("Questura"));//Questura
-    // getInventory().add(getObjects().getById(79));
-    // getInventory().add(this.getObjects().getById(53));
     this.setEvent(new EventHandler(this.getInventory(),
       this.getObjects(),
       this.getContainers(),
@@ -158,92 +155,126 @@ public class Wutond extends GameDescription implements Serializable {
 
       // ------------------------DIREZIONI E MOVIMENTI-------------------------------
       if (p.getCommand().getType() == CommandType.WALK_TO) {
+        
         p.setCommand(p.getDirection());
+        
       }
       if (p.getCommand().getType() == CommandType.NORTH) {
+        
         if (getCurrentRoom().getNorth() != null) {
+          
           if (!thisLockedRoom.contains(getCurrentRoom().getNorth())) {
+            
             setCurrentRoom(getCurrentRoom().getNorth());
             move = true;
             out.append(getCurrentRoom().getName().toUpperCase());
             separator(out);
             out.append(getCurrentRoom().getDescription());
           } else {
+            
             noroom = true;
             out.append("*Sbatti la testa contro la porta*");
             wallCounter++;
+            
           }
 
         } else {
+          
           noroom = true;
           out.append("*Sbatti la testa contro un muro*");
           wallCounter++;
+          
         }
       } else if (p.getCommand().getType() == CommandType.SOUTH) {
+        
         if (getCurrentRoom().getSouth() != null) {
+          
           if (!thisLockedRoom.contains(getCurrentRoom().getSouth())) {
+            
             setCurrentRoom(getCurrentRoom().getSouth());
             move = true;
             out.append(getCurrentRoom().getName().toUpperCase());
             separator(out);
             out.append(getCurrentRoom().getDescription());
           } else {
+            
             noroom = true;
             out.append("*Sbatti la testa contro la porta*");
             wallCounter++;
+            
           }
-
         } else {
+          
           noroom = true;
           out.append("*Sbatti la testa contro un muro*");
           wallCounter++;
+          
         }
       } else if (p.getCommand().getType() == CommandType.EAST) {
+        
         if (getCurrentRoom().getEast() != null) {
+          
           if (!thisLockedRoom.contains(getCurrentRoom().getEast())) {
+            
             setCurrentRoom(getCurrentRoom().getEast());
             move = true;
             out.append(getCurrentRoom().getName().toUpperCase());
             separator(out);
             out.append(getCurrentRoom().getDescription());
           } else {
+            
             noroom = true;
             out.append("*Sbatti la testa contro la porta*");
             wallCounter++;
+            
           }
 
         } else {
+          
           noroom = true;
           out.append("*Sbatti la testa contro un muro*");
           wallCounter++;
+          
         }
       } else if (p.getCommand().getType() == CommandType.WEST) {
+        
         if (getCurrentRoom().getWest() != null) {
+          
           if (!thisLockedRoom.contains(getCurrentRoom().getWest())) {
+            
             setCurrentRoom(getCurrentRoom().getWest());
             move = true;
             out.append(getCurrentRoom().getName().toUpperCase());
             separator(out);
             out.append(getCurrentRoom().getDescription());
           } else {
+            
             noroom = true;
             out.append("*Sbatti la testa contro la porta*");
             wallCounter++;
+            
           }
 
         } else {
+          
           noroom = true;
           out.append("*Sbatti la testa contro un muro*");
           wallCounter++;
+          
         }
       } else if (p.getCommand().getType() == CommandType.INVENTORY) {
+        
         if (getInventory().getList().size() > 0) {
+          
           out.append("Nel tuo inventario ci sono:" + '\n');
           for (AdvObject a : getInventory()) {
             out.append(a.getName() + "\n");
+            
           }
         } else {
+          
           out.append("Non hai oggetti nell'inventario!");
+          
         }
 
       } else if (p.getCommand().getType() == CommandType.LOOK_AT) {
@@ -337,22 +368,29 @@ public class Wutond extends GameDescription implements Serializable {
           out.append("Non c'è nulla da guardare qui!");
         }
       } else if (p.getCommand().getType() == CommandType.PICK_UP) {
+        
         if (p.getObject() != null) {// caso di oggetto nella stanza
+          
           if (p.getObject().isPickable()) {
+            
             getInventory().add(p.getObject());
             getCurrentRoom().getObjects_list().remove(p.getObject());
             out.append("Hai raccolto: " + p.getObject().getName());
           } else {
+            
             out.append("Non puoi raccoglierlo!");
           }
         }
         if (p.getContainedObject() != null) {// caso di oggetto in un contenitore
+          
           List<AdvObjectContainer> templist = getCurrentRoom().getObjects_list().stream()
             .filter(a -> a instanceof AdvObjectContainer)
             .map(AdvObjectContainer.class::cast)
-            .collect(Collectors.toList());
+            .collect(Collectors.toList());//creo una lista di container filtrando gli oggetti della stanza corrente
           for (AdvObjectContainer a : templist) {
+            
             if (a.getList().contains(p.getContainedObject())) {
+              
               getInventory().add(p.getContainedObject());
               a.remove(p.getContainedObject());
               out.append("Hai raccolto: " + p.getContainedObject().getName() + "\n");
@@ -361,15 +399,21 @@ public class Wutond extends GameDescription implements Serializable {
           }
 
         }
-        if (p.isAll() && !p.isExcept()) {
+        if (p.isAll() && !p.isExcept()) {//caso di frase del tipo : raccogli tutto
+          
           boolean flag = false;
           for (AdvObject c : getCurrentRoom().getObjects_list()) {
+            
             if (c instanceof AdvObjectContainer) {
+              
               if (((AdvObjectContainer) c).isOpened()) {
+                
                 for (AdvObject a : ((AdvObjectContainer) c).getList()) {
+                  
                   flag = true;
                   out.append("Hai raccolto: " + a.getName() + '\n');
                   getInventory().add(a);
+                  
                 }
                 ((AdvObjectContainer) c).getList().removeAll(((AdvObjectContainer) c).getList());
               }
@@ -377,7 +421,9 @@ public class Wutond extends GameDescription implements Serializable {
           }
           List<AdvObject> tempList = new ArrayList<>();
           for (AdvObject a : getCurrentRoom().getObjects_list()) {
+            
             if (a.isPickable()) {
+              
               flag = true;
               out.append("Hai raccolto: " + a.getName() + '\n');
               getInventory().add(a);
@@ -389,13 +435,19 @@ public class Wutond extends GameDescription implements Serializable {
             out.append("Non hai raccolto nulla!");
           }
         }
-        if (p.isAll() && p.isExcept()) {
+        if (p.isAll() && p.isExcept()) {//caso frase del tipo raccogli tutto eccetto ...
+          
           boolean flag = false;
           for (AdvObject c : getCurrentRoom().getObjects_list()) {
+            
             if (c instanceof AdvObjectContainer) {
+              
               if (((AdvObjectContainer) c).isOpened()) {
+                
                 for (AdvObject a : ((AdvObjectContainer) c).getList()) {
+                  
                   if (!p.getExObjects().contains(a)) {
+                    
                     flag = true;
                     out.append("Hai raccolto: " + a.getName() + '\n');
                     getInventory().add(a);
@@ -403,8 +455,9 @@ public class Wutond extends GameDescription implements Serializable {
                 }
                 List<AdvObject> tempList = new ArrayList<>();
                 for (AdvObject b : ((AdvObjectContainer) c).getList()) {
+                  
                   if (!p.getExObjects().contains(b)) {
-                    // ((AdvObjectContainer) c).getList().remove(b);
+                    
                     tempList.add(b);
                   }
                 }
@@ -413,8 +466,11 @@ public class Wutond extends GameDescription implements Serializable {
             }
           }
           for (AdvObject a : getCurrentRoom().getObjects_list()) {
+            
             if (a.isPickable()) {
+              
               if (!p.getExObjects().contains(a)) {
+                
                 flag = true;
                 out.append("Hai raccolto: " + a.getName() + '\n');
                 getInventory().add(a);
@@ -423,17 +479,22 @@ public class Wutond extends GameDescription implements Serializable {
             }
           }
           if (!flag) {
+            
             out.append("Non hai raccolto nulla!");
           }
         }
 
       } else if (p.getCommand().getType() == CommandType.OPEN) {
         if (p.getContainer() != null) {// caso di oggetto nella stanza
+          
           if (p.getContainer().getLock() != null) {
+            
             if (getInventory().contains(p.getContainer().getLock().getKey())) {
-              out.append("Hai usato " + p.getContainer().getLock().getKey().getName() + " per aprire " + p.getContainer().getName() + " !");
+              
+              out.append("Hai usato " + p.getContainer().getLock().getKey().getName() + " per aprire " + p.getContainer().getName() + " !" + "\n");
               out.append(p.getContainer().getName() + " contiene:" + '\n');
-              for (AdvObject a : p.getContainer().getList()) {
+              for (AdvObject a : p.getContainer().getList()) {//stampo lista di oggetti
+                
                 out.append("-" + " " + a.getName() + '\n');
               }
               p.getContainer().setOpened(true);
@@ -444,18 +505,24 @@ public class Wutond extends GameDescription implements Serializable {
               out.append("Non hai la chiave giusta per aprire " + p.getContainer().getName());
             }
           } else if (p.getContainer().getLock() == null) {
+            
             out.append(p.getContainer().getName() + " contiene:" + '\n');
             p.getContainer().setOpened(true);
             for (AdvObject a : p.getContainer().getList()) {
+              
               out.append("-" + " " + a.getName() + '\n');
             }
           }
         } else if (p.getInvObject() != null && p.getInvObject() instanceof AdvObjectContainer) {// caso di container nell'inventario
+          
           AdvObjectContainer copyObj = (AdvObjectContainer) p.getInvObject();
           if (copyObj.getLock() != null) {
+            
             if (getInventory().contains(copyObj.getLock().getKey())) {
+              
               out.append("Hai usato " + copyObj.getLock().getKey().getName() + " per aprire " + copyObj.getName() + " !");
               for (AdvObject a : copyObj.getList()) {
+                
                 out.append("Hai raccolto: " + a.getName() + '\n');
                 getInventory().add(a);
               }
@@ -466,35 +533,45 @@ public class Wutond extends GameDescription implements Serializable {
               out.append(copyObj.getName() + " non ti serve più a nulla, decidi di donarlo alla natura.");
               getInventory().remove(copyObj);
             } else {
+              
               out.append("Non hai la chiave giusta per aprire " + copyObj.getName());
             }
           }
         } else if (p.getDoor() != null) {
+          
           if (p.getDoor().getLock() != null) {
+            
             if (getInventory().contains(p.getDoor().getLock().getKey())) {
+              
               out.append("Hai usato " + p.getDoor().getLock().getKey().getName()
                 + " per aprire la porta !");
               getInventory().remove(p.getDoor().getLock().getKey());
               getCurrentRoom().getObjects_list().remove(p.getDoor());
 
             } else {
+              
               out.append("Non hai la chiave giusta per aprire la porta");
             }
           }
         }
       } else if (wallCounter >= 30) {
+        
         out.append("Hai sbattuto la testa troppe volte contro i muri, ti senti confuso!" + '\n');
+        
       } else if (p.getCommand().getType() == CommandType.TALK_TO) {
-        // synchronized(out) {
+        
         if (p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null) {
+          
           DialogB d = new DialogB(gui, true);
           d.setDialog(p.getNpc().getDialog());
           p.getNpc().setSpoken(true);
           d.setVisible(true);
           if (p.getNpc().getNpc_inventory() != null) {
+            
             getInventory().addAll(p.getNpc().getNpc_inventory());
             out.append(p.getNpc().getName() + " ti ha dato:" + "\n");
             for (AdvObject a : p.getNpc().getNpc_inventory()) {
+              
               out.append("-" + a.getName() + "\n");
             }
             p.getNpc().getNpc_inventory().removeAll(p.getNpc().getNpc_inventory());
@@ -503,6 +580,7 @@ public class Wutond extends GameDescription implements Serializable {
           }
           out.append("*Ti allontani*");
         } else if (!p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null) {
+          
           out.append(p.getNpc().getName() + " dice:" + "\n");
           Random r = new Random();
           for (int i = 0; i < 40; i++) {
@@ -532,9 +610,12 @@ public class Wutond extends GameDescription implements Serializable {
         out.append("\n" + "\n");
         out.append(p.getCommand().getName() + " a me?! Ora sono *!?*** tuoi !");
       } else if (p.getCommand().getType() == CommandType.USE) {
+        
         try {
+          
           getEvent().check(p, this.getCurrentRoom(), move, out, in, gui);
         } catch (NullPointerException e) {
+          
           out.append("Non puoi usare quest'oggetto");
         }
         checkHit = true;
@@ -558,11 +639,15 @@ public class Wutond extends GameDescription implements Serializable {
           e.printStackTrace();
         }
         out.setText("");
-        out.append("Caricamento avvenuto con successo!" + "\n" + "====================================" + "\n");
+        out.append("Caricamento avvenuto con successo!");
+        separator(out);
         out.append(getCurrentRoom().getName() + '\n' + getCurrentRoom().getDescription() + '\n' + '\n');
       } else if (p.getCommand().getType() == CommandType.KILL) {
+        
         if (p.getNpc() != null && p.getNpc().isKillable()) {
-          if (getInventory().contains(this.getObjects().getById(52))) {
+          
+          if (getInventory().contains(this.getObjects().getByName("Pistola"))) {//puoi uccidere un npc solo se hai nell'invetario la pistola 
+            
             out.append("A malincuore hai posto fine alle sofferenze di " + p.getNpc().getName() + "." + "\n" + "Non pensi che qualcuno ne sentirà la mancanza");
             this.getCurrentRoom().getNpc_list().remove(p.getNpc());
           } else {
