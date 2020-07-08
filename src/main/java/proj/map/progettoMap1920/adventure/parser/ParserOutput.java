@@ -8,11 +8,11 @@ package proj.map.progettoMap1920.adventure.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.Command;
-import proj.map.progettoMap1920.adventure.type.Door;
-import proj.map.progettoMap1920.adventure.type.Npc;
+import proj.map.progettoMap1920.adventure.types.AdvObject;
+import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.types.Command;
+import proj.map.progettoMap1920.adventure.types.Door;
+import proj.map.progettoMap1920.adventure.types.Npc;
 
 /**
  *

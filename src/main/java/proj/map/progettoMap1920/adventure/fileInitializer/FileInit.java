@@ -20,13 +20,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.Dialog;
-import proj.map.progettoMap1920.adventure.type.Door;
-import proj.map.progettoMap1920.adventure.type.Lock;
-import proj.map.progettoMap1920.adventure.type.Npc;
-import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.types.AdvObject;
+import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.types.Dialog;
+import proj.map.progettoMap1920.adventure.types.Door;
+import proj.map.progettoMap1920.adventure.types.Lock;
+import proj.map.progettoMap1920.adventure.types.Npc;
+import proj.map.progettoMap1920.adventure.types.Room;
 import proj.map.progettoMap1920.adventure.utils.GameList;
 
 /**

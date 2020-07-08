@@ -20,23 +20,23 @@ import java.util.stream.Collectors;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
 
+import proj.map.progettoMap1920.adventure.core.GameDescription;
 import proj.map.progettoMap1920.adventure.events.EventHandler;
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
 import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GameUtilInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
-import proj.map.progettoMap1920.adventure.main.GameDescription;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
 import proj.map.progettoMap1920.adventure.parser.grammar.CFGrammar;
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.CommandType;
-import proj.map.progettoMap1920.adventure.type.Dialog;
-import proj.map.progettoMap1920.adventure.type.DialogB;
-import proj.map.progettoMap1920.adventure.type.Door;
-import proj.map.progettoMap1920.adventure.type.Lock;
-import proj.map.progettoMap1920.adventure.type.Npc;
-import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.types.AdvObject;
+import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.types.CommandType;
+import proj.map.progettoMap1920.adventure.types.Dialog;
+import proj.map.progettoMap1920.adventure.types.DialogB;
+import proj.map.progettoMap1920.adventure.types.Door;
+import proj.map.progettoMap1920.adventure.types.Lock;
+import proj.map.progettoMap1920.adventure.types.Npc;
+import proj.map.progettoMap1920.adventure.types.Room;
 import proj.map.progettoMap1920.adventure.utils.GameList;
 import proj.map.progettoMap1920.adventure.utils.Gui;
 
@@ -656,6 +656,23 @@ public class Wutond extends GameDescription implements Serializable {
         } else {
           out.append("Non ti sembra il caso di uccidere " + p.getNpc().getName() + " almeno per il momento...");
         }
+      } else if (p.getCommand().getType() == CommandType.HELP) {
+        out.append("I comandi implementati nel game engine sono:" + "\n" +
+          "- nord, sud, est, ovest;" + "\n" + "\n" +
+          "- vai + <nord, sud, est, ovest>;" + "\n" + "\n" +
+          "- salva + nomefile;" + "\n" + "\n" +
+          "- carica + nomefile;" + "\n" + "\n" +
+          "- guarda / guarda + <oggetto/npc/porta/container>;" + "\n" + "\n" +
+          "- inventario;" + "\n" + "\n" +
+          "- apri + <container/porta/oggetto nell'inventario>;" + "\n" + "\n" +
+          "- prendi + <oggetto/tutto/tutto eccetto (una lista di oggetti separati da una virgola)>;" + "\n" + "\n" +
+          "- usa + oggetto;" + "\n" + "\n" +
+          "- parla + npc;" + "\n" + "\n" +
+          "- dai + oggetto + npc;" + "\n" + "\n" +
+          "- esci;" + "\n" + "\n" +
+          "- uccidi + npc;" + "\n" + "\n" +
+          "- aiuto;" + "\n" + "\n" +
+          "E' possibile utilizzare articoli o preposizioni, virgole e congiunzioni." + "\n");
       }
       if (!checkHit) {
         try {

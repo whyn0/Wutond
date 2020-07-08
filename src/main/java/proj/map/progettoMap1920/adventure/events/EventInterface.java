@@ -9,7 +9,7 @@ import javax.swing.JTextArea;
 
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
-import proj.map.progettoMap1920.adventure.type.Room;
+import proj.map.progettoMap1920.adventure.types.Room;
 import proj.map.progettoMap1920.adventure.utils.Gui;
 
 /**

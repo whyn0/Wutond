@@ -1,4 +1,4 @@
-package proj.map.progettoMap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.types;
 
 import java.io.Serializable;
 import java.util.Set;

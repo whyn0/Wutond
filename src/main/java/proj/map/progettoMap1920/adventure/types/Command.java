@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.types;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,33 +15,40 @@ import java.util.Set;
  *
  * @author whyno
  */
-public class Preposition extends GameUtil implements Serializable {
-  private PrepositionType type;
+public class Command extends GameUtil implements Serializable {
+  private final CommandType type;
 
-  public Preposition(PrepositionType type, String name, Set<String> alias) {
+  public Command(CommandType type, String name) {
+    this.type = type;
+    this.name = name;
+  }
+
+  public Command(CommandType type, String name, Set<String> alias) {
     this.type = type;
     this.name = name;
     this.alias = alias;
   }
 
-  public PrepositionType getType() {
-    return type;
+  public Command(CommandType t) {
+    this.type = t;
   }
-
-
-  public void setType(PrepositionType type) {
-    this.type = type;
-  }
-
 
 
   public void setAlias(Set<String> alias) {
     this.alias = alias;
   }
 
+  public void setAlias(String[] alias) {
+    this.alias = new HashSet<>(Arrays.asList(alias));
+  }
+
+  public CommandType getType() {
+    return type;
+  }
+
   @Override
   public int hashCode() {
-    int hash = 5;
+    int hash = 3;
     hash = 97 * hash + Objects.hashCode(this.type);
     return hash;
   }
@@ -55,20 +64,11 @@ public class Preposition extends GameUtil implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Preposition other = (Preposition) obj;
+    final Command other = (Command) obj;
     if (this.type != other.type) {
       return false;
     }
     return true;
-  }
-
-  public Preposition(PrepositionType type) {
-    this.type = type;
-  }
-
-  public Preposition(PrepositionType type, String name) {
-    this.type = type;
-    this.name = name;
   }
 
 }

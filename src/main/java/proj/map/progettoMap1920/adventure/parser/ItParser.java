@@ -11,17 +11,17 @@ import java.util.List;
 import proj.map.progettoMap1920.adventure.exceptions.NullOutputException;
 import proj.map.progettoMap1920.adventure.parser.grammar.CFGrammar;
 import proj.map.progettoMap1920.adventure.parser.grammar.Cyk;
-import proj.map.progettoMap1920.adventure.type.AdvObject;
-import proj.map.progettoMap1920.adventure.type.AdvObjectContainer;
-import proj.map.progettoMap1920.adventure.type.Article;
-import proj.map.progettoMap1920.adventure.type.Command;
-import proj.map.progettoMap1920.adventure.type.Door;
-import proj.map.progettoMap1920.adventure.type.GameObject;
-import proj.map.progettoMap1920.adventure.type.GameUtil;
-import proj.map.progettoMap1920.adventure.type.Npc;
-import proj.map.progettoMap1920.adventure.type.Preposition;
-import proj.map.progettoMap1920.adventure.type.SyntaxParticles;
-import proj.map.progettoMap1920.adventure.type.SyntaxParticlesType;
+import proj.map.progettoMap1920.adventure.types.AdvObject;
+import proj.map.progettoMap1920.adventure.types.AdvObjectContainer;
+import proj.map.progettoMap1920.adventure.types.Article;
+import proj.map.progettoMap1920.adventure.types.Command;
+import proj.map.progettoMap1920.adventure.types.Door;
+import proj.map.progettoMap1920.adventure.types.GameObject;
+import proj.map.progettoMap1920.adventure.types.GameUtil;
+import proj.map.progettoMap1920.adventure.types.Npc;
+import proj.map.progettoMap1920.adventure.types.Preposition;
+import proj.map.progettoMap1920.adventure.types.SyntaxParticles;
+import proj.map.progettoMap1920.adventure.types.SyntaxParticlesType;
 
 /**
  *

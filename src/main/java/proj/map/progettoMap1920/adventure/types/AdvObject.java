@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proj.map.progettoMap1920.adventure.type;
+package proj.map.progettoMap1920.adventure.types;
 
 import java.io.Serializable;
 import java.util.Set;
