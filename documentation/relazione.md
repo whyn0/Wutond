@@ -54,7 +54,7 @@ Nel nostro caso il package contiene la classe **Wutond** che estende **GameDescr
 
 ### 2.3 Package "fileInitializer"
 Il package "fileInitializer" contiene le tre classi che inizializzano da file, contenuti nella cartella **res/file_txt**, le GameList che saranno successivamente trasferite a **GameDescription** : 
-- componenti di gioco (oggetti, stanze ecc..) -> **FileInit**
+- componenti di gioco (oggetti, stanze ecc..) -> **ComponentInit**
 - utilià di gioco (comandi, articoli, preposizioni ecc..) -> **GameUtil**
 - la grammatica e i simboli terminali, non terminale e le produzioni -> **GrammarInit** 
 

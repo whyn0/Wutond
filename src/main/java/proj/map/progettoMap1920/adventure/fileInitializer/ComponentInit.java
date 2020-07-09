@@ -33,7 +33,7 @@ import proj.map.progettoMap1920.adventure.utils.GameList;
  *
  * @author whyno
  */
-public class FileInit { // probabile singleton
+public class ComponentInit { // probabile singleton
 
   private GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
   private GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());
@@ -43,7 +43,7 @@ public class FileInit { // probabile singleton
   private GameList<Npc> npcList = new GameList<>(new ArrayList<Npc>());
   private GameList<Door> doorList = new GameList<>(new ArrayList<Door>());
 
-  public FileInit(String... paths) throws IOException, FileNotFoundException {
+  public ComponentInit(String... paths) throws IOException, FileNotFoundException {
     objReader(paths[0]);
     lockReader(paths[1]);
     contReader(paths[2]);

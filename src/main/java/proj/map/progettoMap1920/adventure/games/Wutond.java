@@ -23,7 +23,7 @@ import javax.swing.text.DefaultCaret;
 import proj.map.progettoMap1920.adventure.core.GameDescription;
 import proj.map.progettoMap1920.adventure.events.EventHandler;
 import proj.map.progettoMap1920.adventure.exceptions.EOGameException;
-import proj.map.progettoMap1920.adventure.fileInitializer.FileInit;
+import proj.map.progettoMap1920.adventure.fileInitializer.ComponentInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GameUtilInit;
 import proj.map.progettoMap1920.adventure.fileInitializer.GrammarInit;
 import proj.map.progettoMap1920.adventure.parser.ParserOutput;
@@ -52,7 +52,7 @@ public class Wutond extends GameDescription implements Serializable {
     // Initialize all
     String pathName = "res/file_txt/";
     GrammarInit grammarInit = new GrammarInit(pathName + "GRAMMAR.txt");
-    FileInit fileInit = new FileInit(pathName + "ADV_OBJ.txt",
+    ComponentInit fileInit = new ComponentInit(pathName + "ADV_OBJ.txt",
       pathName + "LOCK.txt",
       pathName + "ADV_CONT.txt",
       pathName + "DOOR.txt",
