@@ -64,7 +64,7 @@ public class Engine {
         boolean flag = true;
         
         ((DefaultCaret) output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-
+        
         synchronized (LockT.lock) {
           try {
             LockT.lock.wait();
@@ -195,7 +195,6 @@ public class Engine {
     }
     }
 
-    System.out.println(blank);
     return blank.toString();
   }
     
