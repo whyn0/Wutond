@@ -23,7 +23,6 @@ public class Gui extends javax.swing.JFrame {
    * 
    */
   private String string;
-  // private static Object lock = new Object();
 
   /**
    * Creates new form Gui
@@ -145,7 +144,6 @@ public class Gui extends javax.swing.JFrame {
       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         string = inputArea.getText();
         string = string.trim();
-        // outputArea.append(string);
         inputArea.setText(null);
         LockT.lock.notify();
       }
