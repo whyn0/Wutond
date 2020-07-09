@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"proj.map.progettoMap1920.adventure.fileInitializer"},{"l":"proj.map.progettoMap1920.adventure.games"},{"l":"proj.map.progettoMap1920.adventure.main"},{"l":"proj.map.progettoMap1920.adventure.parser"},{"l":"proj.map.progettoMap1920.adventure.type"},{"l":"proj.map.progettoMap1920.adventure.utils"}]
