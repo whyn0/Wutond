@@ -61,9 +61,9 @@ public class Engine {
 
       while (true) {
         boolean flag = true;
-        
+
         ((DefaultCaret) output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-        
+
         synchronized (LockT.lock) {//lock per garantire sequenzialità
           try {
             LockT.lock.wait();
@@ -71,10 +71,10 @@ public class Engine {
             e.printStackTrace();
           }
         }
-        
+
         String command = gui.getString();
         command = clearInput(command);//pulizia preliminare dell'input dalle virgole e dalle congiunzioni
-        
+
         List<AdvObject> containerItems = new ArrayList<>();//lista degli oggetti contenuti nei container della stanza
         for (AdvObject a : game.getCurrentRoom().getObjects_list()) {
           if (a instanceof AdvObjectContainer) {
@@ -182,26 +182,30 @@ public class Engine {
     s = s.replaceAll(",", "");   
     s = s.replaceAll("l'","");
     String[] token = s.split("\\s+");
-    
 
-    for(int i = 0; i < token.length; i++){
+    if(token.length > 1) {
+      for(int i = 0; i < token.length; i++){
         if(!token[i].equals("e")){
-            if(i != token.length -1){
-                blank.append(token[i] + " ");
-        } else {
-                blank.append(token[i]);
-            }
+          if(i != token.length -1){
+            blank.append(token[i] + " ");
+          } else {
+            blank.append(token[i]);
+          }
+        }
+      }
+    } else {
+      blank.append(token[0]);
     }
-    }
+
 
     return blank.toString();
   }
-    
+
 
   public static void main(String[] args) {
     Engine engine = new Engine(new Wutond());
     engine.run();
   }
-  
+
 
 }

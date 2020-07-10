@@ -34,7 +34,7 @@ public class NullOutputException extends Exception {
         msg = "Ciò che vuoi aprire non è qui!";
         break;
       case USE:
-        msg = "Non puoi usare questo oggetto|" ;
+        msg = "Non puoi usare questo oggetto!" ;
         break;
       case LOOK_AT:
         msg = "Provi a guardare l'oggetto ma non è qui presente" ;
@@ -44,6 +44,9 @@ public class NullOutputException extends Exception {
         break;
       case KILL:
         msg = "Non ho capito chi dovrei uccidere!";
+        break;
+      case GIVE:
+        msg = "Non puoi dare questo oggetto!";
         break;
     }
     return msg;
