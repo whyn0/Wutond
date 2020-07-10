@@ -522,7 +522,7 @@ public class Wutond extends GameDescription implements Serializable {
             
             if (getInventory().contains(copyObj.getLock().getKey())) {
               
-              out.append("Hai usato " + copyObj.getLock().getKey().getName() + " per aprire " + copyObj.getName() + " !");
+              out.append("Hai usato " + copyObj.getLock().getKey().getName() + " per aprire " + copyObj.getName() + " !" + "\n");
               for (AdvObject a : copyObj.getList()) {
                 
                 out.append("Hai raccolto: " + a.getName() + '\n');
@@ -580,7 +580,9 @@ public class Wutond extends GameDescription implements Serializable {
             p.getNpc().setDialog(null);
             p.getNpc().setKillable(true);
           }
-          out.append("*Ti allontani*");
+          if(p.getNpc().getId() != 64) {
+            out.append("*Ti allontani*");
+          }
         } else if (!p.getNpc().isUnderstandable() && p.getNpc().getDialog() != null) {
           
           out.append(p.getNpc().getName() + " dice:" + "\n");
