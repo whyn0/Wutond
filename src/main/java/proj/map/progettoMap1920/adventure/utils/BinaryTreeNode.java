@@ -9,7 +9,7 @@ package proj.map.progettoMap1920.adventure.utils;
  *
  * @author whyno
  */
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode<T> {//albero binario i cui figli destro e sinistro sono a loro volta alberi binari
   private final BinaryTreeNode<T> firstChild;
   private final BinaryTreeNode<T> secondChild;
   private final T value;

@@ -25,17 +25,8 @@ import proj.map.progettoMap1920.adventure.types.SyntaxParticles;
  */
 public interface Parser {
   int checkGrammar(String token, List<? extends GameUtil> list);
-
   int checkElement(String token, List<? extends GameObject> list);
 
-  /*
-   * int checkForArticle(String token,List<Article> list);
-   * int checkForPrep(String token,List<Preposition> list);
-   * int checkForNpc(String token,List<Npc> list);
-   * int checkForCommand(String token,List<Command> list);
-   * int checkForItem(String token,List<AdvObject> list);
-   * int checkForParticles(String token, List<SyntaxParticles> list);
-   */
   public ParserOutput parse(String command,
     List<AdvObject> inventory,
     List<AdvObject> room_items,

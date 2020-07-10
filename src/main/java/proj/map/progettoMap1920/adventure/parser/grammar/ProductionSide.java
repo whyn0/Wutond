@@ -17,7 +17,7 @@ import java.util.List;
 public class ProductionSide implements Serializable {
   private final List<String> list = new ArrayList<>();
 
-  public ProductionSide(String... symbol) {
+  public ProductionSide(String... symbol) {//può avere piu simboli
     this.list.addAll(Arrays.asList(symbol));
   }
 

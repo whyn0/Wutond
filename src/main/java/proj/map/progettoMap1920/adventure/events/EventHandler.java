@@ -231,7 +231,7 @@ public class EventHandler implements EventInterface, Serializable {
     }
     if (!flags[9]) {
       if (p.getNpc() != null) {
-        if (p.getCommand().getType() == CommandType.TALK_TO && p.getNpc().getId() == 64) {
+        if (p.getCommand().getType() == CommandType.TALK_TO && p.getNpc().getId() == 64) {//parla al commissario
           out.append("*Hai dieci secondi per decidere cosa fare, sbrigati!*" + "\n");
           synchronized (LockT.lock) {
             try {
@@ -259,7 +259,7 @@ public class EventHandler implements EventInterface, Serializable {
                 particles,
                 grammar);
 
-              if (pout.getNpc() != null && pout.getCommand().getType() == CommandType.KILL) {
+              if (pout.getNpc() != null && pout.getCommand().getType() == CommandType.KILL) { //uccidi il commissario
                 if (pout.getCommand().getType() == CommandType.KILL && pout.getNpc().getId() == 64) {
                   out.append("Estrai la tua pistola e con prontezza abbatti il minaccioso Commissario" + "\n"
                     + "Forse non sarai ricordato come eroe da questa città ma per fortuna hai eliminato l'assassino!" + "\n"
