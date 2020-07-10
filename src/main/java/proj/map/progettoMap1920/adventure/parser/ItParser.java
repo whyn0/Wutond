@@ -81,7 +81,7 @@ public class ItParser implements Parser {
     List<Integer> index_list = new ArrayList<>();
     List<AdvObject> all_items = new ArrayList<>();
     boolean isExcept = false;// flag da attivare dopo aver trovato un except
-    if (inventory != null) {
+    if (inventory != null) {//creo una lista di tutti gli oggetti nella stanza
       all_items.addAll(inventory);
     }
     if (cont_items != null) {
@@ -92,10 +92,10 @@ public class ItParser implements Parser {
     }
 
     String cmd = command.trim();
-    String[] token_list = cmd.split("\\s+");// vai a nord
+    String[] token_list = cmd.split("\\s+");
     int index;
 
-    if (token_list.length > 0) {
+    if (token_list.length > 0) {//la prima cosa da fare è assicurarsi che il primo token sia effettivamente un comando
       index = checkGrammar(token_list[0], cmd_list);
       if (index > -1) {
         tokenlist_type.add(cmd_list.get(index).getType().toString());
@@ -106,15 +106,13 @@ public class ItParser implements Parser {
         if (token_list.length > 1) {
           for (int i = 1; i < token_list.length; i++) {
 
-            if ((index = checkGrammar(token_list[i], articles)) >= 0) {
+            if ((index = checkGrammar(token_list[i], articles)) >= 0) {//articoli e preposizioni vengono ignorati
               index_list.add(index);
-              // tokenlist_type.add("article");
               continue;
             } else if ((index = checkGrammar(token_list[i], prepositions)) >= 0) {
               index_list.add(index);
-              // tokenlist_type.add("preposition");
               continue;
-            } else if ((index = checkElement(token_list[i], all_items)) >= 0) {
+            } else if ((index = checkElement(token_list[i], all_items)) >= 0) {//se l'oggetto è un item bisogna distinguerlo e classificarlo
               index_list.add(index);
               if (all_items.get(index) instanceof AdvObjectContainer) {
 
@@ -205,7 +203,6 @@ public class ItParser implements Parser {
                 default:
                   index_list.add(index);
                   tokenlist_type.add(cmd_list.get(index).getType().toString());
-                  // pOutput.(cmd_list.get(index));-------------------------------------Probabile problema
                   break;
               }
               continue;
@@ -217,19 +214,14 @@ public class ItParser implements Parser {
             } else if ((index = checkGrammar(token_list[i], particles)) >= 0) {
               index_list.add(index);
               if (particles.get(index).getType().equals(SyntaxParticlesType.EXCEPT)) {
-                // tokenlist_type.add("except");
                 pOutput.setExcept(true);
                 isExcept = true;
               } else {
-                // tokenlist_type.add("all");
                 pOutput.setAll(true);
               }
-              tokenlist_type.add(particles.get(index).getType().toString());
+              tokenlist_type.add(particles.get(index).getType().toString());//aggiungo all / except a tokenlisttype
               continue;
             }
-            //
-            // int validInput = 0;
-            //
             if (index == -1) {
               try {
                 if (token_list[i + 1] != null) {// se ho un oggetto composito di due parole
@@ -284,16 +276,13 @@ public class ItParser implements Parser {
 
               }
             }
-            if (index == -1) {
-              // throw InvalidInputException(e);
-            }
 
           }
         }
       }
 
     }
-    // verifica semantica
+    // verifica sintattica
     Cyk cky = new Cyk(grammar);
     if (!cky.parse(tokenlist_type)) {
       throw new NullOutputException(pOutput);
