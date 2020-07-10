@@ -273,7 +273,7 @@ public class ItParser implements Parser {
                 }
                 //
               } catch (ArrayIndexOutOfBoundsException e) {
-
+                throw new NullOutputException(pOutput);
               }
             }
 

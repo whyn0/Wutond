@@ -612,7 +612,7 @@ public class Wutond extends GameDescription implements Serializable {
         out.append("\n" + "\n");
         out.append(p.getCommand().getName() + " a me?! Ora sono *!?*** tuoi !");
       } else if (p.getCommand().getType() == CommandType.USE) {
-        
+        String oldText = out.getText();
         try {
           
           getEvent().check(p, this.getCurrentRoom(), move, gui);
@@ -621,10 +621,16 @@ public class Wutond extends GameDescription implements Serializable {
           out.append("Non puoi usare quest'oggetto");
         }
         checkHit = true;
+        if(oldText.equals(out.getText())){
+          out.append("Non ti viene in mente alcun utilizzo per quest'oggetto!");
+        }
       } else if (p.getCommand().getType() == CommandType.GIVE) {
-
+        String oldText = out.getText();
         getEvent().check(p, this.getCurrentRoom(), move, gui);
         checkHit = true;
+        if(oldText.equals(out.getText())){
+          out.append("Non vuoi darlo!");
+        }
       } else if (p.getCommand().getType() == CommandType.SAVE) {
         try {
           save("res/saves/save.dat");
