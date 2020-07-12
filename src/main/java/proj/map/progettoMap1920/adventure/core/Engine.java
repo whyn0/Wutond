@@ -47,12 +47,11 @@ public class Engine {
     gui.setVisible(true);
   }
 
-  public void run() {
-    boolean restart = true;
+  public void run() {//metodo principale
+    boolean restart = true; //viene settato false in caso di termine gioco con risposta negativa
     while (restart) {
       int ending = -1;
       JTextArea output = gui.getOutputArea();
-      JTextArea input = gui.getInputArea();
       output.append(intro());
       separator();
       output.append(game.getCurrentRoom().getName().toUpperCase());
@@ -62,21 +61,21 @@ public class Engine {
 
       while (true) {
         boolean flag = true;
-        
+
         ((DefaultCaret) output.getCaret()).setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-        
-        synchronized (LockT.lock) {
+
+        synchronized (LockT.lock) {//lock per garantire sequenzialità
           try {
             LockT.lock.wait();
           } catch (InterruptedException e) {
             e.printStackTrace();
           }
         }
-        
+
         String command = gui.getString();
-        command = clearInput(command);
-        
-        List<AdvObject> containerItems = new ArrayList<>();
+        command = clearInput(command);//pulizia preliminare dell'input dalle virgole e dalle congiunzioni
+
+        List<AdvObject> containerItems = new ArrayList<>();//lista degli oggetti contenuti nei container della stanza
         for (AdvObject a : game.getCurrentRoom().getObjects_list()) {
           if (a instanceof AdvObjectContainer) {
             if (((AdvObjectContainer) a).isOpened()) {
@@ -111,7 +110,7 @@ public class Engine {
           if (flag) {
             try {
               game.nextMove(p, gui);
-            } catch (EOGameException e) {
+            } catch (EOGameException e) {//eccezione che triggera la fine del gioco
               separator();
               separator();
               ending = e.getCode();
@@ -183,26 +182,30 @@ public class Engine {
     s = s.replaceAll(",", "");   
     s = s.replaceAll("l'","");
     String[] token = s.split("\\s+");
-    
 
-    for(int i = 0; i < token.length; i++){
+    if(token.length > 1) {
+      for(int i = 0; i < token.length; i++){
         if(!token[i].equals("e")){
-            if(i != token.length -1){
-                blank.append(token[i] + " ");
-        } else {
-                blank.append(token[i]);
-            }
+          if(i != token.length -1){
+            blank.append(token[i] + " ");
+          } else {
+            blank.append(token[i]);
+          }
+        }
+      }
+    } else {
+      blank.append(token[0]);
     }
-    }
+
 
     return blank.toString();
   }
-    
+
 
   public static void main(String[] args) {
     Engine engine = new Engine(new Wutond());
     engine.run();
   }
-  
+
 
 }

@@ -33,7 +33,7 @@ import proj.map.progettoMap1920.adventure.utils.GameList;
  *
  * @author whyno
  */
-public class ComponentInit { // probabile singleton
+public class ComponentInit { 
 
   private GameList<AdvObject> objectList = new GameList<>(new ArrayList<AdvObject>());
   private GameList<AdvObjectContainer> containerList = new GameList<>(new ArrayList<AdvObjectContainer>());

@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author whyno
  */
-public class Production implements Serializable {
+public class Production implements Serializable {//astrazione di una produzione
   private final ProductionSide leftSide;
   private final ProductionSide rightSide;
 

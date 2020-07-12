@@ -25,7 +25,7 @@ ID: 66
 NAME: "Tipo losco"
 DESCRIPTION: "Riesci a scorgere solo una figura incappucciata che viene illuminata in concomitanza con l'accensione della luce intermittente."
 LOOK: "Non ti sembra una persona molto raccomandabile, meglio stare attenti."
-ALIAS: tipo figura persona
+ALIAS: tipo figura persona uomo spacciatore
 KILLABLE: f 
 UNDERSTANDABLE: f
 DIALOG: 88
@@ -47,7 +47,7 @@ ID: 68
 NAME: "Ciccio"
 DESCRIPTION: "Sotto la torre noti un uomo sulla cinquantina con la schiena incurvata."
 LOOK: "Sembra molto preso da un discorso fra sè e sè e nel frattempo ruota compulsivamente un pacchetto di sigarette nelle sue mani."
-ALIAS: uomo matto pazzo signore
+ALIAS: uomo matto pazzo signore tipo
 KILLABLE: f
 UNDERSTANDABLE: f
 DIALOG: 108
@@ -69,7 +69,7 @@ ID: 70
 NAME: "Samuele"
 DESCRIPTION: "Sul lato sinistro dell'entrata vedi un ragazzo occhialuto appoggiato al muro intento a fumarsi una sigaretta."
 LOOK: "Indossa una maglietta della Juventus. Ad un primo sguardo non sembra molto sveglio."
-ALIAS: ragazzo persona uomo
+ALIAS: ragazzo persona uomo tipo 
 KILLABLE: t
 UNDERSTANDABLE: f
 DIALOG: 102

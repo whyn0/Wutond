@@ -11,7 +11,7 @@ import proj.map.progettoMap1920.adventure.parser.grammar.Production;
  *
  * @author whyno
  */
-public class ParseTreeNode extends BinaryTreeNode<Production> {
+public class ParseTreeNode extends BinaryTreeNode<Production> {//Binarytreenode i cui valori sono produzioni grammaticali
 
   public ParseTreeNode(BinaryTreeNode<Production> firstChild, BinaryTreeNode<Production> secondChild, Production value) {
     super(firstChild, secondChild, value);

@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author whyno
  */
-public class CFGrammar implements Serializable {
+public class CFGrammar implements Serializable {//astrazione di una grammatica context free
   private final String start;
   private final List<Production> productions;
   private final List<String> nonTerminals;
